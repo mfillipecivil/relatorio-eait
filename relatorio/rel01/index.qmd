@@ -29,13 +29,13 @@ execute:
 ## 📌 Introdução
 
 
-> A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.
+  A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.
  
-> A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.
+  A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.
 
->  O desenvolvimento de ferramentas computacionais também contribuie para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.
+  O desenvolvimento de ferramentas computacionais também contribuie para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.
 
-> Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.
+  Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.
 
 
 
@@ -44,8 +44,9 @@ execute:
 
 ### Objetivo geral
 
-> Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística & Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.
-> Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
+  Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística & Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.
+  
+  Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
 
 ### Objetivos específicos
 
@@ -67,8 +68,156 @@ Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação
 ---
 
 ## 📚  Fundamentação Teórica
+### Fundamentos do R e do RStudio
+O R é um ambiente computacional de código aberto destinado à manipulação e análise de dados, realização de cálculos estatísticos e produção de gráficos. Além de suas funções nativas, permite a criação e o compartilhamento de novas funcionalidades por meio de pacotes desenvolvidos pela comunidade.
 
+O projeto foi iniciado em 1991, na Nova Zelândia, pelos pesquisadores Ross Ihaka e Robert Gentleman, tendo sua primeira versão oficial disponibilizada em 1995. Em 1997, foi criado o CRAN (Comprehensive R Archive Network), responsável pela distribuição do R, de sua documentação e de milhares de pacotes.
+
+O RStudio é uma IDE (Integrated Development Environment) desenvolvida para facilitar a utilização do R. Ele não substitui o R, mas oferece uma interface organizada para escrita e execução de códigos. Sua estrutura reúne, principalmente, o editor de scripts, o console, o painel de ambiente e histórico e as áreas destinadas a arquivos, gráficos, pacotes e ajuda.
+
+#### Princípios fundamentais do R
+A lógica do R pode ser compreendida a partir de três princípios básicos:
+
+**Tudo é um objeto:** números, textos, conjuntos de dados, gráficos e funções podem ser armazenados e manipulados como objetos.
+
+**As operações são realizadas por funções:** diferentes comandos e cálculos são processados por meio de funções.
+
+**Integração com outros sistemas:** o R pode interagir com linguagens e tecnologias como C, C++, Python, HTML e JavaScript.
+
+#### Sintaxe e principais comandos
+A sintaxe corresponde às regras utilizadas para escrever corretamente os comandos, enquanto a semântica está relacionada ao significado e ao resultado dessas instruções.
+
+Ao iniciar o R ou o RStudio, o símbolo > indica que o console está pronto para receber um comando. Quando uma instrução está incompleta, o símbolo + indica que o R aguarda sua continuação.
+
+Os comentários são inseridos utilizando # e servem para documentar o código sem serem executados.
+
+Os objetos devem receber nomes válidos, sem espaços ou operadores matemáticos. O R diferencia letras maiúsculas de minúsculas, de modo que idade e Idade representam objetos diferentes. Também é necessário evitar palavras reservadas da linguagem, como if, else, for e function.
+
+As operações podem ser executadas diretamente ou armazenadas em objetos. Para atribuições, recomenda-se o uso do operador <-
+
+É possível ainda executar vários comandos na mesma linha utilizando ;
+
+### Gerenciamento dos objetos e do diretório de trabalho.
+Os objetos criados durante uma sessão ficam armazenados no ambiente de trabalho do R. O comando ls() permite visualizar os objetos existentes.
+
+O diretório de trabalho pode ser consultado com getwd() e alterado utilizando setwd():
+
+#### Tipos de dados e pacotes
+O R trabalha com diferentes tipos básicos de dados, como logical, integer, double e character. Também possui estruturas mais complexas, como data frames, amplamente utilizadas para organizar dados em linhas e colunas.
+As funcionalidades do R podem ser ampliadas por meio de pacotes, que reúnem funções e outros recursos desenvolvidos para finalidades específicas. Para utilizar um pacote, normalmente é necessário instalá-lo e carregá-lo:
+
+install.packages("nome_do_pacote")
+library(nome_do_pacote)
+
+Também é possível utilizar diretamente uma função de determinado pacote por meio do operador :::
+
+nome_do_pacote::nome_da_funcao(argumentos)
+
+O domínio desses fundamentos permite compreender a estrutura básica do R, facilitando a criação, organização e execução de códigos e fornecendo uma base para atividades de tratamento, visualização e análise estatística de dados.
+
+### Conceitos fundamentais da estatística 
+#### População e Amostra
+A população (**N**) corresponde ao conjunto de elementos que apresentam uma ou mais características de interesse para determinado estudo. Pode ser finita, quando seus elementos podem ser enumerados, ou infinita, quando isso não é possível.
+
+A amostra é uma parte da população selecionada para representar suas características. Quando todos os elementos da população são analisados, realiza-se um censo, não sendo necessária a utilização de procedimentos de inferência estatística.
 Apresente os conceitos principais:
+
+#### Classificação das variaveis
+As variáveis representam as características que serão observadas ou medidas em uma pesquisa. Podem ser classificadas em:
+
+**Qualitativas:** representam características ou categorias. Podem ser nominais, quando não possuem uma ordem natural, ou ordinais, quando apresentam uma hierarquia.
+
+**Quantitativas:** representam valores numéricos. São discretas quando resultam de contagens e contínuas quando resultam de medições e podem assumir diferentes valores em determinado intervalo.
+
+É importante observar que números utilizados apenas como códigos ou identificadores não transformam uma variável qualitativa em quantitativa.
+
+### Notação de Somatório
+
+
+
+A notação de somatório permite representar, de forma compacta, a soma de vários valores e é utilizada em diversas fórmulas estatísticas. O índice indica a posição das observações e o limite superior determina até onde a soma será realizada.
+
+Uma distinção importante é entre o somatório dos quadrados e o quadrado do somatório. No primeiro caso, cada valor é elevado ao quadrado antes da soma; no segundo, os valores são somados e somente depois o resultado é elevado ao quadrado.
+
+O somatório também apresenta propriedades algébricas que facilitam a manipulação das expressões estatísticas, como a possibilidade de retirar constantes do somatório e distribuir a operação sobre somas ou diferenças.
+
+Uma propriedade importante é que a soma dos desvios em relação à média é igual a zero. Por isso, medidas de dispersão utilizam o módulo ou, principalmente, o quadrado dos desvios para evitar o cancelamento entre valores positivos e negativos.
+
+### Organização dos dados e Distribuição de Frequências
+Os dados obtidos diretamente de uma pesquisa são denominados dados brutos. Antes da análise, é necessário organizá-los de forma adequada.
+
+O rol consiste na ordenação dos dados, geralmente em ordem crescente ou decrescente. Essa organização facilita a identificação dos menores e maiores valores e é necessária para o cálculo de medidas como a mediana.
+
+A frequência absoluta representa o número de vezes que determinado valor ou categoria ocorre. A frequência relativa expressa essa ocorrência em proporção ao total de observações, enquanto a frequência percentual apresenta o mesmo resultado em porcentagem.
+
+As frequências acumuladas permitem identificar a quantidade de observações que se encontra abaixo ou acima de determinado valor ou classe.
+
+Para variáveis contínuas, os dados podem ser agrupados em intervalos de classe, facilitando sua apresentação e interpretação. A construção das classes envolve a definição do número de classes, da amplitude total, da amplitude dos intervalos, dos limites e do ponto médio de cada classe. Após essa definição, são calculadas as respectivas frequências.
+
+## Medidas de Posição
+
+As medidas de posição permitem representar um conjunto de dados por meio de um valor central ou representativo. As principais são média, mediana e moda.
+
+### Média aritmética
+
+A média aritmética é obtida pela soma dos valores observados dividida pelo número de observações. É amplamente utilizada em análises estatísticas, principalmente quando os dados apresentam distribuição aproximadamente simétrica e não possuem valores discrepantes.
+
+Quando os dados estão organizados em uma tabela de frequências, a média pode ser calculada considerando a frequência de cada valor ou o ponto médio das classes.
+
+A média também apresenta propriedades importantes: a adição ou subtração de uma constante altera seu valor na mesma proporção, enquanto a multiplicação ou divisão por uma constante modifica a média pelo mesmo fator.
+
+### Média Aparada
+
+A média aparada é obtida após a retirada de uma determinada proporção dos maiores e menores valores. É uma alternativa à média tradicional quando existem valores extremos que podem influenciar significativamente o resultado.
+
+### Mediana
+
+A mediana corresponde ao valor que divide os dados ordenados em duas partes iguais, deixando aproximadamente 50% das observações abaixo e 50% acima. Por depender da posição dos valores, apresenta maior resistência à influência de valores extremos do que a média.
+
+Para dados agrupados em classes, a mediana é estimada por meio de interpolação dentro da classe que contém a posição central dos dados.
+
+### Moda
+
+A moda corresponde ao valor ou categoria que apresenta maior frequência. Uma distribuição pode ser unimodal, quando possui uma única moda, ou apresentar duas ou mais modas.
+
+Quando os dados estão agrupados em classes, a moda pode ser estimada a partir da classe modal, utilizando métodos específicos, como a fórmula de Czuber.
+
+A relação empírica de Pearson também pode ser utilizada para estimar a moda a partir da média e da mediana em distribuições unimodais com assimetria moderada.
+
+## Medidas de dispersão
+
+As medidas de dispersão indicam o grau de variabilidade existente nos dados. Essa informação é importante porque conjuntos de dados podem apresentar médias semelhantes, mas diferentes níveis de dispersão.
+
+### Amplitude total
+
+A amplitude total corresponde à diferença entre o maior e o menor valor observado. É uma medida simples e rápida, porém bastante influenciada por valores extremos.
+
+### Soma de quadrados e variância 
+
+A soma de quadrados representa a soma dos desvios quadráticos das observações em relação ao centro dos dados. Constitui uma etapa importante para o cálculo da variância e de outros procedimentos estatísticos.
+
+A variância mede a dispersão dos valores em relação à média. No caso de amostras, utiliza-se a correção pelos graus de liberdade, com divisão por n - 1, buscando obter um estimador não viesado da variância populacional.
+
+Para dados agrupados, a variância pode ser calculada considerando as frequências e os pontos médios das classes.
+
+### Desvio padrão
+
+O desvio padrão corresponde à raiz quadrada da variância e apresenta a vantagem de estar expresso na mesma unidade dos dados originais. Por isso, é uma das principais medidas de dispersão utilizadas em análises estatísticas e relatórios técnicos.
+
+A adição ou subtração de uma constante aos dados não altera o desvio padrão. Já a multiplicação dos dados por uma constante altera o desvio padrão proporcionalmente e a variância pelo quadrado dessa constante.
+
+### Coeficiente de variação
+
+O coeficiente de variação representa a dispersão de forma relativa à média, permitindo comparar a variabilidade entre conjuntos de dados com diferentes escalas ou magnitudes. Valores menores indicam, em geral, maior homogeneidade dos dados.
+
+Sua utilização deve ser feita com cautela, especialmente quando a média apresenta valores próximos de zero ou quando a variável não possui um zero absoluto significativo.
+
+### Erro padrão da média
+
+O erro padrão da média representa a variabilidade esperada da média amostral em relação à média da população. Seu valor diminui à medida que o tamanho da amostra aumenta, indicando que amostras maiores tendem a produzir estimativas mais estáveis.
+
+Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.
+
 
 - Média
 - Variância
