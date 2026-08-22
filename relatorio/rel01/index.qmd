@@ -28,7 +28,6 @@ execute:
 
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
 
 > A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.
  
@@ -45,7 +44,9 @@ Descreva o contexto da prática e sua importância.
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+> Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística & Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.
+
+> Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
 
 ### Objetivos específicos
 
