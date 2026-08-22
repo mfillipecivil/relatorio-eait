@@ -1,6 +1,6 @@
 ---
 # Só mude aqui!!!!
-author: "Marcus"
+author: "Marcus Fillipe e Gustavo"
 title: "Relatório de Aula Prática 01"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
