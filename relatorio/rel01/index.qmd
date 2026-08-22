@@ -45,15 +45,24 @@ execute:
 ### Objetivo geral
 
 > Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística & Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.
-
 > Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+
+- Introduzir os fundamentos da Estatística e da linguagem R, apresentando conceitos básicos como população, amostra, variável e dado, bem como os fundamentos do ambiente R e do RStudio, sua sintaxe, semântica, criação e manipulação de objetos e principais formas de utilização no tratamento e na análise de dados, com base nas 26 aulas do curso R Básico 2024
+- Compreender a importância da coleta, organização, tabulação e apresentação dos dados, reconhecendo esses procedimentos como etapas fundamentais para a realização de uma análise estatística adequada;
+- Revisar os fundamentos da estatística descritiva, contemplando os conteúdos dos quatro primeiros capítulos do livro Estatística para Análise de Experimentos e Controle (EPAEC), com ênfase na organização e representação dos dados e na utilização das principais medidas estatísticas;
+- Apresentar, calcular e interpretar as principais medidas de posição, incluindo média, mediana e moda, relacionando seus valores às características do conjunto de dados analisado;
+- Apresentar, calcular e interpretar as principais medidas de dispersão, incluindo amplitude, variância, desvio padrão, coeficiente de variação e erro padrão da média, avaliando a variabilidade e a precisão das informações obtidas;
+- Aprofundar os conceitos de assimetria e curtose, apresentando suas definições, formas de cálculo e interpretação, bem como sua importância para a caracterização da forma e do comportamento das distribuições dos dados;
+- Utilizar um banco de dados relacionado à Engenharia Civil, contendo informações quantitativas que possibilitem a aplicação prática dos conceitos de estatística descritiva e a discussão de fenômenos de interesse da área;
+- Aplicar a linguagem R e o RStudio na análise estatística dos dados, utilizando o pacote leem para a organização, tabulação, representação gráfica e cálculo das principais medidas estatísticas;
+- Construir e interpretar tabelas e representações gráficas, de modo a identificar padrões, tendências, variabilidade e possíveis valores discrepantes presentes no conjunto de dados;
+Determinar e interpretar os coeficientes de assimetria e curtose, avaliando a forma da distribuição das variáveis e relacionando os resultados às características observadas no banco de dados;
+- Compreender os procedimentos estatísticos realizados computacionalmente pelo pacote leem, relacionando os resultados obtidos aos fundamentos matemáticos e estatísticos que envolvem a organização dos dados, o cálculo das medidas e a construção das representações gráficas;
+Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação prática, desenvolvendo uma análise completa de um conjunto de dados da Engenharia Civil, desde sua organização e exploração até o cálculo, a representação e a interpretação dos resultados;
+- Discutir tecnicamente os resultados obtidos, relacionando as características estatísticas identificadas às propriedades e aos fenômenos associados ao contexto da Engenharia Civil, desenvolvendo uma interpretação crítica das informações fornecidas pelo conjunto de dados.
 
 ---
 
