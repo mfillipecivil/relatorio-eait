@@ -5,11 +5,11 @@ links:
   - label: GitHub
     url: "https://github.com/"
   - label: Email
-    url: "mailto:mfillipecivil@gmail.com"
+    url: "mailto: mfillipecivil@gmail.com : gustavodaudt13@aluno.ufsj.edu.br"
   - label: Relatórios
     url: "./relatorio/index.html"
 output:
   postcards::jolla
 ---
 
-Descrição ...
+Pagina destinada para relórios da disciplina de EAIT
