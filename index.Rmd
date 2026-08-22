@@ -1,5 +1,5 @@
 ---
-title: "Marcus Fillipe e Gustavo Daudt"
+title: "Marcus F e Gustavo Daudt"
 image: "logogithub.png"
 links:
   - label: GitHub
