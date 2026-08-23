@@ -269,9 +269,15 @@ Essa medida é utilizada em procedimentos de inferência estatística, incluindo
 Descreva como o experimento foi realizado.
 :::
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+O desenvolvimento dos estudos foi realizado por meio de uma abordagem teórico-prática, com o objetivo de revisar os principais conceitos da Estatística Descritiva e sua aplicação computacional no ambiente RStudio. Inicialmente, foram estudados os conceitos fundamentais relacionados à população, amostra, variável, dados e somatório, estabelecendo a base necessária para o desenvolvimento das demais medidas estatísticas.
+
+Em seguida, foram abordadas as principais medidas de posição, incluindo média aritmética, média aparada, mediana e moda, bem como a relação empírica de Pearson. Posteriormente, foram estudadas as medidas de dispersão, contemplando amplitude total, soma dos quadrados, variância, desvio padrão, coeficiente de variação e erro padrão da média.
+
+Também foram analisadas as medidas relacionadas à forma da distribuição dos dados, com destaque para os coeficientes de assimetria e curtose. Para cada medida, foram estudadas sua definição, interpretação, formulação matemática e aplicação em conjuntos de dados.
+
+A etapa computacional foi desenvolvida utilizando o RStudio, com a implementação das funções e expressões necessárias para o cálculo das medidas estatísticas. Paralelamente, as expressões matemáticas foram estruturadas em LaTeX, utilizando a linguagem Quarto para organizar e apresentar as fórmulas de maneira adequada no documento final.
+
+Por fim, os resultados obtidos pelas expressões matemáticas e pelos procedimentos computacionais foram comparados e interpretados, buscando verificar a correspondência entre a fundamentação teórica e sua aplicação prática no R. Dessa forma, a metodologia permitiu integrar conceitos estatísticos, formulação matemática e programação, contribuindo para a compreensão e aplicação das principais técnicas de Estatística Descritiva.
 
 ---
 
