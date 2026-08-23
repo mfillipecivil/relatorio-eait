@@ -119,7 +119,7 @@ O domínio desses fundamentos permite compreender a estrutura básica do R, faci
 #### População e Amostra
 A população (**N**) corresponde ao conjunto de elementos que apresentam uma ou mais características de interesse para determinado estudo. Pode ser finita, quando seus elementos podem ser enumerados, ou infinita, quando isso não é possível.
 
-A amostra é uma parte da população selecionada para representar suas características. Quando todos os elementos da população são analisados, realiza-se um censo, não sendo necessária a utilização de procedimentos de inferência estatística.
+A amostra (**n**)é uma parte da população selecionada para representar suas características. Quando todos os elementos da população são analisados, realiza-se um censo, não sendo necessária a utilização de procedimentos de inferência estatística.
 Apresente os conceitos principais:
 
 #### Classificação das variaveis
@@ -133,15 +133,19 @@ As variáveis representam as características que serão observadas ou medidas e
 
 ### Notação de Somatório
 
-
-
 A notação de somatório permite representar, de forma compacta, a soma de vários valores e é utilizada em diversas fórmulas estatísticas. O índice indica a posição das observações e o limite superior determina até onde a soma será realizada.
+
+$$
+\sum_{i=1}^{n} x_i = x_1+x_2+x_3+\cdots+x_n
+$$
 
 Uma distinção importante é entre o somatório dos quadrados e o quadrado do somatório. No primeiro caso, cada valor é elevado ao quadrado antes da soma; no segundo, os valores são somados e somente depois o resultado é elevado ao quadrado.
 
 O somatório também apresenta propriedades algébricas que facilitam a manipulação das expressões estatísticas, como a possibilidade de retirar constantes do somatório e distribuir a operação sobre somas ou diferenças.
 
 Uma propriedade importante é que a soma dos desvios em relação à média é igual a zero. Por isso, medidas de dispersão utilizam o módulo ou, principalmente, o quadrado dos desvios para evitar o cancelamento entre valores positivos e negativos.
+
+
 
 ### Organização dos dados e Distribuição de Frequências
 Os dados obtidos diretamente de uma pesquisa são denominados dados brutos. Antes da análise, é necessário organizá-los de forma adequada.
@@ -154,29 +158,42 @@ As frequências acumuladas permitem identificar a quantidade de observações qu
 
 Para variáveis contínuas, os dados podem ser agrupados em intervalos de classe, facilitando sua apresentação e interpretação. A construção das classes envolve a definição do número de classes, da amplitude total, da amplitude dos intervalos, dos limites e do ponto médio de cada classe. Após essa definição, são calculadas as respectivas frequências.
 
-## Medidas de Posição
+### Medidas de Posição
 
 As medidas de posição permitem representar um conjunto de dados por meio de um valor central ou representativo. As principais são média, mediana e moda.
 
-### Média aritmética
+#### Média aritmética
 
 A média aritmética é obtida pela soma dos valores observados dividida pelo número de observações. É amplamente utilizada em análises estatísticas, principalmente quando os dados apresentam distribuição aproximadamente simétrica e não possuem valores discrepantes.
 
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+$$
 Quando os dados estão organizados em uma tabela de frequências, a média pode ser calculada considerando a frequência de cada valor ou o ponto médio das classes.
 
 A média também apresenta propriedades importantes: a adição ou subtração de uma constante altera seu valor na mesma proporção, enquanto a multiplicação ou divisão por uma constante modifica a média pelo mesmo fator.
 
-### Média Aparada
+
+#### Média Aparada
 
 A média aparada é obtida após a retirada de uma determinada proporção dos maiores e menores valores. É uma alternativa à média tradicional quando existem valores extremos que podem influenciar significativamente o resultado.
+$$
+\bar{x}_{\text{aparada}}
+=
+\frac{1}{n-2k}
+\sum_{i=k+1}^{n-k}x_{(i)}
+$$
 
-### Mediana
+#### Mediana
 
 A mediana corresponde ao valor que divide os dados ordenados em duas partes iguais, deixando aproximadamente 50% das observações abaixo e 50% acima. Por depender da posição dos valores, apresenta maior resistência à influência de valores extremos do que a média.
-
+$$
+Md = x_{\left(\frac{n+1}{2}\right)}
+$$
 Para dados agrupados em classes, a mediana é estimada por meio de interpolação dentro da classe que contém a posição central dos dados.
 
-### Moda
+
+#### Moda
 
 A moda corresponde ao valor ou categoria que apresenta maior frequência. Uma distribuição pode ser unimodal, quando possui uma única moda, ou apresentar duas ou mais modas.
 
@@ -184,49 +201,65 @@ Quando os dados estão agrupados em classes, a moda pode ser estimada a partir d
 
 A relação empírica de Pearson também pode ser utilizada para estimar a moda a partir da média e da mediana em distribuições unimodais com assimetria moderada.
 
-## Medidas de dispersão
+### Medidas de dispersão
 
 As medidas de dispersão indicam o grau de variabilidade existente nos dados. Essa informação é importante porque conjuntos de dados podem apresentar médias semelhantes, mas diferentes níveis de dispersão.
 
-### Amplitude total
+#### Amplitude total
 
 A amplitude total corresponde à diferença entre o maior e o menor valor observado. É uma medida simples e rápida, porém bastante influenciada por valores extremos.
+$$
+AT = x_{\max} - x_{\min}
+$$
 
-### Soma de quadrados e variância 
+#### Soma de quadrados
 
 A soma de quadrados representa a soma dos desvios quadráticos das observações em relação ao centro dos dados. Constitui uma etapa importante para o cálculo da variância e de outros procedimentos estatísticos.
+$$
+SQ = \sum_{i=1}^{n}(x_i-\bar{x})^2
+$$
 
+#### Variância
 A variância mede a dispersão dos valores em relação à média. No caso de amostras, utiliza-se a correção pelos graus de liberdade, com divisão por n - 1, buscando obter um estimador não viesado da variância populacional.
-
+$$
+s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+$$
 Para dados agrupados, a variância pode ser calculada considerando as frequências e os pontos médios das classes.
 
-### Desvio padrão
+#### Curtose
+Curtose é uma medida estatística que descreve o formato da distribuição dos dados, especialmente o grau de concentração dos valores nas regiões central e das caudas da distribuição.
+$$
+g_2 =
+\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}
+{\left[\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right]^2}
+-3
+$$
+
+#### Desvio padrão
 
 O desvio padrão corresponde à raiz quadrada da variância e apresenta a vantagem de estar expresso na mesma unidade dos dados originais. Por isso, é uma das principais medidas de dispersão utilizadas em análises estatísticas e relatórios técnicos.
-
+$$
+s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
+$$
 A adição ou subtração de uma constante aos dados não altera o desvio padrão. Já a multiplicação dos dados por uma constante altera o desvio padrão proporcionalmente e a variância pelo quadrado dessa constante.
 
-### Coeficiente de variação
+#### Coeficiente de variação
 
 O coeficiente de variação representa a dispersão de forma relativa à média, permitindo comparar a variabilidade entre conjuntos de dados com diferentes escalas ou magnitudes. Valores menores indicam, em geral, maior homogeneidade dos dados.
-
+$$
+CV = \frac{s}{\bar{x}}\times100
+$$
 Sua utilização deve ser feita com cautela, especialmente quando a média apresenta valores próximos de zero ou quando a variável não possui um zero absoluto significativo.
 
-### Erro padrão da média
+#### Erro padrão da média
 
 O erro padrão da média representa a variabilidade esperada da média amostral em relação à média da população. Seu valor diminui à medida que o tamanho da amostra aumenta, indicando que amostras maiores tendem a produzir estimativas mais estáveis.
-
+$$
+EP = \frac{s}{\sqrt{n}}
+$$
 Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.
 
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
-
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
 
 ---
 
