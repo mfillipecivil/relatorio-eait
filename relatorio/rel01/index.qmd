@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
 author: "Marcus Fillipe e Gustavo"
-title: "Relatório 01 - Aula Prática 01"
+title: "Relatório 01 - Fundamentos Iniciais da Linguagem R e Estatística Básica"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -39,25 +39,18 @@ execute:
 
 ### Objetivo geral
 
-  Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística & Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.
-  
-  Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
+Aplicar os fundamentos da Estatística Descritiva e da programação em R na análise de dados voltados à Engenharia Civil. A prática fundamenta-se nos quatro primeiros capítulos do livro *Estatística & Probabilidade Aplicada às Engenharias e Ciências (EPAEC)* de @batista2024epaec, integrando a teoria matemática à execução computacional por meio do pacote `leem`, visando a organização, representação e a discussão crítica de um estudo de caso prático.
 
 ### Objetivos específicos
 
-- Introduzir os fundamentos da Estatística e da linguagem R, apresentando conceitos básicos como população, amostra, variável e dado, bem como os fundamentos do ambiente R e do RStudio, sua sintaxe, semântica, criação e manipulação de objetos e principais formas de utilização no tratamento e na análise de dados, com base nas 26 aulas do curso R Básico 2024
-- Compreender a importância da coleta, organização, tabulação e apresentação dos dados, reconhecendo esses procedimentos como etapas fundamentais para a realização de uma análise estatística adequada;
-- Revisar os fundamentos da estatística descritiva, contemplando os conteúdos dos quatro primeiros capítulos do livro Estatística para Análise de Experimentos e Controle (EPAEC), com ênfase na organização e representação dos dados e na utilização das principais medidas estatísticas;
-- Apresentar, calcular e interpretar as principais medidas de posição, incluindo média, mediana e moda, relacionando seus valores às características do conjunto de dados analisado;
-- Apresentar, calcular e interpretar as principais medidas de dispersão, incluindo amplitude, variância, desvio padrão, coeficiente de variação e erro padrão da média, avaliando a variabilidade e a precisão das informações obtidas;
-- Aprofundar os conceitos de assimetria e curtose, apresentando suas definições, formas de cálculo e interpretação, bem como sua importância para a caracterização da forma e do comportamento das distribuições dos dados;
-- Utilizar um banco de dados relacionado à Engenharia Civil, contendo informações quantitativas que possibilitem a aplicação prática dos conceitos de estatística descritiva e a discussão de fenômenos de interesse da área;
-- Aplicar a linguagem R e o RStudio na análise estatística dos dados, utilizando o pacote leem para a organização, tabulação, representação gráfica e cálculo das principais medidas estatísticas;
-- Construir e interpretar tabelas e representações gráficas, de modo a identificar padrões, tendências, variabilidade e possíveis valores discrepantes presentes no conjunto de dados;
-Determinar e interpretar os coeficientes de assimetria e curtose, avaliando a forma da distribuição das variáveis e relacionando os resultados às características observadas no banco de dados;
-- Compreender os procedimentos estatísticos realizados computacionalmente pelo pacote leem, relacionando os resultados obtidos aos fundamentos matemáticos e estatísticos que envolvem a organização dos dados, o cálculo das medidas e a construção das representações gráficas;
-Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação prática, desenvolvendo uma análise completa de um conjunto de dados da Engenharia Civil, desde sua organização e exploração até o cálculo, a representação e a interpretação dos resultados;
-- Discutir tecnicamente os resultados obtidos, relacionando as características estatísticas identificadas às propriedades e aos fenômenos associados ao contexto da Engenharia Civil, desenvolvendo uma interpretação crítica das informações fornecidas pelo conjunto de dados.
+- Introduzir os conceitos de base da linguagem R e do RStudio (sintaxe, semântica e gerenciamento de objetos), fundamentados tanto no livro de @Rbasico2022, quanto nas 26 vídeo-aulas do curso R Básico.
+- Revisar os conceitos iniciais da estatística (população, amostra e variáveis), além da notação de somatórios (Capítulo 1 do EPAEC).
+- Aplicar técnicas de coleta, organização, tabulação e apresentação gráfica de dados quantitativos (Capítulo 2 do EPAEC).
+- Compreender as formulações matemáticas e o significado prático das principais Medidas de Posição: média, mediana e moda (Capítulo 3 do EPAEC).
+- Compreender e calcular as Medidas de Dispersão: amplitude, variância, desvio padrão, coeficiente de variação e erro padrão (Capítulo 4 do EPAEC).
+- Pesquisar, definir e implementar o cálculo das Medidas de Forma (Assimetria e Curtose), interpretando o formato das distribuições estatísticas.
+- Utilizar o pacote `leem` para estruturar um banco de dados de Engenharia Civil (Controle de Compactação de Solos), gerando análises numéricas e gráficas exequíveis.
+- Discutir o diagnóstico de engenharia gerado pelos dados, avaliando o atendimento a critérios de projeto e a qualidade de execução de um serviço hipotético.
 
 ***
 
@@ -219,15 +212,6 @@ s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
 $$
 Para dados agrupados, a variância pode ser calculada considerando as frequências e os pontos médios das classes.
 
-#### Curtose
-Curtose é uma medida estatística que descreve o formato da distribuição dos dados, especialmente o grau de concentração dos valores nas regiões central e das caudas da distribuição.
-$$
-g_2 =
-\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}
-{\left[\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right]^2}
--3
-$$
-
 #### Desvio padrão
 
 O desvio padrão corresponde à raiz quadrada da variância e apresenta a vantagem de estar expresso na mesma unidade dos dados originais. Por isso, é uma das principais medidas de dispersão utilizadas em análises estatísticas e relatórios técnicos.
@@ -252,151 +236,202 @@ EP = \frac{s}{\sqrt{n}}
 $$
 Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.
 
-***
-## ⚙️ Metodologia
+### Tópico Adicional: Medidas de Forma (Assimetria e Curtose)
 
-O desenvolvimento deste relatório baseou-se em uma abordagem quantitativa, dividida em duas etapas principais: a revisão teórica dos conceitos de Estatística Descritiva e a aplicação prática computacional. A fundamentação teórica contemplou os estudos de população, amostra, organização de dados e as principais medidas de tendência central, dispersão e forma (assimetria e curtose). 
+Além do centro e do espalhamento, a estatística analisa a "silhueta" da distribuição geométrica dos dados.
 
-Para a etapa prática, simulou-se um cenário rotineiro e crítico: a avaliação do **teor de umidade de rejeitos** processados em uma planta de filtragem. O parâmetro de projeto estabelece que a umidade ótima para o empilhamento seguro (garantindo estabilidade geotécnica e mitigando riscos de liquefação) deve situar-se na faixa entre **12% e 14%**. 
+#### Assimetria
+Avalia o grau de distorção ou inclinação da curva de dados em relação a uma distribuição normal e perfeitamente simétrica. Utilizando o cálculo pelo 3º momento central, penaliza os desvios mantendo seus sinais positivos ou negativos:
+$$ g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^3}{\left[\sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2}\right]^3} $$
+- $g_1 = 0$: Distribuição simétrica (média $\approx$ mediana).<br>
+- $g_1 > 0$: Assimetria Positiva (cauda alongada para a direita, repuxada por valores altos).<br>
+- $g_1 < 0$: Assimetria Negativa (cauda alongada para a esquerda, influenciada por valores baixos).
 
-Foi gerado um banco de dados com 30 amostras representativas desse processo. A análise dos dados foi integralmente conduzida no ambiente RStudio, com o emprego da linguagem R e do pacote `leem` (Laboratório de Ensino de Estatística e Matemática). O pacote auxiliou na classificação das variáveis, construção das tabelas de distribuição de frequências e no cálculo das medidas descritivas, permitindo diagnosticar o percentual de material aprovado para empilhamento direto, bem como os volumes que exigiriam retrabalho (umectação ou secagem).
 
-***
+#### Curtose
+Mede o grau de achatamento da distribuição e a espessura de suas caudas (frequência de valores extremos). O cálculo padrão subtrai o valor 3, padronizando a distribuição normal no zero:
+$$ g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}{\left[\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right]^2} - 3 $$
+- $g_2 = 0$ (Mesocúrtica): Curva com espalhamento similar à normal.<br>
+- $g_2 > 0$ (Leptocúrtica): Curva mais afunilada, com pico elevado e caudas "pesadas" (alta chance de outliers).<br>
+- $g_2 < 0$ (Platicúrtica): Curva achatada, indicando dados amplamente dispersos próximos ao centro.
 
-## 🔍 Resultados e Discussão
+## ⚙️ Metodologia e Estudo de Caso
 
-### Contextualização e Base de Dados
+Foi utilizado o pacote computacional `leem` para os cálculos estatísticos, bem como para o agrupamento de classes, somatório de desvios e obtenção dos momentos centrais.
 
-O controle da umidade do rejeito filtrado é um fator crítico na operação. Se o rejeito for empilhado com umidade inferior a **12%**, o material apresenta baixa coesão aparente e alta emissão de particulados (poeira), exigindo processos de **umectação**. Por outro lado, se a umidade ultrapassar os **14%**, o material perde resistência ao cisalhamento, gerando instabilidade mecânica e demandando tempo de **secagem** no pátio antes do empilhamento definitivo.
+**Contexto do Estudo de Caso:**
+Na construção de barragens e aterros estruturais, o **Grau de Compactação (GC)** é a principal variável tecnológica que atesta a segurança do maciço contra deformações e infiltrações. 
+O GC é a razão percentual entre a massa específica seca alcançada no campo e a massa específica seca máxima obtida no ensaio de Proctor em laboratório [@abnt_nbr7182].
 
-Abaixo, geramos e apresentamos o banco de dados contendo os resultados das 30 amostras de umidade (%) coletadas:
+* **Parâmetro de Projeto:** Conforme preconizado em norma, o ensaio de compactação deve resultar em, pelo menos, **$GC \ge 95\%$** para garantir uma compactação eficiente e adequada [@abnt_nbr7182]. 
+* **Banco de Dados:** Foi coletado **50 resultados de ensaios** realizados ao longo de uma camada do maciço terroso.
+
+A seguir, importaremos os dados no RStudio, realizaremos a tabulação em frequências (Cap. 2), calcularemos a posição e dispersão (Caps. 3 e 4) e interpretaremos a forma (Assimetria e Curtose) para emitir um diagnóstico de engenharia sobre a liberação ou rejeição deste aterro.
+
+### Inicialização e Entrada dos Dados
+
+No ambiente profissional, grandes volumes de informações não são inseridos manualmente no código, mas importados de planilhas e bases de dados externas. Para este estudo de caso, os 50 resultados dos ensaios de campo foram previamente tabulados e armazenados em um arquivo com extensão `.csv` (valores separados por vírgula). O primeiro passo da análise consiste em utilizar o R para ler esse arquivo externo, extrair a coluna de interesse e transformar os dados em um objeto reconhecido pelo pacote estatístico.
 
 ```{r}
-#| label: criacao-dados
+#| label: preparacao-dados
 #| echo: true
 #| warning: false
 
-# Carregando os pacotes necessários
+# Carregamento das bibliotecas de análise e formatação
 library(leem)
 library(knitr)
 
-# Vetor com 30 amostras de umidade do rejeito (%)
-umidade_rejeito <- c(12.5, 13.1, 14.2, 11.8, 13.5, 13.8, 12.9, 14.5, 12.1, 13.0,
-                     13.2, 12.7, 15.1, 11.5, 13.4, 13.9, 12.8, 14.0, 13.3, 12.6,
-                     14.1, 13.7, 12.2, 13.6, 14.8, 12.4, 13.5, 11.9, 13.1, 14.3)
+# Importação dos dados a partir do arquivo CSV
+tabela_importada <- read.csv("dados_compactacao.csv")
 
-# Transformando os dados em um objeto da classe leem para variável contínua
-dados_leem <- new_leem(umidade_rejeito, variable = 2)
+# Extração da coluna de dados como um vetor numérico
+grau_compactacao <- tabela_importada$Compactacao
+
+# Utilização da função new_leem para classificar como variável contínua (2)
+gc_leem <- new_leem(grau_compactacao, variable = 2)
+
+# Reorganizando os 50 dados em 5 colunas de 10 linhas para exibição compacta
+tabela_exibicao <- data.frame(matrix(grau_compactacao, ncol = 5, byrow = FALSE))
+
+# Exibindo os dados brutos de forma formatada com a função kable
+kable(tabela_exibicao, 
+      align = "c", 
+      col.names = c("Ensaios 1 a 10", "Ensaios 11 a 20", "Ensaios 21 a 30", "Ensaios 31 a 40", "Ensaios 41 a 50"),
+      caption = "Base de Dados Importada - Grau de Compactação (%)")
+
 ```
 
-### Distribuição de Frequências
+### Tabulação de Frequências (Consciência do Processo)
 
-Como a umidade é uma variável quantitativa contínua, agrupamos esses dados em intervalos de classe utilizando as funções do pacote `leem`.
+Ao executar a função `tabfreq()`, o algoritmo busca o valor mínimo (93.9%) e o máximo (101.1%), define a Amplitude Total da amostra e utiliza equações empíricas (como a regra de Sturges $k \approx 1 + 3,322 \log n$) para encontrar um número ideal de classes de intervalo. Com as classes definidas, o algoritmo executa somatórios condicionais, contando quantas amostras caem dentro de cada intervalo.
 
 ```{r}
-#| label: tabela-frequencia
+#| label: tabela-freq
 #| echo: true
 #| warning: false
 
-# Gerando a tabela de frequência com o pacote leem (aproximadamente 5 classes)
-tabela_freq <- tabfreq(dados_leem, k = 5)
-
-# Exibindo a tabela formatada de forma nativa para evitar erros de dimensão
-kable(tabela_freq$table, 
-      align = "c", 
-      caption = "Distribuição de Frequências do Teor de Umidade do Rejeito")
+# Geração e plotagem nativa da tabela de distribuição de frequências
+tabela_gc <- tabfreq(gc_leem)
+kable(tabela_gc$table, align = "c", caption = "Tabela de Distribuição de Frequência - GC (%)")
 ```
 
-Ao analisar a tabela, observa-se que a maior concentração de amostras (moda tabular) encontra-se na região central da distribuição, indicando que a planta consegue manter a maior parte do material próximo à normalidade operacional. 
+A tabulação já nos adianta o primeiro alerta: embora a maior densidade dos dados ($F_i$) esteja bem alocada nas faixas superiores a 95%, existe uma parcela de ensaios que caiu nas classes mais baixas do conjunto.
 
-### Medidas de Posição e Dispersão
+### Síntese Descritiva: Posição, Dispersão e Forma
 
-A avaliação da capacidade do processo requer o cálculo exato das medidas descritivas:
+Para validar o maciço, não basta olhar para a tabela. Precisamos quantificar matematicamente o comportamento através dos momentos estatísticos. O código abaixo automatiza as equações dos Capítulos 3 e 4.
 
 ```{r}
-#| label: medidas-estatisticas
+#| label: medidas
 #| echo: true
 
-# Garantindo que as saídas sejam numéricas para evitar erros de formatação
-media_umidade <- as.numeric(mean(umidade_rejeito))
-mediana_umidade <- as.numeric(median(umidade_rejeito))
-desvio_padrao <- as.numeric(sd(umidade_rejeito))
-variancia <- as.numeric(var(umidade_rejeito))
-coef_variacao <- (desvio_padrao / media_umidade) * 100 
+# 1. Medidas de Posição
+gc_media <- as.numeric(mean(grau_compactacao))
+gc_mediana <- as.numeric(median(grau_compactacao))
 
-# Medidas de Forma (Cálculo via momentos)
-n <- length(umidade_rejeito)
-m3 <- sum((umidade_rejeito - media_umidade)^3) / n
-s3 <- (sum((umidade_rejeito - media_umidade)^2) / n)^(3/2)
-assimetria <- m3 / s3
+# 2. Medidas de Dispersão
+gc_desvio <- as.numeric(sd(grau_compactacao))
+gc_var <- as.numeric(var(grau_compactacao))
+gc_cv <- (gc_desvio / gc_media) * 100 
 
-m4 <- sum((umidade_rejeito - media_umidade)^4) / n
-s4 <- (sum((umidade_rejeito - media_umidade)^2) / n)^2
-curtose <- (m4 / s4) - 3
+# 3. Medidas de Forma (Cálculo via Momentos Centrais)
+n_amostras <- length(grau_compactacao)
+# Somatório (xi - x_barra)^3
+momento3 <- sum((grau_compactacao - gc_media)^3) / n_amostras
+desvio_cubico <- (sum((grau_compactacao - gc_media)^2) / n_amostras)^(3/2)
+gc_assimetria <- momento3 / desvio_cubico
 
-# Criando um data frame para exibir os resultados
-estatisticas <- data.frame(
-  Medida = c("Média", "Mediana", "Desvio Padrão", "Variância", "CV (%)", "Assimetria", "Curtose"),
-  Valor = round(c(media_umidade, mediana_umidade, desvio_padrao, variancia, coef_variacao, assimetria, curtose), 3)
+# Somatório (xi - x_barra)^4
+momento4 <- sum((grau_compactacao - gc_media)^4) / n_amostras
+desvio_quarto <- (sum((grau_compactacao - gc_media)^2) / n_amostras)^2
+gc_curtose <- (momento4 / desvio_quarto) - 3
+
+# Consolidação dos Resultados
+estatisticas_gc <- data.frame(
+  Parâmetro = c("Média (%)", "Mediana (%)", "Desvio Padrão (%)", 
+                "Variância (%)", "CV (%)", "Assimetria", "Curtose"),
+  Resultado = round(c(gc_media, gc_mediana, gc_desvio, 
+                      gc_var, gc_cv, gc_assimetria, gc_curtose), 3)
 )
 
-kable(estatisticas, align = "c", caption = "Estatísticas Descritivas da Umidade do Rejeito")
+kable(estatisticas_gc, align = "c", caption = "Estatísticas Descritivas Consolidadas - GC")
 ```
 
-**Discussão dos Indicadores:**
+**Análise Crítica dos Resultados:**
 
-1. **Posição:** A média (13,25%) e a mediana (13,35%) situam-se perfeitamente dentro da faixa ótima de operação (12% a 14%). O processo está bem centralizado.
-2. **Dispersão:** O Coeficiente de Variação (CV) foi de 7,16%. Um CV abaixo de 10% é considerado indicativo de excelente homogeneidade e controle de processo.
-3. **Forma:** A assimetria resultou em um leve valor negativo (-0,12), indicando quase perfeita simetria. A curtose marginalmente negativa (-0,44) indica uma distribuição levemente platicúrtica.
+* **Centro Equilibrado:** O algoritmo obteve uma média de **97,14%** e mediana de **97,15%**. A proximidade quase exata dessas duas grandezas confirma que não há "puxões" fortes (outliers severos) dominando o centro dos dados. 
+* **Homogeneidade de Execução:** O Coeficiente de Variação (CV) foi extremamente baixo (**1,86%**). Tal valor atesta que a frota de maquinário (rolos compactadores, caminhões-pipa e motoniveladoras) executou o serviço com padrão uniforme de energia em quase toda a praça de trabalho.
+* **Diagnóstico de Forma:** 
+  * A **Assimetria levemente positiva (0,157)** indica uma distribuição quase simétrica, mas com uma ínfima tendência de cauda para a direita (algumas amostras com compactação excepcional puxando levemente a curva).
+  * A **Curtose negativa (-0,735)** revela uma distribuição platicúrtica. Ou seja, em vez de se concentrar aguda e perigosamente no centro, os dados estão distribuídos de forma mais constante, com caudas mais curtas, o que estatisticamente diminui a chance da ocorrência de desvios drásticos e isolados.
+  
+### Apresentação Gráfica e Decisão de Engenharia
 
-### Análise Gráfica e Tomada de Decisão
+**Análise Gráfica de Dispersão e Outliers (Boxplot)**
 
-Para facilitar a interpretação gerencial, plotamos o histograma sobrepondo as linhas de especificação do projeto (12% e 14%).
+Para validar visualmente as métricas de dispersão, assimetria e curtose calculadas anteriormente, a ferramenta estatística mais robusta é o *Boxplot* (Diagrama de Caixa). Ele segmenta os dados em quartis (blocos de 25% da amostra) e permite identificar imediatamente a presença de anomalias operacionais (*outliers*) e o achatamento da distribuição.
 
 ```{r}
-#| label: histograma-controle
+#| label: grafico-boxplot
 #| echo: true
 #| fig-align: "center"
-#| fig-cap: "Histograma da Umidade do Rejeito com Limites de Especificação"
 
-# Configuração do gráfico usando o R base
-hist(umidade_rejeito, 
-     breaks = 6, 
-     col = "lightgray", 
-     border = "black",
-     main = "Controle de Qualidade: Umidade do Rejeito",
-     xlab = "Teor de Umidade (%)",
-     ylab = "Frequência Absoluta",
-     ylim = c(0, 10))
+# Configuração do Boxplot em R
+boxplot(grau_compactacao,
+        horizontal = TRUE,
+        col = "#d0e1f9",
+        border = "#1e3d59",
+        xlab = "Grau de Compactação (%)",
+        main = "Boxplot do Grau de Compactação")
 
-# Adicionando limites de controle
-abline(v = 12, col = "blue", lwd = 2, lty = 2)
-abline(v = 14, col = "red", lwd = 2, lty = 2)
-abline(v = media_umidade, col = "darkgreen", lwd = 2)
+# Adicionando o Limite de Especificação para referência
+abline(v = 95.0, col = "red", lwd = 2, lty = 2)
+legend("topright", legend = "Limite Mín (95%)", col = "red", lty = 2, lwd = 2)
 
-# Adicionando legenda
-legend("topright", 
-       legend = c("Média do Processo", "Limite Inf (12%)", "Limite Sup (14%)"), 
-       col = c("darkgreen", "blue", "red"), 
-       lty = c(1, 2, 2), 
-       lwd = 2)
 ```
 
-**Diagnóstico Operacional:**
-* **Umectação Necessária (< 12%):** Apenas 3 amostras apresentaram umidade muito baixa, representando **10%** da produção.
-* **Secagem Necessária (> 14%):** 6 amostras ultrapassaram o limite superior, indicando que **20%** do rejeito necessitará de retrabalho ou tempo de secagem no pátio.
-* **Empilhamento Direto (12% a 14%):** As 21 amostras restantes concentram-se na faixa ótima, o que garante que **70%** da produção atual atende aos rigorosos critérios de segurança e estabilidade.
+  * A linha escura que corta a caixa no meio representa a Mediana (97,15%). O fato de ela estar exatamente no centro do retângulo azul confirma uma *Assimetria quase nula*.
+  * O tamanho estreito da caixa retangular (que concentra os 50% centrais de todos os ensaios) comprova visualmente o baixo Coeficiente de Variação (CV). O maquinário compactou quase todo o material dentro de uma faixa de energia muito previsível.
+  * Os traços laterais (conhecidos como "bigodes") indicam as caudas da distribuição. Como estão curtos e não vemos pequenos pontos isolados para fora deles, confirmamos a *Curtose negativa*, ou seja, uma distribuição achatada e sem outliers caindo fora do padrão esperado.
 
-***
+**Distribuição dos Dados**
+
+O histograma sobreposto pelos limites de aceitação possui a resposta para a aprovação ou reprovação da camada pelo engenheiro fiscal.
+
+```{r}
+#| label: histograma
+#| echo: true
+#| fig-align: "center"
+
+hist(grau_compactacao, 
+     breaks = 7, 
+     col = "#a8c0d8", 
+     border = "white",
+     main = "Análise da Distribuição do GC",
+     xlab = "Grau de Compactação alcançado (%)",
+     ylab = "Frequência (Nº de Ensaios)")
+
+# Marcadores Críticos de Tomada de Decisão
+abline(v = 95.0, col = "red", lwd = 3, lty = 2) # Limite Mínimo de Projeto
+abline(v = gc_media, col = "darkgreen", lwd = 3) # Desempenho Real
+
+legend("topright", 
+       legend = c("Média Executada (97.1%)", "Limite Projeto - Mín 95%"), 
+       col = c("darkgreen", "red"), 
+       lty = c(1, 2), 
+       lwd = 3)
+```
+
+**O Veredito do Estudo de Caso:**
+
+As representações gráficas consolidam o diagnóstico operacional. O *Boxplot* atesta a homogeneidade geral do serviço, comprovando que não existem *outliers* decorrentes de falhas graves de execução. Contudo, o histograma evidencia que o limiar de projeto (95%) intercepta a cauda inferior da distribuição, afetando o primeiro bloco de frequências.
+
+Observando o banco de dados e a área sob o gráfico, constata-se que, apesar do serviço excelente na média (Média > 97% e CV baixíssimo), ocorreram **6 ensaios reprovados** (valores abaixo de 95%, perfazendo 12% da amostra). O engenheiro fiscal responsável não precisa rejeitar todo o lote, mas deve solicitar a **recompactação setorial** nos pontos específicos onde esses resultados foram obtidos. Essa intervenção é necessária para maximizar confiabilidade estrutural antes da liberação do aterro para a próxima camada.
 
 ## 🧠 Considerações Finais
 
-A prática demonstrou com clareza como as ferramentas da Estatística Descritiva são indispensáveis para a tomada de decisão no controle de processos. O uso da linguagem R, apoiado pelas funcionalidades didáticas do pacote `leem`, permitiu transformar dados brutos de um ensaio de rotina (teor de umidade de rejeitos) em um diagnóstico operacional completo e direto.
+O presente relatório demonstrou a importância da Estatística Descritiva como ferramenta essencial para o controle de qualidade na Engenharia Civil. A revisão teórica embasou a aplicação computacional no RStudio com o pacote leem, comprovando que o uso de rotinas programadas otimiza o tratamento de dados e garante maior confiabilidade aos resultados, substituindo procedimentos manuais.
 
-Observou-se que, embora o processo de filtragem esteja muito bem centrado — com média de 13,25% (dentro do intervalo ideal de 12% a 14%) — a análise da variabilidade revelou que 30% do material gerado ainda exige algum tipo de manuseio ou retrabalho (secagem ou umectação) antes do empilhamento final. Tais constatações só foram possíveis graças ao entendimento conjunto das medidas de posição, de dispersão e da visualização por histogramas.
-
-Por fim, o relatório cumpre seus objetivos ao consolidar que a integração entre fundamentos teóricos sólidos de probabilidade e estatística e ferramentas computacionais proporciona a capacidade analítica necessária para garantir a segurança, a qualidade e a eficiência das operações.
+No estudo de caso sobre o Grau de Compactação, a aplicação integrada das medidas de posição, dispersão e forma foi determinante para a tomada de decisão. A análise restrita à média indicaria a aceitação total do serviço; porém, a avaliação da variância aliada ao histograma permitiu identificar desvios específicos, embasando a recomendação de correção pontual em 12% da área analisada. Assim, os objetivos da prática foram atingidos, evidenciando que o domínio conjunto de conceitos estatísticos e ferramentas computacionais é fundamental para análises técnicas mais seguras e criteriosas no canteiro de obras.
 
 ## 📖 Referências
-
-BATISTA, B. D. *Estatística e Probabilidade Aplicada às Engenharias e Ciências*. Departamento de Estatística, Física e Matemática (DEFIM) - Universidade Federal de São João del-Rei (UFSJ), 2026.
