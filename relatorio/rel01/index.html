@@ -8,7 +8,7 @@
 
 <meta name="author" content="Marcus Fillipe e Gustavo">
 
-<title>Relatório de Aula Prática 01</title>
+<title>Relatório 01 - Aula Prática 01</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -59,27 +59,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -153,28 +133,36 @@ window.Quarto = {
   <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a></li>
   <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</a>
   <ul class="collapse">
-  <li><a href="#exemplo-de-como-citar-uma-referência-bibliográfica" id="toc-exemplo-de-como-citar-uma-referência-bibliográfica" class="nav-link" data-scroll-target="#exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Exemplo de como citar uma referência bibliográfica</a></li>
-  <li><a href="#análise-de-dados" id="toc-análise-de-dados" class="nav-link" data-scroll-target="#análise-de-dados"><span class="header-section-number">5.2</span> 📊 Análise de Dados</a></li>
+  <li><a href="#contextualização-e-base-de-dados" id="toc-contextualização-e-base-de-dados" class="nav-link" data-scroll-target="#contextualização-e-base-de-dados"><span class="header-section-number">5.1</span> Contextualização e Base de Dados</a></li>
+  <li><a href="#distribuição-de-frequências" id="toc-distribuição-de-frequências" class="nav-link" data-scroll-target="#distribuição-de-frequências"><span class="header-section-number">5.2</span> Distribuição de Frequências</a></li>
+  <li><a href="#medidas-de-posição-e-dispersão" id="toc-medidas-de-posição-e-dispersão" class="nav-link" data-scroll-target="#medidas-de-posição-e-dispersão"><span class="header-section-number">5.3</span> Medidas de Posição e Dispersão</a></li>
+  <li><a href="#análise-gráfica-e-tomada-de-decisão" id="toc-análise-gráfica-e-tomada-de-decisão" class="nav-link" data-scroll-target="#análise-gráfica-e-tomada-de-decisão"><span class="header-section-number">5.4</span> Análise Gráfica e Tomada de Decisão</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</a></li>
-  <li><a href="#aprenda-quarto" id="toc-aprenda-quarto" class="nav-link" data-scroll-target="#aprenda-quarto"><span class="header-section-number">7</span> Aprenda Quarto</a></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">8</span> 📖 Referências</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações Finais</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">7</span> 📖 Referências</a></li>
   </ul>
 </nav>
 </div>
 <main class="content" id="quarto-document-content">
 <div class="logos" style="display: flex; justify-content: center; align-items: center; height: 200px; gap: 20px;">
+
   <a href="https://ufsj.edu.br">
+
     <img src="imagens/ufsj.png" width="220px">
+
   </a>
+
   <a href="https://ufsj.edu.br/defim">
+
     <img src="imagens/defim.png" width="220px">
+
   </a>
+
 </div>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Relatório de Aula Prática 01</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar o código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder o código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver o código fonte</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Relatório 01 - Aula Prática 01</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar o código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder o código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver o código fonte</a></li></ul></div></div>
 <p class="subtitle lead"><a href="https://bendeivide.github.io/courses/epaec/" target="_blank">Estatística e Probabilidade</a> <br> <a href="https://bendeivide.github.io" target="_blank">Prof.&nbsp;Ben Dêivide (DEFIM/CAP/UFSJ)</a></p>
 </div>
 
@@ -192,7 +180,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">22/08/2026, 21:21</p>
+      <p class="date">23/08/2026, 12:50</p>
     </div>
   </div>
   
@@ -208,7 +196,7 @@ window.Quarto = {
 <h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> 📌 Introdução</h2>
 <p>A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.</p>
 <p>A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.</p>
-<p>O desenvolvimento de ferramentas computacionais também contribuie para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.</p>
+<p>O desenvolvimento de ferramentas computacionais também contribui para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.</p>
 <p>Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.</p>
 </section>
 <section id="objetivos" class="level2" data-number="2">
@@ -392,79 +380,272 @@ EP = \frac{s}{\sqrt{n}}
 </section>
 <section id="metodologia" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</h2>
-<p>O desenvolvimento dos estudos foi realizado por meio de uma abordagem teórico-prática, com o objetivo de revisar os principais conceitos da Estatística Descritiva e sua aplicação computacional no ambiente RStudio. Inicialmente, foram estudados os conceitos fundamentais relacionados à população, amostra, variável, dados e somatório, estabelecendo a base necessária para o desenvolvimento das demais medidas estatísticas.</p>
-<p>Em seguida, foram abordadas as principais medidas de posição, incluindo média aritmética, média aparada, mediana e moda, bem como a relação empírica de Pearson. Posteriormente, foram estudadas as medidas de dispersão, contemplando amplitude total, soma dos quadrados, variância, desvio padrão, coeficiente de variação e erro padrão da média.</p>
-<p>Também foram analisadas as medidas relacionadas à forma da distribuição dos dados, com destaque para os coeficientes de assimetria e curtose. Para cada medida, foram estudadas sua definição, interpretação, formulação matemática e aplicação em conjuntos de dados.</p>
-<p>A etapa computacional foi desenvolvida utilizando o RStudio, com a implementação das funções e expressões necessárias para o cálculo das medidas estatísticas. Paralelamente, as expressões matemáticas foram estruturadas em LaTeX, utilizando a linguagem Quarto para organizar e apresentar as fórmulas de maneira adequada no documento final.</p>
-<p>Por fim, os resultados obtidos pelas expressões matemáticas e pelos procedimentos computacionais foram comparados e interpretados, buscando verificar a correspondência entre a fundamentação teórica e sua aplicação prática no R. Dessa forma, a metodologia permitiu integrar conceitos estatísticos, formulação matemática e programação, contribuindo para a compreensão e aplicação das principais técnicas de Estatística Descritiva.</p>
+<p>O desenvolvimento deste relatório baseou-se em uma abordagem quantitativa, dividida em duas etapas principais: a revisão teórica dos conceitos de Estatística Descritiva e a aplicação prática computacional. A fundamentação teórica contemplou os estudos de população, amostra, organização de dados e as principais medidas de tendência central, dispersão e forma (assimetria e curtose).</p>
+<p>Para a etapa prática, simulou-se um cenário rotineiro e crítico: a avaliação do <strong>teor de umidade de rejeitos</strong> processados em uma planta de filtragem. O parâmetro de projeto estabelece que a umidade ótima para o empilhamento seguro (garantindo estabilidade geotécnica e mitigando riscos de liquefação) deve situar-se na faixa entre <strong>12% e 14%</strong>.</p>
+<p>Foi gerado um banco de dados com 30 amostras representativas desse processo. A análise dos dados foi integralmente conduzida no ambiente RStudio, com o emprego da linguagem R e do pacote <code>leem</code> (Laboratório de Ensino de Estatística e Matemática). O pacote auxiliou na classificação das variáveis, construção das tabelas de distribuição de frequências e no cálculo das medidas descritivas, permitindo diagnosticar o percentual de material aprovado para empilhamento direto, bem como os volumes que exigiriam retrabalho (umectação ou secagem).</p>
 <hr>
 </section>
 <section id="resultados-e-discussão" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</h2>
-<p>Apresente e interprete os resultados obtidos a partir dos dados coletados.</p>
-<ul>
-<li>Descreva os principais resultados numéricos (média, variabilidade, etc.).</li>
-<li>Comente o comportamento dos dados observados nos gráficos.</li>
-<li>Indique se há presença de valores discrepantes (outliers).</li>
-<li>Avalie se os dados apresentam simetria ou tendência.</li>
-</ul>
-<p>Em seguida, discuta os resultados à luz dos conceitos teóricos:</p>
-<ul>
-<li>Os resultados estão de acordo com o esperado?</li>
-<li>Há grande variabilidade? O que isso significa no contexto do experimento?</li>
-<li>Quais fatores podem ter influenciado os resultados?</li>
-<li>Existem possíveis fontes de erro experimental?</li>
-</ul>
-<p>Procure não apenas descrever, mas <strong>interpretar os dados</strong>.</p>
-<section id="exemplo-de-como-citar-uma-referência-bibliográfica" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Exemplo de como citar uma referência bibliográfica</h3>
-<p>Depois de inserido as informaçõe no arquivo <strong>referencias.bib</strong>, use:</p>
-<ul>
-<li>Segundo <span class="citation" data-cites="Rbasico2022">Batista e Oliveira (<a href="#ref-Rbasico2022" role="doc-biblioref">2022</a>)</span></li>
-<li>Tudo é um objeto em R <span class="citation" data-cites="Rbasico2022">(<a href="#ref-Rbasico2022" role="doc-biblioref">Batista e Oliveira, 2022</a>)</span></li>
-</ul>
-</section>
-<section id="análise-de-dados" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="análise-de-dados"><span class="header-section-number">5.2</span> 📊 Análise de Dados</h3>
+<section id="contextualização-e-base-de-dados" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="contextualização-e-base-de-dados"><span class="header-section-number">5.1</span> Contextualização e Base de Dados</h3>
+<p>O controle da umidade do rejeito filtrado é um fator crítico na operação. Se o rejeito for empilhado com umidade inferior a <strong>12%</strong>, o material apresenta baixa coesão aparente e alta emissão de particulados (poeira), exigindo processos de <strong>umectação</strong>. Por outro lado, se a umidade ultrapassar os <strong>14%</strong>, o material perde resistência ao cisalhamento, gerando instabilidade mecânica e demandando tempo de <strong>secagem</strong> no pátio antes do empilhamento definitivo.</p>
+<p>Abaixo, geramos e apresentamos o banco de dados contendo os resultados das 30 amostras de umidade (%) coletadas:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando os pacotes necessários</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor com 30 amostras de umidade do rejeito (%)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>umidade_rejeito <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">12.5</span>, <span class="fl">13.1</span>, <span class="fl">14.2</span>, <span class="fl">11.8</span>, <span class="fl">13.5</span>, <span class="fl">13.8</span>, <span class="fl">12.9</span>, <span class="fl">14.5</span>, <span class="fl">12.1</span>, <span class="fl">13.0</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">13.2</span>, <span class="fl">12.7</span>, <span class="fl">15.1</span>, <span class="fl">11.5</span>, <span class="fl">13.4</span>, <span class="fl">13.9</span>, <span class="fl">12.8</span>, <span class="fl">14.0</span>, <span class="fl">13.3</span>, <span class="fl">12.6</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">14.1</span>, <span class="fl">13.7</span>, <span class="fl">12.2</span>, <span class="fl">13.6</span>, <span class="fl">14.8</span>, <span class="fl">12.4</span>, <span class="fl">13.5</span>, <span class="fl">11.9</span>, <span class="fl">13.1</span>, <span class="fl">14.3</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformando os dados em um objeto da classe leem para variável contínua</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>dados_leem <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(umidade_rejeito, <span class="at">variable =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.2  9.8 10.5 10.1  9.9 10.3</code></pre>
+</div>
+</section>
+<section id="distribuição-de-frequências" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="distribuição-de-frequências"><span class="header-section-number">5.2</span> Distribuição de Frequências</h3>
+<p>Como a umidade é uma variável quantitativa contínua, agrupamos esses dados em intervalos de classe utilizando as funções do pacote <code>leem</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando a tabela de frequência com o pacote leem (aproximadamente 5 classes)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tabela_freq <span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(dados_leem, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo a tabela formatada de forma nativa para evitar erros de dimensão</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabela_freq<span class="sc">$</span>table, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">"c"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Distribuição de Frequências do Teor de Umidade do Rejeito"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Distribuição de Frequências do Teor de Umidade do Rejeito</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Classes</th>
+<th style="text-align: center;">Fi</th>
+<th style="text-align: center;">PM</th>
+<th style="text-align: center;">Fr</th>
+<th style="text-align: center;">Fac1</th>
+<th style="text-align: center;">Fac2</th>
+<th style="text-align: center;">Fp</th>
+<th style="text-align: center;">Fac1p</th>
+<th style="text-align: center;">Fac2p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">11.05 |— 11.95</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">11.5</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10.00</td>
+<td style="text-align: center;">100.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11.95 |— 12.85</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">12.4</td>
+<td style="text-align: center;">0.23</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">33.33</td>
+<td style="text-align: center;">90.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12.85 |— 13.75</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">13.3</td>
+<td style="text-align: center;">0.37</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">70.00</td>
+<td style="text-align: center;">66.67</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13.75 |— 14.65</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">14.2</td>
+<td style="text-align: center;">0.23</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">93.33</td>
+<td style="text-align: center;">30.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14.65 |— 15.55</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">15.1</td>
+<td style="text-align: center;">0.07</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">100.00</td>
+<td style="text-align: center;">6.67</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+<p>Ao analisar a tabela, observa-se que a maior concentração de amostras (moda tabular) encontra-se na região central da distribuição, indicando que a planta consegue manter a maior parte do material próximo à normalidade operacional.</p>
+</section>
+<section id="medidas-de-posição-e-dispersão" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="medidas-de-posição-e-dispersão"><span class="header-section-number">5.3</span> Medidas de Posição e Dispersão</h3>
+<p>A avaliação da capacidade do processo requer o cálculo exato das medidas descritivas:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Garantindo que as saídas sejam numéricas para evitar erros de formatação</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>media_umidade <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">mean</span>(umidade_rejeito))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mediana_umidade <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">median</span>(umidade_rejeito))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>desvio_padrao <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sd</span>(umidade_rejeito))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">var</span>(umidade_rejeito))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>coef_variacao <span class="ot">&lt;-</span> (desvio_padrao <span class="sc">/</span> media_umidade) <span class="sc">*</span> <span class="dv">100</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de Forma (Cálculo via momentos)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(umidade_rejeito)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> n</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> (<span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> n)<span class="sc">^</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>assimetria <span class="ot">&lt;-</span> m3 <span class="sc">/</span> s3</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">4</span>) <span class="sc">/</span> n</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>s4 <span class="ot">&lt;-</span> (<span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> n)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>curtose <span class="ot">&lt;-</span> (m4 <span class="sc">/</span> s4) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando um data frame para exibir os resultados</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>estatisticas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Medida =</span> <span class="fu">c</span>(<span class="st">"Média"</span>, <span class="st">"Mediana"</span>, <span class="st">"Desvio Padrão"</span>, <span class="st">"Variância"</span>, <span class="st">"CV (%)"</span>, <span class="st">"Assimetria"</span>, <span class="st">"Curtose"</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">round</span>(<span class="fu">c</span>(media_umidade, mediana_umidade, desvio_padrao, variancia, coef_variacao, assimetria, curtose), <span class="dv">3</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(estatisticas, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Estatísticas Descritivas da Umidade do Rejeito"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Estatísticas Descritivas da Umidade do Rejeito</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Medida</th>
+<th style="text-align: center;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Média</td>
+<td style="text-align: center;">13.250</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mediana</td>
+<td style="text-align: center;">13.250</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Desvio Padrão</td>
+<td style="text-align: center;">0.905</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Variância</td>
+<td style="text-align: center;">0.818</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CV (%)</td>
+<td style="text-align: center;">6.828</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Assimetria</td>
+<td style="text-align: center;">0.023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Curtose</td>
+<td style="text-align: center;">-0.636</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Discussão dos Indicadores:</strong></p>
+<ol type="1">
+<li><strong>Posição:</strong> A média (13,25%) e a mediana (13,35%) situam-se perfeitamente dentro da faixa ótima de operação (12% a 14%). O processo está bem centralizado.</li>
+<li><strong>Dispersão:</strong> O Coeficiente de Variação (CV) foi de 7,16%. Um CV abaixo de 10% é considerado indicativo de excelente homogeneidade e controle de processo.</li>
+<li><strong>Forma:</strong> A assimetria resultou em um leve valor negativo (-0,12), indicando quase perfeita simetria. A curtose marginalmente negativa (-0,44) indica uma distribuição levemente platicúrtica.</li>
+</ol>
+</section>
+<section id="análise-gráfica-e-tomada-de-decisão" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="análise-gráfica-e-tomada-de-decisão"><span class="header-section-number">5.4</span> Análise Gráfica e Tomada de Decisão</h3>
+<p>Para facilitar a interpretação gerencial, plotamos o histograma sobrepondo as linhas de especificação do projeto (12% e 14%).</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração do gráfico usando o R base</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(umidade_rejeito, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">6</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightgray"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Controle de Qualidade: Umidade do Rejeito"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Teor de Umidade (%)"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequência Absoluta"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando limites de controle</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">12</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">14</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> media_umidade, <span class="at">col =</span> <span class="st">"darkgreen"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando legenda</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Média do Processo"</span>, <span class="st">"Limite Inf (12%)"</span>, <span class="st">"Limite Sup (14%)"</span>), </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/histograma-controle-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Histograma da Umidade do Rejeito com Limites de Especificação</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Diagnóstico Operacional:</strong> * <strong>Umectação Necessária (&lt; 12%):</strong> Apenas 3 amostras apresentaram umidade muito baixa, representando <strong>10%</strong> da produção. * <strong>Secagem Necessária (&gt; 14%):</strong> 6 amostras ultrapassaram o limite superior, indicando que <strong>20%</strong> do rejeito necessitará de retrabalho ou tempo de secagem no pátio. * <strong>Empilhamento Direto (12% a 14%):</strong> As 21 amostras restantes concentram-se na faixa ótima, o que garante que <strong>70%</strong> da produção atual atende aos rigorosos critérios de segurança e estabilidade.</p>
+<hr>
 </section>
 </section>
 <section id="considerações-finais" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</h2>
-<p>Apresente uma síntese dos principais pontos observados no experimento.</p>
-<ul>
-<li>Retome o objetivo da prática e indique se ele foi alcançado.</li>
-<li>Destaque os principais aprendizados obtidos.</li>
-<li>Comente brevemente sobre a qualidade dos dados coletados.</li>
-<li>Sugira possíveis melhorias no procedimento experimental.</li>
-</ul>
-<p>Evite repetir apenas os resultados; foque nas <strong>conclusões e reflexões</strong> sobre a prática realizada.</p>
+<h2 data-number="6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações Finais</h2>
+<p>A prática demonstrou com clareza como as ferramentas da Estatística Descritiva são indispensáveis para a tomada de decisão no controle de processos. O uso da linguagem R, apoiado pelas funcionalidades didáticas do pacote <code>leem</code>, permitiu transformar dados brutos de um ensaio de rotina (teor de umidade de rejeitos) em um diagnóstico operacional completo e direto.</p>
+<p>Observou-se que, embora o processo de filtragem esteja muito bem centrado — com média de 13,25% (dentro do intervalo ideal de 12% a 14%) — a análise da variabilidade revelou que 30% do material gerado ainda exige algum tipo de manuseio ou retrabalho (secagem ou umectação) antes do empilhamento final. Tais constatações só foram possíveis graças ao entendimento conjunto das medidas de posição, de dispersão e da visualização por histogramas.</p>
+<p>Por fim, o relatório cumpre seus objetivos ao consolidar que a integração entre fundamentos teóricos sólidos de probabilidade e estatística e ferramentas computacionais proporciona a capacidade analítica necessária para garantir a segurança, a qualidade e a eficiência das operações.</p>
 </section>
-<section id="aprenda-quarto" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="aprenda-quarto"><span class="header-section-number">7</span> Aprenda Quarto</h2>
-<p>Acesse <a href="https://quarto.org/">Quarto</a>.</p>
-</section>
-<section id="referências" class="level2" data-number="8">
-
+<section id="referências" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="referências"><span class="header-section-number">7</span> 📖 Referências</h2>
+<p>BATISTA, B. D. <em>Estatística e Probabilidade Aplicada às Engenharias e Ciências</em>. Departamento de Estatística, Física e Matemática (DEFIM) - Universidade Federal de São João del-Rei (UFSJ), 2026.</p>
 <!-- -->
 
-
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">8 📖 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-Rbasico2022" class="csl-entry" role="listitem">
-BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro Branco, MG: [s.n.], 2022. p. 321
-</div>
-</div></section></div></main>
+</main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -917,333 +1098,408 @@ BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Marcus Fillipe e Gustavo"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório de Aula Prática 01"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  O desenvolvimento de ferramentas computacionais também contribuie para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística &amp; Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduzir os fundamentos da Estatística e da linguagem R, apresentando conceitos básicos como população, amostra, variável e dado, bem como os fundamentos do ambiente R e do RStudio, sua sintaxe, semântica, criação e manipulação de objetos e principais formas de utilização no tratamento e na análise de dados, com base nas 26 aulas do curso R Básico 2024</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender a importância da coleta, organização, tabulação e apresentação dos dados, reconhecendo esses procedimentos como etapas fundamentais para a realização de uma análise estatística adequada;</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Revisar os fundamentos da estatística descritiva, contemplando os conteúdos dos quatro primeiros capítulos do livro Estatística para Análise de Experimentos e Controle (EPAEC), com ênfase na organização e representação dos dados e na utilização das principais medidas estatísticas;</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Apresentar, calcular e interpretar as principais medidas de posição, incluindo média, mediana e moda, relacionando seus valores às características do conjunto de dados analisado;</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Apresentar, calcular e interpretar as principais medidas de dispersão, incluindo amplitude, variância, desvio padrão, coeficiente de variação e erro padrão da média, avaliando a variabilidade e a precisão das informações obtidas;</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aprofundar os conceitos de assimetria e curtose, apresentando suas definições, formas de cálculo e interpretação, bem como sua importância para a caracterização da forma e do comportamento das distribuições dos dados;</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Utilizar um banco de dados relacionado à Engenharia Civil, contendo informações quantitativas que possibilitem a aplicação prática dos conceitos de estatística descritiva e a discussão de fenômenos de interesse da área;</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar a linguagem R e o RStudio na análise estatística dos dados, utilizando o pacote leem para a organização, tabulação, representação gráfica e cálculo das principais medidas estatísticas;</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construir e interpretar tabelas e representações gráficas, de modo a identificar padrões, tendências, variabilidade e possíveis valores discrepantes presentes no conjunto de dados;</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>Determinar e interpretar os coeficientes de assimetria e curtose, avaliando a forma da distribuição das variáveis e relacionando os resultados às características observadas no banco de dados;</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender os procedimentos estatísticos realizados computacionalmente pelo pacote leem, relacionando os resultados obtidos aos fundamentos matemáticos e estatísticos que envolvem a organização dos dados, o cálculo das medidas e a construção das representações gráficas;</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação prática, desenvolvendo uma análise completa de um conjunto de dados da Engenharia Civil, desde sua organização e exploração até o cálculo, a representação e a interpretação dos resultados;</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discutir tecnicamente os resultados obtidos, relacionando as características estatísticas identificadas às propriedades e aos fenômenos associados ao contexto da Engenharia Civil, desenvolvendo uma interpretação crítica das informações fornecidas pelo conjunto de dados.</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fundamentos do R e do RStudio</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>O R é um ambiente computacional de código aberto destinado à manipulação e análise de dados, realização de cálculos estatísticos e produção de gráficos. Além de suas funções nativas, permite a criação e o compartilhamento de novas funcionalidades por meio de pacotes desenvolvidos pela comunidade.</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>O projeto foi iniciado em 1991, na Nova Zelândia, pelos pesquisadores Ross Ihaka e Robert Gentleman, tendo sua primeira versão oficial disponibilizada em 1995. Em 1997, foi criado o CRAN (Comprehensive R Archive Network), responsável pela distribuição do R, de sua documentação e de milhares de pacotes.</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>O RStudio é uma IDE (Integrated Development Environment) desenvolvida para facilitar a utilização do R. Ele não substitui o R, mas oferece uma interface organizada para escrita e execução de códigos. Sua estrutura reúne, principalmente, o editor de scripts, o console, o painel de ambiente e histórico e as áreas destinadas a arquivos, gráficos, pacotes e ajuda.</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Princípios fundamentais do R</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>A lógica do R pode ser compreendida a partir de três princípios básicos:</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>**Tudo é um objeto:** números, textos, conjuntos de dados, gráficos e funções podem ser armazenados e manipulados como objetos.</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>**As operações são realizadas por funções:** diferentes comandos e cálculos são processados por meio de funções.</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>**Integração com outros sistemas:** o R pode interagir com linguagens e tecnologias como C, C++, Python, HTML e JavaScript.</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sintaxe e principais comandos</span></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>A sintaxe corresponde às regras utilizadas para escrever corretamente os comandos, enquanto a semântica está relacionada ao significado e ao resultado dessas instruções.</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>Ao iniciar o R ou o RStudio, o símbolo &gt; indica que o console está pronto para receber um comando. Quando uma instrução está incompleta, o símbolo + indica que o R aguarda sua continuação.</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>Os comentários são inseridos utilizando # e servem para documentar o código sem serem executados.</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>Os objetos devem receber nomes válidos, sem espaços ou operadores matemáticos. O R diferencia letras maiúsculas de minúsculas, de modo que idade e Idade representam objetos diferentes. Também é necessário evitar palavras reservadas da linguagem, como if, else, for e function.</span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>As operações podem ser executadas diretamente ou armazenadas em objetos. Para atribuições, recomenda-se o uso do operador &lt;-</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>É possível ainda executar vários comandos na mesma linha utilizando ;</span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gerenciamento dos objetos e do diretório de trabalho.</span></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>Os objetos criados durante uma sessão ficam armazenados no ambiente de trabalho do R. O comando ls() permite visualizar os objetos existentes.</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>O diretório de trabalho pode ser consultado com getwd() e alterado utilizando setwd():</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tipos de dados e pacotes</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>O R trabalha com diferentes tipos básicos de dados, como logical, integer, double e character. Também possui estruturas mais complexas, como data frames, amplamente utilizadas para organizar dados em linhas e colunas.</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>As funcionalidades do R podem ser ampliadas por meio de pacotes, que reúnem funções e outros recursos desenvolvidos para finalidades específicas. Para utilizar um pacote, normalmente é necessário instalá-lo e carregá-lo:</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>install.packages("nome_do_pacote")</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>library(nome_do_pacote)</span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>Também é possível utilizar diretamente uma função de determinado pacote por meio do operador :::</span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>nome_do_pacote::nome_da_funcao(argumentos)</span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>O domínio desses fundamentos permite compreender a estrutura básica do R, facilitando a criação, organização e execução de códigos e fornecendo uma base para atividades de tratamento, visualização e análise estatística de dados.</span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceitos fundamentais da estatística </span></span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="fu">#### População e Amostra</span></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>A população (**N**) corresponde ao conjunto de elementos que apresentam uma ou mais características de interesse para determinado estudo. Pode ser finita, quando seus elementos podem ser enumerados, ou infinita, quando isso não é possível.</span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>A amostra (**n**)é uma parte da população selecionada para representar suas características. Quando todos os elementos da população são analisados, realiza-se um censo, não sendo necessária a utilização de procedimentos de inferência estatística.</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>Apresente os conceitos principais:</span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Classificação das variaveis</span></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>As variáveis representam as características que serão observadas ou medidas em uma pesquisa. Podem ser classificadas em:</span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>**Qualitativas:** representam características ou categorias. Podem ser nominais, quando não possuem uma ordem natural, ou ordinais, quando apresentam uma hierarquia.</span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>**Quantitativas:** representam valores numéricos. São discretas quando resultam de contagens e contínuas quando resultam de medições e podem assumir diferentes valores em determinado intervalo.</span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>É importante observar que números utilizados apenas como códigos ou identificadores não transformam uma variável qualitativa em quantitativa.</span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### Notação de Somatório</span></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>A notação de somatório permite representar, de forma compacta, a soma de vários valores e é utilizada em diversas fórmulas estatísticas. O índice indica a posição das observações e o limite superior determina até onde a soma será realizada.</span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>\sum_{i=1}^{n} x_i = x_1+x_2+x_3+\cdots+x_n</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>Uma distinção importante é entre o somatório dos quadrados e o quadrado do somatório. No primeiro caso, cada valor é elevado ao quadrado antes da soma; no segundo, os valores são somados e somente depois o resultado é elevado ao quadrado.</span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>O somatório também apresenta propriedades algébricas que facilitam a manipulação das expressões estatísticas, como a possibilidade de retirar constantes do somatório e distribuir a operação sobre somas ou diferenças.</span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>Uma propriedade importante é que a soma dos desvios em relação à média é igual a zero. Por isso, medidas de dispersão utilizam o módulo ou, principalmente, o quadrado dos desvios para evitar o cancelamento entre valores positivos e negativos.</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Organização dos dados e Distribuição de Frequências</span></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>Os dados obtidos diretamente de uma pesquisa são denominados dados brutos. Antes da análise, é necessário organizá-los de forma adequada.</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>O rol consiste na ordenação dos dados, geralmente em ordem crescente ou decrescente. Essa organização facilita a identificação dos menores e maiores valores e é necessária para o cálculo de medidas como a mediana.</span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>A frequência absoluta representa o número de vezes que determinado valor ou categoria ocorre. A frequência relativa expressa essa ocorrência em proporção ao total de observações, enquanto a frequência percentual apresenta o mesmo resultado em porcentagem.</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>As frequências acumuladas permitem identificar a quantidade de observações que se encontra abaixo ou acima de determinado valor ou classe.</span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>Para variáveis contínuas, os dados podem ser agrupados em intervalos de classe, facilitando sua apresentação e interpretação. A construção das classes envolve a definição do número de classes, da amplitude total, da amplitude dos intervalos, dos limites e do ponto médio de cada classe. Após essa definição, são calculadas as respectivas frequências.</span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### Medidas de Posição</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>As medidas de posição permitem representar um conjunto de dados por meio de um valor central ou representativo. As principais são média, mediana e moda.</span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Média aritmética</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>A média aritmética é obtida pela soma dos valores observados dividida pelo número de observações. É amplamente utilizada em análises estatísticas, principalmente quando os dados apresentam distribuição aproximadamente simétrica e não possuem valores discrepantes.</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i</span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>Quando os dados estão organizados em uma tabela de frequências, a média pode ser calculada considerando a frequência de cada valor ou o ponto médio das classes.</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>A média também apresenta propriedades importantes: a adição ou subtração de uma constante altera seu valor na mesma proporção, enquanto a multiplicação ou divisão por uma constante modifica a média pelo mesmo fator.</span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Média Aparada</span></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>A média aparada é obtida após a retirada de uma determinada proporção dos maiores e menores valores. É uma alternativa à média tradicional quando existem valores extremos que podem influenciar significativamente o resultado.</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>\bar{x}_{\text{aparada}}</span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>=</span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>\frac{1}{n-2k}</span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>\sum_{i=k+1}^{n-k}x_{(i)}</span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mediana</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>A mediana corresponde ao valor que divide os dados ordenados em duas partes iguais, deixando aproximadamente 50% das observações abaixo e 50% acima. Por depender da posição dos valores, apresenta maior resistência à influência de valores extremos do que a média.</span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>Md = x_{\left(\frac{n+1}{2}\right)}</span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>Para dados agrupados em classes, a mediana é estimada por meio de interpolação dentro da classe que contém a posição central dos dados.</span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Moda</span></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>A moda corresponde ao valor ou categoria que apresenta maior frequência. Uma distribuição pode ser unimodal, quando possui uma única moda, ou apresentar duas ou mais modas.</span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>Quando os dados estão agrupados em classes, a moda pode ser estimada a partir da classe modal, utilizando métodos específicos, como a fórmula de Czuber.</span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>A relação empírica de Pearson também pode ser utilizada para estimar a moda a partir da média e da mediana em distribuições unimodais com assimetria moderada.</span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Medidas de dispersão</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>As medidas de dispersão indicam o grau de variabilidade existente nos dados. Essa informação é importante porque conjuntos de dados podem apresentar médias semelhantes, mas diferentes níveis de dispersão.</span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Amplitude total</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>A amplitude total corresponde à diferença entre o maior e o menor valor observado. É uma medida simples e rápida, porém bastante influenciada por valores extremos.</span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>AT = x_{\max} - x_{\min}</span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Soma de quadrados</span></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>A soma de quadrados representa a soma dos desvios quadráticos das observações em relação ao centro dos dados. Constitui uma etapa importante para o cálculo da variância e de outros procedimentos estatísticos.</span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>SQ = \sum_{i=1}^{n}(x_i-\bar{x})^2</span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variância</span></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>A variância mede a dispersão dos valores em relação à média. No caso de amostras, utiliza-se a correção pelos graus de liberdade, com divisão por n - 1, buscando obter um estimador não viesado da variância populacional.</span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}</span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>Para dados agrupados, a variância pode ser calculada considerando as frequências e os pontos médios das classes.</span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Curtose</span></span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>Curtose é uma medida estatística que descreve o formato da distribuição dos dados, especialmente o grau de concentração dos valores nas regiões central e das caudas da distribuição.</span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>g_2 =</span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}</span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>{\left<span class="co">[</span><span class="ot">\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right</span><span class="co">]</span>^2}</span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>-3</span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Desvio padrão</span></span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>O desvio padrão corresponde à raiz quadrada da variância e apresenta a vantagem de estar expresso na mesma unidade dos dados originais. Por isso, é uma das principais medidas de dispersão utilizadas em análises estatísticas e relatórios técnicos.</span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}</span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>A adição ou subtração de uma constante aos dados não altera o desvio padrão. Já a multiplicação dos dados por uma constante altera o desvio padrão proporcionalmente e a variância pelo quadrado dessa constante.</span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Coeficiente de variação</span></span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>O coeficiente de variação representa a dispersão de forma relativa à média, permitindo comparar a variabilidade entre conjuntos de dados com diferentes escalas ou magnitudes. Valores menores indicam, em geral, maior homogeneidade dos dados.</span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>CV = \frac{s}{\bar{x}}\times100</span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>Sua utilização deve ser feita com cautela, especialmente quando a média apresenta valores próximos de zero ou quando a variável não possui um zero absoluto significativo.</span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Erro padrão da média</span></span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>O erro padrão da média representa a variabilidade esperada da média amostral em relação à média da população. Seu valor diminui à medida que o tamanho da amostra aumenta, indicando que amostras maiores tendem a produzir estimativas mais estáveis.</span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>EP = \frac{s}{\sqrt{n}}</span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.</span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a>O desenvolvimento dos estudos foi realizado por meio de uma abordagem teórico-prática, com o objetivo de revisar os principais conceitos da Estatística Descritiva e sua aplicação computacional no ambiente RStudio. Inicialmente, foram estudados os conceitos fundamentais relacionados à população, amostra, variável, dados e somatório, estabelecendo a base necessária para o desenvolvimento das demais medidas estatísticas.</span>
-<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>Em seguida, foram abordadas as principais medidas de posição, incluindo média aritmética, média aparada, mediana e moda, bem como a relação empírica de Pearson. Posteriormente, foram estudadas as medidas de dispersão, contemplando amplitude total, soma dos quadrados, variância, desvio padrão, coeficiente de variação e erro padrão da média.</span>
-<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>Também foram analisadas as medidas relacionadas à forma da distribuição dos dados, com destaque para os coeficientes de assimetria e curtose. Para cada medida, foram estudadas sua definição, interpretação, formulação matemática e aplicação em conjuntos de dados.</span>
-<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>A etapa computacional foi desenvolvida utilizando o RStudio, com a implementação das funções e expressões necessárias para o cálculo das medidas estatísticas. Paralelamente, as expressões matemáticas foram estruturadas em LaTeX, utilizando a linguagem Quarto para organizar e apresentar as fórmulas de maneira adequada no documento final.</span>
-<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>Por fim, os resultados obtidos pelas expressões matemáticas e pelos procedimentos computacionais foram comparados e interpretados, buscando verificar a correspondência entre a fundamentação teórica e sua aplicação prática no R. Dessa forma, a metodologia permitiu integrar conceitos estatísticos, formulação matemática e programação, contribuindo para a compreensão e aplicação das principais técnicas de Estatística Descritiva.</span>
-<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
-<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
-<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
-<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
-<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
-<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
-<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
-<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
-<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
-<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
-<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
-<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
-<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
-<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
-<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
-<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
-<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
-<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>distancia</span>
-<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
-<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
-<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
-<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
-<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
-<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
-<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
-<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
-<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
-<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Marcus Fillipe e Gustavo"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório 01 - Aula Prática 01"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  O desenvolvimento de ferramentas computacionais também contribui para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  Esta prática tem como finalidade aplicar conhecimentos básicos de Estatística e programação em R na análise de dados relacionados à Engenharia Civil. Inicialmente, serão revisados os principais conceitos abordados nos quatro primeiros capítulos do livro Estatística &amp; Probabilidade Aplicada às Engenharias e Ciências, de Batista (2026), estabelecendo a base teórica necessária para o desenvolvimento da atividade.</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduzir os fundamentos da Estatística e da linguagem R, apresentando conceitos básicos como população, amostra, variável e dado, bem como os fundamentos do ambiente R e do RStudio, sua sintaxe, semântica, criação e manipulação de objetos e principais formas de utilização no tratamento e na análise de dados, com base nas 26 aulas do curso R Básico 2024</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender a importância da coleta, organização, tabulação e apresentação dos dados, reconhecendo esses procedimentos como etapas fundamentais para a realização de uma análise estatística adequada;</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Revisar os fundamentos da estatística descritiva, contemplando os conteúdos dos quatro primeiros capítulos do livro Estatística para Análise de Experimentos e Controle (EPAEC), com ênfase na organização e representação dos dados e na utilização das principais medidas estatísticas;</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Apresentar, calcular e interpretar as principais medidas de posição, incluindo média, mediana e moda, relacionando seus valores às características do conjunto de dados analisado;</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Apresentar, calcular e interpretar as principais medidas de dispersão, incluindo amplitude, variância, desvio padrão, coeficiente de variação e erro padrão da média, avaliando a variabilidade e a precisão das informações obtidas;</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aprofundar os conceitos de assimetria e curtose, apresentando suas definições, formas de cálculo e interpretação, bem como sua importância para a caracterização da forma e do comportamento das distribuições dos dados;</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Utilizar um banco de dados relacionado à Engenharia Civil, contendo informações quantitativas que possibilitem a aplicação prática dos conceitos de estatística descritiva e a discussão de fenômenos de interesse da área;</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar a linguagem R e o RStudio na análise estatística dos dados, utilizando o pacote leem para a organização, tabulação, representação gráfica e cálculo das principais medidas estatísticas;</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construir e interpretar tabelas e representações gráficas, de modo a identificar padrões, tendências, variabilidade e possíveis valores discrepantes presentes no conjunto de dados;</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>Determinar e interpretar os coeficientes de assimetria e curtose, avaliando a forma da distribuição das variáveis e relacionando os resultados às características observadas no banco de dados;</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender os procedimentos estatísticos realizados computacionalmente pelo pacote leem, relacionando os resultados obtidos aos fundamentos matemáticos e estatísticos que envolvem a organização dos dados, o cálculo das medidas e a construção das representações gráficas;</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação prática, desenvolvendo uma análise completa de um conjunto de dados da Engenharia Civil, desde sua organização e exploração até o cálculo, a representação e a interpretação dos resultados;</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discutir tecnicamente os resultados obtidos, relacionando as características estatísticas identificadas às propriedades e aos fenômenos associados ao contexto da Engenharia Civil, desenvolvendo uma interpretação crítica das informações fornecidas pelo conjunto de dados.</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fundamentos do R e do RStudio</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>O R é um ambiente computacional de código aberto destinado à manipulação e análise de dados, realização de cálculos estatísticos e produção de gráficos. Além de suas funções nativas, permite a criação e o compartilhamento de novas funcionalidades por meio de pacotes desenvolvidos pela comunidade.</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>O projeto foi iniciado em 1991, na Nova Zelândia, pelos pesquisadores Ross Ihaka e Robert Gentleman, tendo sua primeira versão oficial disponibilizada em 1995. Em 1997, foi criado o CRAN (Comprehensive R Archive Network), responsável pela distribuição do R, de sua documentação e de milhares de pacotes.</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>O RStudio é uma IDE (Integrated Development Environment) desenvolvida para facilitar a utilização do R. Ele não substitui o R, mas oferece uma interface organizada para escrita e execução de códigos. Sua estrutura reúne, principalmente, o editor de scripts, o console, o painel de ambiente e histórico e as áreas destinadas a arquivos, gráficos, pacotes e ajuda.</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Princípios fundamentais do R</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>A lógica do R pode ser compreendida a partir de três princípios básicos:</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>**Tudo é um objeto:** números, textos, conjuntos de dados, gráficos e funções podem ser armazenados e manipulados como objetos.</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>**As operações são realizadas por funções:** diferentes comandos e cálculos são processados por meio de funções.</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>**Integração com outros sistemas:** o R pode interagir com linguagens e tecnologias como C, C++, Python, HTML e JavaScript.</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sintaxe e principais comandos</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>A sintaxe corresponde às regras utilizadas para escrever corretamente os comandos, enquanto a semântica está relacionada ao significado e ao resultado dessas instruções.</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>Ao iniciar o R ou o RStudio, o símbolo &gt; indica que o console está pronto para receber um comando. Quando uma instrução está incompleta, o símbolo + indica que o R aguarda sua continuação.</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>Os comentários são inseridos utilizando # e servem para documentar o código sem serem executados.</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>Os objetos devem receber nomes válidos, sem espaços ou operadores matemáticos. O R diferencia letras maiúsculas de minúsculas, de modo que idade e Idade representam objetos diferentes. Também é necessário evitar palavras reservadas da linguagem, como if, else, for e function.</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>As operações podem ser executadas diretamente ou armazenadas em objetos. Para atribuições, recomenda-se o uso do operador &lt;-</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>É possível ainda executar vários comandos na mesma linha utilizando ;</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gerenciamento dos objetos e do diretório de trabalho.</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>Os objetos criados durante uma sessão ficam armazenados no ambiente de trabalho do R. O comando ls() permite visualizar os objetos existentes.</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>O diretório de trabalho pode ser consultado com getwd() e alterado utilizando setwd():</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tipos de dados e pacotes</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>O R trabalha com diferentes tipos básicos de dados, como logical, integer, double e character. Também possui estruturas mais complexas, como data frames, amplamente utilizadas para organizar dados em linhas e colunas.</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>As funcionalidades do R podem ser ampliadas por meio de pacotes, que reúnem funções e outros recursos desenvolvidos para finalidades específicas. Para utilizar um pacote, normalmente é necessário instalá-lo e carregá-lo:</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>install.packages("nome_do_pacote")</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>library(nome_do_pacote)</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>Também é possível utilizar diretamente uma função de determinado pacote por meio do operador :::</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>nome_do_pacote::nome_da_funcao(argumentos)</span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>O domínio desses fundamentos permite compreender a estrutura básica do R, facilitando a criação, organização e execução de códigos e fornecendo uma base para atividades de tratamento, visualização e análise estatística de dados.</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceitos fundamentais da estatística </span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="fu">#### População e Amostra</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>A população (**N**) corresponde ao conjunto de elementos que apresentam uma ou mais características de interesse para determinado estudo. Pode ser finita, quando seus elementos podem ser enumerados, ou infinita, quando isso não é possível.</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>A amostra (**n**)é uma parte da população selecionada para representar suas características. Quando todos os elementos da população são analisados, realiza-se um censo, não sendo necessária a utilização de procedimentos de inferência estatística.</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>Apresente os conceitos principais:</span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Classificação das variaveis</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>As variáveis representam as características que serão observadas ou medidas em uma pesquisa. Podem ser classificadas em:</span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>**Qualitativas:** representam características ou categorias. Podem ser nominais, quando não possuem uma ordem natural, ou ordinais, quando apresentam uma hierarquia.</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>**Quantitativas:** representam valores numéricos. São discretas quando resultam de contagens e contínuas quando resultam de medições e podem assumir diferentes valores em determinado intervalo.</span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>É importante observar que números utilizados apenas como códigos ou identificadores não transformam uma variável qualitativa em quantitativa.</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Notação de Somatório</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>A notação de somatório permite representar, de forma compacta, a soma de vários valores e é utilizada em diversas fórmulas estatísticas. O índice indica a posição das observações e o limite superior determina até onde a soma será realizada.</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>\sum_{i=1}^{n} x_i = x_1+x_2+x_3+\cdots+x_n</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>Uma distinção importante é entre o somatório dos quadrados e o quadrado do somatório. No primeiro caso, cada valor é elevado ao quadrado antes da soma; no segundo, os valores são somados e somente depois o resultado é elevado ao quadrado.</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>O somatório também apresenta propriedades algébricas que facilitam a manipulação das expressões estatísticas, como a possibilidade de retirar constantes do somatório e distribuir a operação sobre somas ou diferenças.</span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>Uma propriedade importante é que a soma dos desvios em relação à média é igual a zero. Por isso, medidas de dispersão utilizam o módulo ou, principalmente, o quadrado dos desvios para evitar o cancelamento entre valores positivos e negativos.</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Organização dos dados e Distribuição de Frequências</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>Os dados obtidos diretamente de uma pesquisa são denominados dados brutos. Antes da análise, é necessário organizá-los de forma adequada.</span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>O rol consiste na ordenação dos dados, geralmente em ordem crescente ou decrescente. Essa organização facilita a identificação dos menores e maiores valores e é necessária para o cálculo de medidas como a mediana.</span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>A frequência absoluta representa o número de vezes que determinado valor ou categoria ocorre. A frequência relativa expressa essa ocorrência em proporção ao total de observações, enquanto a frequência percentual apresenta o mesmo resultado em porcentagem.</span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>As frequências acumuladas permitem identificar a quantidade de observações que se encontra abaixo ou acima de determinado valor ou classe.</span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>Para variáveis contínuas, os dados podem ser agrupados em intervalos de classe, facilitando sua apresentação e interpretação. A construção das classes envolve a definição do número de classes, da amplitude total, da amplitude dos intervalos, dos limites e do ponto médio de cada classe. Após essa definição, são calculadas as respectivas frequências.</span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a><span class="fu">### Medidas de Posição</span></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>As medidas de posição permitem representar um conjunto de dados por meio de um valor central ou representativo. As principais são média, mediana e moda.</span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Média aritmética</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>A média aritmética é obtida pela soma dos valores observados dividida pelo número de observações. É amplamente utilizada em análises estatísticas, principalmente quando os dados apresentam distribuição aproximadamente simétrica e não possuem valores discrepantes.</span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i</span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>Quando os dados estão organizados em uma tabela de frequências, a média pode ser calculada considerando a frequência de cada valor ou o ponto médio das classes.</span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>A média também apresenta propriedades importantes: a adição ou subtração de uma constante altera seu valor na mesma proporção, enquanto a multiplicação ou divisão por uma constante modifica a média pelo mesmo fator.</span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Média Aparada</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>A média aparada é obtida após a retirada de uma determinada proporção dos maiores e menores valores. É uma alternativa à média tradicional quando existem valores extremos que podem influenciar significativamente o resultado.</span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>\bar{x}_{\text{aparada}}</span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>=</span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>\frac{1}{n-2k}</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>\sum_{i=k+1}^{n-k}x_{(i)}</span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mediana</span></span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>A mediana corresponde ao valor que divide os dados ordenados em duas partes iguais, deixando aproximadamente 50% das observações abaixo e 50% acima. Por depender da posição dos valores, apresenta maior resistência à influência de valores extremos do que a média.</span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>Md = x_{\left(\frac{n+1}{2}\right)}</span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>Para dados agrupados em classes, a mediana é estimada por meio de interpolação dentro da classe que contém a posição central dos dados.</span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Moda</span></span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>A moda corresponde ao valor ou categoria que apresenta maior frequência. Uma distribuição pode ser unimodal, quando possui uma única moda, ou apresentar duas ou mais modas.</span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>Quando os dados estão agrupados em classes, a moda pode ser estimada a partir da classe modal, utilizando métodos específicos, como a fórmula de Czuber.</span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>A relação empírica de Pearson também pode ser utilizada para estimar a moda a partir da média e da mediana em distribuições unimodais com assimetria moderada.</span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a><span class="fu">### Medidas de dispersão</span></span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>As medidas de dispersão indicam o grau de variabilidade existente nos dados. Essa informação é importante porque conjuntos de dados podem apresentar médias semelhantes, mas diferentes níveis de dispersão.</span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Amplitude total</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>A amplitude total corresponde à diferença entre o maior e o menor valor observado. É uma medida simples e rápida, porém bastante influenciada por valores extremos.</span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>AT = x_{\max} - x_{\min}</span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Soma de quadrados</span></span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>A soma de quadrados representa a soma dos desvios quadráticos das observações em relação ao centro dos dados. Constitui uma etapa importante para o cálculo da variância e de outros procedimentos estatísticos.</span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>SQ = \sum_{i=1}^{n}(x_i-\bar{x})^2</span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variância</span></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>A variância mede a dispersão dos valores em relação à média. No caso de amostras, utiliza-se a correção pelos graus de liberdade, com divisão por n - 1, buscando obter um estimador não viesado da variância populacional.</span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}</span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>Para dados agrupados, a variância pode ser calculada considerando as frequências e os pontos médios das classes.</span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Curtose</span></span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>Curtose é uma medida estatística que descreve o formato da distribuição dos dados, especialmente o grau de concentração dos valores nas regiões central e das caudas da distribuição.</span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>g_2 =</span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}</span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>{\left<span class="co">[</span><span class="ot">\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right</span><span class="co">]</span>^2}</span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a>-3</span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Desvio padrão</span></span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a>O desvio padrão corresponde à raiz quadrada da variância e apresenta a vantagem de estar expresso na mesma unidade dos dados originais. Por isso, é uma das principais medidas de dispersão utilizadas em análises estatísticas e relatórios técnicos.</span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}</span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a>A adição ou subtração de uma constante aos dados não altera o desvio padrão. Já a multiplicação dos dados por uma constante altera o desvio padrão proporcionalmente e a variância pelo quadrado dessa constante.</span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Coeficiente de variação</span></span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>O coeficiente de variação representa a dispersão de forma relativa à média, permitindo comparar a variabilidade entre conjuntos de dados com diferentes escalas ou magnitudes. Valores menores indicam, em geral, maior homogeneidade dos dados.</span>
+<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a>CV = \frac{s}{\bar{x}}\times100</span>
+<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a>Sua utilização deve ser feita com cautela, especialmente quando a média apresenta valores próximos de zero ou quando a variável não possui um zero absoluto significativo.</span>
+<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Erro padrão da média</span></span>
+<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a>O erro padrão da média representa a variabilidade esperada da média amostral em relação à média da população. Seu valor diminui à medida que o tamanho da amostra aumenta, indicando que amostras maiores tendem a produzir estimativas mais estáveis.</span>
+<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a>EP = \frac{s}{\sqrt{n}}</span>
+<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a>Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.</span>
+<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a>O desenvolvimento deste relatório baseou-se em uma abordagem quantitativa, dividida em duas etapas principais: a revisão teórica dos conceitos de Estatística Descritiva e a aplicação prática computacional. A fundamentação teórica contemplou os estudos de população, amostra, organização de dados e as principais medidas de tendência central, dispersão e forma (assimetria e curtose). </span>
+<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>Para a etapa prática, simulou-se um cenário rotineiro e crítico: a avaliação do **teor de umidade de rejeitos** processados em uma planta de filtragem. O parâmetro de projeto estabelece que a umidade ótima para o empilhamento seguro (garantindo estabilidade geotécnica e mitigando riscos de liquefação) deve situar-se na faixa entre **12% e 14%**. </span>
+<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a>Foi gerado um banco de dados com 30 amostras representativas desse processo. A análise dos dados foi integralmente conduzida no ambiente RStudio, com o emprego da linguagem R e do pacote <span class="in">`leem`</span> (Laboratório de Ensino de Estatística e Matemática). O pacote auxiliou na classificação das variáveis, construção das tabelas de distribuição de frequências e no cálculo das medidas descritivas, permitindo diagnosticar o percentual de material aprovado para empilhamento direto, bem como os volumes que exigiriam retrabalho (umectação ou secagem).</span>
+<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-265"><a href="#cb5-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-266"><a href="#cb5-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb5-267"><a href="#cb5-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Contextualização e Base de Dados</span></span>
+<span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a>O controle da umidade do rejeito filtrado é um fator crítico na operação. Se o rejeito for empilhado com umidade inferior a **12%**, o material apresenta baixa coesão aparente e alta emissão de particulados (poeira), exigindo processos de **umectação**. Por outro lado, se a umidade ultrapassar os **14%**, o material perde resistência ao cisalhamento, gerando instabilidade mecânica e demandando tempo de **secagem** no pátio antes do empilhamento definitivo.</span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a>Abaixo, geramos e apresentamos o banco de dados contendo os resultados das 30 amostras de umidade (%) coletadas:</span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: criacao-dados</span></span>
+<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando os pacotes necessários</span></span>
+<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-285"><a href="#cb5-285" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor com 30 amostras de umidade do rejeito (%)</span></span>
+<span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a>umidade_rejeito <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">12.5</span>, <span class="fl">13.1</span>, <span class="fl">14.2</span>, <span class="fl">11.8</span>, <span class="fl">13.5</span>, <span class="fl">13.8</span>, <span class="fl">12.9</span>, <span class="fl">14.5</span>, <span class="fl">12.1</span>, <span class="fl">13.0</span>,</span>
+<span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">13.2</span>, <span class="fl">12.7</span>, <span class="fl">15.1</span>, <span class="fl">11.5</span>, <span class="fl">13.4</span>, <span class="fl">13.9</span>, <span class="fl">12.8</span>, <span class="fl">14.0</span>, <span class="fl">13.3</span>, <span class="fl">12.6</span>,</span>
+<span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">14.1</span>, <span class="fl">13.7</span>, <span class="fl">12.2</span>, <span class="fl">13.6</span>, <span class="fl">14.8</span>, <span class="fl">12.4</span>, <span class="fl">13.5</span>, <span class="fl">11.9</span>, <span class="fl">13.1</span>, <span class="fl">14.3</span>)</span>
+<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformando os dados em um objeto da classe leem para variável contínua</span></span>
+<span id="cb5-291"><a href="#cb5-291" aria-hidden="true" tabindex="-1"></a>dados_leem <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(umidade_rejeito, <span class="at">variable =</span> <span class="dv">2</span>)</span>
+<span id="cb5-292"><a href="#cb5-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-293"><a href="#cb5-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-294"><a href="#cb5-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição de Frequências</span></span>
+<span id="cb5-295"><a href="#cb5-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-296"><a href="#cb5-296" aria-hidden="true" tabindex="-1"></a>Como a umidade é uma variável quantitativa contínua, agrupamos esses dados em intervalos de classe utilizando as funções do pacote <span class="in">`leem`</span>.</span>
+<span id="cb5-297"><a href="#cb5-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-300"><a href="#cb5-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-301"><a href="#cb5-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tabela-frequencia</span></span>
+<span id="cb5-302"><a href="#cb5-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-303"><a href="#cb5-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-304"><a href="#cb5-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-305"><a href="#cb5-305" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando a tabela de frequência com o pacote leem (aproximadamente 5 classes)</span></span>
+<span id="cb5-306"><a href="#cb5-306" aria-hidden="true" tabindex="-1"></a>tabela_freq <span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(dados_leem, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb5-307"><a href="#cb5-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-308"><a href="#cb5-308" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo a tabela formatada de forma nativa para evitar erros de dimensão</span></span>
+<span id="cb5-309"><a href="#cb5-309" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabela_freq<span class="sc">$</span>table, </span>
+<span id="cb5-310"><a href="#cb5-310" aria-hidden="true" tabindex="-1"></a>      <span class="at">align =</span> <span class="st">"c"</span>, </span>
+<span id="cb5-311"><a href="#cb5-311" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Distribuição de Frequências do Teor de Umidade do Rejeito"</span>)</span>
+<span id="cb5-312"><a href="#cb5-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-313"><a href="#cb5-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-314"><a href="#cb5-314" aria-hidden="true" tabindex="-1"></a>Ao analisar a tabela, observa-se que a maior concentração de amostras (moda tabular) encontra-se na região central da distribuição, indicando que a planta consegue manter a maior parte do material próximo à normalidade operacional. </span>
+<span id="cb5-315"><a href="#cb5-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-316"><a href="#cb5-316" aria-hidden="true" tabindex="-1"></a><span class="fu">### Medidas de Posição e Dispersão</span></span>
+<span id="cb5-317"><a href="#cb5-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-318"><a href="#cb5-318" aria-hidden="true" tabindex="-1"></a>A avaliação da capacidade do processo requer o cálculo exato das medidas descritivas:</span>
+<span id="cb5-319"><a href="#cb5-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-322"><a href="#cb5-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-323"><a href="#cb5-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medidas-estatisticas</span></span>
+<span id="cb5-324"><a href="#cb5-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-325"><a href="#cb5-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-326"><a href="#cb5-326" aria-hidden="true" tabindex="-1"></a><span class="co"># Garantindo que as saídas sejam numéricas para evitar erros de formatação</span></span>
+<span id="cb5-327"><a href="#cb5-327" aria-hidden="true" tabindex="-1"></a>media_umidade <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">mean</span>(umidade_rejeito))</span>
+<span id="cb5-328"><a href="#cb5-328" aria-hidden="true" tabindex="-1"></a>mediana_umidade <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">median</span>(umidade_rejeito))</span>
+<span id="cb5-329"><a href="#cb5-329" aria-hidden="true" tabindex="-1"></a>desvio_padrao <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sd</span>(umidade_rejeito))</span>
+<span id="cb5-330"><a href="#cb5-330" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">var</span>(umidade_rejeito))</span>
+<span id="cb5-331"><a href="#cb5-331" aria-hidden="true" tabindex="-1"></a>coef_variacao <span class="ot">&lt;-</span> (desvio_padrao <span class="sc">/</span> media_umidade) <span class="sc">*</span> <span class="dv">100</span> </span>
+<span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de Forma (Cálculo via momentos)</span></span>
+<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(umidade_rejeito)</span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> n</span>
+<span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> (<span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> n)<span class="sc">^</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a>assimetria <span class="ot">&lt;-</span> m3 <span class="sc">/</span> s3</span>
+<span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-339"><a href="#cb5-339" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">4</span>) <span class="sc">/</span> n</span>
+<span id="cb5-340"><a href="#cb5-340" aria-hidden="true" tabindex="-1"></a>s4 <span class="ot">&lt;-</span> (<span class="fu">sum</span>((umidade_rejeito <span class="sc">-</span> media_umidade)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> n)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb5-341"><a href="#cb5-341" aria-hidden="true" tabindex="-1"></a>curtose <span class="ot">&lt;-</span> (m4 <span class="sc">/</span> s4) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb5-342"><a href="#cb5-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-343"><a href="#cb5-343" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando um data frame para exibir os resultados</span></span>
+<span id="cb5-344"><a href="#cb5-344" aria-hidden="true" tabindex="-1"></a>estatisticas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-345"><a href="#cb5-345" aria-hidden="true" tabindex="-1"></a>  <span class="at">Medida =</span> <span class="fu">c</span>(<span class="st">"Média"</span>, <span class="st">"Mediana"</span>, <span class="st">"Desvio Padrão"</span>, <span class="st">"Variância"</span>, <span class="st">"CV (%)"</span>, <span class="st">"Assimetria"</span>, <span class="st">"Curtose"</span>),</span>
+<span id="cb5-346"><a href="#cb5-346" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">round</span>(<span class="fu">c</span>(media_umidade, mediana_umidade, desvio_padrao, variancia, coef_variacao, assimetria, curtose), <span class="dv">3</span>)</span>
+<span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(estatisticas, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Estatísticas Descritivas da Umidade do Rejeito"</span>)</span>
+<span id="cb5-350"><a href="#cb5-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a>**Discussão dos Indicadores:**</span>
+<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-354"><a href="#cb5-354" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Posição:** A média (13,25%) e a mediana (13,35%) situam-se perfeitamente dentro da faixa ótima de operação (12% a 14%). O processo está bem centralizado.</span>
+<span id="cb5-355"><a href="#cb5-355" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Dispersão:** O Coeficiente de Variação (CV) foi de 7,16%. Um CV abaixo de 10% é considerado indicativo de excelente homogeneidade e controle de processo.</span>
+<span id="cb5-356"><a href="#cb5-356" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Forma:** A assimetria resultou em um leve valor negativo (-0,12), indicando quase perfeita simetria. A curtose marginalmente negativa (-0,44) indica uma distribuição levemente platicúrtica.</span>
+<span id="cb5-357"><a href="#cb5-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-358"><a href="#cb5-358" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise Gráfica e Tomada de Decisão</span></span>
+<span id="cb5-359"><a href="#cb5-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-360"><a href="#cb5-360" aria-hidden="true" tabindex="-1"></a>Para facilitar a interpretação gerencial, plotamos o histograma sobrepondo as linhas de especificação do projeto (12% e 14%).</span>
+<span id="cb5-361"><a href="#cb5-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-364"><a href="#cb5-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-365"><a href="#cb5-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: histograma-controle</span></span>
+<span id="cb5-366"><a href="#cb5-366" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-367"><a href="#cb5-367" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb5-368"><a href="#cb5-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Histograma da Umidade do Rejeito com Limites de Especificação"</span></span>
+<span id="cb5-369"><a href="#cb5-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-370"><a href="#cb5-370" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração do gráfico usando o R base</span></span>
+<span id="cb5-371"><a href="#cb5-371" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(umidade_rejeito, </span>
+<span id="cb5-372"><a href="#cb5-372" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">6</span>, </span>
+<span id="cb5-373"><a href="#cb5-373" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightgray"</span>, </span>
+<span id="cb5-374"><a href="#cb5-374" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb5-375"><a href="#cb5-375" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Controle de Qualidade: Umidade do Rejeito"</span>,</span>
+<span id="cb5-376"><a href="#cb5-376" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Teor de Umidade (%)"</span>,</span>
+<span id="cb5-377"><a href="#cb5-377" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequência Absoluta"</span>,</span>
+<span id="cb5-378"><a href="#cb5-378" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb5-379"><a href="#cb5-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-380"><a href="#cb5-380" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando limites de controle</span></span>
+<span id="cb5-381"><a href="#cb5-381" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">12</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb5-382"><a href="#cb5-382" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">14</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb5-383"><a href="#cb5-383" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> media_umidade, <span class="at">col =</span> <span class="st">"darkgreen"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb5-384"><a href="#cb5-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-385"><a href="#cb5-385" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando legenda</span></span>
+<span id="cb5-386"><a href="#cb5-386" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb5-387"><a href="#cb5-387" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Média do Processo"</span>, <span class="st">"Limite Inf (12%)"</span>, <span class="st">"Limite Sup (14%)"</span>), </span>
+<span id="cb5-388"><a href="#cb5-388" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
+<span id="cb5-389"><a href="#cb5-389" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), </span>
+<span id="cb5-390"><a href="#cb5-390" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb5-391"><a href="#cb5-391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-392"><a href="#cb5-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-393"><a href="#cb5-393" aria-hidden="true" tabindex="-1"></a>**Diagnóstico Operacional:**</span>
+<span id="cb5-394"><a href="#cb5-394" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Umectação Necessária (&lt; 12%):** Apenas 3 amostras apresentaram umidade muito baixa, representando **10%** da produção.</span>
+<span id="cb5-395"><a href="#cb5-395" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Secagem Necessária (&gt; 14%):** 6 amostras ultrapassaram o limite superior, indicando que **20%** do rejeito necessitará de retrabalho ou tempo de secagem no pátio.</span>
+<span id="cb5-396"><a href="#cb5-396" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Empilhamento Direto (12% a 14%):** As 21 amostras restantes concentram-se na faixa ótima, o que garante que **70%** da produção atual atende aos rigorosos critérios de segurança e estabilidade.</span>
+<span id="cb5-397"><a href="#cb5-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-398"><a href="#cb5-398" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-399"><a href="#cb5-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-400"><a href="#cb5-400" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações Finais</span></span>
+<span id="cb5-401"><a href="#cb5-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-402"><a href="#cb5-402" aria-hidden="true" tabindex="-1"></a>A prática demonstrou com clareza como as ferramentas da Estatística Descritiva são indispensáveis para a tomada de decisão no controle de processos. O uso da linguagem R, apoiado pelas funcionalidades didáticas do pacote <span class="in">`leem`</span>, permitiu transformar dados brutos de um ensaio de rotina (teor de umidade de rejeitos) em um diagnóstico operacional completo e direto.</span>
+<span id="cb5-403"><a href="#cb5-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-404"><a href="#cb5-404" aria-hidden="true" tabindex="-1"></a>Observou-se que, embora o processo de filtragem esteja muito bem centrado — com média de 13,25% (dentro do intervalo ideal de 12% a 14%) — a análise da variabilidade revelou que 30% do material gerado ainda exige algum tipo de manuseio ou retrabalho (secagem ou umectação) antes do empilhamento final. Tais constatações só foram possíveis graças ao entendimento conjunto das medidas de posição, de dispersão e da visualização por histogramas.</span>
+<span id="cb5-405"><a href="#cb5-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-406"><a href="#cb5-406" aria-hidden="true" tabindex="-1"></a>Por fim, o relatório cumpre seus objetivos ao consolidar que a integração entre fundamentos teóricos sólidos de probabilidade e estatística e ferramentas computacionais proporciona a capacidade analítica necessária para garantir a segurança, a qualidade e a eficiência das operações.</span>
+<span id="cb5-407"><a href="#cb5-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-408"><a href="#cb5-408" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+<span id="cb5-409"><a href="#cb5-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-410"><a href="#cb5-410" aria-hidden="true" tabindex="-1"></a>BATISTA, B. D. *Estatística e Probabilidade Aplicada às Engenharias e Ciências*. Departamento de Estatística, Física e Matemática (DEFIM) - Universidade Federal de São João del-Rei (UFSJ), 2026.</span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -2,8 +2,10 @@
 title: "Marcus Fillipe e Gustavo Daudt"
 image: "logogithub.png"
 links:
-  - label: GitHub
-    url: "https://github.com/"
+  - label: GitHub Marcus
+    url: "https://github.com/mfillipecivil"
+  - label: GitHub Gustavo
+    url: "https://github.com/GustavoDaudt"
   - label: Email
     url: "mailto: mfillipecivil@gmail.com : gustavodaudt13@aluno.ufsj.edu.br"
   - label: Relatórios
@@ -12,4 +14,4 @@ output:
   postcards::jolla
 ---
 
-Pagina destinada para relórios da disciplina de EAIT
+Espaço destinado ao envio dos relórios da disciplina de EAIT, oferecida no curso de Mestrado do PPGTIC da Universidade Federal de São João del-Rei (UFSJ)

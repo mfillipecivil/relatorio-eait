@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
 author: "Marcus Fillipe e Gustavo"
-title: "Relatório de Aula Prática 01"
+title: "Relatório 01 - Aula Prática 01"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -25,20 +25,15 @@ execute:
   message: false
 ---
 
-
 ## 📌 Introdução
-
 
   A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.
  
   A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.
 
-  O desenvolvimento de ferramentas computacionais também contribuie para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.
+  O desenvolvimento de ferramentas computacionais também contribui para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.
 
   Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.
-
-
-
 
 ## 🎯 Objetivos
 
@@ -49,7 +44,6 @@ execute:
   Em seguida, serão apresentados os fundamentos iniciais da linguagem R e do ambiente RStudio, com ênfase nos conceitos de sintaxe e semântica e na utilização dos principais recursos para manipulação e análise de dados. Por fim, os conhecimentos estatísticos e computacionais serão integrados em uma aplicação prática, utilizando o R e o pacote leem para organizar, representar e analisar os dados. A atividade busca, dessa forma, relacionar a fundamentação teórica com sua aplicação computacional, favorecendo a compreensão dos procedimentos e a interpretação dos resultados obtidos.
 
 ### Objetivos específicos
-
 
 - Introduzir os fundamentos da Estatística e da linguagem R, apresentando conceitos básicos como população, amostra, variável e dado, bem como os fundamentos do ambiente R e do RStudio, sua sintaxe, semântica, criação e manipulação de objetos e principais formas de utilização no tratamento e na análise de dados, com base nas 26 aulas do curso R Básico 2024
 - Compreender a importância da coleta, organização, tabulação e apresentação dos dados, reconhecendo esses procedimentos como etapas fundamentais para a realização de uma análise estatística adequada;
@@ -65,7 +59,7 @@ Determinar e interpretar os coeficientes de assimetria e curtose, avaliando a fo
 Integrar os conceitos de Estatística Descritiva, R e RStudio em uma aplicação prática, desenvolvendo uma análise completa de um conjunto de dados da Engenharia Civil, desde sua organização e exploração até o cálculo, a representação e a interpretação dos resultados;
 - Discutir tecnicamente os resultados obtidos, relacionando as características estatísticas identificadas às propriedades e aos fenômenos associados ao contexto da Engenharia Civil, desenvolvendo uma interpretação crítica das informações fornecidas pelo conjunto de dados.
 
----
+***
 
 ## 📚  Fundamentação Teórica
 ### Fundamentos do R e do RStudio
@@ -144,7 +138,6 @@ Uma distinção importante é entre o somatório dos quadrados e o quadrado do s
 O somatório também apresenta propriedades algébricas que facilitam a manipulação das expressões estatísticas, como a possibilidade de retirar constantes do somatório e distribuir a operação sobre somas ou diferenças.
 
 Uma propriedade importante é que a soma dos desvios em relação à média é igual a zero. Por isso, medidas de dispersão utilizam o módulo ou, principalmente, o quadrado dos desvios para evitar o cancelamento entre valores positivos e negativos.
-
 
 
 ### Organização dos dados e Distribuição de Frequências
@@ -259,69 +252,151 @@ EP = \frac{s}{\sqrt{n}}
 $$
 Essa medida é utilizada em procedimentos de inferência estatística, incluindo intervalos de confiança e testes de hipóteses.
 
-
-
----
-
+***
 ## ⚙️ Metodologia
 
-O desenvolvimento dos estudos foi realizado por meio de uma abordagem teórico-prática, com o objetivo de revisar os principais conceitos da Estatística Descritiva e sua aplicação computacional no ambiente RStudio. Inicialmente, foram estudados os conceitos fundamentais relacionados à população, amostra, variável, dados e somatório, estabelecendo a base necessária para o desenvolvimento das demais medidas estatísticas.
+O desenvolvimento deste relatório baseou-se em uma abordagem quantitativa, dividida em duas etapas principais: a revisão teórica dos conceitos de Estatística Descritiva e a aplicação prática computacional. A fundamentação teórica contemplou os estudos de população, amostra, organização de dados e as principais medidas de tendência central, dispersão e forma (assimetria e curtose). 
 
-Em seguida, foram abordadas as principais medidas de posição, incluindo média aritmética, média aparada, mediana e moda, bem como a relação empírica de Pearson. Posteriormente, foram estudadas as medidas de dispersão, contemplando amplitude total, soma dos quadrados, variância, desvio padrão, coeficiente de variação e erro padrão da média.
+Para a etapa prática, simulou-se um cenário rotineiro e crítico: a avaliação do **teor de umidade de rejeitos** processados em uma planta de filtragem. O parâmetro de projeto estabelece que a umidade ótima para o empilhamento seguro (garantindo estabilidade geotécnica e mitigando riscos de liquefação) deve situar-se na faixa entre **12% e 14%**. 
 
-Também foram analisadas as medidas relacionadas à forma da distribuição dos dados, com destaque para os coeficientes de assimetria e curtose. Para cada medida, foram estudadas sua definição, interpretação, formulação matemática e aplicação em conjuntos de dados.
+Foi gerado um banco de dados com 30 amostras representativas desse processo. A análise dos dados foi integralmente conduzida no ambiente RStudio, com o emprego da linguagem R e do pacote `leem` (Laboratório de Ensino de Estatística e Matemática). O pacote auxiliou na classificação das variáveis, construção das tabelas de distribuição de frequências e no cálculo das medidas descritivas, permitindo diagnosticar o percentual de material aprovado para empilhamento direto, bem como os volumes que exigiriam retrabalho (umectação ou secagem).
 
-A etapa computacional foi desenvolvida utilizando o RStudio, com a implementação das funções e expressões necessárias para o cálculo das medidas estatísticas. Paralelamente, as expressões matemáticas foram estruturadas em LaTeX, utilizando a linguagem Quarto para organizar e apresentar as fórmulas de maneira adequada no documento final.
-
-Por fim, os resultados obtidos pelas expressões matemáticas e pelos procedimentos computacionais foram comparados e interpretados, buscando verificar a correspondência entre a fundamentação teórica e sua aplicação prática no R. Dessa forma, a metodologia permitiu integrar conceitos estatísticos, formulação matemática e programação, contribuindo para a compreensão e aplicação das principais técnicas de Estatística Descritiva.
-
----
+***
 
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+### Contextualização e Base de Dados
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+O controle da umidade do rejeito filtrado é um fator crítico na operação. Se o rejeito for empilhado com umidade inferior a **12%**, o material apresenta baixa coesão aparente e alta emissão de particulados (poeira), exigindo processos de **umectação**. Por outro lado, se a umidade ultrapassar os **14%**, o material perde resistência ao cisalhamento, gerando instabilidade mecânica e demandando tempo de **secagem** no pátio antes do empilhamento definitivo.
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
-
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
-
-Procure não apenas descrever, mas **interpretar os dados**.
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
+Abaixo, geramos e apresentamos o banco de dados contendo os resultados das 30 amostras de umidade (%) coletadas:
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| label: criacao-dados
+#| echo: true
+#| warning: false
+
+# Carregando os pacotes necessários
+library(leem)
+library(knitr)
+
+# Vetor com 30 amostras de umidade do rejeito (%)
+umidade_rejeito <- c(12.5, 13.1, 14.2, 11.8, 13.5, 13.8, 12.9, 14.5, 12.1, 13.0,
+                     13.2, 12.7, 15.1, 11.5, 13.4, 13.9, 12.8, 14.0, 13.3, 12.6,
+                     14.1, 13.7, 12.2, 13.6, 14.8, 12.4, 13.5, 11.9, 13.1, 14.3)
+
+# Transformando os dados em um objeto da classe leem para variável contínua
+dados_leem <- new_leem(umidade_rejeito, variable = 2)
 ```
 
-## 🧠 Considerações finais
+### Distribuição de Frequências
 
-Apresente uma síntese dos principais pontos observados no experimento.
+Como a umidade é uma variável quantitativa contínua, agrupamos esses dados em intervalos de classe utilizando as funções do pacote `leem`.
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+```{r}
+#| label: tabela-frequencia
+#| echo: true
+#| warning: false
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+# Gerando a tabela de frequência com o pacote leem (aproximadamente 5 classes)
+tabela_freq <- tabfreq(dados_leem, k = 5)
 
-## Aprenda Quarto
+# Exibindo a tabela formatada de forma nativa para evitar erros de dimensão
+kable(tabela_freq$table, 
+      align = "c", 
+      caption = "Distribuição de Frequências do Teor de Umidade do Rejeito")
+```
 
-Acesse [Quarto](https://quarto.org/).
+Ao analisar a tabela, observa-se que a maior concentração de amostras (moda tabular) encontra-se na região central da distribuição, indicando que a planta consegue manter a maior parte do material próximo à normalidade operacional. 
+
+### Medidas de Posição e Dispersão
+
+A avaliação da capacidade do processo requer o cálculo exato das medidas descritivas:
+
+```{r}
+#| label: medidas-estatisticas
+#| echo: true
+
+# Garantindo que as saídas sejam numéricas para evitar erros de formatação
+media_umidade <- as.numeric(mean(umidade_rejeito))
+mediana_umidade <- as.numeric(median(umidade_rejeito))
+desvio_padrao <- as.numeric(sd(umidade_rejeito))
+variancia <- as.numeric(var(umidade_rejeito))
+coef_variacao <- (desvio_padrao / media_umidade) * 100 
+
+# Medidas de Forma (Cálculo via momentos)
+n <- length(umidade_rejeito)
+m3 <- sum((umidade_rejeito - media_umidade)^3) / n
+s3 <- (sum((umidade_rejeito - media_umidade)^2) / n)^(3/2)
+assimetria <- m3 / s3
+
+m4 <- sum((umidade_rejeito - media_umidade)^4) / n
+s4 <- (sum((umidade_rejeito - media_umidade)^2) / n)^2
+curtose <- (m4 / s4) - 3
+
+# Criando um data frame para exibir os resultados
+estatisticas <- data.frame(
+  Medida = c("Média", "Mediana", "Desvio Padrão", "Variância", "CV (%)", "Assimetria", "Curtose"),
+  Valor = round(c(media_umidade, mediana_umidade, desvio_padrao, variancia, coef_variacao, assimetria, curtose), 3)
+)
+
+kable(estatisticas, align = "c", caption = "Estatísticas Descritivas da Umidade do Rejeito")
+```
+
+**Discussão dos Indicadores:**
+
+1. **Posição:** A média (13,25%) e a mediana (13,35%) situam-se perfeitamente dentro da faixa ótima de operação (12% a 14%). O processo está bem centralizado.
+2. **Dispersão:** O Coeficiente de Variação (CV) foi de 7,16%. Um CV abaixo de 10% é considerado indicativo de excelente homogeneidade e controle de processo.
+3. **Forma:** A assimetria resultou em um leve valor negativo (-0,12), indicando quase perfeita simetria. A curtose marginalmente negativa (-0,44) indica uma distribuição levemente platicúrtica.
+
+### Análise Gráfica e Tomada de Decisão
+
+Para facilitar a interpretação gerencial, plotamos o histograma sobrepondo as linhas de especificação do projeto (12% e 14%).
+
+```{r}
+#| label: histograma-controle
+#| echo: true
+#| fig-align: "center"
+#| fig-cap: "Histograma da Umidade do Rejeito com Limites de Especificação"
+
+# Configuração do gráfico usando o R base
+hist(umidade_rejeito, 
+     breaks = 6, 
+     col = "lightgray", 
+     border = "black",
+     main = "Controle de Qualidade: Umidade do Rejeito",
+     xlab = "Teor de Umidade (%)",
+     ylab = "Frequência Absoluta",
+     ylim = c(0, 10))
+
+# Adicionando limites de controle
+abline(v = 12, col = "blue", lwd = 2, lty = 2)
+abline(v = 14, col = "red", lwd = 2, lty = 2)
+abline(v = media_umidade, col = "darkgreen", lwd = 2)
+
+# Adicionando legenda
+legend("topright", 
+       legend = c("Média do Processo", "Limite Inf (12%)", "Limite Sup (14%)"), 
+       col = c("darkgreen", "blue", "red"), 
+       lty = c(1, 2, 2), 
+       lwd = 2)
+```
+
+**Diagnóstico Operacional:**
+* **Umectação Necessária (< 12%):** Apenas 3 amostras apresentaram umidade muito baixa, representando **10%** da produção.
+* **Secagem Necessária (> 14%):** 6 amostras ultrapassaram o limite superior, indicando que **20%** do rejeito necessitará de retrabalho ou tempo de secagem no pátio.
+* **Empilhamento Direto (12% a 14%):** As 21 amostras restantes concentram-se na faixa ótima, o que garante que **70%** da produção atual atende aos rigorosos critérios de segurança e estabilidade.
+
+***
+
+## 🧠 Considerações Finais
+
+A prática demonstrou com clareza como as ferramentas da Estatística Descritiva são indispensáveis para a tomada de decisão no controle de processos. O uso da linguagem R, apoiado pelas funcionalidades didáticas do pacote `leem`, permitiu transformar dados brutos de um ensaio de rotina (teor de umidade de rejeitos) em um diagnóstico operacional completo e direto.
+
+Observou-se que, embora o processo de filtragem esteja muito bem centrado — com média de 13,25% (dentro do intervalo ideal de 12% a 14%) — a análise da variabilidade revelou que 30% do material gerado ainda exige algum tipo de manuseio ou retrabalho (secagem ou umectação) antes do empilhamento final. Tais constatações só foram possíveis graças ao entendimento conjunto das medidas de posição, de dispersão e da visualização por histogramas.
+
+Por fim, o relatório cumpre seus objetivos ao consolidar que a integração entre fundamentos teóricos sólidos de probabilidade e estatística e ferramentas computacionais proporciona a capacidade analítica necessária para garantir a segurança, a qualidade e a eficiência das operações.
 
 ## 📖 Referências
+
+BATISTA, B. D. *Estatística e Probabilidade Aplicada às Engenharias e Ciências*. Departamento de Estatística, Física e Matemática (DEFIM) - Universidade Federal de São João del-Rei (UFSJ), 2026.
