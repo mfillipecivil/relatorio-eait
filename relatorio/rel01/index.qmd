@@ -349,7 +349,7 @@ gc_curtose <- (momento4 / desvio_quarto) - 3
 # Consolidação dos Resultados
 estatisticas_gc <- data.frame(
   Parâmetro = c("Média (%)", "Mediana (%)", "Desvio Padrão (%)", 
-                "Variância (%)", "CV (%)", "Assimetria", "Curtose"),
+                "Variância (%²)", "CV (%)", "Assimetria", "Curtose"),
   Resultado = round(c(gc_media, gc_mediana, gc_desvio, 
                       gc_var, gc_cv, gc_assimetria, gc_curtose), 3)
 )
