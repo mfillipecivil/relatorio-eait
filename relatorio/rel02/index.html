@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nome do Aluno">
+<meta name="author" content="Gustavo e Marcus Fillipe">
 
 <title>Relatório de Aula Prática 02</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -22,8 +25,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +38,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -79,49 +83,21 @@ div.csl-indent {
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body>
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -135,8 +111,24 @@ window.Quarto = {
   <li><a href="#objetivo-geral" id="toc-objetivo-geral" class="nav-link" data-scroll-target="#objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</a></li>
   <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos"><span class="header-section-number">2.2</span> Objetivos específicos</a></li>
   </ul></li>
-  <li><a href="#fundamentação-teórica" id="toc-fundamentação-teórica" class="nav-link" data-scroll-target="#fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</a></li>
-  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a></li>
+  <li><a href="#fundamentação-teórica" id="toc-fundamentação-teórica" class="nav-link" data-scroll-target="#fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</a>
+  <ul class="collapse">
+  <li><a href="#análise-e-qualidade-dos-dados" id="toc-análise-e-qualidade-dos-dados" class="nav-link" data-scroll-target="#análise-e-qualidade-dos-dados"><span class="header-section-number">3.1</span> Análise e qualidade dos dados</a></li>
+  <li><a href="#variáveis-quantitativas-e-qualitativas" id="toc-variáveis-quantitativas-e-qualitativas" class="nav-link" data-scroll-target="#variáveis-quantitativas-e-qualitativas"><span class="header-section-number">3.2</span> Variáveis quantitativas e qualitativas</a></li>
+  <li><a href="#valores-ausentes-e-tratamento-dos-dados" id="toc-valores-ausentes-e-tratamento-dos-dados" class="nav-link" data-scroll-target="#valores-ausentes-e-tratamento-dos-dados"><span class="header-section-number">3.3</span> Valores ausentes e tratamento dos dados</a></li>
+  <li><a href="#padronização-e-consistência-das-categorias" id="toc-padronização-e-consistência-das-categorias" class="nav-link" data-scroll-target="#padronização-e-consistência-das-categorias"><span class="header-section-number">3.4</span> Padronização e consistência das categorias</a></li>
+  <li><a href="#estatística-descritiva" id="toc-estatística-descritiva" class="nav-link" data-scroll-target="#estatística-descritiva"><span class="header-section-number">3.5</span> Estatística descritiva</a></li>
+  <li><a href="#análise-de-dados-agrupados" id="toc-análise-de-dados-agrupados" class="nav-link" data-scroll-target="#análise-de-dados-agrupados"><span class="header-section-number">3.6</span> Análise de dados agrupados</a></li>
+  <li><a href="#resistência-à-compressão-do-concreto" id="toc-resistência-à-compressão-do-concreto" class="nav-link" data-scroll-target="#resistência-à-compressão-do-concreto"><span class="header-section-number">3.7</span> Resistência à compressão do concreto</a></li>
+  <li><a href="#relação-águacimento-e-resistência" id="toc-relação-águacimento-e-resistência" class="nav-link" data-scroll-target="#relação-águacimento-e-resistência"><span class="header-section-number">3.8</span> Relação água/cimento e resistência</a></li>
+  <li><a href="#consumo-de-cimento-e-resistência" id="toc-consumo-de-cimento-e-resistência" class="nav-link" data-scroll-target="#consumo-de-cimento-e-resistência"><span class="header-section-number">3.9</span> Consumo de cimento e resistência</a></li>
+  <li><a href="#influência-da-idade-na-resistência" id="toc-influência-da-idade-na-resistência" class="nav-link" data-scroll-target="#influência-da-idade-na-resistência"><span class="header-section-number">3.10</span> Influência da idade na resistência</a></li>
+  <li><a href="#utilização-do-r-na-análise-estatística" id="toc-utilização-do-r-na-análise-estatística" class="nav-link" data-scroll-target="#utilização-do-r-na-análise-estatística"><span class="header-section-number">3.11</span> Utilização do R na análise estatística</a></li>
+  </ul></li>
+  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a>
+  <ul class="collapse">
+  <li><a href="#importação-e-reconhecimento-da-base" id="toc-importação-e-reconhecimento-da-base" class="nav-link" data-scroll-target="#importação-e-reconhecimento-da-base"><span class="header-section-number">4.1</span> Importação e reconhecimento da base</a></li>
+  </ul></li>
   <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</a>
   <ul class="collapse">
   <li><a href="#exemplo-de-como-citar-uma-referência-bibliográfica" id="toc-exemplo-de-como-citar-uma-referência-bibliográfica" class="nav-link" data-scroll-target="#exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Exemplo de como citar uma referência bibliográfica</a></li>
@@ -171,14 +163,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Autor</div>
     <div class="quarto-title-meta-contents">
-             <p>Nome do Aluno </p>
+             <p>Gustavo e Marcus Fillipe </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">19/03/2026, 06:32</p>
+      <p class="date">28/08/2026, 15:48</p>
     </div>
   </div>
   
@@ -192,68 +184,108 @@ window.Quarto = {
 
 <section id="introdução" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> 📌 Introdução</h2>
-<p>Descreva o contexto da prática e sua importância.</p>
-<blockquote class="blockquote">
-<p>Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.</p>
-</blockquote>
+<p>O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.</p>
+<p>A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.</p>
+<p>Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.</p>
+<p>Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.</p>
 </section>
 <section id="objetivos" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">2</span> 🎯 Objetivos</h2>
 <section id="objetivo-geral" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</h3>
-<p>Descrever o objetivo principal da prática.</p>
+<p>Processar, limpar e analisar uma base de dados de controle tecnológico do concreto utilizando a linguagem R, identificando e tratando inconsistências e obtendo informações que contribuam para a avaliação do desempenho do material e para a tomada de decisões técnicas.</p>
 </section>
 <section id="objetivos-específicos" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="objetivos-específicos"><span class="header-section-number">2.2</span> Objetivos específicos</h3>
 <ul>
-<li>Coletar dados experimentais<br>
-</li>
-<li>Aplicar estatística descritiva<br>
-</li>
-<li>Construir gráficos<br>
-</li>
-<li>Interpretar resultados</li>
+<li>Inspecionar a estrutura e as características da base de dados;</li>
+<li>Identificar valores ausentes, erros de registro e inconsistências;</li>
+<li>Padronizar e tratar as variáveis para a realização das análises;</li>
+<li>Aplicar recursos do Base R na manipulação e exploração dos dados;</li>
+<li>Calcular estatísticas descritivas e comparar diferentes grupos de dados;</li>
+<li>Criar variáveis derivadas relacionadas ao desempenho do concreto;</li>
+<li>Interpretar os resultados considerando sua aplicação na Engenharia Civil;</li>
+<li>Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise</li>
 </ul>
 <hr>
 </section>
 </section>
 <section id="fundamentação-teórica" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</h2>
-<p>Apresente os conceitos principais:</p>
-<ul>
-<li>Média</li>
-<li>Variância</li>
-<li>Desvio padrão</li>
-<li>Amostragem</li>
-</ul>
-<p><span class="math display">\[
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-\]</span></p>
+<section id="análise-e-qualidade-dos-dados" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="análise-e-qualidade-dos-dados"><span class="header-section-number">3.1</span> Análise e qualidade dos dados</h3>
+<p>A análise estatística de dados deve ser precedida por uma etapa de inspeção e verificação da qualidade das informações. A presença de valores ausentes, erros de digitação, categorias inconsistentes ou registros incompatíveis com o fenômeno estudado pode comprometer os resultados obtidos e conduzir a interpretações equivocadas.</p>
+<p>Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.</p>
+<p>A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.</p>
+</section>
+<section id="variáveis-quantitativas-e-qualitativas" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="variáveis-quantitativas-e-qualitativas"><span class="header-section-number">3.2</span> Variáveis quantitativas e qualitativas</h3>
+<p>As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.</p>
+<p>No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.</p>
+<p>A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.</p>
+</section>
+<section id="valores-ausentes-e-tratamento-dos-dados" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="valores-ausentes-e-tratamento-dos-dados"><span class="header-section-number">3.3</span> Valores ausentes e tratamento dos dados</h3>
+<p>Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.</p>
+<p>A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.</p>
+<p>Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.</p>
+</section>
+<section id="padronização-e-consistência-das-categorias" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="padronização-e-consistência-das-categorias"><span class="header-section-number">3.4</span> Padronização e consistência das categorias</h3>
+<p>Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.</p>
+<p>Por exemplo, as categorias <code>C30</code>, <code>c30</code> e <code>C-30</code> podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.</p>
+<p>A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.</p>
+</section>
+<section id="estatística-descritiva" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="estatística-descritiva"><span class="header-section-number">3.5</span> Estatística descritiva</h3>
+<p>A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.</p>
+<p>No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.</p>
+<p>O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.</p>
+<p>O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.</p>
+<p>Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.</p>
+</section>
+<section id="análise-de-dados-agrupados" class="level3" data-number="3.6">
+<h3 data-number="3.6" class="anchored" data-anchor-id="análise-de-dados-agrupados"><span class="header-section-number">3.6</span> Análise de dados agrupados</h3>
+<p>A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.</p>
+<p>A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.</p>
+<p>Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.</p>
+</section>
+<section id="resistência-à-compressão-do-concreto" class="level3" data-number="3.7">
+<h3 data-number="3.7" class="anchored" data-anchor-id="resistência-à-compressão-do-concreto"><span class="header-section-number">3.7</span> Resistência à compressão do concreto</h3>
+<p>A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.</p>
+<p>A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.</p>
+</section>
+<section id="relação-águacimento-e-resistência" class="level3" data-number="3.8">
+<h3 data-number="3.8" class="anchored" data-anchor-id="relação-águacimento-e-resistência"><span class="header-section-number">3.8</span> Relação água/cimento e resistência</h3>
+<p>A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.</p>
+<p>Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.</p>
+<p>Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.</p>
+</section>
+<section id="consumo-de-cimento-e-resistência" class="level3" data-number="3.9">
+<h3 data-number="3.9" class="anchored" data-anchor-id="consumo-de-cimento-e-resistência"><span class="header-section-number">3.9</span> Consumo de cimento e resistência</h3>
+<p>O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.</p>
+<p>Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.</p>
+<p>Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.</p>
+</section>
+<section id="influência-da-idade-na-resistência" class="level3" data-number="3.10">
+<h3 data-number="3.10" class="anchored" data-anchor-id="influência-da-idade-na-resistência"><span class="header-section-number">3.10</span> Influência da idade na resistência</h3>
+<p>A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.</p>
+<p>Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.</p>
+</section>
+<section id="utilização-do-r-na-análise-estatística" class="level3" data-number="3.11">
+<h3 data-number="3.11" class="anchored" data-anchor-id="utilização-do-r-na-análise-estatística"><span class="header-section-number">3.11</span> Utilização do R na análise estatística</h3>
+<p>O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.</p>
+<p>Funções como <code>str()</code>, <code>summary()</code>, <code>aggregate()</code>, <code>split()</code>, <code>lapply()</code>, <code>sapply()</code> e <code>apply()</code> permitem realizar diferentes operações de inspeção, agrupamento e processamento.</p>
+<p>A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do <code>R</code>.</p>
 <hr>
+</section>
 </section>
 <section id="metodologia" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Descreva como o experimento foi realizado.</p>
-</div>
-</div>
-<ul>
-<li>Materiais utilizados<br>
-</li>
-<li>Procedimento<br>
-</li>
-<li>Número de repetições</li>
-</ul>
+<section id="importação-e-reconhecimento-da-base" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="importação-e-reconhecimento-da-base"><span class="header-section-number">4.1</span> Importação e reconhecimento da base</h3>
 <hr>
+</section>
 </section>
 <section id="resultados-e-discussão" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</h2>
@@ -285,8 +317,8 @@ Nota
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.2  9.8 10.5 10.1  9.9 10.3</code></pre>
@@ -323,290 +355,294 @@ BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro
 </div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiada");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiada");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
         }
-        return container.innerHTML
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -614,188 +650,164 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Nome do Aluno"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Gustavo e Marcus Fillipe"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório de Aula Prática 02"</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
@@ -823,103 +835,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>Descreva o contexto da prática e sua importância.</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.</span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.</span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>Descrever o objetivo principal da prática.</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Coletar dados experimentais  </span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar estatística descritiva  </span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construir gráficos  </span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretar resultados  </span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>Apresente os conceitos principais:</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Média</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variância</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Desvio padrão</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Amostragem</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>Processar, limpar e analisar uma base de dados de controle tecnológico do concreto utilizando a linguagem R, identificando e tratando inconsistências e obtendo informações que contribuam para a avaliação do desempenho do material e para a tomada de decisões técnicas.</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Inspecionar a estrutura e as características da base de dados;</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Identificar valores ausentes, erros de registro e inconsistências;</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Padronizar e tratar as variáveis para a realização das análises;</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar recursos do Base R na manipulação e exploração dos dados;</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calcular estatísticas descritivas e comparar diferentes grupos de dados;</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Criar variáveis derivadas relacionadas ao desempenho do concreto;</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretar os resultados considerando sua aplicação na Engenharia Civil;</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
 <span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise e qualidade dos dados</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>A análise estatística de dados deve ser precedida por uma etapa de inspeção e verificação da qualidade das informações. A presença de valores ausentes, erros de digitação, categorias inconsistentes ou registros incompatíveis com o fenômeno estudado pode comprometer os resultados obtidos e conduzir a interpretações equivocadas.</span>
 <span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.</span>
 <span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.</span>
 <span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>Descreva como o experimento foi realizado.</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis quantitativas e qualitativas</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.</span>
 <span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Materiais utilizados  </span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Procedimento  </span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Número de repetições  </span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.</span>
 <span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Valores ausentes e tratamento dos dados</span></span>
 <span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.</span>
 <span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.</span>
 <span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Padronização e consistência das categorias</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>Por exemplo, as categorias <span class="in">`C30`</span>, <span class="in">`c30`</span> e <span class="in">`C-30`</span> podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estatística descritiva</span></span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.</span>
 <span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.</span>
 <span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.</span>
 <span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>distancia</span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise de dados agrupados</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.</span>
 <span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Resistência à compressão do concreto</span></span>
 <span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.</span>
 <span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
-</code><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação água/cimento e resistência</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consumo de cimento e resistência</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="fu">### Influência da idade na resistência</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização do R na análise estatística</span></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>Funções como <span class="in">`str()`</span>, <span class="in">`summary()`</span>, <span class="in">`aggregate()`</span>, <span class="in">`split()`</span>, <span class="in">`lapply()`</span>, <span class="in">`sapply()`</span> e <span class="in">`apply()`</span> permitem realizar diferentes operações de inspeção, agrupamento e processamento.</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do <span class="in">`R`</span>.</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### Importação e reconhecimento da base</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>distancia</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+</code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

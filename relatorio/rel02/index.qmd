@@ -1,6 +1,6 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
+author: "Gustavo e Marcus Fillipe"
 title: "Relatório de Aula Prática 02"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
@@ -28,51 +28,132 @@ execute:
 
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
+O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.
 
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.
 
+Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.
+
+Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.
 
 
 ## 🎯 Objetivos
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+Processar, limpar e analisar uma base de dados de controle tecnológico do concreto utilizando a linguagem R, identificando e tratando inconsistências e obtendo informações que contribuam para a avaliação do desempenho do material e para a tomada de decisões técnicas.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+- Inspecionar a estrutura e as características da base de dados;
+- Identificar valores ausentes, erros de registro e inconsistências;
+- Padronizar e tratar as variáveis para a realização das análises;
+- Aplicar recursos do Base R na manipulação e exploração dos dados;
+- Calcular estatísticas descritivas e comparar diferentes grupos de dados;
+- Criar variáveis derivadas relacionadas ao desempenho do concreto;
+- Interpretar os resultados considerando sua aplicação na Engenharia Civil;
+- Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise
 
 ---
 
 ## 📚  Fundamentação Teórica
 
-Apresente os conceitos principais:
+### Análise e qualidade dos dados
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+A análise estatística de dados deve ser precedida por uma etapa de inspeção e verificação da qualidade das informações. A presença de valores ausentes, erros de digitação, categorias inconsistentes ou registros incompatíveis com o fenômeno estudado pode comprometer os resultados obtidos e conduzir a interpretações equivocadas.
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.
+
+A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.
+
+### Variáveis quantitativas e qualitativas
+
+As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.
+
+No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.
+
+A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.
+
+### Valores ausentes e tratamento dos dados
+
+Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.
+
+A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.
+
+Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.
+
+### Padronização e consistência das categorias
+
+Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.
+
+Por exemplo, as categorias `C30`, `c30` e `C-30` podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.
+
+A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.
+
+### Estatística descritiva
+
+A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.
+
+No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.
+
+O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.
+
+O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.
+
+Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.
+
+### Análise de dados agrupados
+
+A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.
+
+A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.
+
+Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.
+
+### Resistência à compressão do concreto
+
+A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.
+
+A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.
+
+### Relação água/cimento e resistência
+
+A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.
+
+Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.
+
+Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.
+
+### Consumo de cimento e resistência
+
+O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.
+
+Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.
+
+Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.
+
+### Influência da idade na resistência
+
+A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.
+
+Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.
+
+### Utilização do R na análise estatística
+
+O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.
+
+Funções como `str()`, `summary()`, `aggregate()`, `split()`, `lapply()`, `sapply()` e `apply()` permitem realizar diferentes operações de inspeção, agrupamento e processamento.
+
+A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do `R`.
 
 ---
 
 ## ⚙️ Metodologia
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+### Importação e reconhecimento da base
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+
+
 
 ---
 
