@@ -152,7 +152,339 @@ A utilização de estruturas de programação, como for e if, também permite de
 
 ### Importação e reconhecimento da base
 
+Inicialmente, a base de dados foi importada para o ambiente R e atribuída ao objeto dados.
 
+A importação foi realizada utilizando a função `read.csv()`:
+```
+dados <- read.csv("nome_do_arquivo.csv")
+```
+
+Após a importação, foram utilizadas as funções `head()`, `dim()` e `names()`:
+```
+head(dados)
+dim(dados)
+names(dados)
+```
+A função `head()` permitiu visualizar as primeiras observações, `dim()` permitiu verificar o número de linhas e colunas e `names()` apresentou os nomes das variáveis.
+
+### Verificação da estrutura da base
+
+A estrutura da base foi analisada utilizando a função `str()`:
+```
+str(dados)
+```
+
+Essa função permitiu verificar o número de observações, o número de variáveis e os tipos de dados reconhecidos pelo R.
+
+Também foi utilizado o comando:
+```
+summary(dados)
+```
+para obter um resumo das variáveis.
+
+### Verificação dos valores ausentes
+
+A existência de valores ausentes foi investigada utilizando:
+```
+sum(is.na(dados))
+```
+A quantidade de valores ausentes por variável foi obtida com:
+```
+colSums(is.na(dados))
+```
+Para localizar as posições dos valores ausentes, foi utilizado:
+```
+which(is.na(dados), arr.ind = TRUE)
+```
+
+### Investigação de valores potencialmente problemáticos
+
+Foram verificadas as variáveis relacionadas à idade, resistência, abatimento, densidade, relação água/cimento e absorção.
+
+Exemplos de códigos utilizados:
+```
+dados[dados$idade <= 0, ]
+
+dados[dados$resistencia <= 0, ]
+
+dados[dados$abatimento < 0, ]
+
+dados[dados$densidade <= 0, ]
+
+dados[dados$relacao_a_c < 0, ]
+
+dados[dados$absorcao < 0, ]
+```
+Esses comandos permitem localizar registros que apresentam valores incompatíveis com os critérios definidos para a análise.
+
+Também foram verificadas as categorias das variáveis qualitativas:
+```
+unique(dados$obra)
+table(dados$obra)
+
+unique(dados$tipo_concreto)
+table(dados$tipo_concreto)
+```
+### Criação da base limpa
+
+Para preservar a base original, foi criada uma cópia denominada dados_limpos:
+```
+dados_limpos <- dados
+```
+As alterações necessárias foram realizadas somente no objeto dados_limpos.
+
+Após as correções, a estrutura foi novamente verificada:
+```
+str(dados_limpos)
+summary(dados_limpos)
+```
+
+### Correção dos tipos das variáveis
+
+As variáveis quantitativas foram verificadas por meio da função `str()`.
+
+Quando necessário, foram convertidas para o formato numérico utilizando `as.numeric()`:
+```
+dados_limpos$resistencia <- as.numeric(dados_limpos$resistencia`
+```
+Após a conversão, a estrutura foi novamente verificada:
+```
+str(dados_limpos)`
+```
+
+### Análise da resistência média
+
+A resistência média geral foi calculada utilizando `mean()`:
+```
+mean(dados_limpos$resistencia, na.rm = TRUE)
+```
+O argumento `na.rm = TRUE` permite que os valores "NA" sejam desconsiderados no cálculo.
+
+A resistência média por obra foi calculada utilizando `aggregate()`:
+```
+aggregate(`
+  resistencia ~ obra,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+```
+A resistência média por tipo de concreto foi obtida por:
+```
+aggregate(
+  resistencia ~ tipo_concreto,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+```
+E a resistência média por idade:
+```
+aggregate(
+  resistencia ~ idade,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+```
+### Utilização de `aggregate()`
+
+Para calcular simultaneamente as médias das propriedades do concreto por tipo, foi utilizado:
+```
+aggregate(
+  cbind(
+    resistencia,
+    consumo_cimento,
+    relacao_a_c,
+    abatimento,
+    densidade
+  ) ~ (tipo_concreto,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+)
+```
+Essa operação permitiu comparar as características médias das diferentes classes de concreto.
+
+### Criação da variável `resistencia_relativa`
+
+Foi criada a variável `resistencia_ref`, contendo os valores de referência de acordo com a classe do concreto.
+
+Em seguida, foi criada a variável `resistencia_relativa`:
+```
+dados_limpos$resistencia_relativa <-
+  dados_limpos$resistencia /
+  dados_limpos$resistencia_ref
+```
+A variável representa a razão entre a resistência observada e a resistência de referência.
+
+Valores superiores a 1 indicam resistência observada superior à referência, enquanto valores inferiores a 1 indicam resistência inferior à referência.
+
+### Criação da variável `classificacao`:
+
+Foi criada uma variável denominada `classificacao` para classificar os corpos de prova de acordo com os critérios estabelecidos para a análise.
+
+Os critérios utilizados foram definidos previamente e aplicados por meio de estruturas condicionais do `R`.
+
+### Criação da variável `acima_media`:
+
+A variável `acima_media` foi criada para indicar se a resistência de cada corpo de prova estava acima ou abaixo da média de seu respectivo tipo de concreto.
+
+Essa variável foi definida como lógica, assumindo os valores TRUE ou FALSE.
+
+### Utilização de `split()`:
+
+A base foi dividida de acordo com tipo_concreto utilizando:
+```
+grupos_concreto <- split(
+  dados_limpos,
+  dados_limpos$tipo_concreto
+)
+```
+A quantidade de observações em cada grupo foi obtida utilizando:
+```
+sapply(grupos_concreto, nrow)
+```
+
+### Utilização de `lapply()` e `sapply()`:
+
+A resistência média de cada grupo foi calculada utilizando `lapply()`:
+```
+medias_lapply <- lapply(
+  grupos_concreto,
+  function(x) {
+    mean(x$resistencia, na.rm = TRUE)
+ }
+)
+```
+Posteriormente, a mesma operação foi realizada com `sapply()`:
+```
+medias_sapply <- sapply(
+  grupos_concreto,
+  function(x) {
+    mean(x$resistencia, na.rm = TRUE)
+ }
+)
+```
+A principal diferença é que `lapply()` retorna uma lista, enquanto `sapply()` procura simplificar o resultado.
+
+
+### Utilização de `apply()`:
+
+As variáveis quantitativas foram selecionadas:
+```
+quantitativas <- dados_limpos[
+  ,
+  c(
+    "resistencia",
+    "consumo_cimento",
+    "relacao_a_c"`
+    "abatimento",
+    "densidade",
+    "absorcao"
+  )
+]
+```
+A média de cada variável foi calculada utilizando:
+```
+apply(
+  quantitativas,
+  2,
+  mean,
+  na.rm = TRUE
+)
+```
+Também foi calculada uma medida resumo para cada observação:
+```
+apply(
+  quantitativas,
+  1,
+  mean,
+  na.rm = TRUE
+)
+```
+Nesse segundo caso, deve-se destacar que a média obtida entre variáveis com diferentes unidades e significados físicos não possui necessariamente uma interpretação física direta.
+
+### Utilização de `for` e `if`:
+
+Para identificar os corpos de prova cuja resistência estivesse acima da média de sua classe, foi utilizada uma estrutura `for` combinada com `if`:
+```
+ for (i in 1:nrow(dados_limpos)) { 
+
+  classe <- dados_limpos$tipo_concreto[i]
+
+  media_classe <- mean(
+    dados_limpos$resistencia[
+      dados_limpos$tipo_concreto == classe
+    ],
+    na.rm = TRUE
+  )
+
+  if (dados_limpos$resistencia[i] > media_classe) {
+
+    print(dados_limpos[i, ])
+
+  }
+}
+```
+A mesma análise foi posteriormente realizada por meio de uma abordagem vetorizada.
+
+A comparação entre as duas soluções considerou simplicidade, legibilidade e eficiência.
+
+### Comparação entre obras
+
+A resistência média dos diferentes blocos foi calculada utilizando:
+```
+aggregate(
+  resistencia ~ obra,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+```
+Os resultados foram comparados para verificar se o Bloco C apresentava a maior resistência média.
+
+A análise foi realizada de maneira exclusivamente descritiva, sem aplicação de testes de hipótese.
+
+### Relação entre consumo de cimento e resistência
+
+A relação entre consumo_cimento e resistencia foi investigada por meio de uma representação gráfica:
+```
+plot(
+  dados_limpos$consumo_cimento,
+  dados_limpos$resistencia,
+  xlab = "Consumo de cimento",
+  ylab = "Resistência à compressão"
+)
+```
+Também foram consideradas as variáveis `relacao_a_c`, `idade` e `tipo_concreto`, uma vez que esses fatores podem influenciar a resistência.
+
+### Relação entre água/cimento e resistência
+
+A relação entre relacao_a_c e resistencia foi analisada por:
+```
+plot(
+  dados_limpos$relacao_a_c,
+  dados_limpos$resistencia,
+  xlab = "Relação água/cimento",
+  ylab = "Resistência à compressão"
+)
+```
+O gráfico foi utilizado para verificar a existência de tendências ou padrões que justificassem uma investigação mais detalhada.
+
+### Relação entre idade e resistência
+
+A resistência média para cada idade foi obtida utilizando:
+```
+aggregate(
+  resistencia ~ idade,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+```
+Os resultados foram comparados para verificar o comportamento da resistência com o aumento da idade dos corpos de prova.
 
 
 ---

@@ -128,6 +128,24 @@ div.csl-indent {
   <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a>
   <ul class="collapse">
   <li><a href="#importação-e-reconhecimento-da-base" id="toc-importação-e-reconhecimento-da-base" class="nav-link" data-scroll-target="#importação-e-reconhecimento-da-base"><span class="header-section-number">4.1</span> Importação e reconhecimento da base</a></li>
+  <li><a href="#verificação-da-estrutura-da-base" id="toc-verificação-da-estrutura-da-base" class="nav-link" data-scroll-target="#verificação-da-estrutura-da-base"><span class="header-section-number">4.2</span> Verificação da estrutura da base</a></li>
+  <li><a href="#verificação-dos-valores-ausentes" id="toc-verificação-dos-valores-ausentes" class="nav-link" data-scroll-target="#verificação-dos-valores-ausentes"><span class="header-section-number">4.3</span> Verificação dos valores ausentes</a></li>
+  <li><a href="#investigação-de-valores-potencialmente-problemáticos" id="toc-investigação-de-valores-potencialmente-problemáticos" class="nav-link" data-scroll-target="#investigação-de-valores-potencialmente-problemáticos"><span class="header-section-number">4.4</span> Investigação de valores potencialmente problemáticos</a></li>
+  <li><a href="#criação-da-base-limpa" id="toc-criação-da-base-limpa" class="nav-link" data-scroll-target="#criação-da-base-limpa"><span class="header-section-number">4.5</span> Criação da base limpa</a></li>
+  <li><a href="#correção-dos-tipos-das-variáveis" id="toc-correção-dos-tipos-das-variáveis" class="nav-link" data-scroll-target="#correção-dos-tipos-das-variáveis"><span class="header-section-number">4.6</span> Correção dos tipos das variáveis</a></li>
+  <li><a href="#análise-da-resistência-média" id="toc-análise-da-resistência-média" class="nav-link" data-scroll-target="#análise-da-resistência-média"><span class="header-section-number">4.7</span> Análise da resistência média</a></li>
+  <li><a href="#utilização-de-aggregate" id="toc-utilização-de-aggregate" class="nav-link" data-scroll-target="#utilização-de-aggregate"><span class="header-section-number">4.8</span> Utilização de <code>aggregate()</code></a></li>
+  <li><a href="#criação-da-variável-resistencia_relativa" id="toc-criação-da-variável-resistencia_relativa" class="nav-link" data-scroll-target="#criação-da-variável-resistencia_relativa"><span class="header-section-number">4.9</span> Criação da variável <code>resistencia_relativa</code></a></li>
+  <li><a href="#criação-da-variável-classificacao" id="toc-criação-da-variável-classificacao" class="nav-link" data-scroll-target="#criação-da-variável-classificacao"><span class="header-section-number">4.10</span> Criação da variável <code>classificacao</code>:</a></li>
+  <li><a href="#criação-da-variável-acima_media" id="toc-criação-da-variável-acima_media" class="nav-link" data-scroll-target="#criação-da-variável-acima_media"><span class="header-section-number">4.11</span> Criação da variável <code>acima_media</code>:</a></li>
+  <li><a href="#utilização-de-split" id="toc-utilização-de-split" class="nav-link" data-scroll-target="#utilização-de-split"><span class="header-section-number">4.12</span> Utilização de <code>split()</code>:</a></li>
+  <li><a href="#utilização-de-lapply-e-sapply" id="toc-utilização-de-lapply-e-sapply" class="nav-link" data-scroll-target="#utilização-de-lapply-e-sapply"><span class="header-section-number">4.13</span> Utilização de <code>lapply()</code> e <code>sapply()</code>:</a></li>
+  <li><a href="#utilização-de-apply" id="toc-utilização-de-apply" class="nav-link" data-scroll-target="#utilização-de-apply"><span class="header-section-number">4.14</span> Utilização de <code>apply()</code>:</a></li>
+  <li><a href="#utilização-de-for-e-if" id="toc-utilização-de-for-e-if" class="nav-link" data-scroll-target="#utilização-de-for-e-if"><span class="header-section-number">4.15</span> Utilização de <code>for</code> e <code>if</code>:</a></li>
+  <li><a href="#comparação-entre-obras" id="toc-comparação-entre-obras" class="nav-link" data-scroll-target="#comparação-entre-obras"><span class="header-section-number">4.16</span> Comparação entre obras</a></li>
+  <li><a href="#relação-entre-consumo-de-cimento-e-resistência" id="toc-relação-entre-consumo-de-cimento-e-resistência" class="nav-link" data-scroll-target="#relação-entre-consumo-de-cimento-e-resistência"><span class="header-section-number">4.17</span> Relação entre consumo de cimento e resistência</a></li>
+  <li><a href="#relação-entre-águacimento-e-resistência" id="toc-relação-entre-águacimento-e-resistência" class="nav-link" data-scroll-target="#relação-entre-águacimento-e-resistência"><span class="header-section-number">4.18</span> Relação entre água/cimento e resistência</a></li>
+  <li><a href="#relação-entre-idade-e-resistência" id="toc-relação-entre-idade-e-resistência" class="nav-link" data-scroll-target="#relação-entre-idade-e-resistência"><span class="header-section-number">4.19</span> Relação entre idade e resistência</a></li>
   </ul></li>
   <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</a>
   <ul class="collapse">
@@ -170,7 +188,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">28/08/2026, 15:48</p>
+      <p class="date">29/08/2026, 11:18</p>
     </div>
   </div>
   
@@ -284,6 +302,263 @@ div.csl-indent {
 <h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</h2>
 <section id="importação-e-reconhecimento-da-base" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="importação-e-reconhecimento-da-base"><span class="header-section-number">4.1</span> Importação e reconhecimento da base</h3>
+<p>Inicialmente, a base de dados foi importada para o ambiente R e atribuída ao objeto dados.</p>
+<p>A importação foi realizada utilizando a função <code>read.csv()</code>:</p>
+<pre><code>dados &lt;- read.csv("nome_do_arquivo.csv")</code></pre>
+<p>Após a importação, foram utilizadas as funções <code>head()</code>, <code>dim()</code> e <code>names()</code>:</p>
+<pre><code>head(dados)
+dim(dados)
+names(dados)</code></pre>
+<p>A função <code>head()</code> permitiu visualizar as primeiras observações, <code>dim()</code> permitiu verificar o número de linhas e colunas e <code>names()</code> apresentou os nomes das variáveis.</p>
+</section>
+<section id="verificação-da-estrutura-da-base" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="verificação-da-estrutura-da-base"><span class="header-section-number">4.2</span> Verificação da estrutura da base</h3>
+<p>A estrutura da base foi analisada utilizando a função <code>str()</code>:</p>
+<pre><code>str(dados)</code></pre>
+<p>Essa função permitiu verificar o número de observações, o número de variáveis e os tipos de dados reconhecidos pelo R.</p>
+<p>Também foi utilizado o comando:</p>
+<pre><code>summary(dados)</code></pre>
+<p>para obter um resumo das variáveis.</p>
+</section>
+<section id="verificação-dos-valores-ausentes" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="verificação-dos-valores-ausentes"><span class="header-section-number">4.3</span> Verificação dos valores ausentes</h3>
+<p>A existência de valores ausentes foi investigada utilizando:</p>
+<pre><code>sum(is.na(dados))</code></pre>
+<p>A quantidade de valores ausentes por variável foi obtida com:</p>
+<pre><code>colSums(is.na(dados))</code></pre>
+<p>Para localizar as posições dos valores ausentes, foi utilizado:</p>
+<pre><code>which(is.na(dados), arr.ind = TRUE)</code></pre>
+</section>
+<section id="investigação-de-valores-potencialmente-problemáticos" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="investigação-de-valores-potencialmente-problemáticos"><span class="header-section-number">4.4</span> Investigação de valores potencialmente problemáticos</h3>
+<p>Foram verificadas as variáveis relacionadas à idade, resistência, abatimento, densidade, relação água/cimento e absorção.</p>
+<p>Exemplos de códigos utilizados:</p>
+<pre><code>dados[dados$idade &lt;= 0, ]
+
+dados[dados$resistencia &lt;= 0, ]
+
+dados[dados$abatimento &lt; 0, ]
+
+dados[dados$densidade &lt;= 0, ]
+
+dados[dados$relacao_a_c &lt; 0, ]
+
+dados[dados$absorcao &lt; 0, ]</code></pre>
+<p>Esses comandos permitem localizar registros que apresentam valores incompatíveis com os critérios definidos para a análise.</p>
+<p>Também foram verificadas as categorias das variáveis qualitativas:</p>
+<pre><code>unique(dados$obra)
+table(dados$obra)
+
+unique(dados$tipo_concreto)
+table(dados$tipo_concreto)</code></pre>
+</section>
+<section id="criação-da-base-limpa" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="criação-da-base-limpa"><span class="header-section-number">4.5</span> Criação da base limpa</h3>
+<p>Para preservar a base original, foi criada uma cópia denominada dados_limpos:</p>
+<pre><code>dados_limpos &lt;- dados</code></pre>
+<p>As alterações necessárias foram realizadas somente no objeto dados_limpos.</p>
+<p>Após as correções, a estrutura foi novamente verificada:</p>
+<pre><code>str(dados_limpos)
+summary(dados_limpos)</code></pre>
+</section>
+<section id="correção-dos-tipos-das-variáveis" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="correção-dos-tipos-das-variáveis"><span class="header-section-number">4.6</span> Correção dos tipos das variáveis</h3>
+<p>As variáveis quantitativas foram verificadas por meio da função <code>str()</code>.</p>
+<p>Quando necessário, foram convertidas para o formato numérico utilizando <code>as.numeric()</code>:</p>
+<pre><code>dados_limpos$resistencia &lt;- as.numeric(dados_limpos$resistencia`</code></pre>
+<p>Após a conversão, a estrutura foi novamente verificada:</p>
+<pre><code>str(dados_limpos)`</code></pre>
+</section>
+<section id="análise-da-resistência-média" class="level3" data-number="4.7">
+<h3 data-number="4.7" class="anchored" data-anchor-id="análise-da-resistência-média"><span class="header-section-number">4.7</span> Análise da resistência média</h3>
+<p>A resistência média geral foi calculada utilizando <code>mean()</code>:</p>
+<pre><code>mean(dados_limpos$resistencia, na.rm = TRUE)</code></pre>
+<p>O argumento <code>na.rm = TRUE</code> permite que os valores “NA” sejam desconsiderados no cálculo.</p>
+<p>A resistência média por obra foi calculada utilizando <code>aggregate()</code>:</p>
+<pre><code>aggregate(`
+  resistencia ~ obra,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)</code></pre>
+<p>A resistência média por tipo de concreto foi obtida por:</p>
+<pre><code>aggregate(
+  resistencia ~ tipo_concreto,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)</code></pre>
+<p>E a resistência média por idade:</p>
+<pre><code>aggregate(
+  resistencia ~ idade,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)</code></pre>
+</section>
+<section id="utilização-de-aggregate" class="level3" data-number="4.8">
+<h3 data-number="4.8" class="anchored" data-anchor-id="utilização-de-aggregate"><span class="header-section-number">4.8</span> Utilização de <code>aggregate()</code></h3>
+<p>Para calcular simultaneamente as médias das propriedades do concreto por tipo, foi utilizado:</p>
+<pre><code>aggregate(
+  cbind(
+    resistencia,
+    consumo_cimento,
+    relacao_a_c,
+    abatimento,
+    densidade
+  ) ~ (tipo_concreto,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)
+)</code></pre>
+<p>Essa operação permitiu comparar as características médias das diferentes classes de concreto.</p>
+</section>
+<section id="criação-da-variável-resistencia_relativa" class="level3" data-number="4.9">
+<h3 data-number="4.9" class="anchored" data-anchor-id="criação-da-variável-resistencia_relativa"><span class="header-section-number">4.9</span> Criação da variável <code>resistencia_relativa</code></h3>
+<p>Foi criada a variável <code>resistencia_ref</code>, contendo os valores de referência de acordo com a classe do concreto.</p>
+<p>Em seguida, foi criada a variável <code>resistencia_relativa</code>:</p>
+<pre><code>dados_limpos$resistencia_relativa &lt;-
+  dados_limpos$resistencia /
+  dados_limpos$resistencia_ref</code></pre>
+<p>A variável representa a razão entre a resistência observada e a resistência de referência.</p>
+<p>Valores superiores a 1 indicam resistência observada superior à referência, enquanto valores inferiores a 1 indicam resistência inferior à referência.</p>
+</section>
+<section id="criação-da-variável-classificacao" class="level3" data-number="4.10">
+<h3 data-number="4.10" class="anchored" data-anchor-id="criação-da-variável-classificacao"><span class="header-section-number">4.10</span> Criação da variável <code>classificacao</code>:</h3>
+<p>Foi criada uma variável denominada <code>classificacao</code> para classificar os corpos de prova de acordo com os critérios estabelecidos para a análise.</p>
+<p>Os critérios utilizados foram definidos previamente e aplicados por meio de estruturas condicionais do <code>R</code>.</p>
+</section>
+<section id="criação-da-variável-acima_media" class="level3" data-number="4.11">
+<h3 data-number="4.11" class="anchored" data-anchor-id="criação-da-variável-acima_media"><span class="header-section-number">4.11</span> Criação da variável <code>acima_media</code>:</h3>
+<p>A variável <code>acima_media</code> foi criada para indicar se a resistência de cada corpo de prova estava acima ou abaixo da média de seu respectivo tipo de concreto.</p>
+<p>Essa variável foi definida como lógica, assumindo os valores TRUE ou FALSE.</p>
+</section>
+<section id="utilização-de-split" class="level3" data-number="4.12">
+<h3 data-number="4.12" class="anchored" data-anchor-id="utilização-de-split"><span class="header-section-number">4.12</span> Utilização de <code>split()</code>:</h3>
+<p>A base foi dividida de acordo com tipo_concreto utilizando:</p>
+<pre><code>grupos_concreto &lt;- split(
+  dados_limpos,
+  dados_limpos$tipo_concreto
+)</code></pre>
+<p>A quantidade de observações em cada grupo foi obtida utilizando:</p>
+<pre><code>sapply(grupos_concreto, nrow)</code></pre>
+</section>
+<section id="utilização-de-lapply-e-sapply" class="level3" data-number="4.13">
+<h3 data-number="4.13" class="anchored" data-anchor-id="utilização-de-lapply-e-sapply"><span class="header-section-number">4.13</span> Utilização de <code>lapply()</code> e <code>sapply()</code>:</h3>
+<p>A resistência média de cada grupo foi calculada utilizando <code>lapply()</code>:</p>
+<pre><code>medias_lapply &lt;- lapply(
+  grupos_concreto,
+  function(x) {
+    mean(x$resistencia, na.rm = TRUE)
+ }
+)</code></pre>
+<p>Posteriormente, a mesma operação foi realizada com <code>sapply()</code>:</p>
+<pre><code>medias_sapply &lt;- sapply(
+  grupos_concreto,
+  function(x) {
+    mean(x$resistencia, na.rm = TRUE)
+ }
+)</code></pre>
+<p>A principal diferença é que <code>lapply()</code> retorna uma lista, enquanto <code>sapply()</code> procura simplificar o resultado.</p>
+</section>
+<section id="utilização-de-apply" class="level3" data-number="4.14">
+<h3 data-number="4.14" class="anchored" data-anchor-id="utilização-de-apply"><span class="header-section-number">4.14</span> Utilização de <code>apply()</code>:</h3>
+<p>As variáveis quantitativas foram selecionadas:</p>
+<pre><code>quantitativas &lt;- dados_limpos[
+  ,
+  c(
+    "resistencia",
+    "consumo_cimento",
+    "relacao_a_c"`
+    "abatimento",
+    "densidade",
+    "absorcao"
+  )
+]</code></pre>
+<p>A média de cada variável foi calculada utilizando:</p>
+<pre><code>apply(
+  quantitativas,
+  2,
+  mean,
+  na.rm = TRUE
+)</code></pre>
+<p>Também foi calculada uma medida resumo para cada observação:</p>
+<pre><code>apply(
+  quantitativas,
+  1,
+  mean,
+  na.rm = TRUE
+)</code></pre>
+<p>Nesse segundo caso, deve-se destacar que a média obtida entre variáveis com diferentes unidades e significados físicos não possui necessariamente uma interpretação física direta.</p>
+</section>
+<section id="utilização-de-for-e-if" class="level3" data-number="4.15">
+<h3 data-number="4.15" class="anchored" data-anchor-id="utilização-de-for-e-if"><span class="header-section-number">4.15</span> Utilização de <code>for</code> e <code>if</code>:</h3>
+<p>Para identificar os corpos de prova cuja resistência estivesse acima da média de sua classe, foi utilizada uma estrutura <code>for</code> combinada com <code>if</code>:</p>
+<pre><code> for (i in 1:nrow(dados_limpos)) { 
+
+  classe &lt;- dados_limpos$tipo_concreto[i]
+
+  media_classe &lt;- mean(
+    dados_limpos$resistencia[
+      dados_limpos$tipo_concreto == classe
+    ],
+    na.rm = TRUE
+  )
+
+  if (dados_limpos$resistencia[i] &gt; media_classe) {
+
+    print(dados_limpos[i, ])
+
+  }
+}</code></pre>
+<p>A mesma análise foi posteriormente realizada por meio de uma abordagem vetorizada.</p>
+<p>A comparação entre as duas soluções considerou simplicidade, legibilidade e eficiência.</p>
+</section>
+<section id="comparação-entre-obras" class="level3" data-number="4.16">
+<h3 data-number="4.16" class="anchored" data-anchor-id="comparação-entre-obras"><span class="header-section-number">4.16</span> Comparação entre obras</h3>
+<p>A resistência média dos diferentes blocos foi calculada utilizando:</p>
+<pre><code>aggregate(
+  resistencia ~ obra,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)</code></pre>
+<p>Os resultados foram comparados para verificar se o Bloco C apresentava a maior resistência média.</p>
+<p>A análise foi realizada de maneira exclusivamente descritiva, sem aplicação de testes de hipótese.</p>
+</section>
+<section id="relação-entre-consumo-de-cimento-e-resistência" class="level3" data-number="4.17">
+<h3 data-number="4.17" class="anchored" data-anchor-id="relação-entre-consumo-de-cimento-e-resistência"><span class="header-section-number">4.17</span> Relação entre consumo de cimento e resistência</h3>
+<p>A relação entre consumo_cimento e resistencia foi investigada por meio de uma representação gráfica:</p>
+<pre><code>plot(
+  dados_limpos$consumo_cimento,
+  dados_limpos$resistencia,
+  xlab = "Consumo de cimento",
+  ylab = "Resistência à compressão"
+)</code></pre>
+<p>Também foram consideradas as variáveis <code>relacao_a_c</code>, <code>idade</code> e <code>tipo_concreto</code>, uma vez que esses fatores podem influenciar a resistência.</p>
+</section>
+<section id="relação-entre-águacimento-e-resistência" class="level3" data-number="4.18">
+<h3 data-number="4.18" class="anchored" data-anchor-id="relação-entre-águacimento-e-resistência"><span class="header-section-number">4.18</span> Relação entre água/cimento e resistência</h3>
+<p>A relação entre relacao_a_c e resistencia foi analisada por:</p>
+<pre><code>plot(
+  dados_limpos$relacao_a_c,
+  dados_limpos$resistencia,
+  xlab = "Relação água/cimento",
+  ylab = "Resistência à compressão"
+)</code></pre>
+<p>O gráfico foi utilizado para verificar a existência de tendências ou padrões que justificassem uma investigação mais detalhada.</p>
+</section>
+<section id="relação-entre-idade-e-resistência" class="level3" data-number="4.19">
+<h3 data-number="4.19" class="anchored" data-anchor-id="relação-entre-idade-e-resistência"><span class="header-section-number">4.19</span> Relação entre idade e resistência</h3>
+<p>A resistência média para cada idade foi obtida utilizando:</p>
+<pre><code>aggregate(
+  resistencia ~ idade,
+  data = dados_limpos,
+  FUN = mean,
+  na.rm = TRUE
+)</code></pre>
+<p>Os resultados foram comparados para verificar o comportamento da resistência com o aumento da idade dos corpos de prova.</p>
 <hr>
 </section>
 </section>
@@ -317,8 +592,8 @@ div.csl-indent {
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.2  9.8 10.5 10.1  9.9 10.3</code></pre>
@@ -805,213 +1080,545 @@ BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Gustavo e Marcus Fillipe"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório de Aula Prática 02"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>Processar, limpar e analisar uma base de dados de controle tecnológico do concreto utilizando a linguagem R, identificando e tratando inconsistências e obtendo informações que contribuam para a avaliação do desempenho do material e para a tomada de decisões técnicas.</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Inspecionar a estrutura e as características da base de dados;</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Identificar valores ausentes, erros de registro e inconsistências;</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Padronizar e tratar as variáveis para a realização das análises;</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar recursos do Base R na manipulação e exploração dos dados;</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calcular estatísticas descritivas e comparar diferentes grupos de dados;</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Criar variáveis derivadas relacionadas ao desempenho do concreto;</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretar os resultados considerando sua aplicação na Engenharia Civil;</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise e qualidade dos dados</span></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>A análise estatística de dados deve ser precedida por uma etapa de inspeção e verificação da qualidade das informações. A presença de valores ausentes, erros de digitação, categorias inconsistentes ou registros incompatíveis com o fenômeno estudado pode comprometer os resultados obtidos e conduzir a interpretações equivocadas.</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis quantitativas e qualitativas</span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Valores ausentes e tratamento dos dados</span></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Padronização e consistência das categorias</span></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>Por exemplo, as categorias <span class="in">`C30`</span>, <span class="in">`c30`</span> e <span class="in">`C-30`</span> podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estatística descritiva</span></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.</span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise de dados agrupados</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.</span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Resistência à compressão do concreto</span></span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.</span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação água/cimento e resistência</span></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.</span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.</span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consumo de cimento e resistência</span></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="fu">### Influência da idade na resistência</span></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização do R na análise estatística</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.</span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>Funções como <span class="in">`str()`</span>, <span class="in">`summary()`</span>, <span class="in">`aggregate()`</span>, <span class="in">`split()`</span>, <span class="in">`lapply()`</span>, <span class="in">`sapply()`</span> e <span class="in">`apply()`</span> permitem realizar diferentes operações de inspeção, agrupamento e processamento.</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do <span class="in">`R`</span>.</span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### Importação e reconhecimento da base</span></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>distancia</span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Gustavo e Marcus Fillipe"</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório de Aula Prática 02"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a>Processar, limpar e analisar uma base de dados de controle tecnológico do concreto utilizando a linguagem R, identificando e tratando inconsistências e obtendo informações que contribuam para a avaliação do desempenho do material e para a tomada de decisões técnicas.</span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Inspecionar a estrutura e as características da base de dados;</span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Identificar valores ausentes, erros de registro e inconsistências;</span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Padronizar e tratar as variáveis para a realização das análises;</span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aplicar recursos do Base R na manipulação e exploração dos dados;</span>
+<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calcular estatísticas descritivas e comparar diferentes grupos de dados;</span>
+<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Criar variáveis derivadas relacionadas ao desempenho do concreto;</span>
+<span id="cb34-54"><a href="#cb34-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretar os resultados considerando sua aplicação na Engenharia Civil;</span>
+<span id="cb34-55"><a href="#cb34-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise</span>
+<span id="cb34-56"><a href="#cb34-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-57"><a href="#cb34-57" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb34-58"><a href="#cb34-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-59"><a href="#cb34-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
+<span id="cb34-60"><a href="#cb34-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-61"><a href="#cb34-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise e qualidade dos dados</span></span>
+<span id="cb34-62"><a href="#cb34-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-63"><a href="#cb34-63" aria-hidden="true" tabindex="-1"></a>A análise estatística de dados deve ser precedida por uma etapa de inspeção e verificação da qualidade das informações. A presença de valores ausentes, erros de digitação, categorias inconsistentes ou registros incompatíveis com o fenômeno estudado pode comprometer os resultados obtidos e conduzir a interpretações equivocadas.</span>
+<span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a>Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.</span>
+<span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a>A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.</span>
+<span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis quantitativas e qualitativas</span></span>
+<span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-71"><a href="#cb34-71" aria-hidden="true" tabindex="-1"></a>As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.</span>
+<span id="cb34-72"><a href="#cb34-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-73"><a href="#cb34-73" aria-hidden="true" tabindex="-1"></a>No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.</span>
+<span id="cb34-74"><a href="#cb34-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-75"><a href="#cb34-75" aria-hidden="true" tabindex="-1"></a>A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.</span>
+<span id="cb34-76"><a href="#cb34-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-77"><a href="#cb34-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Valores ausentes e tratamento dos dados</span></span>
+<span id="cb34-78"><a href="#cb34-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-79"><a href="#cb34-79" aria-hidden="true" tabindex="-1"></a>Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.</span>
+<span id="cb34-80"><a href="#cb34-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-81"><a href="#cb34-81" aria-hidden="true" tabindex="-1"></a>A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.</span>
+<span id="cb34-82"><a href="#cb34-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-83"><a href="#cb34-83" aria-hidden="true" tabindex="-1"></a>Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.</span>
+<span id="cb34-84"><a href="#cb34-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-85"><a href="#cb34-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Padronização e consistência das categorias</span></span>
+<span id="cb34-86"><a href="#cb34-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-87"><a href="#cb34-87" aria-hidden="true" tabindex="-1"></a>Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.</span>
+<span id="cb34-88"><a href="#cb34-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-89"><a href="#cb34-89" aria-hidden="true" tabindex="-1"></a>Por exemplo, as categorias <span class="in">`C30`</span>, <span class="in">`c30`</span> e <span class="in">`C-30`</span> podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.</span>
+<span id="cb34-90"><a href="#cb34-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-91"><a href="#cb34-91" aria-hidden="true" tabindex="-1"></a>A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.</span>
+<span id="cb34-92"><a href="#cb34-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-93"><a href="#cb34-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estatística descritiva</span></span>
+<span id="cb34-94"><a href="#cb34-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-95"><a href="#cb34-95" aria-hidden="true" tabindex="-1"></a>A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.</span>
+<span id="cb34-96"><a href="#cb34-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-97"><a href="#cb34-97" aria-hidden="true" tabindex="-1"></a>No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.</span>
+<span id="cb34-98"><a href="#cb34-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-99"><a href="#cb34-99" aria-hidden="true" tabindex="-1"></a>O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.</span>
+<span id="cb34-100"><a href="#cb34-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-101"><a href="#cb34-101" aria-hidden="true" tabindex="-1"></a>O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.</span>
+<span id="cb34-102"><a href="#cb34-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-103"><a href="#cb34-103" aria-hidden="true" tabindex="-1"></a>Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.</span>
+<span id="cb34-104"><a href="#cb34-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-105"><a href="#cb34-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise de dados agrupados</span></span>
+<span id="cb34-106"><a href="#cb34-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-107"><a href="#cb34-107" aria-hidden="true" tabindex="-1"></a>A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.</span>
+<span id="cb34-108"><a href="#cb34-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-109"><a href="#cb34-109" aria-hidden="true" tabindex="-1"></a>A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.</span>
+<span id="cb34-110"><a href="#cb34-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-111"><a href="#cb34-111" aria-hidden="true" tabindex="-1"></a>Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.</span>
+<span id="cb34-112"><a href="#cb34-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-113"><a href="#cb34-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Resistência à compressão do concreto</span></span>
+<span id="cb34-114"><a href="#cb34-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-115"><a href="#cb34-115" aria-hidden="true" tabindex="-1"></a>A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.</span>
+<span id="cb34-116"><a href="#cb34-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-117"><a href="#cb34-117" aria-hidden="true" tabindex="-1"></a>A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.</span>
+<span id="cb34-118"><a href="#cb34-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-119"><a href="#cb34-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação água/cimento e resistência</span></span>
+<span id="cb34-120"><a href="#cb34-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-121"><a href="#cb34-121" aria-hidden="true" tabindex="-1"></a>A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.</span>
+<span id="cb34-122"><a href="#cb34-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-123"><a href="#cb34-123" aria-hidden="true" tabindex="-1"></a>Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.</span>
+<span id="cb34-124"><a href="#cb34-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-125"><a href="#cb34-125" aria-hidden="true" tabindex="-1"></a>Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.</span>
+<span id="cb34-126"><a href="#cb34-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-127"><a href="#cb34-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consumo de cimento e resistência</span></span>
+<span id="cb34-128"><a href="#cb34-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-129"><a href="#cb34-129" aria-hidden="true" tabindex="-1"></a>O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.</span>
+<span id="cb34-130"><a href="#cb34-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-131"><a href="#cb34-131" aria-hidden="true" tabindex="-1"></a>Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.</span>
+<span id="cb34-132"><a href="#cb34-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-133"><a href="#cb34-133" aria-hidden="true" tabindex="-1"></a>Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.</span>
+<span id="cb34-134"><a href="#cb34-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-135"><a href="#cb34-135" aria-hidden="true" tabindex="-1"></a><span class="fu">### Influência da idade na resistência</span></span>
+<span id="cb34-136"><a href="#cb34-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-137"><a href="#cb34-137" aria-hidden="true" tabindex="-1"></a>A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.</span>
+<span id="cb34-138"><a href="#cb34-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-139"><a href="#cb34-139" aria-hidden="true" tabindex="-1"></a>Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.</span>
+<span id="cb34-140"><a href="#cb34-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-141"><a href="#cb34-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização do R na análise estatística</span></span>
+<span id="cb34-142"><a href="#cb34-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-143"><a href="#cb34-143" aria-hidden="true" tabindex="-1"></a>O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.</span>
+<span id="cb34-144"><a href="#cb34-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-145"><a href="#cb34-145" aria-hidden="true" tabindex="-1"></a>Funções como <span class="in">`str()`</span>, <span class="in">`summary()`</span>, <span class="in">`aggregate()`</span>, <span class="in">`split()`</span>, <span class="in">`lapply()`</span>, <span class="in">`sapply()`</span> e <span class="in">`apply()`</span> permitem realizar diferentes operações de inspeção, agrupamento e processamento.</span>
+<span id="cb34-146"><a href="#cb34-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-147"><a href="#cb34-147" aria-hidden="true" tabindex="-1"></a>A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do <span class="in">`R`</span>.</span>
+<span id="cb34-148"><a href="#cb34-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-149"><a href="#cb34-149" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb34-150"><a href="#cb34-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-151"><a href="#cb34-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb34-152"><a href="#cb34-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-153"><a href="#cb34-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### Importação e reconhecimento da base</span></span>
+<span id="cb34-154"><a href="#cb34-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-155"><a href="#cb34-155" aria-hidden="true" tabindex="-1"></a>Inicialmente, a base de dados foi importada para o ambiente R e atribuída ao objeto dados.</span>
+<span id="cb34-156"><a href="#cb34-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-157"><a href="#cb34-157" aria-hidden="true" tabindex="-1"></a>A importação foi realizada utilizando a função <span class="in">`read.csv()`</span>:</span>
+<span id="cb34-158"><a href="#cb34-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-159"><a href="#cb34-159" aria-hidden="true" tabindex="-1"></a><span class="in">dados &lt;- read.csv("nome_do_arquivo.csv")</span></span>
+<span id="cb34-160"><a href="#cb34-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-161"><a href="#cb34-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-162"><a href="#cb34-162" aria-hidden="true" tabindex="-1"></a>Após a importação, foram utilizadas as funções <span class="in">`head()`</span>, <span class="in">`dim()`</span> e <span class="in">`names()`</span>:</span>
+<span id="cb34-163"><a href="#cb34-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-164"><a href="#cb34-164" aria-hidden="true" tabindex="-1"></a><span class="in">head(dados)</span></span>
+<span id="cb34-165"><a href="#cb34-165" aria-hidden="true" tabindex="-1"></a><span class="in">dim(dados)</span></span>
+<span id="cb34-166"><a href="#cb34-166" aria-hidden="true" tabindex="-1"></a><span class="in">names(dados)</span></span>
+<span id="cb34-167"><a href="#cb34-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-168"><a href="#cb34-168" aria-hidden="true" tabindex="-1"></a>A função <span class="in">`head()`</span> permitiu visualizar as primeiras observações, <span class="in">`dim()`</span> permitiu verificar o número de linhas e colunas e <span class="in">`names()`</span> apresentou os nomes das variáveis.</span>
+<span id="cb34-169"><a href="#cb34-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-170"><a href="#cb34-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Verificação da estrutura da base</span></span>
+<span id="cb34-171"><a href="#cb34-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-172"><a href="#cb34-172" aria-hidden="true" tabindex="-1"></a>A estrutura da base foi analisada utilizando a função <span class="in">`str()`</span>:</span>
+<span id="cb34-173"><a href="#cb34-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-174"><a href="#cb34-174" aria-hidden="true" tabindex="-1"></a><span class="in">str(dados)</span></span>
+<span id="cb34-175"><a href="#cb34-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-176"><a href="#cb34-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-177"><a href="#cb34-177" aria-hidden="true" tabindex="-1"></a>Essa função permitiu verificar o número de observações, o número de variáveis e os tipos de dados reconhecidos pelo R.</span>
+<span id="cb34-178"><a href="#cb34-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-179"><a href="#cb34-179" aria-hidden="true" tabindex="-1"></a>Também foi utilizado o comando:</span>
+<span id="cb34-180"><a href="#cb34-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-181"><a href="#cb34-181" aria-hidden="true" tabindex="-1"></a><span class="in">summary(dados)</span></span>
+<span id="cb34-182"><a href="#cb34-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-183"><a href="#cb34-183" aria-hidden="true" tabindex="-1"></a>para obter um resumo das variáveis.</span>
+<span id="cb34-184"><a href="#cb34-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-185"><a href="#cb34-185" aria-hidden="true" tabindex="-1"></a><span class="fu">### Verificação dos valores ausentes</span></span>
+<span id="cb34-186"><a href="#cb34-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-187"><a href="#cb34-187" aria-hidden="true" tabindex="-1"></a>A existência de valores ausentes foi investigada utilizando:</span>
+<span id="cb34-188"><a href="#cb34-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-189"><a href="#cb34-189" aria-hidden="true" tabindex="-1"></a><span class="in">sum(is.na(dados))</span></span>
+<span id="cb34-190"><a href="#cb34-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-191"><a href="#cb34-191" aria-hidden="true" tabindex="-1"></a>A quantidade de valores ausentes por variável foi obtida com:</span>
+<span id="cb34-192"><a href="#cb34-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-193"><a href="#cb34-193" aria-hidden="true" tabindex="-1"></a><span class="in">colSums(is.na(dados))</span></span>
+<span id="cb34-194"><a href="#cb34-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-195"><a href="#cb34-195" aria-hidden="true" tabindex="-1"></a>Para localizar as posições dos valores ausentes, foi utilizado:</span>
+<span id="cb34-196"><a href="#cb34-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-197"><a href="#cb34-197" aria-hidden="true" tabindex="-1"></a><span class="in">which(is.na(dados), arr.ind = TRUE)</span></span>
+<span id="cb34-198"><a href="#cb34-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-199"><a href="#cb34-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-200"><a href="#cb34-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Investigação de valores potencialmente problemáticos</span></span>
+<span id="cb34-201"><a href="#cb34-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-202"><a href="#cb34-202" aria-hidden="true" tabindex="-1"></a>Foram verificadas as variáveis relacionadas à idade, resistência, abatimento, densidade, relação água/cimento e absorção.</span>
+<span id="cb34-203"><a href="#cb34-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-204"><a href="#cb34-204" aria-hidden="true" tabindex="-1"></a>Exemplos de códigos utilizados:</span>
+<span id="cb34-205"><a href="#cb34-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-206"><a href="#cb34-206" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$idade &lt;= 0, ]</span></span>
+<span id="cb34-207"><a href="#cb34-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-208"><a href="#cb34-208" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$resistencia &lt;= 0, ]</span></span>
+<span id="cb34-209"><a href="#cb34-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-210"><a href="#cb34-210" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$abatimento &lt; 0, ]</span></span>
+<span id="cb34-211"><a href="#cb34-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-212"><a href="#cb34-212" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$densidade &lt;= 0, ]</span></span>
+<span id="cb34-213"><a href="#cb34-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-214"><a href="#cb34-214" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$relacao_a_c &lt; 0, ]</span></span>
+<span id="cb34-215"><a href="#cb34-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-216"><a href="#cb34-216" aria-hidden="true" tabindex="-1"></a><span class="in">dados[dados$absorcao &lt; 0, ]</span></span>
+<span id="cb34-217"><a href="#cb34-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-218"><a href="#cb34-218" aria-hidden="true" tabindex="-1"></a>Esses comandos permitem localizar registros que apresentam valores incompatíveis com os critérios definidos para a análise.</span>
+<span id="cb34-219"><a href="#cb34-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-220"><a href="#cb34-220" aria-hidden="true" tabindex="-1"></a>Também foram verificadas as categorias das variáveis qualitativas:</span>
+<span id="cb34-221"><a href="#cb34-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-222"><a href="#cb34-222" aria-hidden="true" tabindex="-1"></a><span class="in">unique(dados$obra)</span></span>
+<span id="cb34-223"><a href="#cb34-223" aria-hidden="true" tabindex="-1"></a><span class="in">table(dados$obra)</span></span>
+<span id="cb34-224"><a href="#cb34-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-225"><a href="#cb34-225" aria-hidden="true" tabindex="-1"></a><span class="in">unique(dados$tipo_concreto)</span></span>
+<span id="cb34-226"><a href="#cb34-226" aria-hidden="true" tabindex="-1"></a><span class="in">table(dados$tipo_concreto)</span></span>
+<span id="cb34-227"><a href="#cb34-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-228"><a href="#cb34-228" aria-hidden="true" tabindex="-1"></a><span class="fu">### Criação da base limpa</span></span>
+<span id="cb34-229"><a href="#cb34-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-230"><a href="#cb34-230" aria-hidden="true" tabindex="-1"></a>Para preservar a base original, foi criada uma cópia denominada dados_limpos:</span>
+<span id="cb34-231"><a href="#cb34-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-232"><a href="#cb34-232" aria-hidden="true" tabindex="-1"></a><span class="in">dados_limpos &lt;- dados</span></span>
+<span id="cb34-233"><a href="#cb34-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-234"><a href="#cb34-234" aria-hidden="true" tabindex="-1"></a>As alterações necessárias foram realizadas somente no objeto dados_limpos.</span>
+<span id="cb34-235"><a href="#cb34-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-236"><a href="#cb34-236" aria-hidden="true" tabindex="-1"></a>Após as correções, a estrutura foi novamente verificada:</span>
+<span id="cb34-237"><a href="#cb34-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-238"><a href="#cb34-238" aria-hidden="true" tabindex="-1"></a><span class="in">str(dados_limpos)</span></span>
+<span id="cb34-239"><a href="#cb34-239" aria-hidden="true" tabindex="-1"></a><span class="in">summary(dados_limpos)</span></span>
+<span id="cb34-240"><a href="#cb34-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-241"><a href="#cb34-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-242"><a href="#cb34-242" aria-hidden="true" tabindex="-1"></a><span class="fu">### Correção dos tipos das variáveis</span></span>
+<span id="cb34-243"><a href="#cb34-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-244"><a href="#cb34-244" aria-hidden="true" tabindex="-1"></a>As variáveis quantitativas foram verificadas por meio da função <span class="in">`str()`</span>.</span>
+<span id="cb34-245"><a href="#cb34-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-246"><a href="#cb34-246" aria-hidden="true" tabindex="-1"></a>Quando necessário, foram convertidas para o formato numérico utilizando <span class="in">`as.numeric()`</span>:</span>
+<span id="cb34-247"><a href="#cb34-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-248"><a href="#cb34-248" aria-hidden="true" tabindex="-1"></a><span class="in">dados_limpos$resistencia &lt;- as.numeric(dados_limpos$resistencia`</span></span>
+<span id="cb34-249"><a href="#cb34-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-250"><a href="#cb34-250" aria-hidden="true" tabindex="-1"></a>Após a conversão, a estrutura foi novamente verificada:</span>
+<span id="cb34-251"><a href="#cb34-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-252"><a href="#cb34-252" aria-hidden="true" tabindex="-1"></a><span class="in">str(dados_limpos)`</span></span>
+<span id="cb34-253"><a href="#cb34-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-254"><a href="#cb34-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-255"><a href="#cb34-255" aria-hidden="true" tabindex="-1"></a><span class="fu">### Análise da resistência média</span></span>
+<span id="cb34-256"><a href="#cb34-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-257"><a href="#cb34-257" aria-hidden="true" tabindex="-1"></a>A resistência média geral foi calculada utilizando <span class="in">`mean()`</span>:</span>
+<span id="cb34-258"><a href="#cb34-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-259"><a href="#cb34-259" aria-hidden="true" tabindex="-1"></a><span class="in">mean(dados_limpos$resistencia, na.rm = TRUE)</span></span>
+<span id="cb34-260"><a href="#cb34-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-261"><a href="#cb34-261" aria-hidden="true" tabindex="-1"></a>O argumento <span class="in">`na.rm = TRUE`</span> permite que os valores "NA" sejam desconsiderados no cálculo.</span>
+<span id="cb34-262"><a href="#cb34-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-263"><a href="#cb34-263" aria-hidden="true" tabindex="-1"></a>A resistência média por obra foi calculada utilizando <span class="in">`aggregate()`</span>:</span>
+<span id="cb34-264"><a href="#cb34-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-265"><a href="#cb34-265" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(`</span></span>
+<span id="cb34-266"><a href="#cb34-266" aria-hidden="true" tabindex="-1"></a><span class="in">  resistencia ~ obra,</span></span>
+<span id="cb34-267"><a href="#cb34-267" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-268"><a href="#cb34-268" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-269"><a href="#cb34-269" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-270"><a href="#cb34-270" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-271"><a href="#cb34-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-272"><a href="#cb34-272" aria-hidden="true" tabindex="-1"></a>A resistência média por tipo de concreto foi obtida por:</span>
+<span id="cb34-273"><a href="#cb34-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-274"><a href="#cb34-274" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(</span></span>
+<span id="cb34-275"><a href="#cb34-275" aria-hidden="true" tabindex="-1"></a><span class="in">  resistencia ~ tipo_concreto,</span></span>
+<span id="cb34-276"><a href="#cb34-276" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-277"><a href="#cb34-277" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-278"><a href="#cb34-278" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-279"><a href="#cb34-279" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-280"><a href="#cb34-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-281"><a href="#cb34-281" aria-hidden="true" tabindex="-1"></a>E a resistência média por idade:</span>
+<span id="cb34-282"><a href="#cb34-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-283"><a href="#cb34-283" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(</span></span>
+<span id="cb34-284"><a href="#cb34-284" aria-hidden="true" tabindex="-1"></a><span class="in">  resistencia ~ idade,</span></span>
+<span id="cb34-285"><a href="#cb34-285" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-286"><a href="#cb34-286" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-287"><a href="#cb34-287" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-288"><a href="#cb34-288" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-289"><a href="#cb34-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-290"><a href="#cb34-290" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização de `aggregate()`</span></span>
+<span id="cb34-291"><a href="#cb34-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-292"><a href="#cb34-292" aria-hidden="true" tabindex="-1"></a>Para calcular simultaneamente as médias das propriedades do concreto por tipo, foi utilizado:</span>
+<span id="cb34-293"><a href="#cb34-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-294"><a href="#cb34-294" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(</span></span>
+<span id="cb34-295"><a href="#cb34-295" aria-hidden="true" tabindex="-1"></a><span class="in">  cbind(</span></span>
+<span id="cb34-296"><a href="#cb34-296" aria-hidden="true" tabindex="-1"></a><span class="in">    resistencia,</span></span>
+<span id="cb34-297"><a href="#cb34-297" aria-hidden="true" tabindex="-1"></a><span class="in">    consumo_cimento,</span></span>
+<span id="cb34-298"><a href="#cb34-298" aria-hidden="true" tabindex="-1"></a><span class="in">    relacao_a_c,</span></span>
+<span id="cb34-299"><a href="#cb34-299" aria-hidden="true" tabindex="-1"></a><span class="in">    abatimento,</span></span>
+<span id="cb34-300"><a href="#cb34-300" aria-hidden="true" tabindex="-1"></a><span class="in">    densidade</span></span>
+<span id="cb34-301"><a href="#cb34-301" aria-hidden="true" tabindex="-1"></a><span class="in">  ) ~ (tipo_concreto,</span></span>
+<span id="cb34-302"><a href="#cb34-302" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-303"><a href="#cb34-303" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-304"><a href="#cb34-304" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-305"><a href="#cb34-305" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-306"><a href="#cb34-306" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-307"><a href="#cb34-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-308"><a href="#cb34-308" aria-hidden="true" tabindex="-1"></a>Essa operação permitiu comparar as características médias das diferentes classes de concreto.</span>
+<span id="cb34-309"><a href="#cb34-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-310"><a href="#cb34-310" aria-hidden="true" tabindex="-1"></a><span class="fu">### Criação da variável `resistencia_relativa`</span></span>
+<span id="cb34-311"><a href="#cb34-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-312"><a href="#cb34-312" aria-hidden="true" tabindex="-1"></a>Foi criada a variável <span class="in">`resistencia_ref`</span>, contendo os valores de referência de acordo com a classe do concreto.</span>
+<span id="cb34-313"><a href="#cb34-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-314"><a href="#cb34-314" aria-hidden="true" tabindex="-1"></a>Em seguida, foi criada a variável <span class="in">`resistencia_relativa`</span>:</span>
+<span id="cb34-315"><a href="#cb34-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-316"><a href="#cb34-316" aria-hidden="true" tabindex="-1"></a><span class="in">dados_limpos$resistencia_relativa &lt;-</span></span>
+<span id="cb34-317"><a href="#cb34-317" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$resistencia /</span></span>
+<span id="cb34-318"><a href="#cb34-318" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$resistencia_ref</span></span>
+<span id="cb34-319"><a href="#cb34-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-320"><a href="#cb34-320" aria-hidden="true" tabindex="-1"></a>A variável representa a razão entre a resistência observada e a resistência de referência.</span>
+<span id="cb34-321"><a href="#cb34-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-322"><a href="#cb34-322" aria-hidden="true" tabindex="-1"></a>Valores superiores a 1 indicam resistência observada superior à referência, enquanto valores inferiores a 1 indicam resistência inferior à referência.</span>
+<span id="cb34-323"><a href="#cb34-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-324"><a href="#cb34-324" aria-hidden="true" tabindex="-1"></a><span class="fu">### Criação da variável `classificacao`:</span></span>
+<span id="cb34-325"><a href="#cb34-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-326"><a href="#cb34-326" aria-hidden="true" tabindex="-1"></a>Foi criada uma variável denominada <span class="in">`classificacao`</span> para classificar os corpos de prova de acordo com os critérios estabelecidos para a análise.</span>
+<span id="cb34-327"><a href="#cb34-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-328"><a href="#cb34-328" aria-hidden="true" tabindex="-1"></a>Os critérios utilizados foram definidos previamente e aplicados por meio de estruturas condicionais do <span class="in">`R`</span>.</span>
+<span id="cb34-329"><a href="#cb34-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-330"><a href="#cb34-330" aria-hidden="true" tabindex="-1"></a><span class="fu">### Criação da variável `acima_media`:</span></span>
+<span id="cb34-331"><a href="#cb34-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-332"><a href="#cb34-332" aria-hidden="true" tabindex="-1"></a>A variável <span class="in">`acima_media`</span> foi criada para indicar se a resistência de cada corpo de prova estava acima ou abaixo da média de seu respectivo tipo de concreto.</span>
+<span id="cb34-333"><a href="#cb34-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-334"><a href="#cb34-334" aria-hidden="true" tabindex="-1"></a>Essa variável foi definida como lógica, assumindo os valores TRUE ou FALSE.</span>
+<span id="cb34-335"><a href="#cb34-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-336"><a href="#cb34-336" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização de `split()`:</span></span>
+<span id="cb34-337"><a href="#cb34-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-338"><a href="#cb34-338" aria-hidden="true" tabindex="-1"></a>A base foi dividida de acordo com tipo_concreto utilizando:</span>
+<span id="cb34-339"><a href="#cb34-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-340"><a href="#cb34-340" aria-hidden="true" tabindex="-1"></a><span class="in">grupos_concreto &lt;- split(</span></span>
+<span id="cb34-341"><a href="#cb34-341" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos,</span></span>
+<span id="cb34-342"><a href="#cb34-342" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$tipo_concreto</span></span>
+<span id="cb34-343"><a href="#cb34-343" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-344"><a href="#cb34-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-345"><a href="#cb34-345" aria-hidden="true" tabindex="-1"></a>A quantidade de observações em cada grupo foi obtida utilizando:</span>
+<span id="cb34-346"><a href="#cb34-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-347"><a href="#cb34-347" aria-hidden="true" tabindex="-1"></a><span class="in">sapply(grupos_concreto, nrow)</span></span>
+<span id="cb34-348"><a href="#cb34-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-349"><a href="#cb34-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-350"><a href="#cb34-350" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização de `lapply()` e `sapply()`:</span></span>
+<span id="cb34-351"><a href="#cb34-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-352"><a href="#cb34-352" aria-hidden="true" tabindex="-1"></a>A resistência média de cada grupo foi calculada utilizando <span class="in">`lapply()`</span>:</span>
+<span id="cb34-353"><a href="#cb34-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-354"><a href="#cb34-354" aria-hidden="true" tabindex="-1"></a><span class="in">medias_lapply &lt;- lapply(</span></span>
+<span id="cb34-355"><a href="#cb34-355" aria-hidden="true" tabindex="-1"></a><span class="in">  grupos_concreto,</span></span>
+<span id="cb34-356"><a href="#cb34-356" aria-hidden="true" tabindex="-1"></a><span class="in">  function(x) {</span></span>
+<span id="cb34-357"><a href="#cb34-357" aria-hidden="true" tabindex="-1"></a><span class="in">    mean(x$resistencia, na.rm = TRUE)</span></span>
+<span id="cb34-358"><a href="#cb34-358" aria-hidden="true" tabindex="-1"></a><span class="in"> }</span></span>
+<span id="cb34-359"><a href="#cb34-359" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-360"><a href="#cb34-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-361"><a href="#cb34-361" aria-hidden="true" tabindex="-1"></a>Posteriormente, a mesma operação foi realizada com <span class="in">`sapply()`</span>:</span>
+<span id="cb34-362"><a href="#cb34-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-363"><a href="#cb34-363" aria-hidden="true" tabindex="-1"></a><span class="in">medias_sapply &lt;- sapply(</span></span>
+<span id="cb34-364"><a href="#cb34-364" aria-hidden="true" tabindex="-1"></a><span class="in">  grupos_concreto,</span></span>
+<span id="cb34-365"><a href="#cb34-365" aria-hidden="true" tabindex="-1"></a><span class="in">  function(x) {</span></span>
+<span id="cb34-366"><a href="#cb34-366" aria-hidden="true" tabindex="-1"></a><span class="in">    mean(x$resistencia, na.rm = TRUE)</span></span>
+<span id="cb34-367"><a href="#cb34-367" aria-hidden="true" tabindex="-1"></a><span class="in"> }</span></span>
+<span id="cb34-368"><a href="#cb34-368" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-369"><a href="#cb34-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-370"><a href="#cb34-370" aria-hidden="true" tabindex="-1"></a>A principal diferença é que <span class="in">`lapply()`</span> retorna uma lista, enquanto <span class="in">`sapply()`</span> procura simplificar o resultado.</span>
+<span id="cb34-371"><a href="#cb34-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-372"><a href="#cb34-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-373"><a href="#cb34-373" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização de `apply()`:</span></span>
+<span id="cb34-374"><a href="#cb34-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-375"><a href="#cb34-375" aria-hidden="true" tabindex="-1"></a>As variáveis quantitativas foram selecionadas:</span>
+<span id="cb34-376"><a href="#cb34-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-377"><a href="#cb34-377" aria-hidden="true" tabindex="-1"></a><span class="in">quantitativas &lt;- dados_limpos[</span></span>
+<span id="cb34-378"><a href="#cb34-378" aria-hidden="true" tabindex="-1"></a><span class="in">  ,</span></span>
+<span id="cb34-379"><a href="#cb34-379" aria-hidden="true" tabindex="-1"></a><span class="in">  c(</span></span>
+<span id="cb34-380"><a href="#cb34-380" aria-hidden="true" tabindex="-1"></a><span class="in">    "resistencia",</span></span>
+<span id="cb34-381"><a href="#cb34-381" aria-hidden="true" tabindex="-1"></a><span class="in">    "consumo_cimento",</span></span>
+<span id="cb34-382"><a href="#cb34-382" aria-hidden="true" tabindex="-1"></a><span class="in">    "relacao_a_c"`</span></span>
+<span id="cb34-383"><a href="#cb34-383" aria-hidden="true" tabindex="-1"></a><span class="in">    "abatimento",</span></span>
+<span id="cb34-384"><a href="#cb34-384" aria-hidden="true" tabindex="-1"></a><span class="in">    "densidade",</span></span>
+<span id="cb34-385"><a href="#cb34-385" aria-hidden="true" tabindex="-1"></a><span class="in">    "absorcao"</span></span>
+<span id="cb34-386"><a href="#cb34-386" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb34-387"><a href="#cb34-387" aria-hidden="true" tabindex="-1"></a><span class="in">]</span></span>
+<span id="cb34-388"><a href="#cb34-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-389"><a href="#cb34-389" aria-hidden="true" tabindex="-1"></a>A média de cada variável foi calculada utilizando:</span>
+<span id="cb34-390"><a href="#cb34-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-391"><a href="#cb34-391" aria-hidden="true" tabindex="-1"></a><span class="in">apply(</span></span>
+<span id="cb34-392"><a href="#cb34-392" aria-hidden="true" tabindex="-1"></a><span class="in">  quantitativas,</span></span>
+<span id="cb34-393"><a href="#cb34-393" aria-hidden="true" tabindex="-1"></a><span class="in">  2,</span></span>
+<span id="cb34-394"><a href="#cb34-394" aria-hidden="true" tabindex="-1"></a><span class="in">  mean,</span></span>
+<span id="cb34-395"><a href="#cb34-395" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-396"><a href="#cb34-396" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-397"><a href="#cb34-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-398"><a href="#cb34-398" aria-hidden="true" tabindex="-1"></a>Também foi calculada uma medida resumo para cada observação:</span>
+<span id="cb34-399"><a href="#cb34-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-400"><a href="#cb34-400" aria-hidden="true" tabindex="-1"></a><span class="in">apply(</span></span>
+<span id="cb34-401"><a href="#cb34-401" aria-hidden="true" tabindex="-1"></a><span class="in">  quantitativas,</span></span>
+<span id="cb34-402"><a href="#cb34-402" aria-hidden="true" tabindex="-1"></a><span class="in">  1,</span></span>
+<span id="cb34-403"><a href="#cb34-403" aria-hidden="true" tabindex="-1"></a><span class="in">  mean,</span></span>
+<span id="cb34-404"><a href="#cb34-404" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-405"><a href="#cb34-405" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-406"><a href="#cb34-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-407"><a href="#cb34-407" aria-hidden="true" tabindex="-1"></a>Nesse segundo caso, deve-se destacar que a média obtida entre variáveis com diferentes unidades e significados físicos não possui necessariamente uma interpretação física direta.</span>
+<span id="cb34-408"><a href="#cb34-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-409"><a href="#cb34-409" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilização de `for` e `if`:</span></span>
+<span id="cb34-410"><a href="#cb34-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-411"><a href="#cb34-411" aria-hidden="true" tabindex="-1"></a>Para identificar os corpos de prova cuja resistência estivesse acima da média de sua classe, foi utilizada uma estrutura <span class="in">`for`</span> combinada com <span class="in">`if`</span>:</span>
+<span id="cb34-412"><a href="#cb34-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-413"><a href="#cb34-413" aria-hidden="true" tabindex="-1"></a><span class="in"> for (i in 1:nrow(dados_limpos)) { </span></span>
+<span id="cb34-414"><a href="#cb34-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-415"><a href="#cb34-415" aria-hidden="true" tabindex="-1"></a><span class="in">  classe &lt;- dados_limpos$tipo_concreto[i]</span></span>
+<span id="cb34-416"><a href="#cb34-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-417"><a href="#cb34-417" aria-hidden="true" tabindex="-1"></a><span class="in">  media_classe &lt;- mean(</span></span>
+<span id="cb34-418"><a href="#cb34-418" aria-hidden="true" tabindex="-1"></a><span class="in">    dados_limpos$resistencia[</span></span>
+<span id="cb34-419"><a href="#cb34-419" aria-hidden="true" tabindex="-1"></a><span class="in">      dados_limpos$tipo_concreto == classe</span></span>
+<span id="cb34-420"><a href="#cb34-420" aria-hidden="true" tabindex="-1"></a><span class="in">    ],</span></span>
+<span id="cb34-421"><a href="#cb34-421" aria-hidden="true" tabindex="-1"></a><span class="in">    na.rm = TRUE</span></span>
+<span id="cb34-422"><a href="#cb34-422" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb34-423"><a href="#cb34-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-424"><a href="#cb34-424" aria-hidden="true" tabindex="-1"></a><span class="in">  if (dados_limpos$resistencia[i] &gt; media_classe) {</span></span>
+<span id="cb34-425"><a href="#cb34-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-426"><a href="#cb34-426" aria-hidden="true" tabindex="-1"></a><span class="in">    print(dados_limpos[i, ])</span></span>
+<span id="cb34-427"><a href="#cb34-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-428"><a href="#cb34-428" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb34-429"><a href="#cb34-429" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb34-430"><a href="#cb34-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-431"><a href="#cb34-431" aria-hidden="true" tabindex="-1"></a>A mesma análise foi posteriormente realizada por meio de uma abordagem vetorizada.</span>
+<span id="cb34-432"><a href="#cb34-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-433"><a href="#cb34-433" aria-hidden="true" tabindex="-1"></a>A comparação entre as duas soluções considerou simplicidade, legibilidade e eficiência.</span>
+<span id="cb34-434"><a href="#cb34-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-435"><a href="#cb34-435" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparação entre obras</span></span>
+<span id="cb34-436"><a href="#cb34-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-437"><a href="#cb34-437" aria-hidden="true" tabindex="-1"></a>A resistência média dos diferentes blocos foi calculada utilizando:</span>
+<span id="cb34-438"><a href="#cb34-438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-439"><a href="#cb34-439" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(</span></span>
+<span id="cb34-440"><a href="#cb34-440" aria-hidden="true" tabindex="-1"></a><span class="in">  resistencia ~ obra,</span></span>
+<span id="cb34-441"><a href="#cb34-441" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-442"><a href="#cb34-442" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-443"><a href="#cb34-443" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-444"><a href="#cb34-444" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-445"><a href="#cb34-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-446"><a href="#cb34-446" aria-hidden="true" tabindex="-1"></a>Os resultados foram comparados para verificar se o Bloco C apresentava a maior resistência média.</span>
+<span id="cb34-447"><a href="#cb34-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-448"><a href="#cb34-448" aria-hidden="true" tabindex="-1"></a>A análise foi realizada de maneira exclusivamente descritiva, sem aplicação de testes de hipótese.</span>
+<span id="cb34-449"><a href="#cb34-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-450"><a href="#cb34-450" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação entre consumo de cimento e resistência</span></span>
+<span id="cb34-451"><a href="#cb34-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-452"><a href="#cb34-452" aria-hidden="true" tabindex="-1"></a>A relação entre consumo_cimento e resistencia foi investigada por meio de uma representação gráfica:</span>
+<span id="cb34-453"><a href="#cb34-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-454"><a href="#cb34-454" aria-hidden="true" tabindex="-1"></a><span class="in">plot(</span></span>
+<span id="cb34-455"><a href="#cb34-455" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$consumo_cimento,</span></span>
+<span id="cb34-456"><a href="#cb34-456" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$resistencia,</span></span>
+<span id="cb34-457"><a href="#cb34-457" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab = "Consumo de cimento",</span></span>
+<span id="cb34-458"><a href="#cb34-458" aria-hidden="true" tabindex="-1"></a><span class="in">  ylab = "Resistência à compressão"</span></span>
+<span id="cb34-459"><a href="#cb34-459" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-460"><a href="#cb34-460" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-461"><a href="#cb34-461" aria-hidden="true" tabindex="-1"></a>Também foram consideradas as variáveis <span class="in">`relacao_a_c`</span>, <span class="in">`idade`</span> e <span class="in">`tipo_concreto`</span>, uma vez que esses fatores podem influenciar a resistência.</span>
+<span id="cb34-462"><a href="#cb34-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-463"><a href="#cb34-463" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação entre água/cimento e resistência</span></span>
+<span id="cb34-464"><a href="#cb34-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-465"><a href="#cb34-465" aria-hidden="true" tabindex="-1"></a>A relação entre relacao_a_c e resistencia foi analisada por:</span>
+<span id="cb34-466"><a href="#cb34-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-467"><a href="#cb34-467" aria-hidden="true" tabindex="-1"></a><span class="in">plot(</span></span>
+<span id="cb34-468"><a href="#cb34-468" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$relacao_a_c,</span></span>
+<span id="cb34-469"><a href="#cb34-469" aria-hidden="true" tabindex="-1"></a><span class="in">  dados_limpos$resistencia,</span></span>
+<span id="cb34-470"><a href="#cb34-470" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab = "Relação água/cimento",</span></span>
+<span id="cb34-471"><a href="#cb34-471" aria-hidden="true" tabindex="-1"></a><span class="in">  ylab = "Resistência à compressão"</span></span>
+<span id="cb34-472"><a href="#cb34-472" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-473"><a href="#cb34-473" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-474"><a href="#cb34-474" aria-hidden="true" tabindex="-1"></a>O gráfico foi utilizado para verificar a existência de tendências ou padrões que justificassem uma investigação mais detalhada.</span>
+<span id="cb34-475"><a href="#cb34-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-476"><a href="#cb34-476" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relação entre idade e resistência</span></span>
+<span id="cb34-477"><a href="#cb34-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-478"><a href="#cb34-478" aria-hidden="true" tabindex="-1"></a>A resistência média para cada idade foi obtida utilizando:</span>
+<span id="cb34-479"><a href="#cb34-479" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-480"><a href="#cb34-480" aria-hidden="true" tabindex="-1"></a><span class="in">aggregate(</span></span>
+<span id="cb34-481"><a href="#cb34-481" aria-hidden="true" tabindex="-1"></a><span class="in">  resistencia ~ idade,</span></span>
+<span id="cb34-482"><a href="#cb34-482" aria-hidden="true" tabindex="-1"></a><span class="in">  data = dados_limpos,</span></span>
+<span id="cb34-483"><a href="#cb34-483" aria-hidden="true" tabindex="-1"></a><span class="in">  FUN = mean,</span></span>
+<span id="cb34-484"><a href="#cb34-484" aria-hidden="true" tabindex="-1"></a><span class="in">  na.rm = TRUE</span></span>
+<span id="cb34-485"><a href="#cb34-485" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb34-486"><a href="#cb34-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-487"><a href="#cb34-487" aria-hidden="true" tabindex="-1"></a>Os resultados foram comparados para verificar o comportamento da resistência com o aumento da idade dos corpos de prova.</span>
+<span id="cb34-488"><a href="#cb34-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-489"><a href="#cb34-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-490"><a href="#cb34-490" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb34-491"><a href="#cb34-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-492"><a href="#cb34-492" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb34-493"><a href="#cb34-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-494"><a href="#cb34-494" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
+<span id="cb34-495"><a href="#cb34-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-496"><a href="#cb34-496" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
+<span id="cb34-497"><a href="#cb34-497" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
+<span id="cb34-498"><a href="#cb34-498" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
+<span id="cb34-499"><a href="#cb34-499" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
+<span id="cb34-500"><a href="#cb34-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-501"><a href="#cb34-501" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
+<span id="cb34-502"><a href="#cb34-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-503"><a href="#cb34-503" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
+<span id="cb34-504"><a href="#cb34-504" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
+<span id="cb34-505"><a href="#cb34-505" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
+<span id="cb34-506"><a href="#cb34-506" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
+<span id="cb34-507"><a href="#cb34-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-508"><a href="#cb34-508" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
+<span id="cb34-509"><a href="#cb34-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-510"><a href="#cb34-510" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
+<span id="cb34-511"><a href="#cb34-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-512"><a href="#cb34-512" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
+<span id="cb34-513"><a href="#cb34-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-514"><a href="#cb34-514" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
+<span id="cb34-515"><a href="#cb34-515" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
+<span id="cb34-516"><a href="#cb34-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-517"><a href="#cb34-517" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
+<span id="cb34-518"><a href="#cb34-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-521"><a href="#cb34-521" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-522"><a href="#cb34-522" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb34-523"><a href="#cb34-523" aria-hidden="true" tabindex="-1"></a>distancia</span>
+<span id="cb34-524"><a href="#cb34-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-525"><a href="#cb34-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-526"><a href="#cb34-526" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
+<span id="cb34-527"><a href="#cb34-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-528"><a href="#cb34-528" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
+<span id="cb34-529"><a href="#cb34-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-530"><a href="#cb34-530" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
+<span id="cb34-531"><a href="#cb34-531" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
+<span id="cb34-532"><a href="#cb34-532" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
+<span id="cb34-533"><a href="#cb34-533" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
+<span id="cb34-534"><a href="#cb34-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-535"><a href="#cb34-535" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
+<span id="cb34-536"><a href="#cb34-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-537"><a href="#cb34-537" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
+<span id="cb34-538"><a href="#cb34-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-539"><a href="#cb34-539" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
+<span id="cb34-540"><a href="#cb34-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-541"><a href="#cb34-541" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
