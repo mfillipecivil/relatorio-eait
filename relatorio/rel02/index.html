@@ -219,7 +219,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30/08/2026, 18:27</p>
+      <p class="date">30/08/2026, 18:36</p>
     </div>
   </div>
   
@@ -1015,7 +1015,7 @@ summary(dados_limpos)</code></pre>
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>correlacoes_teste <span class="ot">&lt;-</span> <span class="fu">cor</span>(dados_limpos[, <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro pastel)</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro)</span></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>resistencia_mpa,</span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Resistência x Fator a/c"</span>,</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fator Água/Cimento"</span>, <span class="at">ylab =</span> <span class="st">"Resistência (MPa)"</span>,</span>
@@ -2316,7 +2316,7 @@ WICKHAM, H.; ÇETINKAYA-RUNDEL, M.; GROLEMUND, G. <strong>R for Data Science: Im
 <span id="cb39-663"><a href="#cb39-663" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-664"><a href="#cb39-664" aria-hidden="true" tabindex="-1"></a>correlacoes_teste <span class="ot">&lt;-</span> <span class="fu">cor</span>(dados_limpos[, <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
 <span id="cb39-665"><a href="#cb39-665" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-666"><a href="#cb39-666" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro pastel)</span></span>
+<span id="cb39-666"><a href="#cb39-666" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro)</span></span>
 <span id="cb39-667"><a href="#cb39-667" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>resistencia_mpa,</span>
 <span id="cb39-668"><a href="#cb39-668" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Resistência x Fator a/c"</span>,</span>
 <span id="cb39-669"><a href="#cb39-669" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fator Água/Cimento"</span>, <span class="at">ylab =</span> <span class="st">"Resistência (MPa)"</span>,</span>

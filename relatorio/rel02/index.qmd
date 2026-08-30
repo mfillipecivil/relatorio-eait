@@ -635,7 +635,7 @@ A suposição de que "quanto mais cimento, maior a resistência" de forma isolad
 
 correlacoes_teste <- cor(dados_limpos[, c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c")], use = "complete.obs")
 
-# Plot a/c x resistência (bolinhas em azul escuro pastel)
+# Plot a/c x resistência (bolinhas em azul escuro)
 plot(dados_limpos$relacao_a_c, dados_limpos$resistencia_mpa,
      main = "Resistência x Fator a/c",
      xlab = "Fator Água/Cimento", ylab = "Resistência (MPa)",
