@@ -623,9 +623,11 @@ A **Abordagem Vetorizada** (`ave`) demonstrou superioridade técnica pautada em 
 ### Avaliação de Premissas Profissionais
 
 **Análise de Desempenho por Bloco**
+
 A hipótese prévia de que o Bloco C detinha o melhor desempenho estrutural é refutada estatisticamente. Conforme demonstrado no Comparativo entre Blocos, o Bloco C obteve 32,37 MPa de média descritiva, sendo inferior ao Bloco B (35,70 MPa) e ao Bloco D (32,39 MPa).
 
 **A Relação entre Cimento e Resistência**
+
 A suposição de que "quanto mais cimento, maior a resistência" de forma isolada revela-se inexata. Ao avaliar o cimento isolado da relação água/cimento, evidencia-se a importância das variáveis intervenientes:
 
 ```{r}

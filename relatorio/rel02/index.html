@@ -219,7 +219,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30/08/2026, 18:36</p>
+      <p class="date">30/08/2026, 18:42</p>
     </div>
   </div>
   
@@ -1008,8 +1008,10 @@ summary(dados_limpos)</code></pre>
 </section>
 <section id="avaliação-de-premissas-profissionais" class="level3" data-number="5.8">
 <h3 data-number="5.8" class="anchored" data-anchor-id="avaliação-de-premissas-profissionais"><span class="header-section-number">5.8</span> Avaliação de Premissas Profissionais</h3>
-<p><strong>Análise de Desempenho por Bloco</strong> A hipótese prévia de que o Bloco C detinha o melhor desempenho estrutural é refutada estatisticamente. Conforme demonstrado no Comparativo entre Blocos, o Bloco C obteve 32,37 MPa de média descritiva, sendo inferior ao Bloco B (35,70 MPa) e ao Bloco D (32,39 MPa).</p>
-<p><strong>A Relação entre Cimento e Resistência</strong> A suposição de que “quanto mais cimento, maior a resistência” de forma isolada revela-se inexata. Ao avaliar o cimento isolado da relação água/cimento, evidencia-se a importância das variáveis intervenientes:</p>
+<p><strong>Análise de Desempenho por Bloco</strong></p>
+<p>A hipótese prévia de que o Bloco C detinha o melhor desempenho estrutural é refutada estatisticamente. Conforme demonstrado no Comparativo entre Blocos, o Bloco C obteve 32,37 MPa de média descritiva, sendo inferior ao Bloco B (35,70 MPa) e ao Bloco D (32,39 MPa).</p>
+<p><strong>A Relação entre Cimento e Resistência</strong></p>
+<p>A suposição de que “quanto mais cimento, maior a resistência” de forma isolada revela-se inexata. Ao avaliar o cimento isolado da relação água/cimento, evidencia-se a importância das variáveis intervenientes:</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Código</summary>
@@ -2304,137 +2306,139 @@ WICKHAM, H.; ÇETINKAYA-RUNDEL, M.; GROLEMUND, G. <strong>R for Data Science: Im
 <span id="cb39-649"><a href="#cb39-649" aria-hidden="true" tabindex="-1"></a><span class="fu">### Avaliação de Premissas Profissionais</span></span>
 <span id="cb39-650"><a href="#cb39-650" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-651"><a href="#cb39-651" aria-hidden="true" tabindex="-1"></a>**Análise de Desempenho por Bloco**</span>
-<span id="cb39-652"><a href="#cb39-652" aria-hidden="true" tabindex="-1"></a>A hipótese prévia de que o Bloco C detinha o melhor desempenho estrutural é refutada estatisticamente. Conforme demonstrado no Comparativo entre Blocos, o Bloco C obteve 32,37 MPa de média descritiva, sendo inferior ao Bloco B (35,70 MPa) e ao Bloco D (32,39 MPa).</span>
-<span id="cb39-653"><a href="#cb39-653" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-654"><a href="#cb39-654" aria-hidden="true" tabindex="-1"></a>**A Relação entre Cimento e Resistência**</span>
-<span id="cb39-655"><a href="#cb39-655" aria-hidden="true" tabindex="-1"></a>A suposição de que "quanto mais cimento, maior a resistência" de forma isolada revela-se inexata. Ao avaliar o cimento isolado da relação água/cimento, evidencia-se a importância das variáveis intervenientes:</span>
+<span id="cb39-652"><a href="#cb39-652" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-653"><a href="#cb39-653" aria-hidden="true" tabindex="-1"></a>A hipótese prévia de que o Bloco C detinha o melhor desempenho estrutural é refutada estatisticamente. Conforme demonstrado no Comparativo entre Blocos, o Bloco C obteve 32,37 MPa de média descritiva, sendo inferior ao Bloco B (35,70 MPa) e ao Bloco D (32,39 MPa).</span>
+<span id="cb39-654"><a href="#cb39-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-655"><a href="#cb39-655" aria-hidden="true" tabindex="-1"></a>**A Relação entre Cimento e Resistência**</span>
 <span id="cb39-656"><a href="#cb39-656" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-659"><a href="#cb39-659" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-660"><a href="#cb39-660" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: correlacoes</span></span>
-<span id="cb39-661"><a href="#cb39-661" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb39-662"><a href="#cb39-662" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
-<span id="cb39-663"><a href="#cb39-663" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-664"><a href="#cb39-664" aria-hidden="true" tabindex="-1"></a>correlacoes_teste <span class="ot">&lt;-</span> <span class="fu">cor</span>(dados_limpos[, <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb39-657"><a href="#cb39-657" aria-hidden="true" tabindex="-1"></a>A suposição de que "quanto mais cimento, maior a resistência" de forma isolada revela-se inexata. Ao avaliar o cimento isolado da relação água/cimento, evidencia-se a importância das variáveis intervenientes:</span>
+<span id="cb39-658"><a href="#cb39-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-661"><a href="#cb39-661" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-662"><a href="#cb39-662" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: correlacoes</span></span>
+<span id="cb39-663"><a href="#cb39-663" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb39-664"><a href="#cb39-664" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
 <span id="cb39-665"><a href="#cb39-665" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-666"><a href="#cb39-666" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro)</span></span>
-<span id="cb39-667"><a href="#cb39-667" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>resistencia_mpa,</span>
-<span id="cb39-668"><a href="#cb39-668" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Resistência x Fator a/c"</span>,</span>
-<span id="cb39-669"><a href="#cb39-669" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fator Água/Cimento"</span>, <span class="at">ylab =</span> <span class="st">"Resistência (MPa)"</span>,</span>
-<span id="cb39-670"><a href="#cb39-670" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#779ECB"</span>)</span>
-<span id="cb39-671"><a href="#cb39-671" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-672"><a href="#cb39-672" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando e plotando a linha de tendência (tracejada cinza)</span></span>
-<span id="cb39-673"><a href="#cb39-673" aria-hidden="true" tabindex="-1"></a>modelo_tendencia <span class="ot">&lt;-</span> <span class="fu">lm</span>(resistencia_mpa <span class="sc">~</span> relacao_a_c, <span class="at">data =</span> dados_limpos)</span>
-<span id="cb39-674"><a href="#cb39-674" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(modelo_tendencia, <span class="at">col =</span> <span class="st">"gray50"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb39-675"><a href="#cb39-675" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-676"><a href="#cb39-676" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-677"><a href="#cb39-677" aria-hidden="true" tabindex="-1"></a>A correlação simples de Pearson demonstra que a variável governante primária do ganho de resistência não se limita à massa de cimento (r = <span class="in">`r round(correlacoes_teste[1,2], 2)`</span>), mas está fortemente atrelada à expressiva correlação negativa da **relação a/c** (r = <span class="in">`r round(correlacoes_teste[1,3], 2)`</span>). Tal comportamento é a validação descritiva empírica da *Lei de Abrams* <span class="co">[</span><span class="ot">@abrams1918</span><span class="co">]</span>. O acréscimo de aglomerante sem o devido controle do volume hídrico não garante avanço na capacidade portante do material.</span>
+<span id="cb39-666"><a href="#cb39-666" aria-hidden="true" tabindex="-1"></a>correlacoes_teste <span class="ot">&lt;-</span> <span class="fu">cor</span>(dados_limpos[, <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb39-667"><a href="#cb39-667" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-668"><a href="#cb39-668" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a/c x resistência (bolinhas em azul escuro)</span></span>
+<span id="cb39-669"><a href="#cb39-669" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>resistencia_mpa,</span>
+<span id="cb39-670"><a href="#cb39-670" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Resistência x Fator a/c"</span>,</span>
+<span id="cb39-671"><a href="#cb39-671" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fator Água/Cimento"</span>, <span class="at">ylab =</span> <span class="st">"Resistência (MPa)"</span>,</span>
+<span id="cb39-672"><a href="#cb39-672" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#779ECB"</span>)</span>
+<span id="cb39-673"><a href="#cb39-673" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-674"><a href="#cb39-674" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando e plotando a linha de tendência (tracejada cinza)</span></span>
+<span id="cb39-675"><a href="#cb39-675" aria-hidden="true" tabindex="-1"></a>modelo_tendencia <span class="ot">&lt;-</span> <span class="fu">lm</span>(resistencia_mpa <span class="sc">~</span> relacao_a_c, <span class="at">data =</span> dados_limpos)</span>
+<span id="cb39-676"><a href="#cb39-676" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(modelo_tendencia, <span class="at">col =</span> <span class="st">"gray50"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb39-677"><a href="#cb39-677" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb39-678"><a href="#cb39-678" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-679"><a href="#cb39-679" aria-hidden="true" tabindex="-1"></a>**Influência da Idade de Cura**</span>
-<span id="cb39-680"><a href="#cb39-680" aria-hidden="true" tabindex="-1"></a>Os dados tabulados corroboram o amadurecimento progressivo das reações de hidratação:</span>
-<span id="cb39-681"><a href="#cb39-681" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-684"><a href="#cb39-684" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-685"><a href="#cb39-685" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: idades</span></span>
-<span id="cb39-686"><a href="#cb39-686" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb39-687"><a href="#cb39-687" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-688"><a href="#cb39-688" aria-hidden="true" tabindex="-1"></a>idade <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(resistencia_mpa <span class="sc">~</span> idade_dias, <span class="at">data =</span> dados_limpos, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
-<span id="cb39-689"><a href="#cb39-689" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">t</span>(idade), <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Evolução temporal da Resistência Média (MPa)"</span>)</span>
-<span id="cb39-690"><a href="#cb39-690" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-691"><a href="#cb39-691" aria-hidden="true" tabindex="-1"></a>Observa-se um ganho acentuado entre 7 e 14 dias, seguido de uma estabilização na idade de controle normativo (28 dias) e um avanço residual e moderado no longo prazo (280 dias).</span>
-<span id="cb39-692"><a href="#cb39-692" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-693"><a href="#cb39-693" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sumário Executivo para Tomada de Decisão (Top 5 Indicadores)</span></span>
+<span id="cb39-679"><a href="#cb39-679" aria-hidden="true" tabindex="-1"></a>A correlação simples de Pearson demonstra que a variável governante primária do ganho de resistência não se limita à massa de cimento (r = <span class="in">`r round(correlacoes_teste[1,2], 2)`</span>), mas está fortemente atrelada à expressiva correlação negativa da **relação a/c** (r = <span class="in">`r round(correlacoes_teste[1,3], 2)`</span>). Tal comportamento é a validação descritiva empírica da *Lei de Abrams* <span class="co">[</span><span class="ot">@abrams1918</span><span class="co">]</span>. O acréscimo de aglomerante sem o devido controle do volume hídrico não garante avanço na capacidade portante do material.</span>
+<span id="cb39-680"><a href="#cb39-680" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-681"><a href="#cb39-681" aria-hidden="true" tabindex="-1"></a>**Influência da Idade de Cura**</span>
+<span id="cb39-682"><a href="#cb39-682" aria-hidden="true" tabindex="-1"></a>Os dados tabulados corroboram o amadurecimento progressivo das reações de hidratação:</span>
+<span id="cb39-683"><a href="#cb39-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-686"><a href="#cb39-686" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-687"><a href="#cb39-687" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: idades</span></span>
+<span id="cb39-688"><a href="#cb39-688" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb39-689"><a href="#cb39-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-690"><a href="#cb39-690" aria-hidden="true" tabindex="-1"></a>idade <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(resistencia_mpa <span class="sc">~</span> idade_dias, <span class="at">data =</span> dados_limpos, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
+<span id="cb39-691"><a href="#cb39-691" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">t</span>(idade), <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Evolução temporal da Resistência Média (MPa)"</span>)</span>
+<span id="cb39-692"><a href="#cb39-692" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb39-693"><a href="#cb39-693" aria-hidden="true" tabindex="-1"></a>Observa-se um ganho acentuado entre 7 e 14 dias, seguido de uma estabilização na idade de controle normativo (28 dias) e um avanço residual e moderado no longo prazo (280 dias).</span>
 <span id="cb39-694"><a href="#cb39-694" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-695"><a href="#cb39-695" aria-hidden="true" tabindex="-1"></a>Para subsidiar a tomada de decisão do engenheiro responsável, o painel executivo a seguir consolida cinco indicadores estatísticos prioritários, calculados individualmente para cada classe de concreto. A interpretação conjunta dessas métricas permite uma avaliação completa e segura do controle tecnológico:</span>
+<span id="cb39-695"><a href="#cb39-695" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sumário Executivo para Tomada de Decisão (Top 5 Indicadores)</span></span>
 <span id="cb39-696"><a href="#cb39-696" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-697"><a href="#cb39-697" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Resistência Média (MPa):** É o parâmetro primário para certificar se o lote está, em média, superando o limite característico (fck) exigido no projeto estrutural.</span>
-<span id="cb39-698"><a href="#cb39-698" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Fator Água/Cimento (A/C) Médio:** Atua como o principal balizador de resistência e durabilidade. O monitoramento contínuo deste índice garante o controle contra excessos de água na mistura, fator que comprometeria a porosidade do concreto.</span>
-<span id="cb39-699"><a href="#cb39-699" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Consumo de Cimento Médio (kg/m³):** Reflete a dosagem de aglomerante empregada na usinagem. A sua avaliação periódica é essencial tanto para o controle financeiro do traço quanto para prevenir patologias associadas à retração e ao calor de hidratação.</span>
-<span id="cb39-700"><a href="#cb39-700" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Coeficiente de Variação (%):** Quantifica a homogeneidade do processo executivo. Valores reduzidos comprovam que o maquinário manteve um padrão constante de mistura e adensamento, atestando um controle de qualidade rigoroso no canteiro.</span>
-<span id="cb39-701"><a href="#cb39-701" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Taxa de Qualidade Positiva (%):** Traduz a confiabilidade do lote para uma linguagem gerencial. Indica a proporção exata de corpos de prova que atingiram as margens de segurança adequadas (classificações Excelente ou Bom), balizando a aprovação final para a continuidade da obra.</span>
-<span id="cb39-702"><a href="#cb39-702" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-703"><a href="#cb39-703" aria-hidden="true" tabindex="-1"></a>Abaixo, apresenta-se a rotina computacional que extrai e consolida automaticamente esses parâmetros a partir da base tratada:</span>
+<span id="cb39-697"><a href="#cb39-697" aria-hidden="true" tabindex="-1"></a>Para subsidiar a tomada de decisão do engenheiro responsável, o painel executivo a seguir consolida cinco indicadores estatísticos prioritários, calculados individualmente para cada classe de concreto. A interpretação conjunta dessas métricas permite uma avaliação completa e segura do controle tecnológico:</span>
+<span id="cb39-698"><a href="#cb39-698" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-699"><a href="#cb39-699" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Resistência Média (MPa):** É o parâmetro primário para certificar se o lote está, em média, superando o limite característico (fck) exigido no projeto estrutural.</span>
+<span id="cb39-700"><a href="#cb39-700" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Fator Água/Cimento (A/C) Médio:** Atua como o principal balizador de resistência e durabilidade. O monitoramento contínuo deste índice garante o controle contra excessos de água na mistura, fator que comprometeria a porosidade do concreto.</span>
+<span id="cb39-701"><a href="#cb39-701" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Consumo de Cimento Médio (kg/m³):** Reflete a dosagem de aglomerante empregada na usinagem. A sua avaliação periódica é essencial tanto para o controle financeiro do traço quanto para prevenir patologias associadas à retração e ao calor de hidratação.</span>
+<span id="cb39-702"><a href="#cb39-702" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Coeficiente de Variação (%):** Quantifica a homogeneidade do processo executivo. Valores reduzidos comprovam que o maquinário manteve um padrão constante de mistura e adensamento, atestando um controle de qualidade rigoroso no canteiro.</span>
+<span id="cb39-703"><a href="#cb39-703" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Taxa de Qualidade Positiva (%):** Traduz a confiabilidade do lote para uma linguagem gerencial. Indica a proporção exata de corpos de prova que atingiram as margens de segurança adequadas (classificações Excelente ou Bom), balizando a aprovação final para a continuidade da obra.</span>
 <span id="cb39-704"><a href="#cb39-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-707"><a href="#cb39-707" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-708"><a href="#cb39-708" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: top5-indicadores</span></span>
-<span id="cb39-709"><a href="#cb39-709" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb39-710"><a href="#cb39-710" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-711"><a href="#cb39-711" aria-hidden="true" tabindex="-1"></a><span class="co"># Extração customizada e arredondamento para a Matriz Executiva</span></span>
-<span id="cb39-712"><a href="#cb39-712" aria-hidden="true" tabindex="-1"></a>res_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>resistencia_mpa, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
-<span id="cb39-713"><a href="#cb39-713" aria-hidden="true" tabindex="-1"></a>ac_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
-<span id="cb39-714"><a href="#cb39-714" aria-hidden="true" tabindex="-1"></a>cv_pct <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>resistencia_mpa, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>((<span class="fu">sd</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))</span>
-<span id="cb39-715"><a href="#cb39-715" aria-hidden="true" tabindex="-1"></a>cim_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>cimento_kg_m3, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
-<span id="cb39-716"><a href="#cb39-716" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-717"><a href="#cb39-717" aria-hidden="true" tabindex="-1"></a><span class="co"># Taxa de conformidade de execução qualitativa</span></span>
-<span id="cb39-718"><a href="#cb39-718" aria-hidden="true" tabindex="-1"></a>taxa_aprov <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>classificacao, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) {</span>
-<span id="cb39-719"><a href="#cb39-719" aria-hidden="true" tabindex="-1"></a>  validos <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
-<span id="cb39-720"><a href="#cb39-720" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>((<span class="fu">sum</span>(validos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Excelente"</span>, <span class="st">"Bom"</span>)) <span class="sc">/</span> <span class="fu">length</span>(validos)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span>
-<span id="cb39-721"><a href="#cb39-721" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb39-722"><a href="#cb39-722" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-723"><a href="#cb39-723" aria-hidden="true" tabindex="-1"></a>painel_executivo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb39-724"><a href="#cb39-724" aria-hidden="true" tabindex="-1"></a>  <span class="at">Classe_do_Concreto =</span> <span class="fu">names</span>(res_med),</span>
-<span id="cb39-725"><a href="#cb39-725" aria-hidden="true" tabindex="-1"></a>  <span class="at">Resistencia_Media =</span> <span class="fu">as.numeric</span>(res_med),</span>
-<span id="cb39-726"><a href="#cb39-726" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fator_AC_Medio =</span> <span class="fu">as.numeric</span>(ac_med),</span>
-<span id="cb39-727"><a href="#cb39-727" aria-hidden="true" tabindex="-1"></a>  <span class="at">Consumo_Cimento_Medio =</span> <span class="fu">as.numeric</span>(cim_med),</span>
-<span id="cb39-728"><a href="#cb39-728" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coeficiente_de_Variacao =</span> <span class="fu">as.numeric</span>(cv_pct),</span>
-<span id="cb39-729"><a href="#cb39-729" aria-hidden="true" tabindex="-1"></a>  <span class="at">Taxa_Qualidade_Positiva =</span> <span class="fu">paste0</span>(<span class="fu">as.numeric</span>(taxa_aprov), <span class="st">"%"</span>)</span>
-<span id="cb39-730"><a href="#cb39-730" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb39-731"><a href="#cb39-731" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-732"><a href="#cb39-732" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(painel_executivo, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Painel Executivo: Top 5 Indicadores Estratégicos por Classe"</span>)</span>
-<span id="cb39-733"><a href="#cb39-733" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-734"><a href="#cb39-734" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-735"><a href="#cb39-735" aria-hidden="true" tabindex="-1"></a><span class="fu">### Desafio: Script Consolidado</span></span>
+<span id="cb39-705"><a href="#cb39-705" aria-hidden="true" tabindex="-1"></a>Abaixo, apresenta-se a rotina computacional que extrai e consolida automaticamente esses parâmetros a partir da base tratada:</span>
+<span id="cb39-706"><a href="#cb39-706" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-709"><a href="#cb39-709" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-710"><a href="#cb39-710" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: top5-indicadores</span></span>
+<span id="cb39-711"><a href="#cb39-711" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb39-712"><a href="#cb39-712" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-713"><a href="#cb39-713" aria-hidden="true" tabindex="-1"></a><span class="co"># Extração customizada e arredondamento para a Matriz Executiva</span></span>
+<span id="cb39-714"><a href="#cb39-714" aria-hidden="true" tabindex="-1"></a>res_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>resistencia_mpa, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
+<span id="cb39-715"><a href="#cb39-715" aria-hidden="true" tabindex="-1"></a>ac_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>relacao_a_c, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
+<span id="cb39-716"><a href="#cb39-716" aria-hidden="true" tabindex="-1"></a>cv_pct <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>resistencia_mpa, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>((<span class="fu">sd</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)<span class="sc">/</span><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))</span>
+<span id="cb39-717"><a href="#cb39-717" aria-hidden="true" tabindex="-1"></a>cim_med <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>cimento_kg_m3, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
+<span id="cb39-718"><a href="#cb39-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-719"><a href="#cb39-719" aria-hidden="true" tabindex="-1"></a><span class="co"># Taxa de conformidade de execução qualitativa</span></span>
+<span id="cb39-720"><a href="#cb39-720" aria-hidden="true" tabindex="-1"></a>taxa_aprov <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dados_limpos<span class="sc">$</span>classificacao, dados_limpos<span class="sc">$</span>tipo_concreto, <span class="cf">function</span>(x) {</span>
+<span id="cb39-721"><a href="#cb39-721" aria-hidden="true" tabindex="-1"></a>  validos <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
+<span id="cb39-722"><a href="#cb39-722" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>((<span class="fu">sum</span>(validos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Excelente"</span>, <span class="st">"Bom"</span>)) <span class="sc">/</span> <span class="fu">length</span>(validos)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span>
+<span id="cb39-723"><a href="#cb39-723" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb39-724"><a href="#cb39-724" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-725"><a href="#cb39-725" aria-hidden="true" tabindex="-1"></a>painel_executivo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb39-726"><a href="#cb39-726" aria-hidden="true" tabindex="-1"></a>  <span class="at">Classe_do_Concreto =</span> <span class="fu">names</span>(res_med),</span>
+<span id="cb39-727"><a href="#cb39-727" aria-hidden="true" tabindex="-1"></a>  <span class="at">Resistencia_Media =</span> <span class="fu">as.numeric</span>(res_med),</span>
+<span id="cb39-728"><a href="#cb39-728" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fator_AC_Medio =</span> <span class="fu">as.numeric</span>(ac_med),</span>
+<span id="cb39-729"><a href="#cb39-729" aria-hidden="true" tabindex="-1"></a>  <span class="at">Consumo_Cimento_Medio =</span> <span class="fu">as.numeric</span>(cim_med),</span>
+<span id="cb39-730"><a href="#cb39-730" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coeficiente_de_Variacao =</span> <span class="fu">as.numeric</span>(cv_pct),</span>
+<span id="cb39-731"><a href="#cb39-731" aria-hidden="true" tabindex="-1"></a>  <span class="at">Taxa_Qualidade_Positiva =</span> <span class="fu">paste0</span>(<span class="fu">as.numeric</span>(taxa_aprov), <span class="st">"%"</span>)</span>
+<span id="cb39-732"><a href="#cb39-732" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-733"><a href="#cb39-733" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-734"><a href="#cb39-734" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(painel_executivo, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Painel Executivo: Top 5 Indicadores Estratégicos por Classe"</span>)</span>
+<span id="cb39-735"><a href="#cb39-735" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb39-736"><a href="#cb39-736" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-737"><a href="#cb39-737" aria-hidden="true" tabindex="-1"></a>Abaixo, encontra-se documentado o *script* centralizado recomendado para limpezas e geração ágil de relatórios em futuros recebimentos de material por parte da construtora:</span>
+<span id="cb39-737"><a href="#cb39-737" aria-hidden="true" tabindex="-1"></a><span class="fu">### Desafio: Script Consolidado</span></span>
 <span id="cb39-738"><a href="#cb39-738" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-741"><a href="#cb39-741" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-742"><a href="#cb39-742" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: script-final</span></span>
-<span id="cb39-743"><a href="#cb39-743" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb39-744"><a href="#cb39-744" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb39-745"><a href="#cb39-745" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb39-746"><a href="#cb39-746" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-747"><a href="#cb39-747" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span>
-<span id="cb39-748"><a href="#cb39-748" aria-hidden="true" tabindex="-1"></a><span class="co"># SCRIPT DE PROCESSAMENTO: CONTROLE TECNOLÓGICO CONCRETO</span></span>
+<span id="cb39-739"><a href="#cb39-739" aria-hidden="true" tabindex="-1"></a>Abaixo, encontra-se documentado o *script* centralizado recomendado para limpezas e geração ágil de relatórios em futuros recebimentos de material por parte da construtora:</span>
+<span id="cb39-740"><a href="#cb39-740" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-743"><a href="#cb39-743" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-744"><a href="#cb39-744" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: script-final</span></span>
+<span id="cb39-745"><a href="#cb39-745" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb39-746"><a href="#cb39-746" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb39-747"><a href="#cb39-747" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb39-748"><a href="#cb39-748" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-749"><a href="#cb39-749" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span>
-<span id="cb39-750"><a href="#cb39-750" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-751"><a href="#cb39-751" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. IMPORTAÇÃO</span></span>
-<span id="cb39-752"><a href="#cb39-752" aria-hidden="true" tabindex="-1"></a>base_bruta <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"base_processamento_dados_engenharia_civil.csv"</span>, </span>
-<span id="cb39-753"><a href="#cb39-753" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb39-754"><a href="#cb39-754" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">" "</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"-"</span>, <span class="st">"null"</span>, <span class="st">"NULL"</span>))</span>
-<span id="cb39-755"><a href="#cb39-755" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-756"><a href="#cb39-756" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. INSPEÇÃO</span></span>
-<span id="cb39-757"><a href="#cb39-757" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(base_bruta) </span>
-<span id="cb39-758"><a href="#cb39-758" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(base_bruta)) </span>
-<span id="cb39-759"><a href="#cb39-759" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-760"><a href="#cb39-760" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. LIMPEZA E FORMATAÇÃO</span></span>
-<span id="cb39-761"><a href="#cb39-761" aria-hidden="true" tabindex="-1"></a>base_limpa <span class="ot">&lt;-</span> base_bruta</span>
-<span id="cb39-762"><a href="#cb39-762" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>obra <span class="ot">&lt;-</span> <span class="fu">trimws</span>(base_limpa<span class="sc">$</span>obra)</span>
-<span id="cb39-763"><a href="#cb39-763" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>tipo_concreto <span class="ot">&lt;-</span> <span class="fu">toupper</span>(base_limpa<span class="sc">$</span>tipo_concreto)</span>
-<span id="cb39-764"><a href="#cb39-764" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-765"><a href="#cb39-765" aria-hidden="true" tabindex="-1"></a>colunas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)</span>
-<span id="cb39-766"><a href="#cb39-766" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> colunas) {</span>
-<span id="cb39-767"><a href="#cb39-767" aria-hidden="true" tabindex="-1"></a>  base_limpa[[col]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">"."</span>, <span class="fu">gsub</span>(<span class="st">"O"</span>, <span class="st">"0"</span>, base_limpa[[col]])))</span>
-<span id="cb39-768"><a href="#cb39-768" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb39-769"><a href="#cb39-769" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>abatimento_mm <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(base_limpa<span class="sc">$</span>abatimento_mm)</span>
-<span id="cb39-770"><a href="#cb39-770" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>densidade_kg_m3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(base_limpa<span class="sc">$</span>densidade_kg_m3)</span>
-<span id="cb39-771"><a href="#cb39-771" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-772"><a href="#cb39-772" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. ESTATÍSTICAS DIRETAS </span></span>
-<span id="cb39-773"><a href="#cb39-773" aria-hidden="true" tabindex="-1"></a>Resumo_Classes <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(resistencia_mpa, relacao_a_c) <span class="sc">~</span> tipo_concreto, </span>
-<span id="cb39-774"><a href="#cb39-774" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> base_limpa, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
-<span id="cb39-775"><a href="#cb39-775" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-776"><a href="#cb39-776" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. VARIÁVEIS DERIVADAS</span></span>
-<span id="cb39-777"><a href="#cb39-777" aria-hidden="true" tabindex="-1"></a>fcks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"C25"</span><span class="ot">=</span><span class="dv">25</span>, <span class="st">"C30"</span><span class="ot">=</span><span class="dv">30</span>, <span class="st">"C35"</span><span class="ot">=</span><span class="dv">35</span>, <span class="st">"C40"</span><span class="ot">=</span><span class="dv">40</span>)</span>
-<span id="cb39-778"><a href="#cb39-778" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>relativo <span class="ot">&lt;-</span> base_limpa<span class="sc">$</span>resistencia_mpa <span class="sc">/</span> fcks[base_limpa<span class="sc">$</span>tipo_concreto]</span>
-<span id="cb39-779"><a href="#cb39-779" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>alerta_baixo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(base_limpa<span class="sc">$</span>relativo <span class="sc">&lt;</span> <span class="fl">0.95</span>, <span class="st">"Alerta"</span>, <span class="st">"Aprovado"</span>)</span>
-<span id="cb39-780"><a href="#cb39-780" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-781"><a href="#cb39-781" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-782"><a href="#cb39-782" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações Finais</span></span>
+<span id="cb39-750"><a href="#cb39-750" aria-hidden="true" tabindex="-1"></a><span class="co"># SCRIPT DE PROCESSAMENTO: CONTROLE TECNOLÓGICO CONCRETO</span></span>
+<span id="cb39-751"><a href="#cb39-751" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span>
+<span id="cb39-752"><a href="#cb39-752" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-753"><a href="#cb39-753" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. IMPORTAÇÃO</span></span>
+<span id="cb39-754"><a href="#cb39-754" aria-hidden="true" tabindex="-1"></a>base_bruta <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"base_processamento_dados_engenharia_civil.csv"</span>, </span>
+<span id="cb39-755"><a href="#cb39-755" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb39-756"><a href="#cb39-756" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">" "</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"-"</span>, <span class="st">"null"</span>, <span class="st">"NULL"</span>))</span>
+<span id="cb39-757"><a href="#cb39-757" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-758"><a href="#cb39-758" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. INSPEÇÃO</span></span>
+<span id="cb39-759"><a href="#cb39-759" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(base_bruta) </span>
+<span id="cb39-760"><a href="#cb39-760" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(base_bruta)) </span>
+<span id="cb39-761"><a href="#cb39-761" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-762"><a href="#cb39-762" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. LIMPEZA E FORMATAÇÃO</span></span>
+<span id="cb39-763"><a href="#cb39-763" aria-hidden="true" tabindex="-1"></a>base_limpa <span class="ot">&lt;-</span> base_bruta</span>
+<span id="cb39-764"><a href="#cb39-764" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>obra <span class="ot">&lt;-</span> <span class="fu">trimws</span>(base_limpa<span class="sc">$</span>obra)</span>
+<span id="cb39-765"><a href="#cb39-765" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>tipo_concreto <span class="ot">&lt;-</span> <span class="fu">toupper</span>(base_limpa<span class="sc">$</span>tipo_concreto)</span>
+<span id="cb39-766"><a href="#cb39-766" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-767"><a href="#cb39-767" aria-hidden="true" tabindex="-1"></a>colunas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"resistencia_mpa"</span>, <span class="st">"cimento_kg_m3"</span>, <span class="st">"relacao_a_c"</span>)</span>
+<span id="cb39-768"><a href="#cb39-768" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> colunas) {</span>
+<span id="cb39-769"><a href="#cb39-769" aria-hidden="true" tabindex="-1"></a>  base_limpa[[col]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">"."</span>, <span class="fu">gsub</span>(<span class="st">"O"</span>, <span class="st">"0"</span>, base_limpa[[col]])))</span>
+<span id="cb39-770"><a href="#cb39-770" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-771"><a href="#cb39-771" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>abatimento_mm <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(base_limpa<span class="sc">$</span>abatimento_mm)</span>
+<span id="cb39-772"><a href="#cb39-772" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>densidade_kg_m3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(base_limpa<span class="sc">$</span>densidade_kg_m3)</span>
+<span id="cb39-773"><a href="#cb39-773" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-774"><a href="#cb39-774" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. ESTATÍSTICAS DIRETAS </span></span>
+<span id="cb39-775"><a href="#cb39-775" aria-hidden="true" tabindex="-1"></a>Resumo_Classes <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(resistencia_mpa, relacao_a_c) <span class="sc">~</span> tipo_concreto, </span>
+<span id="cb39-776"><a href="#cb39-776" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> base_limpa, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>))</span>
+<span id="cb39-777"><a href="#cb39-777" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-778"><a href="#cb39-778" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. VARIÁVEIS DERIVADAS</span></span>
+<span id="cb39-779"><a href="#cb39-779" aria-hidden="true" tabindex="-1"></a>fcks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"C25"</span><span class="ot">=</span><span class="dv">25</span>, <span class="st">"C30"</span><span class="ot">=</span><span class="dv">30</span>, <span class="st">"C35"</span><span class="ot">=</span><span class="dv">35</span>, <span class="st">"C40"</span><span class="ot">=</span><span class="dv">40</span>)</span>
+<span id="cb39-780"><a href="#cb39-780" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>relativo <span class="ot">&lt;-</span> base_limpa<span class="sc">$</span>resistencia_mpa <span class="sc">/</span> fcks[base_limpa<span class="sc">$</span>tipo_concreto]</span>
+<span id="cb39-781"><a href="#cb39-781" aria-hidden="true" tabindex="-1"></a>base_limpa<span class="sc">$</span>alerta_baixo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(base_limpa<span class="sc">$</span>relativo <span class="sc">&lt;</span> <span class="fl">0.95</span>, <span class="st">"Alerta"</span>, <span class="st">"Aprovado"</span>)</span>
+<span id="cb39-782"><a href="#cb39-782" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb39-783"><a href="#cb39-783" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-784"><a href="#cb39-784" aria-hidden="true" tabindex="-1"></a>A etapa de organização, diagnóstico e processamento apresenta-se como indispensável na Engenharia Civil guiada por dados. No ambiente real de obra e controle laboratorial, as planilhas encontram-se frequentemente suscetíveis a falhas humanas de digitação e ausências de registros. Negligenciar a etapa de limpeza e proceder diretamente à aplicação de algoritmos estatísticos pode fundamentar decisões técnicas errôneas, induzindo o profissional a aprovar lotes de materiais não conformes ou a rejeitar concretos viáveis.</span>
+<span id="cb39-784"><a href="#cb39-784" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações Finais</span></span>
 <span id="cb39-785"><a href="#cb39-785" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-786"><a href="#cb39-786" aria-hidden="true" tabindex="-1"></a>O principal problema encontrado na base avaliada consistiu na contaminação dos registros numéricos por caracteres tipográficos (vírgulas utilizadas como separadores de milhar e a inserção da letra 'O' no lugar de zeros numéricos). Tal inconsistência estrutural provocou a coerção indevida da variável para o formato texto, inviabilizando inicialmente o cômputo matemático das métricas de resistência e dosagem. A decisão técnica para a mitigação desse problema centrou-se na execução de rotinas programadas em lote (via substituição de caracteres e refatoração numérica), restaurando o domínio computacional das variáveis. Paralelamente, adotou-se o rigor de manter as células vazias identificadas corretamente como <span class="in">`NA`</span>, a fim de não inserir vieses analíticos nas estatísticas finais.</span>
+<span id="cb39-786"><a href="#cb39-786" aria-hidden="true" tabindex="-1"></a>A etapa de organização, diagnóstico e processamento apresenta-se como indispensável na Engenharia Civil guiada por dados. No ambiente real de obra e controle laboratorial, as planilhas encontram-se frequentemente suscetíveis a falhas humanas de digitação e ausências de registros. Negligenciar a etapa de limpeza e proceder diretamente à aplicação de algoritmos estatísticos pode fundamentar decisões técnicas errôneas, induzindo o profissional a aprovar lotes de materiais não conformes ou a rejeitar concretos viáveis.</span>
 <span id="cb39-787"><a href="#cb39-787" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-788"><a href="#cb39-788" aria-hidden="true" tabindex="-1"></a>Ao término da verificação, os objetivos propostos foram devidamente atendidos. Validou-se, de forma descritiva e gráfica, o atendimento normativo da tipologia C40, a evolução de endurecimento conforme amadurecimento temporal das idades, além de aferir na prática os preceitos da Lei de Abrams. Demonstra-se, assim, que o uso de ferramentas nativas de manipulação vetorizada constitui não apenas suporte estatístico, mas um recurso validador crucial para deliberações logísticas e de conformidade em empreendimentos de grande porte.</span>
+<span id="cb39-788"><a href="#cb39-788" aria-hidden="true" tabindex="-1"></a>O principal problema encontrado na base avaliada consistiu na contaminação dos registros numéricos por caracteres tipográficos (vírgulas utilizadas como separadores de milhar e a inserção da letra 'O' no lugar de zeros numéricos). Tal inconsistência estrutural provocou a coerção indevida da variável para o formato texto, inviabilizando inicialmente o cômputo matemático das métricas de resistência e dosagem. A decisão técnica para a mitigação desse problema centrou-se na execução de rotinas programadas em lote (via substituição de caracteres e refatoração numérica), restaurando o domínio computacional das variáveis. Paralelamente, adotou-se o rigor de manter as células vazias identificadas corretamente como <span class="in">`NA`</span>, a fim de não inserir vieses analíticos nas estatísticas finais.</span>
 <span id="cb39-789"><a href="#cb39-789" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-790"><a href="#cb39-790" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+<span id="cb39-790"><a href="#cb39-790" aria-hidden="true" tabindex="-1"></a>Ao término da verificação, os objetivos propostos foram devidamente atendidos. Validou-se, de forma descritiva e gráfica, o atendimento normativo da tipologia C40, a evolução de endurecimento conforme amadurecimento temporal das idades, além de aferir na prática os preceitos da Lei de Abrams. Demonstra-se, assim, que o uso de ferramentas nativas de manipulação vetorizada constitui não apenas suporte estatístico, mas um recurso validador crucial para deliberações logísticas e de conformidade em empreendimentos de grande porte.</span>
+<span id="cb39-791"><a href="#cb39-791" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-792"><a href="#cb39-792" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
