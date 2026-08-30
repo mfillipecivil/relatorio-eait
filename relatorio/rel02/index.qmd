@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
 author: "Gustavo e Marcus Fillipe"
-title: "Relatório de Aula Prática 02"
+title: "Relatório 02 - Análise e Processamento de Base de Dados"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -24,18 +24,15 @@ execute:
   warning: false
   message: false
 ---
-
-
 ## 📌 Introdução
 
-O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a ABNT NBR 12655 (ABNT, 2015), esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.
+O controle tecnológico do concreto é fundamental para garantir a qualidade e o desempenho das estruturas de concreto armado. Conforme a @abnt_nbr12655, esse controle envolve o acompanhamento das propriedades do concreto e a verificação de sua conformidade com os requisitos estabelecidos em projeto. Nesse contexto, a análise estatística dos resultados de ensaios e registros de campo constitui uma importante ferramenta para avaliar o comportamento do material e subsidiar decisões técnicas.
 
-A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica, categorias não padronizadas e classificação inadequada das variáveis. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes da realização das análises estatísticas.
+A confiabilidade dessas análises, entretanto, depende diretamente da qualidade dos dados utilizados. Bases provenientes de diferentes fontes podem apresentar valores ausentes, erros de digitação, inconsistências na representação numérica e ausência de padrão. O tratamento dessas inconsistências é, portanto, uma etapa essencial antes das análises.
 
-Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material. A base apresenta inconsistências intencionalmente inseridas, como erros de digitação, separadores decimais inadequados, categorias despadronizadas, valores ausentes e variáveis quantitativas classificadas como texto.
+Neste trabalho, é analisada uma base de dados de controle tecnológico do concreto, composta por 100 observações e 10 variáveis, contendo informações relacionadas às propriedades e ao desempenho do material.
 
-Para o processamento dos dados, utiliza-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para o controle tecnológico e a tomada de decisões na Engenharia Civil.
-
+Para o processamento dos dados, utilizou-se a linguagem R, com ênfase nos recursos do Base R, abrangendo as etapas de inspeção, diagnóstico, limpeza, padronização e análise exploratória. Ao final, são obtidas estatísticas descritivas e criadas variáveis derivadas, permitindo avaliar o comportamento dos dados e gerar informações relevantes para a tomada de decisões na Engenharia Civil.
 
 ## 🎯 Objetivos
 
@@ -45,18 +42,18 @@ Processar, limpar e analisar uma base de dados de controle tecnológico do concr
 
 ### Objetivos específicos
 
-- Inspecionar a estrutura e as características da base de dados;
-- Identificar valores ausentes, erros de registro e inconsistências;
-- Padronizar e tratar as variáveis para a realização das análises;
-- Aplicar recursos do Base R na manipulação e exploração dos dados;
-- Calcular estatísticas descritivas e comparar diferentes grupos de dados;
-- Criar variáveis derivadas relacionadas ao desempenho do concreto;
-- Interpretar os resultados considerando sua aplicação na Engenharia Civil;
-- Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise
+* Inspecionar a estrutura e as características da base de dados;
+* Identificar valores ausentes, erros de registro e inconsistências;
+* Padronizar e tratar as variáveis para a realização das análises;
+* Aplicar recursos do Base R na manipulação e exploração dos dados;
+* Calcular estatísticas descritivas e comparar diferentes grupos de dados;
+* Criar variáveis derivadas relacionadas ao desempenho do concreto;
+* Interpretar os resultados considerando sua aplicação na Engenharia Civil;
+* Documentar os procedimentos realizados, garantindo maior organização e reprodutibilidade da análise.
 
 ---
 
-## 📚  Fundamentação Teórica
+## 📚 Fundamentação Teórica
 
 ### Análise e qualidade dos dados
 
@@ -64,476 +61,396 @@ A análise estatística de dados deve ser precedida por uma etapa de inspeção 
 
 Nesse contexto, a preparação dos dados compreende procedimentos de identificação, organização, correção e padronização das informações. A utilização de ferramentas computacionais, como o ambiente R, possibilita automatizar parte dessas etapas e permite maior rastreabilidade dos procedimentos realizados.
 
-A inspeção inicial da estrutura dos dados é necessária para verificar a quantidade de observações e variáveis, além dos tipos atribuídos pelo software. Essa etapa permite identificar se as variáveis foram importadas corretamente e se sua natureza está de acordo com o significado que possuem no estudo.
-
 ### Variáveis quantitativas e qualitativas
 
-As variáveis podem ser classificadas de acordo com a natureza da informação que representam. Variáveis quantitativas são aquelas expressas numericamente e associadas a medidas ou contagens, enquanto variáveis qualitativas representam categorias ou atributos.
+No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas (associadas a medidas). Já informações como bloco da obra e tipo de concreto são variáveis qualitativas (categorias).
 
-No contexto do controle tecnológico do concreto, resistência à compressão, consumo de cimento, abatimento, densidade, absorção, idade e relação água/cimento são exemplos de variáveis quantitativas. Já informações como bloco da obra e tipo de concreto são variáveis qualitativas, pois representam categorias.
-
-A correta classificação das variáveis é fundamental para a análise estatística, uma vez que diferentes tipos de dados requerem diferentes operações. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, pode impedir cálculos de média, variância e outras medidas estatísticas.
+A correta classificação das variáveis é fundamental. Uma variável quantitativa armazenada incorretamente como texto, por exemplo, impede cálculos matemáticos básicos no R, bloqueando a obtenção de médias e variâncias.
 
 ### Valores ausentes e tratamento dos dados
 
-Valores ausentes são informações não disponíveis em determinadas observações e podem ocorrer por diferentes motivos, como falha na coleta, ausência de medição, erro de registro ou indisponibilidade da informação original.
+Valores ausentes (NA) ocorrem por falha na coleta ou erro de registro. A identificação deve ser prévia à análise. Entre as possibilidades de tratamento estão a exclusão da observação, imputação estatística ou a simples manutenção do NA. A escolha deve ser justificada, visto que alterações inadequadas podem introduzir vieses estruturais no laudo final.
 
-A identificação dos valores ausentes deve ser realizada antes da análise estatística. Entretanto, a simples presença de um valor ausente não justifica sua substituição automática ou a exclusão da observação. O procedimento adotado deve considerar a origem da ausência, a quantidade de dados afetados e o objetivo da análise.
+### Estatística descritiva e análise agrupada
 
-Entre as possibilidades de tratamento estão a consulta à fonte original, a manutenção do valor como NA, a exclusão da observação ou a utilização de métodos de imputação. A escolha deve ser tecnicamente justificada, uma vez que alterações inadequadas podem introduzir vieses e modificar a distribuição dos dados.
+No controle tecnológico, a resistência média representa o comportamento central, mas deve vir acompanhada do desvio padrão e do coeficiente de variação para atestar a homogeneidade da execução. Além disso, a análise agrupada (por bloco, classe ou idade) permite identificar desvios de processo e comparar desempenhos em diferentes seções da obra, subsidiando a aceitação do lote.
 
-### Padronização e consistência das categorias
+### Relação água/cimento, consumo e idade
 
-Em bases de dados com variáveis qualitativas, a padronização das categorias é essencial. Pequenas diferenças de grafia podem fazer com que o software interprete registros equivalentes como categorias distintas.
-
-Por exemplo, as categorias `C30`, `c30` e `C-30` podem ser interpretadas computacionalmente como três grupos diferentes, embora possam representar a mesma classe de concreto. O mesmo problema pode ocorrer com a identificação dos blocos de uma obra.
-
-A padronização evita a fragmentação artificial dos grupos e garante que operações de agrupamento, contagem e cálculo de médias sejam realizadas corretamente.
-
-### Estatística descritiva
-
-A estatística descritiva compreende métodos destinados à organização, síntese e apresentação dos dados. Entre as principais medidas utilizadas estão as medidas de tendência central e de dispersão.
-
-No controle tecnológico do concreto, a resistência média permite representar o comportamento central de determinado conjunto de resultados. Entretanto, a média isoladamente não descreve a variabilidade dos resultados, sendo necessário considerar também medidas de dispersão.
-
-O desvio padrão é uma medida que quantifica a dispersão dos valores em relação à média. Quanto maior o desvio padrão, maior tende a ser a variabilidade dos resultados.
-
-O coeficiente de variação relaciona o desvio padrão à média. Essa medida permite avaliar a variabilidade relativa dos resultados e facilita a comparação entre grupos que apresentam diferentes magnitudes de média.
-
-Os valores mínimo e máximo também são úteis para caracterizar a amplitude dos resultados e identificar observações que possam necessitar de investigação.
-
-### Análise de dados agrupados
-
-A análise agrupada consiste em comparar uma determinada variável entre diferentes categorias ou grupos. No presente estudo, a resistência à compressão pode ser analisada segundo o bloco da obra, o tipo de concreto e a idade dos corpos de prova.
-
-A comparação das médias permite identificar diferenças descritivas entre os grupos. Entretanto, uma diferença entre médias não implica necessariamente uma diferença estatisticamente significativa. Para conclusões de natureza inferencial, seriam necessários testes estatísticos apropriados.
-
-Dessa forma, os resultados obtidos nesta etapa devem ser interpretados como uma descrição do comportamento observado na base de dados.
-
-### Resistência à compressão do concreto
-
-A resistência à compressão é uma das principais propriedades utilizadas na caracterização do concreto endurecido e no controle tecnológico. Seu valor está relacionado à capacidade do material de suportar esforços de compressão e é influenciado por diferentes fatores associados à composição e às condições de produção e cura.
-
-A análise da resistência deve considerar características como a classe do concreto, a relação água/cimento, o consumo de cimento e a idade do corpo de prova. Portanto, a comparação entre resultados de resistência deve ser realizada considerando as condições nas quais os corpos de prova foram produzidos e ensaiados.
-
-### Relação água/cimento e resistência
-
-A relação água/cimento constitui uma variável de grande importância para o comportamento do concreto. Em condições comparáveis, o aumento da quantidade de água em relação ao material cimentante tende a aumentar a porosidade da pasta após o endurecimento, podendo resultar em redução da resistência mecânica.
-
-Assim, a relação água/cimento e a resistência à compressão devem ser analisadas conjuntamente. Entretanto, outros fatores também interferem no comportamento observado, como tipo e características dos materiais, consumo de cimento, condições de cura, idade e procedimentos de produção.
-
-Dessa maneira, uma eventual tendência identificada nos dados deve ser interpretada como uma associação observada no conjunto analisado, não necessariamente como uma relação causal isolada.
-
-### Consumo de cimento e resistência
-
-O consumo de cimento também constitui uma variável relevante na análise do concreto. Entretanto, a relação entre consumo de cimento e resistência não deve ser interpretada isoladamente.
-
-Um maior consumo de cimento pode estar associado a diferentes características de dosagem e desempenho, mas a resistência depende da interação entre diversos fatores, especialmente da relação água/cimento, das características dos agregados, da compactação e das condições de cura.
-
-Por essa razão, a investigação da afirmação de que maiores consumos de cimento resultam em maiores resistências deve considerar conjuntamente as variáveis disponíveis na base.
-
-### Influência da idade na resistência
-
-A resistência do concreto apresenta evolução ao longo do tempo devido ao processo de hidratação do cimento. Em condições adequadas de cura, a hidratação promove transformações na microestrutura da pasta cimentícia, contribuindo para o desenvolvimento progressivo da resistência.
-
-Consequentemente, corpos de prova submetidos ao ensaio em diferentes idades podem apresentar valores de resistência distintos. A idade deve, portanto, ser considerada na interpretação e comparação dos resultados de resistência à compressão.
-
-### Utilização do R na análise estatística
-
-O R é uma linguagem e ambiente computacional voltado à análise estatística, manipulação e visualização de dados. Entre suas características está a possibilidade de realizar operações vetorizadas e utilizar funções específicas para diferentes etapas do processamento dos dados.
-
-Funções como `str()`, `summary()`, `aggregate()`, `split()`, `lapply()`, `sapply()` e `apply()` permitem realizar diferentes operações de inspeção, agrupamento e processamento.
-
-A utilização de estruturas de programação, como for e if, também permite desenvolver procedimentos iterativos e condicionais. Entretanto, quando uma operação pode ser realizada diretamente sobre vetores, a abordagem vetorizada geralmente proporciona códigos mais concisos e adequados à lógica de funcionamento do `R`.
+A resistência à compressão possui forte dependência da relação água/cimento (a/c), regida historicamente pela *Lei de Abrams* [@abrams1918]. Em condições comparáveis, o aumento da quantidade de água eleva a porosidade da matriz cimentícia, reduzindo drasticamente a resistência mecânica. Adicionalmente, o consumo de cimento e o tempo de cura (idade) interagem diretamente neste balanço, sendo esperado um ganho progressivo de resistência com o avanço da hidratação ao longo dos dias.
 
 ---
 
 ## ⚙️ Metodologia
 
-### Importação e reconhecimento da base
+### Inspeção e Estruturação
 
-Inicialmente, a base de dados foi importada para o ambiente R e atribuída ao objeto dados.
+Inicialmente, a base de dados foi importada para o ambiente R atribuída ao objeto principal, utilizando funções nativas como `read.csv2()`. A estrutura foi avaliada utilizando `dim()`, `str()` e `summary()`, permitindo o mapeamento inicial de variáveis mal classificadas (textos onde se esperavam números).
 
-A importação foi realizada utilizando a função `read.csv()`:
-```
-dados <- read.csv("nome_do_arquivo.csv")
-```
+### Investigação e Limpeza
 
-Após a importação, foram utilizadas as funções `head()`, `dim()` e `names()`:
-```
-head(dados)
-dim(dados)
-names(dados)
-```
-A função `head()` permitiu visualizar as primeiras observações, `dim()` permitiu verificar o número de linhas e colunas e `names()` apresentou os nomes das variáveis.
+A verificação de anomalias operou sobre duas frentes:
+1. **Qualitativas:** Uso de `unique()` e `table()` para mapear espaços adicionais ("Bloco B ") e inconsistências de caixa ("c30" vs "C30").
+2. **Quantitativas:** Mapeamento de problemas de digitação através de buscas textuais (letra "O" no lugar do zero, vírgulas no lugar de pontos) que forçavam a coerção para *character*.
 
-### Verificação da estrutura da base
+Foi instanciada uma cópia denominada `dados_limpos` para preservar a integridade original. As correções ocorreram via `trimws()`, `toupper()`, `gsub()` e `as.numeric()`.
 
-A estrutura da base foi analisada utilizando a função `str()`:
-```
-str(dados)
-```
+### Tratamento Analítico
 
-Essa função permitiu verificar o número de observações, o número de variáveis e os tipos de dados reconhecidos pelo R.
+A utilização de estruturas vetorizadas proporciona códigos mais concisos e adequados à lógica de funcionamento do R, facilitando a limpeza e a transformação de bases de dados complexas [@wickham2023r].
 
-Também foi utilizado o comando:
-```
-summary(dados)
-```
-para obter um resumo das variáveis.
-
-### Verificação dos valores ausentes
-
-A existência de valores ausentes foi investigada utilizando:
-```
-sum(is.na(dados))
-```
-A quantidade de valores ausentes por variável foi obtida com:
-```
-colSums(is.na(dados))
-```
-Para localizar as posições dos valores ausentes, foi utilizado:
-```
-which(is.na(dados), arr.ind = TRUE)
-```
-
-### Investigação de valores potencialmente problemáticos
-
-Foram verificadas as variáveis relacionadas à idade, resistência, abatimento, densidade, relação água/cimento e absorção.
-
-Exemplos de códigos utilizados:
-```
-dados[dados$idade <= 0, ]
-
-dados[dados$resistencia <= 0, ]
-
-dados[dados$abatimento < 0, ]
-
-dados[dados$densidade <= 0, ]
-
-dados[dados$relacao_a_c < 0, ]
-
-dados[dados$absorcao < 0, ]
-```
-Esses comandos permitem localizar registros que apresentam valores incompatíveis com os critérios definidos para a análise.
-
-Também foram verificadas as categorias das variáveis qualitativas:
-```
-unique(dados$obra)
-table(dados$obra)
-
-unique(dados$tipo_concreto)
-table(dados$tipo_concreto)
-```
-### Criação da base limpa
-
-Para preservar a base original, foi criada uma cópia denominada dados_limpos:
-```
-dados_limpos <- dados
-```
-As alterações necessárias foram realizadas somente no objeto dados_limpos.
-
-Após as correções, a estrutura foi novamente verificada:
-```
-str(dados_limpos)
-summary(dados_limpos)
-```
-
-### Correção dos tipos das variáveis
-
-As variáveis quantitativas foram verificadas por meio da função `str()`.
-
-Quando necessário, foram convertidas para o formato numérico utilizando `as.numeric()`:
-```
-dados_limpos$resistencia <- as.numeric(dados_limpos$resistencia`
-```
-Após a conversão, a estrutura foi novamente verificada:
-```
-str(dados_limpos)`
-```
-
-### Análise da resistência média
-
-A resistência média geral foi calculada utilizando `mean()`:
-```
-mean(dados_limpos$resistencia, na.rm = TRUE)
-```
-O argumento `na.rm = TRUE` permite que os valores "NA" sejam desconsiderados no cálculo.
-
-A resistência média por obra foi calculada utilizando `aggregate()`:
-```
-aggregate(`
-  resistencia ~ obra,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-```
-A resistência média por tipo de concreto foi obtida por:
-```
-aggregate(
-  resistencia ~ tipo_concreto,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-```
-E a resistência média por idade:
-```
-aggregate(
-  resistencia ~ idade,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-```
-### Utilização de `aggregate()`
-
-Para calcular simultaneamente as médias das propriedades do concreto por tipo, foi utilizado:
-```
-aggregate(
-  cbind(
-    resistencia,
-    consumo_cimento,
-    relacao_a_c,
-    abatimento,
-    densidade
-  ) ~ (tipo_concreto,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-)
-```
-Essa operação permitiu comparar as características médias das diferentes classes de concreto.
-
-### Criação da variável `resistencia_relativa`
-
-Foi criada a variável `resistencia_ref`, contendo os valores de referência de acordo com a classe do concreto.
-
-Em seguida, foi criada a variável `resistencia_relativa`:
-```
-dados_limpos$resistencia_relativa <-
-  dados_limpos$resistencia /
-  dados_limpos$resistencia_ref
-```
-A variável representa a razão entre a resistência observada e a resistência de referência.
-
-Valores superiores a 1 indicam resistência observada superior à referência, enquanto valores inferiores a 1 indicam resistência inferior à referência.
-
-### Criação da variável `classificacao`:
-
-Foi criada uma variável denominada `classificacao` para classificar os corpos de prova de acordo com os critérios estabelecidos para a análise.
-
-Os critérios utilizados foram definidos previamente e aplicados por meio de estruturas condicionais do `R`.
-
-### Criação da variável `acima_media`:
-
-A variável `acima_media` foi criada para indicar se a resistência de cada corpo de prova estava acima ou abaixo da média de seu respectivo tipo de concreto.
-
-Essa variável foi definida como lógica, assumindo os valores TRUE ou FALSE.
-
-### Utilização de `split()`:
-
-A base foi dividida de acordo com tipo_concreto utilizando:
-```
-grupos_concreto <- split(
-  dados_limpos,
-  dados_limpos$tipo_concreto
-)
-```
-A quantidade de observações em cada grupo foi obtida utilizando:
-```
-sapply(grupos_concreto, nrow)
-```
-
-### Utilização de `lapply()` e `sapply()`:
-
-A resistência média de cada grupo foi calculada utilizando `lapply()`:
-```
-medias_lapply <- lapply(
-  grupos_concreto,
-  function(x) {
-    mean(x$resistencia, na.rm = TRUE)
- }
-)
-```
-Posteriormente, a mesma operação foi realizada com `sapply()`:
-```
-medias_sapply <- sapply(
-  grupos_concreto,
-  function(x) {
-    mean(x$resistencia, na.rm = TRUE)
- }
-)
-```
-A principal diferença é que `lapply()` retorna uma lista, enquanto `sapply()` procura simplificar o resultado.
-
-
-### Utilização de `apply()`:
-
-As variáveis quantitativas foram selecionadas:
-```
-quantitativas <- dados_limpos[
-  ,
-  c(
-    "resistencia",
-    "consumo_cimento",
-    "relacao_a_c"`
-    "abatimento",
-    "densidade",
-    "absorcao"
-  )
-]
-```
-A média de cada variável foi calculada utilizando:
-```
-apply(
-  quantitativas,
-  2,
-  mean,
-  na.rm = TRUE
-)
-```
-Também foi calculada uma medida resumo para cada observação:
-```
-apply(
-  quantitativas,
-  1,
-  mean,
-  na.rm = TRUE
-)
-```
-Nesse segundo caso, deve-se destacar que a média obtida entre variáveis com diferentes unidades e significados físicos não possui necessariamente uma interpretação física direta.
-
-### Utilização de `for` e `if`:
-
-Para identificar os corpos de prova cuja resistência estivesse acima da média de sua classe, foi utilizada uma estrutura `for` combinada com `if`:
-```
- for (i in 1:nrow(dados_limpos)) { 
-
-  classe <- dados_limpos$tipo_concreto[i]
-
-  media_classe <- mean(
-    dados_limpos$resistencia[
-      dados_limpos$tipo_concreto == classe
-    ],
-    na.rm = TRUE
-  )
-
-  if (dados_limpos$resistencia[i] > media_classe) {
-
-    print(dados_limpos[i, ])
-
-  }
-}
-```
-A mesma análise foi posteriormente realizada por meio de uma abordagem vetorizada.
-
-A comparação entre as duas soluções considerou simplicidade, legibilidade e eficiência.
-
-### Comparação entre obras
-
-A resistência média dos diferentes blocos foi calculada utilizando:
-```
-aggregate(
-  resistencia ~ obra,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-```
-Os resultados foram comparados para verificar se o Bloco C apresentava a maior resistência média.
-
-A análise foi realizada de maneira exclusivamente descritiva, sem aplicação de testes de hipótese.
-
-### Relação entre consumo de cimento e resistência
-
-A relação entre consumo_cimento e resistencia foi investigada por meio de uma representação gráfica:
-```
-plot(
-  dados_limpos$consumo_cimento,
-  dados_limpos$resistencia,
-  xlab = "Consumo de cimento",
-  ylab = "Resistência à compressão"
-)
-```
-Também foram consideradas as variáveis `relacao_a_c`, `idade` e `tipo_concreto`, uma vez que esses fatores podem influenciar a resistência.
-
-### Relação entre água/cimento e resistência
-
-A relação entre relacao_a_c e resistencia foi analisada por:
-```
-plot(
-  dados_limpos$relacao_a_c,
-  dados_limpos$resistencia,
-  xlab = "Relação água/cimento",
-  ylab = "Resistência à compressão"
-)
-```
-O gráfico foi utilizado para verificar a existência de tendências ou padrões que justificassem uma investigação mais detalhada.
-
-### Relação entre idade e resistência
-
-A resistência média para cada idade foi obtida utilizando:
-```
-aggregate(
-  resistencia ~ idade,
-  data = dados_limpos,
-  FUN = mean,
-  na.rm = TRUE
-)
-```
-Os resultados foram comparados para verificar o comportamento da resistência com o aumento da idade dos corpos de prova.
-
+Os métodos de agrupamento e exploração envolveram as famílias de funções do Base R, como `aggregate()` para sumarizações multivariadas por grupos, e combinações de `split()`, `lapply()` e `sapply()` para isolar listas de dados. A avaliação iterativa foi feita comparando estruturas de controle (`for` e `if`) com funções vetorizadas mais eficientes (`ave()`).
 
 ---
 
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+### 1. Conhecendo a base (Etapa 1)
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
-
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
-
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
-
-Procure não apenas descrever, mas **interpretar os dados**.
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
+O processamento iniciou-se com a importação cuidadosa do arquivo CSV. Utilizou-se o argumento `na.strings` para que o software reconhecesse automaticamente diferentes padrões de ausência de dados preenchidos pelos técnicos na planilha bruta.
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| label: importacao-dados
+#| echo: true
+#| warning: false
+
+library(knitr)
+
+# Importação (Questão 1)
+dados <- read.csv2(
+  "base_processamento_dados_engenharia_civil.csv",
+  stringsAsFactors = FALSE,
+  check.names = FALSE,
+  na.strings = c("", " ", "NA", "N/A", "-", "null", "NULL")
+)
+
+# Dimensões (Questão 2)
+dimensoes <- dim(dados)
 ```
 
-## 🧠 Considerações finais
+A base importada possui **`r dimensoes[1]` observações** (linhas, representando os corpos de prova) e **`r dimensoes[2]` variáveis** (colunas). 
 
-Apresente uma síntese dos principais pontos observados no experimento.
+Ao aplicarmos a função `str()` (Questão 3 e 5), nota-se um problema grave oriundo da coleta:
+```{r}
+#| label: estrutura-dados
+#| echo: true
+#| collapse: true
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+str(dados)
+```
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+**Diagnóstico Inicial:** 
+O R classificou 9 das 10 variáveis como `chr` (Qualitativas/Texto) e apenas `idade_dias` como `int` (Quantitativa). Isso indica que colunas matemáticas cruciais (como resistência e consumo de cimento) foram contaminadas por letras ou caracteres especiais durante a digitação. Consequentemente, a função `summary()` (Questão 4) torna-se inútil nesta fase, pois não consegue calcular métricas como médias ou quartis para textos.
 
-## Aprenda Quarto
+Em relação aos **Valores Ausentes** (Questão 6), mapeou-se a exata localização das lacunas:
+```{r}
+#| label: valores-ausentes
+#| echo: true
 
-Acesse [Quarto](https://quarto.org/).
+# Contagem e localização de NAs
+nas_totais <- colSums(is.na(dados))
+tabela_na <- data.frame(Variavel = names(nas_totais), Faltantes = nas_totais)
+tabela_na <- tabela_na[tabela_na$Faltantes > 0, ]
+
+kable(tabela_na, align = "c", row.names = FALSE, caption = "Variáveis com Valores Ausentes")
+```
+Existem 5 falhas de registro pulverizadas na base, afetando a resistência (CP-092), abatimento (CP-015), densidade (CP-077), absorção (CP-097) e relação a/c (CP-038).
+
+### 2. Investigando problemas nos dados (Etapa 2)
+
+Antes de transformar dados, o engenheiro deve avaliar a coerência física (Questão 7). Ao visualizar pontualmente os extremos da base, observou-se:
+* **CP-032:** Abatimento registrado como 1250 mm (fisicamente impossível, o cone de slump tem apenas 300 mm de altura).
+* **CP-053:** Densidade de 238 kg/m³ (incoerente, o concreto normal varia entre 2300 a 2500 kg/m³; claramente faltou um zero).
+* **CP-072:** Absorção de 18,4% (altíssima para concreto estrutural, indicando erro ou material poroso não conforme).
+
+A investigação de formatação revelou os erros de digitação (Questão 8):
+```{r}
+#| label: erros-digitacao
+#| echo: true
+
+# Localizando problemas clássicos de digitação
+erros <- subset(dados, id_corpo_prova %in% c("CP-008", "CP-019", "CP-064"))
+kable(erros[, c("id_corpo_prova", "resistencia_mpa", "cimento_kg_m3")], align = "c", row.names = FALSE)
+```
+Nota-se vírgulas ao invés de pontos (38,7) e a letra "O" maiúscula substituindo o zero numérico (3O,4 e 390O). É por este motivo que um **único valor digitado incorretamente altera a interpretação de toda a variável pelo R** (Questão 11): vetores no R exigem tipagem homogênea. Uma única letra força toda a coluna numérica a se transformar em texto.
+
+Para as variáveis categóricas (Questões 9 e 10), verificou-se a falta de padronização:
+```{r}
+#| label: padronizacao-cat
+#| echo: true
+
+cat("Inconsistências em Obras: ", unique(dados$obra), "\n")
+cat("Inconsistências em Classes: ", unique(dados$tipo_concreto), "\n")
+```
+O `"Bloco B "` possui um espaço adicional no final, e a classe `"c30"` foi digitada em minúsculo.
+
+### 3. Limpeza da base (Etapa 3)
+
+Iniciamos criando o objeto `dados_limpos` (Questão 12). Esta prática é indispensável pois garante a rastreabilidade e a reprodutibilidade. Se o engenheiro cometer um erro durante o tratamento, ele não perde a base original bruta, podendo reiniciar o processo sem necessidade de nova importação.
+
+Realizamos a correção em lote (Questão 13 e 14):
+```{r}
+#| label: limpeza-dados
+#| echo: true
+
+dados_limpos <- dados
+
+# 1. Padronização de Categorias
+dados_limpos$obra <- trimws(dados_limpos$obra) # Remove espaços excedentes
+dados_limpos$tipo_concreto <- toupper(dados_limpos$tipo_concreto) # Força maiúsculas
+
+# 2. Correção de Erros de Digitação e Coerção Numérica
+colunas_corrigir <- c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c")
+
+for (col in colunas_corrigir) {
+  dados_limpos[[col]] <- gsub("O", "0", dados_limpos[[col]]) # Troca letra O por 0
+  dados_limpos[[col]] <- gsub(",", ".", dados_limpos[[col]]) # Troca vírgula por ponto
+  dados_limpos[[col]] <- as.numeric(dados_limpos[[col]])     # Força transformação
+}
+
+# 3. Forçando as demais variáveis para numérico
+dados_limpos$abatimento_mm <- as.numeric(dados_limpos$abatimento_mm)
+dados_limpos$densidade_kg_m3 <- as.numeric(dados_limpos$densidade_kg_m3)
+dados_limpos$absorção_agregado_pct <- as.numeric(dados_limpos$absorção_agregado_pct)
+```
+
+**Estratégia para Valores Ausentes (Questão 15):**
+Excluir uma linha inteira por faltar apenas o "abatimento" geraria desperdício estatístico das outras variáveis válidas daquele corpo de prova. A imputação de dados falsos na "resistência à compressão" (variável resposta) introduziria um viés gravíssimo na análise estrutural. Portanto, a decisão técnica mais correta foi **manter o NA**. Durante o cálculo estatístico computacional, utilizaremos o argumento `na.rm = TRUE` para ignorá-los apenas nas funções matemáticas afetadas.
+
+Com a base tratada, a função `summary` agora exibe corretamente métricas reais e não apenas o comprimento de texto (Questão 16):
+```{r}
+#| label: summary-limpo
+#| echo: true
+#| collapse: true
+
+summary(dados_limpos[, c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c")])
+```
+
+### 4. Explorando os Dados (Etapa 4)
+
+Com a base matematicamente funcional, partiu-se para a extração da inteligência descritiva (Questões 17 a 19):
+
+```{r}
+#| label: medias-agrupadas
+#| echo: true
+
+# Resistência Média Geral
+media_geral <- mean(dados_limpos$resistencia_mpa, na.rm = TRUE)
+
+# Obra com Maior e Menor Resistência (Q18)
+media_obras <- aggregate(resistencia_mpa ~ obra, data = dados_limpos, FUN = mean, na.rm = TRUE)
+media_obras <- media_obras[order(-media_obras$resistencia_mpa), ]
+
+# Classes (Q19)
+media_tipos <- aggregate(resistencia_mpa ~ tipo_concreto, data = dados_limpos, FUN = mean, na.rm = TRUE)
+
+kable(media_obras, align = "c", col.names = c("Bloco", "Resistência Média (MPa)"), caption = "Comparativo entre Blocos")
+```
+Verifica-se que o **Bloco B** possui a maior resistência média (35,70 MPa), enquanto o **Bloco A** possui a menor (32,12 MPa). Entre as classes, como exigido pela NBR 6118, a classe C40 lidera com folga (43,33 MPa).
+
+Para a análise unificada de todas as propriedades (Questão 20), utilizou-se o `aggregate()` multivariado:
+```{r}
+#| label: aggregate-multivariado
+#| echo: true
+
+propriedades <- aggregate(
+  cbind(resistencia_mpa, cimento_kg_m3, relacao_a_c, abatimento_mm, densidade_kg_m3) ~ tipo_concreto,
+  data = dados_limpos, 
+  FUN = mean, na.rm = TRUE
+)
+
+kable(propriedades, align = "c", caption = "Resumo Tecnológico por Classe de Concreto", digits = 2)
+```
+**Interpretação:** É evidente a coerência física dos dados consolidados. Concretos de maior resistência (C40) demandaram maior consumo de aglomerante (cimento = 384 kg/m³) e, consequentemente, necessitaram de rigoroso controle no traço com a menor relação água/cimento (0,46), em pleno acordo com a tecnologia de materiais.
+
+### 5. Criação de Variáveis Derivadas (Etapa 5)
+
+Criamos indicadores de eficiência. A `resistencia_relativa` foi ancorada no limite de projeto ($fck$) de cada tipo: C25 (25 MPa), C30 (30 MPa), etc. (Questão 21). Com base nela, classificamos o lote (Questão 22) e criamos um indicador booleano interno (Questão 23):
+
+```{r}
+#| label: var-derivadas
+#| echo: true
+
+# 1. Referências de fck
+ref_fck <- c("C25"=25, "C30"=30, "C35"=35, "C40"=40)
+
+# 2. Variável de Resistência Relativa
+dados_limpos$resistencia_relativa <- dados_limpos$resistencia_mpa / ref_fck[dados_limpos$tipo_concreto]
+
+# 3. Classificação de Desempenho
+dados_limpos$classificacao <- ifelse(is.na(dados_limpos$resistencia_relativa), NA,
+                              ifelse(dados_limpos$resistencia_relativa >= 1.10, "Excelente",
+                              ifelse(dados_limpos$resistencia_relativa >= 0.95, "Bom",
+                              ifelse(dados_limpos$resistencia_relativa >= 0.85, "Regular", "Insatisfatório"))))
+
+# 4. Acima da Média (Vetorizado com ave)
+dados_limpos$acima_media <- with(dados_limpos, resistencia_mpa > ave(resistencia_mpa, tipo_concreto, FUN = function(x) mean(x, na.rm=TRUE)))
+
+# Tabela de verificação rápida
+kable(table(dados_limpos$classificacao), col.names = c("Categoria", "Frequência"), align = "c")
+```
+Justifica-se o critério técnico: Índices de relativo $>1,10$ indicam margem de segurança folgada (Excelente); entre 0,95 e 1,10 é Aceitável/Bom. Valores abaixo de 0,85 requerem notificação imediata da usina de concreto (Insatisfatório).
+
+### 6. Isolamento e Família Apply (Etapas 6 e 7)
+
+O particionamento de bases longas facilita análises estatísticas em lote. Ao isolar os grupos (Questão 24) e aplicar funções iterativas, contrastamos abordagens computacionais (Questões 25 e 26):
+
+```{r}
+#| label: split-lapply
+#| echo: true
+
+# Isolamento por classe
+grupos <- split(dados_limpos, dados_limpos$tipo_concreto)
+
+# Teste com lapply (Retorna Lista)
+resultado_lapply <- lapply(grupos, function(x) mean(x$resistencia_mpa, na.rm = TRUE))
+
+# Teste com sapply (Tenta simplificar para Vetor)
+resultado_sapply <- sapply(grupos, function(x) mean(x$resistencia_mpa, na.rm = TRUE))
+
+print(resultado_sapply)
+```
+A grande diferença estrutural é que o `lapply()` sempre retorna os cálculos confinados dentro de objetos do tipo *lista*. O `sapply()`, por ser um "wrapper" simplificado, identifica que os retornos são números simples e devolve um vetor nomeado limpo, muito mais fácil para plotagem de gráficos na rotina do analista.
+
+Avaliando o impacto nas variáveis gerais por meio de matriz (Questões 27 e 28):
+```{r}
+#| label: fam-apply
+#| echo: true
+
+cols_quant <- dados_limpos[, c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c", "abatimento_mm", "densidade_kg_m3")]
+
+# Média por Coluna (MARGIN = 2)
+medias_colunas <- apply(cols_quant, 2, mean, na.rm = TRUE)
+
+# Resumo por Linha (MARGIN = 1) - Primeiros 5 resultados
+resumo_linhas <- apply(cols_quant, 1, mean, na.rm = TRUE)
+```
+**Discussão Analítica:** Quando o R calcula `apply` nas linhas (`MARGIN = 1`), ele realiza a média misturando grandezas físicas absolutamente divergentes daquela observação (Mpa + Kg/m³ + mm). Portanto, a resposta numérica existe, mas **não possui validade física direta** ou interpretação termodinâmica plausível para a engenharia.
+
+### 7. Estruturas de Controle e Desempenho (Etapa 8)
+
+Para responder à Questão 29 e 30 (Acima da Média), foi desenhado um modelo clássico de algoritmo (`for/if`) versus a abordagem moderna nativa do R (vetorização):
+
+```{r}
+#| label: for-if
+#| echo: true
+
+# Abordagem Tradicional (for / if)
+acima_media_for <- logical(nrow(dados_limpos))
+for (i in 1:nrow(dados_limpos)) {
+  classe <- dados_limpos$tipo_concreto[i]
+  media_classe <- mean(dados_limpos$resistencia_mpa[dados_limpos$tipo_concreto == classe], na.rm = TRUE)
+  
+  if (!is.na(dados_limpos$resistencia_mpa[i])) {
+    acima_media_for[i] <- (dados_limpos$resistencia_mpa[i] > media_classe)
+  } else {
+    acima_media_for[i] <- NA
+  }
+}
+
+# Abordagem Vetorizada (ave) executada na etapa 5:
+# dados_limpos$acima_media <- dados_limpos$resistencia_mpa > ave(...) 
+```
+A **Abordagem Vetorizada** (`ave`) demonstrou ser muito superior:
+* **Simplicidade e Legibilidade:** Condensa 10 linhas lógicas em uma única instrução direta.
+* **Eficiência Computacional:** Executa em linguagem de baixo nível (C) por trás do R, ao invés de forçar a máquina a calcular a média repetidas vezes (100 vezes dentro do loop).
+
+### 8. Parecer Técnico para a Prática Profissional (Etapa 9)
+
+**Mito 1: O Bloco C tem o melhor desempenho? (Q31)**
+Não. Conforme a Tabela de Comparativo entre Blocos (Seção 4), o Bloco C obteve 32,37 MPa de média descritiva, perdendo o posto de superioridade para o Bloco B (35,70 MPa). A afirmação do engenheiro não se sustenta nos dados.
+
+**Mito 2: Quanto mais cimento, maior a resistência diretamente? (Q32 e Q33)**
+Falso. Ao isolarmos o cimento da relação água/cimento, vemos a importância das variáveis mediadoras:
+```{r}
+#| label: correlacoes
+#| echo: true
+#| fig-align: center
+
+correlacao <- cor(dados_limpos[, c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c")], use = "complete.obs")
+
+# Plot a/c x resistência
+plot(dados_limpos$relacao_a_c, dados_limpos$resistencia_mpa,
+     main = "A Lei de Abrams na Prática",
+     xlab = "Fator Água/Cimento", ylab = "Resistência (MPa)",
+     pch = 16, col = "darkblue")
+```
+A correlação simples de Pearson confirma que a variável governante real da resistência não é apenas a massa de cimento (r = 0,73), mas sim a forte correlação negativa da **relação a/c** (r = -0,76), comportamento descrito pela *Lei de Abrams* [@abrams1918]. Adicionar cimento sem controlar a água não assegura resistência.
+
+**Mito 3: A idade do ensaio muda o perfil? (Q34)**
+Os dados refletem perfeitamente o amadurecimento das reações de hidratação:
+```{r}
+#| label: idades
+#| echo: true
+
+idade <- aggregate(resistencia_mpa ~ idade_dias, data = dados_limpos, mean, na.rm=TRUE)
+kable(t(idade), align = "c", caption = "Evolução temporal da Resistência (MPa)")
+```
+O ganho é acentuado aos 7 e 14 dias, estabilizando-se nas amostras normativas de 28 dias e assumindo crescimento residual longo até os 280 dias.
+
+**Top 5 Informações para o Relatório Final (Q35):**
+1. **Média de Resistência por Obra:** Foco primário para liberação dos pavimentos.
+2. **Índice de "Classificação":** Taxa gerencial direta (Quantos % estão com status "Excelente" e "Insatisfatório").
+3. **Média da Relação A/C por tipo:** Atua como controle do erro de dosagem (excesso de água) feito na usina.
+4. **Desvio Padrão do Lote (CV):** Para avaliar se a concretagem foi homogênea ou se caminhões-betoneira divergiram radicalmente.
+5. **Correlações Críticas:** Para provar matematicamente a usinas ou mestres de obra a importância de não adicionar água ao caminhão.
+
+### 9. Desafio: O Script Consolidado do Engenheiro
+
+Abaixo, documenta-se o *pipeline* centralizado que o engenheiro pode armazenar para limpezas e geração rápida de *dashboards* em futuros lotes recebidos pela construtora:
+
+```{r}
+#| label: script-final
+#| echo: true
+#| eval: false
+
+# =======================================================
+# SCRIPT DE PROCESSAMENTO: CONTROLE TECNOLÓGICO CONCRETO
+# =======================================================
+
+# 1. IMPORTAÇÃO
+base_bruta <- read.csv2("base_processamento_dados_engenharia_civil.csv", 
+                        stringsAsFactors = FALSE, check.names = FALSE, 
+                        na.strings = c("", " ", "NA", "N/A", "-", "null", "NULL"))
+
+# 2. INSPEÇÃO (Gatilhos de Alerta)
+str(base_bruta) # Identifica erros de coerção (chr onde devia ser num)
+colSums(is.na(base_bruta)) # Mapeia falhas operacionais
+
+# 3. LIMPEZA E FORMATAÇÃO
+base_limpa <- base_bruta
+base_limpa$obra <- trimws(base_limpa$obra)
+base_limpa$tipo_concreto <- toupper(base_limpa$tipo_concreto)
+
+# Tratamento de Numéricos
+colunas <- c("resistencia_mpa", "cimento_kg_m3", "relacao_a_c")
+for (col in colunas) {
+  base_limpa[[col]] <- as.numeric(gsub(",", ".", gsub("O", "0", base_limpa[[col]])))
+}
+base_limpa$abatimento_mm <- as.numeric(base_limpa$abatimento_mm)
+base_limpa$densidade_kg_m3 <- as.numeric(base_limpa$densidade_kg_m3)
+
+# 4. ESTATÍSTICAS DIRETAS E KPIs
+Resumo_Classes <- aggregate(cbind(resistencia_mpa, relacao_a_c) ~ tipo_concreto, 
+                            data = base_limpa, FUN = mean, na.rm = TRUE)
+
+# 5. VARIÁVEIS DERIVADAS DE CONTROLE
+fcks <- c("C25"=25, "C30"=30, "C35"=35, "C40"=40)
+base_limpa$relativo <- base_limpa$resistencia_mpa / fcks[base_limpa$tipo_concreto]
+base_limpa$alerta_baixo <- ifelse(base_limpa$relativo < 0.95, "Alerta", "Aprovado")
+
+# Fim da Rotina - Exportação
+# write.csv(base_limpa, "dados_prontos_analise.csv", row.names = FALSE)
+```
+
+---
+
+## 🧠 Considerações Finais
+
+A etapa de organização, diagnóstico e processamento é inegociável na Engenharia Civil guiada por dados. Diferentemente de cenários acadêmicos isolados, o ambiente de obra é permeado por falhas de instrumentação, erros humanos de preenchimento e falhas de formatação sistêmica. Negligenciar a limpeza e partir diretamente para algoritmos estatísticos pode fundamentar decisões perigosas: aprovar o uso de um material que não deveria estruturar o pavimento ou rejeitar um concreto viável financeiramente.
+
+O principal e mais severo problema encontrado na base bruta foi a **contaminação dos registros numéricos por caracteres de texto (vírgulas mal padronizadas e letras O no lugar de Zeros)**. Isso corrompeu a estrutura do R, travando cálculos matemáticos básicos. A decisão técnica para sanar isso foi criar uma etapa programada em lote via função `gsub()`, expurgando a sujeira gramatical e utilizando `as.numeric()` para recuperar o domínio computacional das variáveis, resguardando sempre os espaços nulos (`NA`) para não adicionar vieses de *outliers* não ocorridos em laboratório.
+
+Por fim, os objetivos foram plenamente atingidos. Demonstrou-se que a simbiose entre as equações analíticas da engenharia e a manipulação vetorizada do R é a chave não apenas para gerar respostas numéricas, mas sim diagnósticos táticos sobre fornecedores, blocos e padrões normativos em larga escala.
 
 ## 📖 Referências
