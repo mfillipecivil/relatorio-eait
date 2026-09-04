@@ -178,6 +178,7 @@ Relatórios desenvolvidos:
 
 - [Relatório 01 (24/08/2026)](rel01/index.html){target="_blank"}
 - [Relatório 02 (31/08/2026)](rel02/index.html){target="_blank"}
+- [Relatório 03 (07/09/2026)](rel03/index.html){target="_blank"}
 ```{r}
 #| echo: false
 #| eval: false

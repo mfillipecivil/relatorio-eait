@@ -77,22 +77,524 @@ Descreva como o experimento foi realizado.
 ---
 
 ## 🔍 Resultados e Discussão
+### Importação da base de dados
+Inicialmente, a base de dados foi importada para o ambiente R. Optou-se por realizar a primeira leitura das variáveis como texto, preservando a forma original dos registros e facilitando a identificação de possíveis inconsistências de preenchimento.
+```{r}
+library(tidyverse)
+library(knitr)
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+arquivo_dados <- "base_processamento_dados_engenharia_civil.csv"
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+dados <- read_csv2(
+  arquivo_dados,
+  col_types = cols(.default = col_character()),
+  na = c(""," ", "NA", "N/A", "-", "null", "NULL"),
+  show_col_types = FALSE
+)
+```
+O código realiza a importação da base e armazena os dados no objeto dados. A leitura inicial como texto evita que possíveis erros de digitação sejam automaticamente convertidos ou descartados antes da etapa de diagnóstico.
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+### Dimensões da base de dados
+Para verificar a quantidade de observações e variáveis presentes na base, foi utilizado o seguinte código:
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+```{r}
+library(tidyverse)
+library(knitr)
 
-Procure não apenas descrever, mas **interpretar os dados**.
+# Dimensões da base de dados
+tabela_dimensao <- tibble(
+  Informacao = c("Número de observações", "Número de variáveis"),
+  Resultado = c(nrow(dados), ncol(dados))
+)
+
+# Renderização da tabela
+kable(
+  tabela_dimensao,
+  caption = "Dimensões da base de dados"
+)
+```
+O código contabiliza quantas linhas e colunas compõem a base, apresentando os resultados em formato de tabela.
+A base apresenta 100 observações e 10 variáveis, correspondentes aos registros dos corpos de prova e às características utilizadas no estudo.
+
+### Estrutura da base
+A estrutura dos dados foi examinada por meio do seguinte código:
+
+`glimpse(dados)`
+
+O código proporciona uma visão geral da estrutura da base, permitindo verificar os nomes das variáveis, a quantidade de registros e o tipo inicialmente atribuído a cada coluna.
+
+Como a importação foi propositalmente realizada em formato textual, as 10 variáveis são inicialmente apresentadas como character. Essa estratégia permite realizar a limpeza antes da conversão das variáveis quantitativas.
+
+### Identificação de valores ausentes
+A presença de valores ausentes foi investigada em todas as variáveis.
+```{r}
+resumo_na <- dados |>
+  summarise(
+    across(everything(), ~ sum(is.na(.)))
+  ) |>
+  pivot_longer(
+    everything(),
+    names_to = "variavel",
+    values_to = "quantidade_na"
+  ) |>
+  filter(quantidade_na > 0)
+
+kable(
+  resumo_na,
+  caption = "Valores ausentes identificados na base"
+)
+```
+O código percorre a base e contabiliza os valores ausentes em cada variável, mantendo na tabela apenas aquelas em que pelo menos um NA foi identificado.
+
+Foram identificados cinco valores ausentes, distribuídos em cinco variáveis diferentes.
+Para localizar os respectivos corpos de prova:
+```{r}
+registros_na <- dados |>
+  filter(if_any(everything(), is.na))
+
+kable(
+  registros_na,
+  caption = "Registros contendo valores ausentes"
+)
+```
+Esse código seleciona os registros completos que apresentam pelo menos um valor ausente, permitindo identificar onde cada ocorrência está localizada.
+
+Portanto, os valores ausentes estão distribuídos em cinco observações distintas da base.
+
+### Verificação da variável `obra`
+A padronização das categorias da variável obra foi verificada antes de qualquer tratamento.
+```{r}
+tabela_obra <- dados |>
+  count(obra, name = "frequencia")
+
+kable(
+  tabela_obra,
+  caption = "Categorias originais da variável obra"
+)
+```
+O código identifica todas as formas de escrita encontradas para a variável obra e contabiliza suas respectivas frequências.
+
+Foi identificada uma inconsistência na variável obra. Um dos registros contém Bloco B com um espaço adicional ao final do texto.
+
+Embora visualmente seja semelhante a Bloco B, para o R essas duas formas podem ser interpretadas como categorias diferentes. Após a remoção do espaço, o Bloco B passa a apresentar 29 registros.
+
+### Verificação da variável tipo_concreto
+A mesma análise foi realizada para a classificação do concreto.
+```{r}
+tabela_tipo <- dados |>
+  count(tipo_concreto, name = "frequencia")
+
+kable(
+  tabela_tipo,
+  caption = "Categorias originais de tipo de concreto"
+)
+```
+O código verifica quais categorias de concreto estão presentes na base e quantas vezes cada uma aparece.
+
+Foi encontrada a categoria c30, que representa o mesmo tipo de concreto que C30, diferenciando-se apenas pelo emprego de letras minúsculas.
+
+Após a padronização, a categoria C30 passa a possuir 32 observações.
+
+### Identificação de possíveis erros de digitação
+Como os dados foram inicialmente importados como texto, foi possível procurar caracteres incompatíveis com a representação numérica esperada.
+
+```{r}
+problemas_texto <- dados |>
+  pivot_longer(
+    cols = c(
+      resistencia_mpa,
+      cimento_kg_m3,
+      relacao_a_c,
+      abatimento_mm,
+      densidade_kg_m3,
+      `absorção_agregado_pct`
+    ),
+    names_to = "variavel",
+    values_to = "valor_original"
+  ) |>
+  filter(str_detect(valor_original, "[Oo,]"))
+
+kable(
+  problemas_texto,
+  caption = "Possíveis inconsistências de digitação"
+)
+```
+O código procura valores numéricos que apresentam vírgulas ou a letra O, permitindo localizar registros que necessitam de padronização antes da conversão numérica.
+
+Os registros CP-019 e CP-064 apresentam fortes indícios de erro de digitação, enquanto CP-008 e CP-045 apresentam inconsistência no separador decimal utilizado.
+
+### Limpeza e padronização da base
+Após o diagnóstico inicial, foi criada uma função para realizar a conversão das variáveis quantitativas.
+```{r}
+converter_numero <- function(x) {
+  x |>
+    str_trim() |>
+    str_replace_all("[Oo]", "0") |>
+    str_replace_all(",", ".") |>
+    parse_double(
+      locale = locale(decimal_mark = "."),
+      na = c("", "NA", "N/A", "-", "null", "NULL")
+    )
+}
+```
+Esse código estabelece um procedimento único de padronização dos valores numéricos, corrigindo caracteres incompatíveis e preparando os dados para conversão.
+
+Em seguida, foi criada a base tratada:
+```{r}
+dados_limpos <- dados |>
+  rename(
+    absorcao_agregado_pct = `absorção_agregado_pct`
+  ) |>
+  mutate(
+    id_corpo_prova = str_trim(id_corpo_prova),
+    obra = str_trim(obra),
+    tipo_concreto = str_to_upper(str_trim(tipo_concreto)),
+    idade_dias = parse_integer(str_trim(idade_dias)),
+    across(
+      c(
+        resistencia_mpa,
+        cimento_kg_m3,
+        relacao_a_c,
+        abatimento_mm,
+        densidade_kg_m3,
+        absorcao_agregado_pct
+      ),
+      converter_numero
+    )
+  )
+```
+O código realiza a limpeza geral da base, removendo espaços desnecessários, padronizando as categorias e convertendo as variáveis quantitativas para formato numérico.
+
+Após essa etapa, Bloco b passa a ser Bloco B e c30 passa a ser C30.
+
+### Verificação das categorias após a limpeza
+
+```{r}
+dados_limpos |>
+  count(obra) |>
+  kable(
+    caption = "Distribuição das obras após a padronização"
+  )
+```
+O código verifica o resultado da padronização da variável obra, permitindo confirmar que categorias equivalentes foram agrupadas corretamente.
+
+A limpeza eliminou a categoria adicional causada pelo espaço existente em Bloco B.
+
+```{r}
+dados_limpos |>
+  count(tipo_concreto) |>
+  kable( caption = "Distribuição dos tipos de concreto após a padronização" )
+```
+Esse código confirma a padronização final das classes de concreto.
+
+Após a limpeza, permanecem apenas as quatro classes de concreto esperadas.
+
+### Valores potencialmente incompatíveis com o contexto da Engenharia Civil
+
+Para identificar observações que merecem investigação, foram estabelecidos critérios de triagem.
+```{r}
+registros_suspeitos <- dados_limpos |>
+  filter(
+    abatimento_mm > 300 |
+    densidade_kg_m3 < 1000 |
+    absorcao_agregado_pct > 4 |
+    idade_dias > 100
+  )
+
+kable(
+  registros_suspeitos,
+  caption = "Registros potencialmente incompatíveis"
+)
+```
+O código seleciona valores que se afastam consideravelmente do comportamento esperado das variáveis, funcionando como uma etapa de triagem para posterior conferência.
+Destacam-se o abatimento de 1250 mm no CP-032, a densidade de 238 kg/m³ no CP-053 e a absorção de 18,40% no CP-072. O CP-085 apresenta idade de 280 dias, valor atípico em relação às demais idades da base.
+Esses valores devem ser considerados suspeitos, e não necessariamente incorretos, sendo recomendável conferir os registros originais dos ensaios antes de qualquer alteração.
+
+### Tratamento dos valores ausentes
+
+Os valores ausentes foram mantidos na base tratada, evitando substituições arbitrárias.
+```{r}
+dados_limpos |>
+  summarise(
+    across(everything(), ~ sum(is.na(.)))
+  ) |>
+  pivot_longer(
+    everything(),
+    names_to = "variavel",
+    values_to = "quantidade"
+  ) |>
+  filter(quantidade > 0) |>
+  kable(
+    caption = "Valores ausentes após a limpeza"
+  )
+```
+O código verifica se os valores ausentes originais foram preservados após a conversão e limpeza dos dados.
+
+Optou-se por não realizar imputação, pois a substituição desses valores poderia introduzir informações artificiais e interferir nos resultados estatísticos.
+
+### Estatística descritiva da resistência
+```{r}
+resumo_resistencia <- dados_limpos |>
+  summarise(
+    n = sum(!is.na(resistencia_mpa)),
+    Media = mean(resistencia_mpa, na.rm = TRUE),
+    Mediana = median(resistencia_mpa, na.rm = TRUE),
+    DP = sd(resistencia_mpa, na.rm = TRUE),
+    CV = 100 * DP / Media,
+    Minimo = min(resistencia_mpa, na.rm = TRUE),
+    Q1 = quantile(resistencia_mpa, 0.25, na.rm = TRUE),
+    Q3 = quantile(resistencia_mpa, 0.75, na.rm = TRUE),
+    Maximo = max(resistencia_mpa, na.rm = TRUE)
+  )
+
+kable(
+  resumo_resistencia,
+  digits = 2,
+  caption = "Estatística descritiva da resistência à compressão"
+)
+```
+O código calcula os principais indicadores de posição e dispersão da resistência à compressão, proporcionando uma caracterização geral do comportamento da variável.
+
+A resistência média foi de 33,55 MPa, enquanto a mediana foi de 32,30 MPa. O coeficiente de variação foi de aproximadamente 19,47%, indicando a dispersão dos resultados em relação à média.
+
+### Resistência por obra
+
+```{r}
+resumo_obra <- dados_limpos |>
+  group_by(obra) |>
+  summarise(
+    n = sum(!is.na(resistencia_mpa)),
+    Media = mean(resistencia_mpa, na.rm = TRUE),
+    Mediana = median(resistencia_mpa, na.rm = TRUE),
+    DP = sd(resistencia_mpa, na.rm = TRUE),
+    CV = 100 * DP / Media
+  ) |>
+  arrange(desc(Media))
+
+kable(
+  resumo_obra,
+  digits = 2,
+  caption = "Resistência à compressão por obra"
+)
+```
+O código compara a resistência à compressão entre as quatro obras, considerando medidas de tendência central e variabilidade.
+
+O Bloco B apresentou a maior resistência média, enquanto o Bloco C apresentou a menor média entre os grupos. O Bloco D apresentou o maior coeficiente de variação, indicando maior dispersão relativa.
+
+### Resistência por tipo de concreto
+
+```{r}
+resumo_tipo <- dados_limpos |>
+  group_by(tipo_concreto) |>
+  summarise(
+    n = sum(!is.na(resistencia_mpa)),
+    Media = mean(resistencia_mpa, na.rm = TRUE),
+    Mediana = median(resistencia_mpa, na.rm = TRUE),
+    DP = sd(resistencia_mpa, na.rm = TRUE),
+    CV = 100 * DP / Media,
+    Minimo = min(resistencia_mpa, na.rm = TRUE),
+    Maximo = max(resistencia_mpa, na.rm = TRUE)
+  )
+
+kable(
+  resumo_tipo,
+  digits = 2,
+  caption = "Resistência segundo o tipo de concreto"
+)
+```
+O código permite comparar o comportamento da resistência entre as diferentes classes de concreto.
+
+Observa-se uma progressão das médias de resistência entre C25 e C40. O concreto C40 apresentou a maior média e o menor coeficiente de variação.
+
+### Resistência em função da idade
+```{r}
+resumo_idade <- dados_limpos |>
+  group_by(idade_dias) |>
+  summarise(
+    n = sum(!is.na(resistencia_mpa)),
+    Media = mean(resistencia_mpa, na.rm = TRUE),
+    DP = sd(resistencia_mpa, na.rm = TRUE)
+  )
+
+kable(
+  resumo_idade,
+  digits = 2,
+  caption = "Resistência segundo a idade dos corpos de prova"
+)
+```
+O código agrupa os corpos de prova segundo sua idade de ensaio, permitindo comparar a resistência média observada em cada período.
+
+A interpretação deve considerar que os grupos possuem diferentes classes de concreto e tamanhos amostrais, não sendo adequado atribuir as diferenças observadas exclusivamente à idade.
+
+### Criação de indicadores de desempenho
+```{r}
+dados_limpos <- dados_limpos |>
+  mutate(
+    fck_referencia = case_when(
+      tipo_concreto == "C25" ~ 25,
+      tipo_concreto == "C30" ~ 30,
+      tipo_concreto == "C35" ~ 35,
+      tipo_concreto == "C40" ~ 40
+    ),
+    resistencia_relativa =
+      resistencia_mpa / fck_referencia,
+
+    classificacao = case_when(
+      resistencia_relativa >= 1.10 ~ "Excelente",
+      resistencia_relativa >= 0.95 ~ "Bom",
+      resistencia_relativa >= 0.85 ~ "Regular",
+      !is.na(resistencia_relativa) ~ "Insatisfatório",
+      TRUE ~ "Ausente"
+    )
+  )
+```
+O código cria indicadores derivados para comparar a resistência observada com o valor de referência associado à classe do concreto.
+
+```{r}
+dados_limpos |>
+  count(classificacao) |>
+  mutate(
+    Percentual = 100 * n / sum(n)
+  ) |>
+  kable(
+    digits = 1,
+    caption = "Classificação dos resultados de resistência"
+  )
+```
+
+O código resume a distribuição das classificações obtidas, apresentando a quantidade e o percentual correspondente a cada categoria.
+
+Considerando toda a base, 86% dos registros foram classificados como Bom ou Excelente segundo o critério descritivo adotado.
+
+### Representação gráfica
+```{r}
+ggplot(
+  dados_limpos,
+  aes(x = resistencia_mpa)
+) +
+  geom_histogram(bins = 15) +
+  labs(
+    title = "Distribuição da Resistência à Compressão",
+    x = "Resistência (MPa)",
+    y = "Frequência"
+  ) +
+  theme_minimal()
+```
+O código apresenta graficamente a distribuição dos valores de resistência à compressão, facilitando a identificação da concentração e dispersão dos resultados.
+
+```{r}
+ggplot(
+  dados_limpos,
+  aes(
+    x = tipo_concreto,
+    y = resistencia_mpa
+  )
+) +
+  geom_boxplot() +
+  labs(
+    title = "Resistência por Tipo de Concreto",
+    x = "Tipo de concreto",
+    y = "Resistência (MPa)"
+  ) +
+  theme_minimal()
+```
+
+O gráfico permite comparar visualmente a distribuição da resistência entre as diferentes classes de concreto, complementando os resultados apresentados nas tabelas.
+
+
+### Relação entre resistência e demais variáveis
+```{r}
+correlacoes <- tibble(
+  Relacao = c(
+    "Cimento × Resistência",
+    "Relação a/c × Resistência"
+  ),
+  Correlacao = c(
+    cor(
+      dados_limpos$cimento_kg_m3,
+      dados_limpos$resistencia_mpa,
+      use = "complete.obs"
+    ),
+    cor(
+      dados_limpos$relacao_a_c,
+      dados_limpos$resistencia_mpa,
+      use = "complete.obs"
+    )
+  )
+)
+
+kable(
+  correlacoes,
+  digits = 3,
+  caption = "Correlações com a resistência à compressão"
+)
+```
+
+O código avalia a intensidade e o sentido da associação linear entre a resistência e duas variáveis relacionadas à composição do concreto.
+
+A quantidade de cimento apresentou correlação linear praticamente nula com a resistência quando toda a base é considerada conjuntamente. Já a relação água/cimento apresentou correlação negativa relativamente forte, indicando que valores maiores de relação a/c estão associados a menores valores de resistência nesta amostra.
+Essa associação deve ser interpretada como uma característica dos dados analisados, não sendo suficiente, isoladamente, para estabelecer relação de causa e efeito.
+
+### Síntese dos principais resultados
+
+A partir das análises realizadas, os principais resultados podem ser consolidados em uma tabela final.
+```{r}
+resumo_final <- tibble(
+  Indicador = c(
+    "Observações",
+    "Variáveis originais",
+    "Valores ausentes originais",
+    "Resistência média",
+    "Mediana da resistência",
+    "CV da resistência",
+    "Obra com maior média",
+    "Classe com maior média",
+    "Correlação a/c × resistência",
+    "Bom ou Excelente"
+  ),
+  Resultado = c(
+    "100",
+    "10",
+    "5",
+    "33,55 MPa",
+    "32,30 MPa",
+    "19,47%",
+    "Bloco B - 35,70 MPa",
+    "C40 - 43,33 MPa",
+    "-0,764",
+    "86%"
+  )
+)
+
+kable(
+  resumo_final,
+  caption = "Síntese dos principais resultados"
+)
+```
+O código reúne os indicadores mais relevantes obtidos ao longo da análise, permitindo uma leitura rápida dos resultados do processamento.
+
+Os resultados demonstram que a etapa de tratamento foi necessária para corrigir problemas de padronização textual, representação numérica e categorização. A manutenção de uma base original e a criação de uma base tratada permitiram preservar a rastreabilidade das modificações realizadas.
+
+### Verificação final
+```{r}
+glimpse(dados_limpos)
+
+tibble(
+  Observacoes = nrow(dados_limpos),
+  Variaveis = ncol(dados_limpos),
+  Obras = n_distinct(dados_limpos$obra),
+  Tipos_concreto = n_distinct(dados_limpos$tipo_concreto),
+  Valores_ausentes = sum(is.na(dados_limpos))
+) |>
+  kable(
+    caption = "Verificação final da base tratada"
+  )
+```
+
+O código realiza uma última conferência da estrutura da base, verificando suas dimensões, categorias e valores ausentes após o tratamento.
+
+É importante diferenciar os valores ausentes da base original daqueles contabilizados após a criação de variáveis derivadas. A base original possui cinco células ausentes. Caso novas variáveis sejam calculadas a partir de uma informação ausente, o NA pode ser propagado para essas novas colunas, aumentando a contagem total de células NA sem representar novos erros nos dados originais.
+
 
 ### 💬 Exemplo de como citar uma referência bibliográfica
 
