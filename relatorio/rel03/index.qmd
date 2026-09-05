@@ -1560,14 +1560,16 @@ Entre as principais funções utilizadas destacam-se `read_csv2()`, `glimpse()`,
 
 A solução adotada mostrou-se adequada por proporcionar organização, rastreabilidade e maior confiabilidade ao processamento, demonstrando que a limpeza dos dados constitui uma etapa essencial antes da aplicação de métodos estatísticos e da tomada de decisões na Engenharia Civil.
 
-## Aprenda Quarto
 
-Acesse [Quarto](https://quarto.org/).
 
 ## 📖 Referências
 
 ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. ABNT NBR 6118: Projeto de estruturas de concreto – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2014. p. 238
+
 ___. ABNT NBR 12655: Concreto de cimento Portland – Preparo, controle, recebimento e aceitação – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2015.
+
 NEVILLE, A. M. Propriedades do Concreto. 5. ed. Porto Alegre: Bookman, 2016.
+
 R CORE TEAM. The R Project for Statistical Computing. [s.l: s.n.].
+
 WICKHAM, HADLEY ET AL. Tidyverse: R packages for data science, 2026. Disponível em: <https://tidyverse.org/>
