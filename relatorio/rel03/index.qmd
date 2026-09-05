@@ -1,6 +1,6 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
+author: "Marcus Fillipe e Gustavo Daudt"
 title: "Relatório de Aula Prática 03"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
@@ -595,31 +595,970 @@ O código realiza uma última conferência da estrutura da base, verificando sua
 
 É importante diferenciar os valores ausentes da base original daqueles contabilizados após a criação de variáveis derivadas. A base original possui cinco células ausentes. Caso novas variáveis sejam calculadas a partir de uma informação ausente, o NA pode ser propagado para essas novas colunas, aumentando a contagem total de células NA sem representar novos erros nos dados originais.
 
+### Representações Gráficas
 
-### 💬 Exemplo de como citar uma referência bibliográfica
+Nesta etapa, foram utilizadas ferramentas do pacote `ggplot2` para representar graficamente algumas das principais relações presentes na base de dados. Os gráficos complementam as análises numéricas e auxiliam na identificação de diferenças entre grupos, tendências e possíveis associações entre as variáveis estudadas.
 
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
+#### Distribuição da resistência à compressão por tipo de concreto
+Para comparar a distribuição da resistência à compressão entre os diferentes tipos de concreto, foi utilizado um gráfico do tipo boxplot.
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+ggplot(
+  dados_limpos,
+  aes(
+    x = tipo_concreto,
+    y = resistencia_mpa
+    )
+)+
+geom_boxplot() +
+labs(
+  title = "Distribuição da Resistência à Compressão por Tipo de Concreto",
+  x = "Tipo de concreto",
+  y = "Resistência à compressão (MPa)" 
+  ) + 
+theme_minimal()
 ```
+O gráfico evidencia uma progressão da resistência à compressão conforme aumenta a classe do concreto. De maneira geral, os valores de resistência observados para o C25 são inferiores aos encontrados para C30, C35 e C40.
+
+#### Consumo de cimento e resistência à compressão
+
+Para investigar a relação entre o consumo de cimento e a resistência à compressão, foi construído um gráfico de dispersão.
+```{r}
+ggplot(
+  dados_limpos,
+  aes(
+    x = cimento_kg_m3,
+    y = resistencia_mpa
+  )
+) +
+  geom_point(
+    alpha = 0.7,
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  labs(
+    title = "Consumo de Cimento × Resistência à Compressão",
+    x = "Consumo de cimento (kg/m³)",
+    y = "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+```
+
+O código cria um gráfico de dispersão, no qual cada ponto representa um corpo de prova. A linha adicionada ao gráfico representa uma tendência linear entre o consumo de cimento e a resistência à compressão.
+
+Para complementar a interpretação visual, pode-se calcular a correlação entre as duas variáveis:
+```{r}
+cor(
+  dados_limpos$cimento_kg_m3,
+  dados_limpos$resistencia_mpa,
+  use = "complete.obs"
+)
+```
+
+O coeficiente de correlação de Pearson, próximo de zero, indica uma associação linear praticamente inexistente entre o consumo de cimento e a resistência à compressão. O gráfico confirma esse resultado, apresentando pontos dispersos e uma linha de tendência com pouca inclinação.
+
+Assim, os dados analisados não sustentam a afirmação de que o aumento do consumo de cimento implica maior resistência do concreto. Isso ocorre porque a resistência também é influenciada por outros fatores, como a relação água/cimento, o tipo de concreto, a idade do ensaio e as características da dosagem.
+
+#### Relação água/cimento e resistência à compressão
+
+Para investigar a relação entre a relação água/cimento e a resistência à compressão, foi elaborado outro gráfico de dispersão.
+```{r}
+ggplot(
+  dados_limpos,
+  aes(
+    x = relacao_a_c,
+    y = resistencia_mpa
+  )
+) +
+  geom_point(
+    alpha = 0.7,
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  labs(
+    title = "Relação Água/Cimento × Resistência à Compressão",
+    x = "Relação água/cimento",
+    y = "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+```
+O código representa graficamente a relação entre a quantidade relativa de água e cimento e a resistência à compressão, acrescentando uma linha de tendência para facilitar a identificação do comportamento geral dos dados.
+
+A intensidade dessa relação pode ser verificada numericamente:
+
+```{r}
+cor(
+  dados_limpos$relacao_a_c,
+  dados_limpos$resistencia_mpa,
+  use = "complete.obs"
+)
+```
+O código calcula a correlação linear entre a relação água/cimento e a resistência à compressão.
+
+O gráfico apresenta uma tendência negativa evidente: à medida que a relação água/cimento aumenta, a resistência à compressão tende a diminuir. O coeficiente de correlação confirma uma associação linear negativa relativamente forte. Portanto, essa relação merece investigação, embora outros fatores, como tipo de concreto, idade e características da dosagem, também possam influenciar a resistência.
+
+### Desafio ao Engenheiro
+Script consolidado
+```r
+# ============================================================
+# DESAFIO FINAL - O ENGENHEIRO RESPONSÁVEL PELOS DADOS
+# Análise, diagnóstico, limpeza e exploração da base
+# ============================================================
+#| eval: false
+#| echo: true
+library(tidyverse)
+library(knitr)
+
+
+# ------------------------------------------------------------
+# 1. IMPORTAÇÃO DA BASE
+# ------------------------------------------------------------
+
+arquivo_dados <- "base_processamento_dados_engenharia_civil.csv"
+
+dados <- read_csv2(
+  arquivo_dados,
+  col_types = cols(.default = col_character()),
+  na = c("", " ", "NA", "N/A", "-", "null", "NULL"),
+  show_col_types = FALSE
+)
+
+# ------------------------------------------------------------
+# 2. INSPEÇÃO INICIAL
+# ------------------------------------------------------------
+
+glimpse(dados)
+
+dimensoes <- dados |>
+  summarise(
+    observacoes = n(),
+    variaveis = ncol(dados)
+  )
+
+kable(
+  dimensoes,
+  caption = "Dimensões da base de dados"
+)
+
+dados |>
+  slice_head(n = 6) |>
+  kable(
+    caption = "Primeiros registros da base"
+  )
+
+# ------------------------------------------------------------
+# 3. VERIFICAÇÃO DE VALORES AUSENTES
+# ------------------------------------------------------------
+
+resumo_na <- dados |>
+  summarise(
+    across(
+      everything(),
+      ~ sum(is.na(.))
+    )
+  ) |>
+  pivot_longer(
+    cols = everything(),
+    names_to = "variavel",
+    values_to = "quantidade_na"
+  ) |>
+  filter(quantidade_na > 0)
+
+kable(
+  resumo_na,
+  caption = "Valores ausentes identificados na base"
+)
+
+registros_na <- dados |>
+  filter(
+    if_any(
+      everything(),
+      is.na
+    )
+  )
+
+kable(
+  registros_na,
+  caption = "Registros contendo valores ausentes"
+)
+
+# ------------------------------------------------------------
+# 4. VERIFICAÇÃO DAS VARIÁVEIS CATEGÓRICAS
+# ------------------------------------------------------------
+
+dados |>
+  count(obra, sort = TRUE) |>
+  kable(
+    caption = "Categorias originais da variável obra"
+  )
+
+dados |>
+  distinct(obra) |>
+  arrange(obra)
+
+dados |>
+  count(tipo_concreto, sort = TRUE) |>
+  kable(
+    caption = "Categorias originais da variável tipo_concreto"
+  )
+
+dados |>
+  distinct(tipo_concreto) |>
+  arrange(tipo_concreto)
+
+# ------------------------------------------------------------
+# 5. IDENTIFICAÇÃO DE POSSÍVEIS ERROS DE DIGITAÇÃO
+# ------------------------------------------------------------
+
+problemas_numericos <- dados |>
+  pivot_longer(
+    cols = c(
+      resistencia_mpa,
+      cimento_kg_m3,
+      relacao_a_c,
+      abatimento_mm,
+      densidade_kg_m3,
+      `absorção_agregado_pct`
+    ),
+    names_to = "variavel",
+    values_to = "valor_original"
+  ) |>
+  filter(
+    str_detect(
+      valor_original,
+      "[Oo,]"
+    )
+  ) |>
+  select(
+    id_corpo_prova,
+    variavel,
+    valor_original
+  )
+
+kable(
+  problemas_numericos,
+  caption = "Possíveis problemas de digitação"
+)
+
+# ------------------------------------------------------------
+# 6. FUNÇÃO PARA CONVERSÃO DOS VALORES NUMÉRICOS
+# ------------------------------------------------------------
+
+converter_numero <- function(x) {
+  
+  x |>
+    str_trim() |>
+    str_replace_all("[Oo]", "0") |>
+    str_replace_all(",", ".") |>
+    parse_double(
+      locale = locale(decimal_mark = "."),
+      na = c("", "NA", "N/A", "-", "null", "NULL")
+    )
+}
+
+# ------------------------------------------------------------
+# 7. LIMPEZA E PADRONIZAÇÃO DA BASE
+# ------------------------------------------------------------
+
+dados_limpos <- dados |>
+  
+  rename(
+    absorcao_agregado_pct =
+      `absorção_agregado_pct`
+  ) |>
+  
+  mutate(
+    
+    id_corpo_prova =
+      str_trim(id_corpo_prova),
+    
+    obra =
+      str_trim(obra),
+    
+    tipo_concreto =
+      str_to_upper(
+        str_trim(tipo_concreto)
+      ),
+    
+    idade_dias =
+      parse_integer(
+        str_trim(idade_dias)
+      ),
+    
+    across(
+      c(
+        resistencia_mpa,
+        cimento_kg_m3,
+        relacao_a_c,
+        abatimento_mm,
+        densidade_kg_m3,
+        absorcao_agregado_pct
+      ),
+      converter_numero
+    )
+  )
+
+# ------------------------------------------------------------
+# 8. CONFERÊNCIA APÓS A LIMPEZA
+# ------------------------------------------------------------
+
+dados_limpos |>
+  count(obra) |>
+  kable(
+    caption = "Distribuição das obras após a limpeza"
+  )
+
+dados_limpos |>
+  count(tipo_concreto) |>
+  kable(
+    caption = "Distribuição dos tipos de concreto após a limpeza"
+  )
+
+glimpse(dados_limpos)
+
+# ------------------------------------------------------------
+# 9. IDENTIFICAÇÃO DE VALORES POTENCIALMENTE SUSPEITOS
+# ------------------------------------------------------------
+
+valores_suspeitos <- dados_limpos |>
+  filter(
+    abatimento_mm > 300 |
+    densidade_kg_m3 < 1000 |
+    absorcao_agregado_pct > 4 |
+    idade_dias > 100
+  )
+
+kable(
+  valores_suspeitos,
+  digits = 2,
+  caption = "Registros potencialmente incompatíveis"
+)
+
+# ------------------------------------------------------------
+# 10. ESTATÍSTICAS DESCRITIVAS GERAIS
+# ------------------------------------------------------------
+
+resumo_resistencia <- dados_limpos |>
+  summarise(
+    n =
+      sum(!is.na(resistencia_mpa)),
+    
+    media =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    mediana =
+      median(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    desvio_padrao =
+      sd(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    coef_variacao =
+      100 *
+      desvio_padrao /
+      media,
+    
+    minimo =
+      min(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    q1 =
+      quantile(
+        resistencia_mpa,
+        0.25,
+        na.rm = TRUE
+      ),
+    
+    q3 =
+      quantile(
+        resistencia_mpa,
+        0.75,
+        na.rm = TRUE
+      ),
+    
+    maximo =
+      max(
+        resistencia_mpa,
+        na.rm = TRUE
+      )
+  )
+
+kable(
+  resumo_resistencia,
+  digits = 2,
+  caption = "Resumo estatístico da resistência à compressão"
+)
+
+# ------------------------------------------------------------
+# 11. ESTATÍSTICAS POR TIPO DE CONCRETO
+# ------------------------------------------------------------
+
+resumo_tipo <- dados_limpos |>
+  group_by(tipo_concreto) |>
+  summarise(
+    n =
+      sum(!is.na(resistencia_mpa)),
+    
+    media =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    mediana =
+      median(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    desvio_padrao =
+      sd(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    coef_variacao =
+      100 *
+      desvio_padrao /
+      media,
+    
+    minimo =
+      min(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    maximo =
+      max(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    .groups = "drop"
+  ) |>
+  arrange(tipo_concreto)
+
+kable(
+  resumo_tipo,
+  digits = 2,
+  caption = "Resistência por tipo de concreto"
+)
+
+# ------------------------------------------------------------
+# 12. ESTATÍSTICAS POR OBRA
+# ------------------------------------------------------------
+
+resumo_obra <- dados_limpos |>
+  group_by(obra) |>
+  summarise(
+    n =
+      sum(!is.na(resistencia_mpa)),
+    
+    media =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    mediana =
+      median(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    desvio_padrao =
+      sd(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    coef_variacao =
+      100 *
+      desvio_padrao /
+      media,
+    
+    .groups = "drop"
+  ) |>
+  arrange(desc(media))
+
+kable(
+  resumo_obra,
+  digits = 2,
+  caption = "Resistência à compressão por obra"
+)
+
+# ------------------------------------------------------------
+# 13. ESTATÍSTICAS POR IDADE
+# ------------------------------------------------------------
+
+resumo_idade <- dados_limpos |>
+  group_by(idade_dias) |>
+  summarise(
+    n =
+      sum(!is.na(resistencia_mpa)),
+    
+    resistencia_media =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    desvio_padrao =
+      sd(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    .groups = "drop"
+  ) |>
+  arrange(idade_dias)
+
+kable(
+  resumo_idade,
+  digits = 2,
+  caption = "Resistência média em função da idade"
+)
+
+# ------------------------------------------------------------
+# 14. CRIAÇÃO DE VARIÁVEIS DERIVADAS
+# ------------------------------------------------------------
+
+dados_limpos <- dados_limpos |>
+  mutate(
+    
+    fck_referencia =
+      case_when(
+        tipo_concreto == "C25" ~ 25,
+        tipo_concreto == "C30" ~ 30,
+        tipo_concreto == "C35" ~ 35,
+        tipo_concreto == "C40" ~ 40,
+        TRUE ~ NA_real_
+      ),
+    
+    resistencia_relativa =
+      resistencia_mpa /
+      fck_referencia,
+    
+    classificacao =
+      case_when(
+        is.na(resistencia_relativa) ~
+          "Ausente",
+        
+        resistencia_relativa >= 1.10 ~
+          "Excelente",
+        
+        resistencia_relativa >= 0.95 ~
+          "Bom",
+        
+        resistencia_relativa >= 0.85 ~
+          "Regular",
+        
+        TRUE ~
+          "Insatisfatório"
+      )
+  ) |>
+  
+  group_by(tipo_concreto) |>
+  
+  mutate(
+    
+    media_classe =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    acima_media_classe =
+      if_else(
+        resistencia_mpa >
+          media_classe,
+        "Acima da média",
+        "Na média ou abaixo",
+        missing =
+          "Resistência ausente"
+      )
+  ) |>
+  
+  ungroup()
+
+# ------------------------------------------------------------
+# 15. RESUMO DAS CLASSIFICAÇÕES
+# ------------------------------------------------------------
+
+resumo_classificacao <- dados_limpos |>
+  count(classificacao) |>
+  mutate(
+    percentual =
+      100 * n / sum(n)
+  ) |>
+  arrange(desc(n))
+
+kable(
+  resumo_classificacao,
+  digits = 1,
+  caption = "Classificação descritiva dos resultados"
+)
+
+# ------------------------------------------------------------
+# 16. CORRELAÇÕES
+# ------------------------------------------------------------
+
+correlacoes <- dados_limpos |>
+  summarise(
+    cimento_resistencia =
+      cor(
+        cimento_kg_m3,
+        resistencia_mpa,
+        use = "complete.obs"
+      ),
+    
+    ac_resistencia =
+      cor(
+        relacao_a_c,
+        resistencia_mpa,
+        use = "complete.obs"
+      )
+  )
+
+kable(
+  correlacoes,
+  digits = 3,
+  caption = "Correlações com a resistência à compressão"
+)
+
+# ------------------------------------------------------------
+# 17. GRÁFICO 1 - RESISTÊNCIA POR TIPO DE CONCRETO
+# ------------------------------------------------------------
+
+ggplot(
+  dados_limpos,
+  aes(
+    x = tipo_concreto,
+    y = resistencia_mpa
+  )
+) +
+  geom_boxplot() +
+  labs(
+    title =
+      "Distribuição da Resistência à Compressão por Tipo de Concreto",
+    x =
+      "Tipo de concreto",
+    y =
+      "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 18. GRÁFICO 2 - CIMENTO × RESISTÊNCIA
+# ------------------------------------------------------------
+
+ggplot(
+  dados_limpos,
+  aes(
+    x = cimento_kg_m3,
+    y = resistencia_mpa
+  )
+) +
+  geom_point(
+    alpha = 0.7,
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Consumo de Cimento × Resistência à Compressão",
+    x =
+      "Consumo de cimento (kg/m³)",
+    y =
+      "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 19. GRÁFICO 3 - RELAÇÃO A/C × RESISTÊNCIA
+# ------------------------------------------------------------
+
+ggplot(
+  dados_limpos,
+  aes(
+    x = relacao_a_c,
+    y = resistencia_mpa
+  )
+) +
+  geom_point(
+    alpha = 0.7,
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Relação Água/Cimento × Resistência à Compressão",
+    x =
+      "Relação água/cimento",
+    y =
+      "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 20. GRÁFICO 4 - COMPARAÇÃO ENTRE OBRAS
+# ------------------------------------------------------------
+
+ggplot(
+  dados_limpos,
+  aes(
+    x = obra,
+    y = resistencia_mpa
+  )
+) +
+  geom_boxplot() +
+  labs(
+    title =
+      "Distribuição da Resistência à Compressão por Obra",
+    x =
+      "Obra",
+    y =
+      "Resistência à compressão (MPa)"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 21. GRÁFICO 5 - RESISTÊNCIA MÉDIA POR IDADE
+# ------------------------------------------------------------
+
+ggplot(
+  resumo_idade,
+  aes(
+    x = idade_dias,
+    y = resistencia_media
+  )
+) +
+  geom_point(
+    size = 3
+  ) +
+  geom_line() +
+  labs(
+    title =
+      "Resistência Média à Compressão × Idade",
+    x =
+      "Idade do corpo de prova (dias)",
+    y =
+      "Resistência média (MPa)"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 22. GRÁFICO 6 - HISTOGRAMA DA RESISTÊNCIA
+# ------------------------------------------------------------
+
+ggplot(
+  dados_limpos,
+  aes(
+    x = resistencia_mpa
+  )
+) +
+  geom_histogram(
+    bins = 15
+  ) +
+  labs(
+    title =
+      "Distribuição Geral da Resistência à Compressão",
+    x =
+      "Resistência à compressão (MPa)",
+    y =
+      "Frequência"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------------------
+# 23. RESUMO PARA O ENGENHEIRO
+# ------------------------------------------------------------
+
+resumo_engenheiro <- dados_limpos |>
+  summarise(
+    
+    corpos_de_prova =
+      n(),
+    
+    resultados_validos =
+      sum(
+        !is.na(resistencia_mpa)
+      ),
+    
+    resistencia_media =
+      mean(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    resistencia_mediana =
+      median(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    resistencia_minima =
+      min(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    resistencia_maxima =
+      max(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    desvio_padrao =
+      sd(
+        resistencia_mpa,
+        na.rm = TRUE
+      ),
+    
+    coef_variacao =
+      100 *
+      desvio_padrao /
+      resistencia_media
+  )
+
+kable(
+  resumo_engenheiro,
+  digits = 2,
+  caption =
+    "Indicadores para acompanhamento da qualidade do concreto"
+)
+
+# ------------------------------------------------------------
+# 24. REGISTROS PRIORITÁRIOS PARA CONFERÊNCIA
+# ------------------------------------------------------------
+
+registros_prioritarios <- dados_limpos |>
+  mutate(
+    
+    motivo_verificacao =
+      case_when(
+        
+        abatimento_mm > 300 ~
+          "Abatimento suspeito",
+        
+        densidade_kg_m3 < 1000 ~
+          "Densidade suspeita",
+        
+        absorcao_agregado_pct > 4 ~
+          "Absorção suspeita",
+        
+        idade_dias > 100 ~
+          "Idade atípica",
+        
+        is.na(resistencia_mpa) ~
+          "Resistência ausente",
+        
+        resistencia_mpa <
+          fck_referencia ~
+          "Resistência abaixo da referência",
+        
+        TRUE ~
+          "Sem prioridade"
+      )
+  ) |>
+  
+  filter(
+    motivo_verificacao !=
+      "Sem prioridade"
+  ) |>
+  
+  select(
+    id_corpo_prova,
+    obra,
+    tipo_concreto,
+    idade_dias,
+    resistencia_mpa,
+    fck_referencia,
+    motivo_verificacao
+  ) |>
+  
+  arrange(
+    motivo_verificacao,
+    resistencia_mpa
+  )
+
+kable(
+  registros_prioritarios,
+  digits = 2,
+  caption =
+    "Registros prioritários para conferência"
+)
+
+# ------------------------------------------------------------
+# 25. VERIFICAÇÃO FINAL
+# ------------------------------------------------------------
+
+glimpse(dados_limpos)
+
+verificacao_final <- dados_limpos |>
+  summarise(
+    
+    observacoes =
+      n(),
+    
+    variaveis =
+      ncol(dados_limpos),
+    
+    obras =
+      n_distinct(obra),
+    
+    tipos_concreto =
+      n_distinct(tipo_concreto),
+    
+    resistencia_ausente =
+      sum(
+        is.na(resistencia_mpa)
+      )
+  )
+
+kable(
+  verificacao_final,
+  caption =
+    "Verificação final da base tratada"
+)
+```
+
 
 ## 🧠 Considerações finais
 
-Apresente uma síntese dos principais pontos observados no experimento.
+A prática teve como objetivo aplicar ferramentas de processamento, limpeza e análise exploratória de dados utilizando o tidyverse, considerando uma base relacionada ao controle tecnológico do concreto. O objetivo foi alcançado, pois foi possível identificar inconsistências, padronizar os dados, produzir estatísticas descritivas e representações gráficas, além de gerar informações úteis para a interpretação dos resultados.
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+O principal aprendizado foi compreender que a qualidade da análise estatística depende diretamente da qualidade dos dados. A base apresentou problemas de digitação, falta de padronização, valores ausentes e registros tecnicamente suspeitos, demonstrando a importância de realizar uma inspeção criteriosa antes das análises. Como melhoria, recomenda-se maior padronização durante a coleta e o preenchimento das planilhas, utilização de campos com validação e conferência dos registros antes de sua consolidação.
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+Em comparação com a Base R, o tidyverse proporciona um fluxo de trabalho mais integrado e sequencial, utilizando funções como filter(), mutate(), group_by() e summarise(), o que favorece a organização e a compreensão do código.
+
+Para o tratamento da base, optou-se por preservar os dados originais e criar o objeto dados_limpos. Inconsistências com correção claramente identificável foram padronizadas, enquanto valores ausentes foram mantidos como NA e registros suspeitos foram sinalizados para conferência, evitando alterações sem justificativa.
+
+Entre as principais funções utilizadas destacam-se `read_csv2()`, `glimpse()`, `filter()`, `mutate()`, `summarise()`, `group_by()`, `across()`, `case_when()`, `str_trim()`, `str_to_upper()`, `str_replace_all()`, `parse_double()` e `ggplot()`.
+
+A solução adotada mostrou-se adequada por proporcionar organização, rastreabilidade e maior confiabilidade ao processamento, demonstrando que a limpeza dos dados constitui uma etapa essencial antes da aplicação de métodos estatísticos e da tomada de decisões na Engenharia Civil.
 
 ## Aprenda Quarto
 
