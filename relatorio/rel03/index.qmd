@@ -1565,3 +1565,9 @@ A solução adotada mostrou-se adequada por proporcionar organização, rastreab
 Acesse [Quarto](https://quarto.org/).
 
 ## 📖 Referências
+
+ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. ABNT NBR 6118: Projeto de estruturas de concreto – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2014. p. 238
+___. ABNT NBR 12655: Concreto de cimento Portland – Preparo, controle, recebimento e aceitação – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2015.
+NEVILLE, A. M. Propriedades do Concreto. 5. ed. Porto Alegre: Bookman, 2016.
+R CORE TEAM. The R Project for Statistical Computing. [s.l: s.n.].
+WICKHAM, HADLEY ET AL. Tidyverse: R packages for data science, 2026. Disponível em: <https://tidyverse.org/>
