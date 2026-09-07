@@ -646,9 +646,9 @@ cor(
 )
 ```
 
-O coeficiente de correlação de Pearson, situado próximo a zero, aponta para uma associação linear nula entre o consumo absoluto de cimento e a capacidade portante do material. O gráfico consolida esse resultado ao apresentar uma nuvem de pontos amplamente dispersa e uma linha de tendência sem inclinação expressiva.
+O coeficiente de correlação de Pearson presenta um valor na ordem de 0,80. Este índice revela uma **associação linear positiva forte** entre o consumo de cimento e a resistência do material. O gráfico consolida esse resultado ao exibir a nuvem de pontos agrupada em torno de uma nítida linha de tendência crescente.
 
-Dessa forma, os dados atestam que o aumento isolado do consumo de cimento não implica, obrigatoriamente, em maior resistência. Na tecnologia do concreto, o ganho mecânico depende da interação de múltiplos fatores, especialmente do controle da relação água/cimento e da idade de cura.
+Dessa forma, os dados analisados dão suporte à afirmação de que o aumento do consumo de cimento eleva a resistência do concreto. No contexto tecnológico, tal comportamento é plenamente coerente: o desenvolvimento de concretos de alto desempenho (como a classe C40 da amostra) exige maiores teores de aglomerante que, operando em conjunto com reduções na relação água/cimento, impulsionam o ganho de resistência mecânica.
 
 #### Relação água/cimento e resistência à compressão
 
@@ -713,7 +713,6 @@ Script consolidado
 library(tidyverse)
 library(knitr)
 
-
 # ------------------------------------------------------------
 # 1. IMPORTAÇÃO DA BASE
 # ------------------------------------------------------------
@@ -739,28 +738,18 @@ dimensoes <- dados |>
     variaveis = ncol(dados)
   )
 
-kable(
-  dimensoes,
-  caption = "Dimensões da base de dados"
-)
+kable(dimensoes, caption = "Dimensões da base de dados")
 
 dados |>
   slice_head(n = 6) |>
-  kable(
-    caption = "Primeiros registros da base"
-  )
+  kable(caption = "Primeiros registros da base")
 
 # ------------------------------------------------------------
 # 3. VERIFICAÇÃO DE VALORES AUSENTES
 # ------------------------------------------------------------
 
 resumo_na <- dados |>
-  summarise(
-    across(
-      everything(),
-      ~ sum(is.na(.))
-    )
-  ) |>
+  summarise(across(everything(), ~ sum(is.na(.)))) |>
   pivot_longer(
     cols = everything(),
     names_to = "variavel",
@@ -768,23 +757,12 @@ resumo_na <- dados |>
   ) |>
   filter(quantidade_na > 0)
 
-kable(
-  resumo_na,
-  caption = "Valores ausentes identificados na base"
-)
+kable(resumo_na, caption = "Valores ausentes identificados na base")
 
 registros_na <- dados |>
-  filter(
-    if_any(
-      everything(),
-      is.na
-    )
-  )
+  filter(if_any(everything(), is.na))
 
-kable(
-  registros_na,
-  caption = "Registros contendo valores ausentes"
-)
+kable(registros_na, caption = "Registros contendo valores ausentes")
 
 # ------------------------------------------------------------
 # 4. VERIFICAÇÃO DAS VARIÁVEIS CATEGÓRICAS
@@ -792,23 +770,15 @@ kable(
 
 dados |>
   count(obra, sort = TRUE) |>
-  kable(
-    caption = "Categorias originais da variável obra"
-  )
+  kable(caption = "Categorias originais da variável obra")
 
-dados |>
-  distinct(obra) |>
-  arrange(obra)
+dados |> distinct(obra) |> arrange(obra)
 
 dados |>
   count(tipo_concreto, sort = TRUE) |>
-  kable(
-    caption = "Categorias originais da variável tipo_concreto"
-  )
+  kable(caption = "Categorias originais da variável tipo_concreto")
 
-dados |>
-  distinct(tipo_concreto) |>
-  arrange(tipo_concreto)
+dados |> distinct(tipo_concreto) |> arrange(tipo_concreto)
 
 # ------------------------------------------------------------
 # 5. IDENTIFICAÇÃO DE POSSÍVEIS ERROS DE DIGITAÇÃO
@@ -816,40 +786,20 @@ dados |>
 
 problemas_numericos <- dados |>
   pivot_longer(
-    cols = c(
-      resistencia_mpa,
-      cimento_kg_m3,
-      relacao_a_c,
-      abatimento_mm,
-      densidade_kg_m3,
-      `absorção_agregado_pct`
-    ),
+    cols = c(resistencia_mpa, cimento_kg_m3, relacao_a_c, abatimento_mm, densidade_kg_m3, `absorção_agregado_pct`),
     names_to = "variavel",
     values_to = "valor_original"
   ) |>
-  filter(
-    str_detect(
-      valor_original,
-      "[Oo,]"
-    )
-  ) |>
-  select(
-    id_corpo_prova,
-    variavel,
-    valor_original
-  )
+  filter(str_detect(valor_original, "[Oo,]")) |>
+  select(id_corpo_prova, variavel, valor_original)
 
-kable(
-  problemas_numericos,
-  caption = "Possíveis problemas de digitação"
-)
+kable(problemas_numericos, caption = "Possíveis problemas de digitação")
 
 # ------------------------------------------------------------
 # 6. FUNÇÃO PARA CONVERSÃO DOS VALORES NUMÉRICOS
 # ------------------------------------------------------------
 
 converter_numero <- function(x) {
-  
   x |>
     str_trim() |>
     str_replace_all("[Oo]", "0") |>
@@ -865,39 +815,14 @@ converter_numero <- function(x) {
 # ------------------------------------------------------------
 
 dados_limpos <- dados |>
-  
-  rename(
-    absorcao_agregado_pct =
-      `absorção_agregado_pct`
-  ) |>
-  
+  rename(absorcao_agregado_pct = `absorção_agregado_pct`) |>
   mutate(
-    
-    id_corpo_prova =
-      str_trim(id_corpo_prova),
-    
-    obra =
-      str_trim(obra),
-    
-    tipo_concreto =
-      str_to_upper(
-        str_trim(tipo_concreto)
-      ),
-    
-    idade_dias =
-      parse_integer(
-        str_trim(idade_dias)
-      ),
-    
+    id_corpo_prova = str_trim(id_corpo_prova),
+    obra = str_trim(obra),
+    tipo_concreto = str_to_upper(str_trim(tipo_concreto)),
+    idade_dias = parse_integer(str_trim(idade_dias)),
     across(
-      c(
-        resistencia_mpa,
-        cimento_kg_m3,
-        relacao_a_c,
-        abatimento_mm,
-        densidade_kg_m3,
-        absorcao_agregado_pct
-      ),
+      c(resistencia_mpa, cimento_kg_m3, relacao_a_c, abatimento_mm, densidade_kg_m3, absorcao_agregado_pct),
       converter_numero
     )
   )
@@ -906,18 +831,8 @@ dados_limpos <- dados |>
 # 8. CONFERÊNCIA APÓS A LIMPEZA
 # ------------------------------------------------------------
 
-dados_limpos |>
-  count(obra) |>
-  kable(
-    caption = "Distribuição das obras após a limpeza"
-  )
-
-dados_limpos |>
-  count(tipo_concreto) |>
-  kable(
-    caption = "Distribuição dos tipos de concreto após a limpeza"
-  )
-
+dados_limpos |> count(obra) |> kable(caption = "Distribuição das obras após a limpeza")
+dados_limpos |> count(tipo_concreto) |> kable(caption = "Distribuição dos tipos de concreto após a limpeza")
 glimpse(dados_limpos)
 
 # ------------------------------------------------------------
@@ -932,11 +847,7 @@ valores_suspeitos <- dados_limpos |>
     idade_dias > 100
   )
 
-kable(
-  valores_suspeitos,
-  digits = 2,
-  caption = "Registros potencialmente incompatíveis"
-)
+kable(valores_suspeitos, digits = 2, caption = "Registros potencialmente incompatíveis")
 
 # ------------------------------------------------------------
 # 10. ESTATÍSTICAS DESCRITIVAS GERAIS
@@ -944,64 +855,18 @@ kable(
 
 resumo_resistencia <- dados_limpos |>
   summarise(
-    n =
-      sum(!is.na(resistencia_mpa)),
-    
-    media =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    mediana =
-      median(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    desvio_padrao =
-      sd(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    coef_variacao =
-      100 *
-      desvio_padrao /
-      media,
-    
-    minimo =
-      min(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    q1 =
-      quantile(
-        resistencia_mpa,
-        0.25,
-        na.rm = TRUE
-      ),
-    
-    q3 =
-      quantile(
-        resistencia_mpa,
-        0.75,
-        na.rm = TRUE
-      ),
-    
-    maximo =
-      max(
-        resistencia_mpa,
-        na.rm = TRUE
-      )
+    n = sum(!is.na(resistencia_mpa)),
+    media = mean(resistencia_mpa, na.rm = TRUE),
+    mediana = median(resistencia_mpa, na.rm = TRUE),
+    desvio_padrao = sd(resistencia_mpa, na.rm = TRUE),
+    coef_variacao = 100 * desvio_padrao / media,
+    minimo = min(resistencia_mpa, na.rm = TRUE),
+    q1 = quantile(resistencia_mpa, 0.25, na.rm = TRUE),
+    q3 = quantile(resistencia_mpa, 0.75, na.rm = TRUE),
+    maximo = max(resistencia_mpa, na.rm = TRUE)
   )
 
-kable(
-  resumo_resistencia,
-  digits = 2,
-  caption = "Resumo estatístico da resistência à compressão"
-)
+kable(resumo_resistencia, digits = 2, caption = "Resumo estatístico da resistência à compressão")
 
 # ------------------------------------------------------------
 # 11. ESTATÍSTICAS POR TIPO DE CONCRETO
@@ -1010,53 +875,18 @@ kable(
 resumo_tipo <- dados_limpos |>
   group_by(tipo_concreto) |>
   summarise(
-    n =
-      sum(!is.na(resistencia_mpa)),
-    
-    media =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    mediana =
-      median(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    desvio_padrao =
-      sd(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    coef_variacao =
-      100 *
-      desvio_padrao /
-      media,
-    
-    minimo =
-      min(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    maximo =
-      max(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
+    n = sum(!is.na(resistencia_mpa)),
+    media = mean(resistencia_mpa, na.rm = TRUE),
+    mediana = median(resistencia_mpa, na.rm = TRUE),
+    desvio_padrao = sd(resistencia_mpa, na.rm = TRUE),
+    coef_variacao = 100 * desvio_padrao / media,
+    minimo = min(resistencia_mpa, na.rm = TRUE),
+    maximo = max(resistencia_mpa, na.rm = TRUE),
     .groups = "drop"
   ) |>
   arrange(tipo_concreto)
 
-kable(
-  resumo_tipo,
-  digits = 2,
-  caption = "Resistência por tipo de concreto"
-)
+kable(resumo_tipo, digits = 2, caption = "Resistência por tipo de concreto")
 
 # ------------------------------------------------------------
 # 12. ESTATÍSTICAS POR OBRA
@@ -1065,41 +895,16 @@ kable(
 resumo_obra <- dados_limpos |>
   group_by(obra) |>
   summarise(
-    n =
-      sum(!is.na(resistencia_mpa)),
-    
-    media =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    mediana =
-      median(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    desvio_padrao =
-      sd(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    coef_variacao =
-      100 *
-      desvio_padrao /
-      media,
-    
+    n = sum(!is.na(resistencia_mpa)),
+    media = mean(resistencia_mpa, na.rm = TRUE),
+    mediana = median(resistencia_mpa, na.rm = TRUE),
+    desvio_padrao = sd(resistencia_mpa, na.rm = TRUE),
+    coef_variacao = 100 * desvio_padrao / media,
     .groups = "drop"
   ) |>
   arrange(desc(media))
 
-kable(
-  resumo_obra,
-  digits = 2,
-  caption = "Resistência à compressão por obra"
-)
+kable(resumo_obra, digits = 2, caption = "Resistência à compressão por obra")
 
 # ------------------------------------------------------------
 # 13. ESTATÍSTICAS POR IDADE
@@ -1108,30 +913,14 @@ kable(
 resumo_idade <- dados_limpos |>
   group_by(idade_dias) |>
   summarise(
-    n =
-      sum(!is.na(resistencia_mpa)),
-    
-    resistencia_media =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    desvio_padrao =
-      sd(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
+    n = sum(!is.na(resistencia_mpa)),
+    resistencia_media = mean(resistencia_mpa, na.rm = TRUE),
+    desvio_padrao = sd(resistencia_mpa, na.rm = TRUE),
     .groups = "drop"
   ) |>
   arrange(idade_dias)
 
-kable(
-  resumo_idade,
-  digits = 2,
-  caption = "Resistência média em função da idade"
-)
+kable(resumo_idade, digits = 2, caption = "Resistência média em função da idade")
 
 # ------------------------------------------------------------
 # 14. CRIAÇÃO DE VARIÁVEIS DERIVADAS
@@ -1139,60 +928,32 @@ kable(
 
 dados_limpos <- dados_limpos |>
   mutate(
-    
-    fck_referencia =
-      case_when(
-        tipo_concreto == "C25" ~ 25,
-        tipo_concreto == "C30" ~ 30,
-        tipo_concreto == "C35" ~ 35,
-        tipo_concreto == "C40" ~ 40,
-        TRUE ~ NA_real_
-      ),
-    
-    resistencia_relativa =
-      resistencia_mpa /
-      fck_referencia,
-    
-    classificacao =
-      case_when(
-        is.na(resistencia_relativa) ~
-          "Ausente",
-        
-        resistencia_relativa >= 1.10 ~
-          "Excelente",
-        
-        resistencia_relativa >= 0.95 ~
-          "Bom",
-        
-        resistencia_relativa >= 0.85 ~
-          "Regular",
-        
-        TRUE ~
-          "Insatisfatório"
-      )
+    fck_referencia = case_when(
+      tipo_concreto == "C25" ~ 25,
+      tipo_concreto == "C30" ~ 30,
+      tipo_concreto == "C35" ~ 35,
+      tipo_concreto == "C40" ~ 40,
+      TRUE ~ NA_real_
+    ),
+    resistencia_relativa = resistencia_mpa / fck_referencia,
+    classificacao = case_when(
+      is.na(resistencia_relativa) ~ "Ausente",
+      resistencia_relativa >= 1.10 ~ "Excelente",
+      resistencia_relativa >= 0.95 ~ "Bom",
+      resistencia_relativa >= 0.85 ~ "Regular",
+      TRUE ~ "Insatisfatório"
+    )
   ) |>
-  
   group_by(tipo_concreto) |>
-  
   mutate(
-    
-    media_classe =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    acima_media_classe =
-      if_else(
-        resistencia_mpa >
-          media_classe,
-        "Acima da média",
-        "Na média ou abaixo",
-        missing =
-          "Resistência ausente"
-      )
+    media_classe = mean(resistencia_mpa, na.rm = TRUE),
+    acima_media_classe = if_else(
+      resistencia_mpa > media_classe,
+      "Acima da média",
+      "Na média ou abaixo",
+      missing = "Resistência ausente"
+    )
   ) |>
-  
   ungroup()
 
 # ------------------------------------------------------------
@@ -1201,93 +962,56 @@ dados_limpos <- dados_limpos |>
 
 resumo_classificacao <- dados_limpos |>
   count(classificacao) |>
-  mutate(
-    percentual =
-      100 * n / sum(n)
-  ) |>
+  mutate(percentual = 100 * n / sum(n)) |>
   arrange(desc(n))
 
-kable(
-  resumo_classificacao,
-  digits = 1,
-  caption = "Classificação descritiva dos resultados"
-)
+kable(resumo_classificacao, digits = 1, caption = "Classificação descritiva dos resultados")
 
 # ------------------------------------------------------------
 # 16. CORRELAÇÕES
 # ------------------------------------------------------------
 
-correlacoes <- dados_limpos |>
-  summarise(
-    cimento_resistencia =
-      cor(
-        cimento_kg_m3,
-        resistencia_mpa,
-        use = "complete.obs"
-      ),
-    
-    ac_resistencia =
-      cor(
-        relacao_a_c,
-        resistencia_mpa,
-        use = "complete.obs"
-      )
-  )
+# Filtro do outlier do cimento para a correlação e gráfico corretos
+dados_cimento <- dados_limpos |> 
+  filter(cimento_kg_m3 < 1000)
 
-kable(
-  correlacoes,
-  digits = 3,
-  caption = "Correlações com a resistência à compressão"
+correlacoes <- tibble(
+  Relacao = c("Cimento × Resistência (Sem outlier)", "Relação a/c × Resistência"),
+  Correlacao_Pearson = c(
+    cor(dados_cimento$cimento_kg_m3, dados_cimento$resistencia_mpa, use = "complete.obs"),
+    cor(dados_limpos$relacao_a_c, dados_limpos$resistencia_mpa, use = "complete.obs")
+  )
 )
+
+kable(correlacoes, digits = 3, caption = "Correlações com a resistência à compressão")
 
 # ------------------------------------------------------------
 # 17. GRÁFICO 1 - RESISTÊNCIA POR TIPO DE CONCRETO
 # ------------------------------------------------------------
 
-ggplot(
-  dados_limpos,
-  aes(
-    x = tipo_concreto,
-    y = resistencia_mpa
-  )
-) +
-  geom_boxplot() +
+ggplot(dados_limpos, aes(x = tipo_concreto, y = resistencia_mpa, fill = tipo_concreto)) +
+  geom_boxplot(alpha = 0.8, outlier.color = "#DC3545", outlier.size = 2.5) +
+  scale_fill_brewer(palette = "Pastel1") +
   labs(
-    title =
-      "Distribuição da Resistência à Compressão por Tipo de Concreto",
-    x =
-      "Tipo de concreto",
-    y =
-      "Resistência à compressão (MPa)"
+    title = "Distribuição da Resistência à Compressão por Tipo de Concreto",
+    x = "Tipo de concreto",
+    y = "Resistência à compressão (MPa)"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 
 # ------------------------------------------------------------
 # 18. GRÁFICO 2 - CIMENTO × RESISTÊNCIA
 # ------------------------------------------------------------
 
-ggplot(
-  dados_limpos,
-  aes(
-    x = cimento_kg_m3,
-    y = resistencia_mpa
-  )
-) +
-  geom_point(
-    alpha = 0.7,
-    size = 2
-  ) +
-  geom_smooth(
-    method = "lm",
-    se = FALSE
-  ) +
+ggplot(dados_cimento, aes(x = cimento_kg_m3, y = resistencia_mpa)) +
+  geom_point(color = "#779ECB", alpha = 0.8, size = 2.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "gray50", linetype = "dashed") +
   labs(
-    title =
-      "Consumo de Cimento × Resistência à Compressão",
-    x =
-      "Consumo de cimento (kg/m³)",
-    y =
-      "Resistência à compressão (MPa)"
+    title = "Consumo de Cimento × Resistência à Compressão",
+    subtitle = "Amostra com remoção de outlier extremo",
+    x = "Consumo de cimento (kg/m³)",
+    y = "Resistência à compressão (MPa)"
   ) +
   theme_minimal()
 
@@ -1295,28 +1019,13 @@ ggplot(
 # 19. GRÁFICO 3 - RELAÇÃO A/C × RESISTÊNCIA
 # ------------------------------------------------------------
 
-ggplot(
-  dados_limpos,
-  aes(
-    x = relacao_a_c,
-    y = resistencia_mpa
-  )
-) +
-  geom_point(
-    alpha = 0.7,
-    size = 2
-  ) +
-  geom_smooth(
-    method = "lm",
-    se = FALSE
-  ) +
+ggplot(dados_limpos, aes(x = relacao_a_c, y = resistencia_mpa)) +
+  geom_point(color = "#779ECB", alpha = 0.8, size = 2.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "gray50", linetype = "dashed") +
   labs(
-    title =
-      "Relação Água/Cimento × Resistência à Compressão",
-    x =
-      "Relação água/cimento",
-    y =
-      "Resistência à compressão (MPa)"
+    title = "Relação Água/Cimento × Resistência à Compressão",
+    x = "Relação água/cimento",
+    y = "Resistência à compressão (MPa)"
   ) +
   theme_minimal()
 
@@ -1324,46 +1033,28 @@ ggplot(
 # 20. GRÁFICO 4 - COMPARAÇÃO ENTRE OBRAS
 # ------------------------------------------------------------
 
-ggplot(
-  dados_limpos,
-  aes(
-    x = obra,
-    y = resistencia_mpa
-  )
-) +
-  geom_boxplot() +
+ggplot(dados_limpos, aes(x = obra, y = resistencia_mpa, fill = obra)) +
+  geom_boxplot(alpha = 0.8) +
+  scale_fill_brewer(palette = "Pastel2") +
   labs(
-    title =
-      "Distribuição da Resistência à Compressão por Obra",
-    x =
-      "Obra",
-    y =
-      "Resistência à compressão (MPa)"
+    title = "Distribuição da Resistência à Compressão por Obra",
+    x = "Obra",
+    y = "Resistência à compressão (MPa)"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 
 # ------------------------------------------------------------
 # 21. GRÁFICO 5 - RESISTÊNCIA MÉDIA POR IDADE
 # ------------------------------------------------------------
 
-ggplot(
-  resumo_idade,
-  aes(
-    x = idade_dias,
-    y = resistencia_media
-  )
-) +
-  geom_point(
-    size = 3
-  ) +
-  geom_line() +
+ggplot(resumo_idade, aes(x = idade_dias, y = resistencia_media)) +
+  geom_point(color = "#E74C3C", size = 3) +
+  geom_line(color = "#E74C3C", size = 1) +
   labs(
-    title =
-      "Resistência Média à Compressão × Idade",
-    x =
-      "Idade do corpo de prova (dias)",
-    y =
-      "Resistência média (MPa)"
+    title = "Resistência Média à Compressão × Idade",
+    x = "Idade do corpo de prova (dias)",
+    y = "Resistência média (MPa)"
   ) +
   theme_minimal()
 
@@ -1371,82 +1062,32 @@ ggplot(
 # 22. GRÁFICO 6 - HISTOGRAMA DA RESISTÊNCIA
 # ------------------------------------------------------------
 
-ggplot(
-  dados_limpos,
-  aes(
-    x = resistencia_mpa
-  )
-) +
-  geom_histogram(
-    bins = 15
-  ) +
+ggplot(dados_limpos, aes(x = resistencia_mpa)) +
+  geom_histogram(bins = 15, fill = "#779ECB", color = "white") +
   labs(
-    title =
-      "Distribuição Geral da Resistência à Compressão",
-    x =
-      "Resistência à compressão (MPa)",
-    y =
-      "Frequência"
+    title = "Distribuição Geral da Resistência à Compressão",
+    x = "Resistência à compressão (MPa)",
+    y = "Frequência"
   ) +
   theme_minimal()
 
 # ------------------------------------------------------------
-# 23. RESUMO PARA O ENGENHEIRO
+# 23. RESUMO PARA O ENGENHEIRO (PAINEL EXECUTIVO)
 # ------------------------------------------------------------
 
 resumo_engenheiro <- dados_limpos |>
+  group_by(tipo_concreto) |>
   summarise(
-    
-    corpos_de_prova =
-      n(),
-    
-    resultados_validos =
-      sum(
-        !is.na(resistencia_mpa)
-      ),
-    
-    resistencia_media =
-      mean(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    resistencia_mediana =
-      median(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    resistencia_minima =
-      min(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    resistencia_maxima =
-      max(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    desvio_padrao =
-      sd(
-        resistencia_mpa,
-        na.rm = TRUE
-      ),
-    
-    coef_variacao =
-      100 *
-      desvio_padrao /
-      resistencia_media
-  )
+    Amostras_Validas = sum(!is.na(resistencia_mpa)),
+    Resistencia_Media = mean(resistencia_mpa, na.rm = TRUE),
+    Fator_AC_Medio = mean(relacao_a_c, na.rm = TRUE),
+    Consumo_Cimento_Medio = mean(cimento_kg_m3, na.rm = TRUE),
+    CV_Resistencia_pct = (sd(resistencia_mpa, na.rm = TRUE) / Resistencia_Media) * 100,
+    Taxa_Aprovacao_pct = (sum(classificacao %in% c("Excelente", "Bom"), na.rm = TRUE) / sum(!is.na(classificacao))) * 100
+  ) |>
+  mutate(across(where(is.numeric), ~ round(., 2)))
 
-kable(
-  resumo_engenheiro,
-  digits = 2,
-  caption =
-    "Indicadores para acompanhamento da qualidade do concreto"
-)
+kable(resumo_engenheiro, align = "c", caption = "Painel Executivo: Indicadores Estratégicos por Classe")
 
 # ------------------------------------------------------------
 # 24. REGISTROS PRIORITÁRIOS PARA CONFERÊNCIA
@@ -1454,60 +1095,24 @@ kable(
 
 registros_prioritarios <- dados_limpos |>
   mutate(
-    
-    motivo_verificacao =
-      case_when(
-        
-        abatimento_mm > 300 ~
-          "Abatimento suspeito",
-        
-        densidade_kg_m3 < 1000 ~
-          "Densidade suspeita",
-        
-        absorcao_agregado_pct > 4 ~
-          "Absorção suspeita",
-        
-        idade_dias > 100 ~
-          "Idade atípica",
-        
-        is.na(resistencia_mpa) ~
-          "Resistência ausente",
-        
-        resistencia_mpa <
-          fck_referencia ~
-          "Resistência abaixo da referência",
-        
-        TRUE ~
-          "Sem prioridade"
-      )
+    motivo_verificacao = case_when(
+      abatimento_mm > 300 ~ "Abatimento suspeito",
+      densidade_kg_m3 < 1000 ~ "Densidade suspeita",
+      absorcao_agregado_pct > 4 ~ "Absorção suspeita",
+      idade_dias > 100 ~ "Idade atípica",
+      is.na(resistencia_mpa) ~ "Resistência ausente",
+      resistencia_mpa < fck_referencia ~ "Resistência abaixo da referência",
+      TRUE ~ "Sem prioridade"
+    )
   ) |>
-  
-  filter(
-    motivo_verificacao !=
-      "Sem prioridade"
-  ) |>
-  
+  filter(motivo_verificacao != "Sem prioridade") |>
   select(
-    id_corpo_prova,
-    obra,
-    tipo_concreto,
-    idade_dias,
-    resistencia_mpa,
-    fck_referencia,
-    motivo_verificacao
+    id_corpo_prova, obra, tipo_concreto, idade_dias, 
+    resistencia_mpa, fck_referencia, motivo_verificacao
   ) |>
-  
-  arrange(
-    motivo_verificacao,
-    resistencia_mpa
-  )
+  arrange(motivo_verificacao, resistencia_mpa)
 
-kable(
-  registros_prioritarios,
-  digits = 2,
-  caption =
-    "Registros prioritários para conferência"
-)
+kable(registros_prioritarios, digits = 2, caption = "Registros prioritários para conferência e auditoria")
 
 # ------------------------------------------------------------
 # 25. VERIFICAÇÃO FINAL
@@ -1517,32 +1122,15 @@ glimpse(dados_limpos)
 
 verificacao_final <- dados_limpos |>
   summarise(
-    
-    observacoes =
-      n(),
-    
-    variaveis =
-      ncol(dados_limpos),
-    
-    obras =
-      n_distinct(obra),
-    
-    tipos_concreto =
-      n_distinct(tipo_concreto),
-    
-    resistencia_ausente =
-      sum(
-        is.na(resistencia_mpa)
-      )
+    observacoes = n(),
+    variaveis = ncol(dados_limpos),
+    obras = n_distinct(obra),
+    tipos_concreto = n_distinct(tipo_concreto),
+    resistencia_ausente = sum(is.na(resistencia_mpa))
   )
 
-kable(
-  verificacao_final,
-  caption =
-    "Verificação final da base tratada"
-)
+kable(verificacao_final, caption = "Verificação estrutural final da base tratada")
 ```
-
 
 ## 🧠 Considerações finais
 
