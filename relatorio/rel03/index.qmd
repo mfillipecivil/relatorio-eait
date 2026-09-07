@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
 author: "Marcus Fillipe e Gustavo Daudt"
-title: "Relatório de Aula Prática 03"
+title: "Relatório 03 - Processamento de Dados com Tidyverse"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -16,7 +16,6 @@ format:
     toc: true
     number-sections: true
     theme: bootstrap
-    #css: styles.css
     code-fold: true
     code-tools: true
 execute:
@@ -25,56 +24,57 @@ execute:
   message: false
 ---
 
-
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
+O controle tecnológico do concreto constitui uma etapa indispensável na Engenharia Civil, visando garantir a segurança estrutural e a conformidade dos materiais aplicados em obra. De acordo com os preceitos normativos, propriedades como resistência à compressão, relação água/cimento e consumo de aglomerante devem ser sistematicamente monitoradas. A análise estatística desses registros possibilita a avaliação do desempenho dos lotes, fundamentando deliberações de aceitação ou rejeição da estrutura.
 
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+No entanto, a validação dessas análises é condicionada à integridade dos dados coletados. Em cenários práticos de canteiros de obras e laboratórios, as informações são provenientes de múltiplas fontes e preenchidas por diferentes profissionais, tornando as planilhas suscetíveis a anomalias. Erros de digitação, inconsistências de formatação, valores discrepantes e dados ausentes são problemas comuns que, se não tratados, invalidam o cômputo matemático e distorcem o panorama estrutural.
 
-
+O presente trabalho aborda o diagnóstico, a limpeza e o processamento de uma base de dados contendo ensaios de controle de concreto. Diferentemente de abordagens clássicas baseadas em funções nativas dispersas, adota-se prioritariamente o ecossistema `tidyverse` da linguagem R. Este paradigma propõe uma organização sequencial e encadeada da manipulação de dados, conferindo legibilidade e eficiência à transformação de planilhas brutas em métricas gerenciais confiáveis.
 
 ## 🎯 Objetivos
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+Inspecionar, diagnosticar, limpar e explorar uma base de dados de controle tecnológico do concreto, utilizando o ecossistema `tidyverse` na linguagem R, com a finalidade de converter registros brutos em indicadores técnicos que auxiliem o processo de tomada de decisão na Engenharia Civil.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+* Importar os dados experimentais preservando sua tipagem original para fins de auditoria;
+* Empregar ferramentas exploratórias para identificar inconsistências categóricas, erros tipográficos e valores ausentes;
+* Aplicar o fluxo de processamento de dados do pacote `dplyr` e `stringr` para a padronização unificada da base;
+* Calcular medidas descritivas e indicadores de dispersão por meio de operações vetorizadas e agrupadas;
+* Produzir visualizações gráficas com o pacote `ggplot2` para investigar associações entre parâmetros de dosagem e a resistência mecânica;
+* Consolidar os procedimentos em um *script* reprodutivo, gerando um sumário executivo focado no acompanhamento de diferentes classes de concreto.
 
----
+## 📚 Fundamentação Teórica
 
-## 📚  Fundamentação Teórica
+### Qualidade de Dados e Paradigma Tidyverse
 
-Apresente os conceitos principais:
+A premissa fundamental da análise de dados postula que a qualidade do resultado estatístico é intrinsecamente dependente da integridade dos dados de entrada. Bases brutas necessitam de auditoria de consistência, visto que linguagens de programação, como o R, exigem tipagem homogênea em seus vetores. A presença de caracteres indevidos (como letras em meio a números) força a coerção estrutural para o formato de texto, bloqueando operações aritméticas.
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+Para a otimização dessa rotina computacional, o ecossistema `tidyverse` [@wickham2023r] oferece uma arquitetura orientada ao encadeamento lógico. Por meio do operador de *pipe* (`|>`), as transformações deixam de ser funções complexas e aninhadas, tornando-se fluxos de leitura linear (importação, filtro, mutação e sumarização), elevando a modularidade e a reprodutibilidade dos códigos de engenharia.
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+### Variáveis Tecnológicas do Concreto
 
----
+A resistência à compressão desponta como a variável resposta primária no controle de qualidade. Contudo, seu desempenho é norteado por fatores de dosagem. Historicamente descrito pela *Lei de Abrams* [@abrams1918], o fator água/cimento (a/c) atua como o principal determinante da integridade mecânica da pasta de cimento endurecida; adições excessivas de água elevam a porosidade sistêmica, reduzindo a capacidade portante.
+
+Em contrapartida, a alteração isolada do consumo de cimento, sem o balanço hídrico adequado, não assegura um incremento proporcional de resistência. Outro fator primordial consiste na evolução das reações de hidratação, processo termodinâmico contínuo que confere ganho de resistência progressivo conforme a idade do corpo de prova.
+
+### Estatística Descritiva em Análises Agrupadas
+
+A descrição sumária do concreto não se restringe à sua média global. O controle exige o particionamento da análise de acordo com a classe de resistência (fck) ou o lote da obra. Para isso, o coeficiente de variação (CV), obtido pela relação percentual entre o desvio padrão e a média, consolida-se como o balizador de homogeneidade da usinagem. Altos índices de CV sinalizam dispersão excessiva na produção ou nas práticas de adensamento, indicando baixa confiabilidade construtiva.
 
 ## ⚙️ Metodologia
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+O procedimento experimental consistiu na análise de uma base de dados estruturada em formato CSV (valores separados por vírgula), contendo 100 observações relativas ao controle de qualidade de quatro blocos distintos de uma edificação. A planilha abrange 10 variáveis, divididas entre identificadores qualitativos e grandezas físicas (compressão, consumo de aglomerante, relação a/c, abatimento, densidade e absorção).
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+Os dados foram processados no ambiente R, limitando-se ao uso de pacotes da família `tidyverse`. O método adotado compreendeu as seguintes etapas:
 
----
+1. **Importação Preventiva:** O pacote `readr` foi utilizado para alocar a base na memória do sistema em formato de texto, blindando o arquivo contra conversões indesejadas antes do diagnóstico de formatação.
+2. **Inspeção e Limpeza:** Por meio dos pacotes `dplyr` e `stringr`, instituiu-se uma cadeia de tratamento que abrangeu a supressão de espaços excedentes, padronização de nomenclatura de classe em caixa alta e a substituição de caracteres tipográficos incorretos (letras no lugar de algarismos), possibilitando a posterior conversão matemática.
+3. **Exploração Multivariada:** Aplicou-se o fluxo de agrupamento (`group_by`) e sumarização (`summarise`) para extrair indicadores segmentados, preservando os espaços vazios legítimos (`NA`) para evitar o enviesamento numérico das amostras.
+4. **Data Visualization:** Empregou-se o pacote `ggplot2` para traduzir as planilhas numéricas em painéis gráficos, correlacionando parâmetros de dosagem e a capacidade de suporte final dos elementos.
 
 ## 🔍 Resultados e Discussão
 ### Importação da base de dados
@@ -466,42 +466,6 @@ O código resume a distribuição das classificações obtidas, apresentando a q
 
 Considerando toda a base, 86% dos registros foram classificados como Bom ou Excelente segundo o critério descritivo adotado.
 
-### Representação gráfica
-```{r}
-ggplot(
-  dados_limpos,
-  aes(x = resistencia_mpa)
-) +
-  geom_histogram(bins = 15) +
-  labs(
-    title = "Distribuição da Resistência à Compressão",
-    x = "Resistência (MPa)",
-    y = "Frequência"
-  ) +
-  theme_minimal()
-```
-O código apresenta graficamente a distribuição dos valores de resistência à compressão, facilitando a identificação da concentração e dispersão dos resultados.
-
-```{r}
-ggplot(
-  dados_limpos,
-  aes(
-    x = tipo_concreto,
-    y = resistencia_mpa
-  )
-) +
-  geom_boxplot() +
-  labs(
-    title = "Resistência por Tipo de Concreto",
-    x = "Tipo de concreto",
-    y = "Resistência (MPa)"
-  ) +
-  theme_minimal()
-```
-
-O gráfico permite comparar visualmente a distribuição da resistência entre as diferentes classes de concreto, complementando os resultados apresentados nas tabelas.
-
-
 ### Relação entre resistência e demais variáveis
 ```{r}
 correlacoes <- tibble(
@@ -600,72 +564,101 @@ O código realiza uma última conferência da estrutura da base, verificando sua
 Nesta etapa, foram utilizadas ferramentas do pacote `ggplot2` para representar graficamente algumas das principais relações presentes na base de dados. Os gráficos complementam as análises numéricas e auxiliam na identificação de diferenças entre grupos, tendências e possíveis associações entre as variáveis estudadas.
 
 #### Distribuição da resistência à compressão por tipo de concreto
-Para comparar a distribuição da resistência à compressão entre os diferentes tipos de concreto, foi utilizado um gráfico do tipo boxplot.
+
+Para comparar a distribuição da resistência à compressão entre os diferentes tipos de concreto, utilizou-se um diagrama de caixas (*boxplot*).
 
 ```{r}
+#| label: boxplot-resistencias
+#| echo: true
+#| fig-align: "center"
+
 ggplot(
   dados_limpos,
   aes(
     x = tipo_concreto,
-    y = resistencia_mpa
-    )
-)+
-geom_boxplot() +
-labs(
-  title = "Distribuição da Resistência à Compressão por Tipo de Concreto",
-  x = "Tipo de concreto",
-  y = "Resistência à compressão (MPa)" 
+    y = resistencia_mpa,
+    fill = tipo_concreto
+  )
+) +
+  geom_boxplot(alpha = 0.8, outlier.color = "#DC3545", outlier.size = 2.5) +
+  scale_fill_brewer(palette = "Pastel1") +
+  labs(
+    title = "Distribuição da Resistência à Compressão por Classe",
+    x = "Classe de Concreto",
+    y = "Resistência à Compressão (MPa)" 
   ) + 
-theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
-O gráfico evidencia uma progressão da resistência à compressão conforme aumenta a classe do concreto. De maneira geral, os valores de resistência observados para o C25 são inferiores aos encontrados para C30, C35 e C40.
+
+O gráfico evidencia uma progressão consolidada da resistência à compressão conforme o aumento da classe de projeto do material. De maneira geral, os valores observados para os traços C25 são inferiores e apresentam limites mais estreitos quando comparados aos resultados de alto desempenho das classes C35 e C40.
 
 #### Consumo de cimento e resistência à compressão
 
-Para investigar a relação entre o consumo de cimento e a resistência à compressão, foi construído um gráfico de dispersão.
+Para investigar a relação entre o consumo de aglomerante e a resistência à compressão, elaborou-se um diagrama de dispersão. Visando evitar vieses analíticos, procedeu-se com a remoção prévia de um *outlier* severo oriundo de erro de digitação (registro na ordem de 3.900 kg/m³), o qual distorcia o modelo de regressão linear.
+
 ```{r}
+#| label: cimento-resistencia
+#| echo: true
+#| fig-align: "center"
+
+# Filtro preventivo para remoção de anomalia de digitação
+dados_cimento <- dados_limpos |> 
+  filter(cimento_kg_m3 < 1000)
+
 ggplot(
-  dados_limpos,
+  dados_cimento,
   aes(
     x = cimento_kg_m3,
     y = resistencia_mpa
   )
 ) +
   geom_point(
-    alpha = 0.7,
-    size = 2
+    color = "#779ECB",
+    alpha = 0.8,
+    size = 2.5
   ) +
   geom_smooth(
     method = "lm",
-    se = FALSE
+    se = FALSE,
+    color = "gray50",
+    linetype = "dashed"
   ) +
   labs(
     title = "Consumo de Cimento × Resistência à Compressão",
-    x = "Consumo de cimento (kg/m³)",
-    y = "Resistência à compressão (MPa)"
+    subtitle = "Amostra com remoção de outlier extremo",
+    x = "Consumo de Cimento (kg/m³)",
+    y = "Resistência à Compressão (MPa)"
   ) +
   theme_minimal()
 ```
 
-O código cria um gráfico de dispersão, no qual cada ponto representa um corpo de prova. A linha adicionada ao gráfico representa uma tendência linear entre o consumo de cimento e a resistência à compressão.
+Para complementar a interpretação visual da linha de tendência, obteve-se o coeficiente de correlação entre as duas variáveis a partir da base higienizada:
 
-Para complementar a interpretação visual, pode-se calcular a correlação entre as duas variáveis:
 ```{r}
+#| label: cor-cimento
+#| echo: true
+
 cor(
-  dados_limpos$cimento_kg_m3,
-  dados_limpos$resistencia_mpa,
+  dados_cimento$cimento_kg_m3,
+  dados_cimento$resistencia_mpa,
   use = "complete.obs"
 )
 ```
 
-O coeficiente de correlação de Pearson, próximo de zero, indica uma associação linear praticamente inexistente entre o consumo de cimento e a resistência à compressão. O gráfico confirma esse resultado, apresentando pontos dispersos e uma linha de tendência com pouca inclinação.
+O coeficiente de correlação de Pearson, situado próximo a zero, aponta para uma associação linear nula entre o consumo absoluto de cimento e a capacidade portante do material. O gráfico consolida esse resultado ao apresentar uma nuvem de pontos amplamente dispersa e uma linha de tendência sem inclinação expressiva.
 
-Assim, os dados analisados não sustentam a afirmação de que o aumento do consumo de cimento implica maior resistência do concreto. Isso ocorre porque a resistência também é influenciada por outros fatores, como a relação água/cimento, o tipo de concreto, a idade do ensaio e as características da dosagem.
+Dessa forma, os dados atestam que o aumento isolado do consumo de cimento não implica, obrigatoriamente, em maior resistência. Na tecnologia do concreto, o ganho mecânico depende da interação de múltiplos fatores, especialmente do controle da relação água/cimento e da idade de cura.
 
 #### Relação água/cimento e resistência à compressão
 
-Para investigar a relação entre a relação água/cimento e a resistência à compressão, foi elaborado outro gráfico de dispersão.
+A influência do volume hídrico no desempenho estrutural foi avaliada por meio de um segundo diagrama de dispersão.
+
 ```{r}
+#| label: ac-resistencia
+#| echo: true
+#| fig-align: "center"
+
 ggplot(
   dados_limpos,
   aes(
@@ -674,34 +667,39 @@ ggplot(
   )
 ) +
   geom_point(
-    alpha = 0.7,
-    size = 2
+    color = "#779ECB",
+    alpha = 0.8,
+    size = 2.5
   ) +
   geom_smooth(
     method = "lm",
-    se = FALSE
+    se = FALSE,
+    color = "gray50",
+    linetype = "dashed"
   ) +
   labs(
     title = "Relação Água/Cimento × Resistência à Compressão",
-    x = "Relação água/cimento",
-    y = "Resistência à compressão (MPa)"
+    subtitle = "Validação empírica do controle de hidratação",
+    x = "Fator Água/Cimento (A/C)",
+    y = "Resistência à Compressão (MPa)"
   ) +
   theme_minimal()
 ```
-O código representa graficamente a relação entre a quantidade relativa de água e cimento e a resistência à compressão, acrescentando uma linha de tendência para facilitar a identificação do comportamento geral dos dados.
 
-A intensidade dessa relação pode ser verificada numericamente:
+A intensidade métrica dessa associação foi ratificada pelo cálculo de correlação:
 
 ```{r}
+#| label: cor-ac
+#| echo: true
+
 cor(
   dados_limpos$relacao_a_c,
   dados_limpos$resistencia_mpa,
   use = "complete.obs"
 )
 ```
-O código calcula a correlação linear entre a relação água/cimento e a resistência à compressão.
 
-O gráfico apresenta uma tendência negativa evidente: à medida que a relação água/cimento aumenta, a resistência à compressão tende a diminuir. O coeficiente de correlação confirma uma associação linear negativa relativamente forte. Portanto, essa relação merece investigação, embora outros fatores, como tipo de concreto, idade e características da dosagem, também possam influenciar a resistência.
+O gráfico revela uma inclinação decrescente acentuada: à medida que a relação água/cimento é elevada, a resistência à compressão sofre uma queda drástica. O coeficiente de correlação de Pearson (-0,764) atesta uma associação linear negativa forte, validando empiricamente o comportamento teórico fundamentado pela Engenharia. Constata-se que o rigor no limite de água da mistura é o vetor principal para a obtenção de concretos de alta performance.
 
 ### Desafio ao Engenheiro
 Script consolidado
@@ -1563,13 +1561,3 @@ A solução adotada mostrou-se adequada por proporcionar organização, rastreab
 
 
 ## 📖 Referências
-
-ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. ABNT NBR 6118: Projeto de estruturas de concreto – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2014. p. 238
-
-___. ABNT NBR 12655: Concreto de cimento Portland – Preparo, controle, recebimento e aceitação – Procedimento. Rio de Janeiro: Associação Brasileira de Normas Técnicas, 2015.
-
-NEVILLE, A. M. Propriedades do Concreto. 5. ed. Porto Alegre: Bookman, 2016.
-
-R CORE TEAM. The R Project for Statistical Computing. [s.l: s.n.].
-
-WICKHAM, HADLEY ET AL. Tidyverse: R packages for data science, 2026. Disponível em: <https://tidyverse.org/>
