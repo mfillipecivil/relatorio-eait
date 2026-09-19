@@ -1,6 +1,6 @@
 ---
 # Só mude aqui!!!!
-author: "Marcus Fillipe e Gustavo"
+author: "Marcus Fillipe e Gustavo Daudt"
 title: "Relatório 01 - Fundamentos Iniciais da Linguagem R e Estatística Básica"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
@@ -27,13 +27,19 @@ execute:
 
 ## 📌 Introdução
 
-  A utilização de métodos estatísticos é de grande importância para o tratamento e a interpretação de informações obtidas em diferentes áreas da Engenharia. Na Engenharia Civil, esses métodos podem ser empregados na avaliação de resultados experimentais, no controle de qualidade, em levantamentos técnicos e no estudo das propriedades e do comportamento de materiais. A análise dos dados permite identificar características, tendências e variações, fornecendo subsídios para uma interpretação mais adequada dos resultados e para a tomada de decisões.
- 
-  A Estatística Descritiva permite organizar e apresentar os dados de forma simplificada, facilitando sua compreensão. Para isso, podem ser utilizadas tabelas e gráficos, além de medidas de posição e dispersão. Indicadores como assimetria e curtose também auxiliam na avaliação da distribuição dos dados. Dessa forma, é possível obter uma visão geral do conjunto analisado e identificar comportamentos que podem ser relevantes para o estudo.
+ O desenvolvimento das ferramentas computacionais modificou significativamente a maneira como dados científicos e experimentais são organizados, processados e analisados. Na Engenharia, a utilização de linguagens de programação e ambientes computacionais permite automatizar cálculos, manipular grandes conjuntos de informações, construir representações gráficas e implementar procedimentos matemáticos e estatísticos de maneira organizada e reprodutível.
 
-  O desenvolvimento de ferramentas computacionais também contribui para tornar as análises estatísticas mais práticas e eficientes. Nesse contexto, a linguagem R apresenta diversos recursos destinados ao processamento e à análise de dados, enquanto o RStudio oferece um ambiente que facilita a elaboração e execução dos comandos, bem como a visualização dos resultados e gráficos. A utilização de pacotes específicos, como o leem, permite ampliar as funcionalidades disponíveis e auxiliar na realização dos procedimentos estatísticos.
+Nesse contexto, destaca-se o R, uma linguagem de programação e ambiente computacional de código aberto inicialmente desenvolvido com forte orientação para a Estatística e a análise de dados. Entretanto, suas aplicações atualmente ultrapassam o cálculo estatístico, abrangendo manipulação de dados, programação, elaboração de gráficos, desenvolvimento de funções, produção de documentos científicos, construção de aplicações e integração com outras linguagens e tecnologias.
 
-  Diante disso, esta prática consiste na aplicação de conceitos de Estatística Descritiva utilizando a linguagem R, o ambiente RStudio e o pacote leem. Os procedimentos serão aplicados a dados relacionados à Engenharia Civil, envolvendo sua organização, representação e análise. A atividade busca, portanto, associar os conceitos estatísticos aos recursos computacionais, possibilitando uma interpretação mais clara e fundamentada dos resultados obtidos.
+A utilização adequada do R requer mais do que o conhecimento de comandos isolados. É necessário compreender os princípios que estruturam a linguagem, a forma como os objetos são criados e armazenados, os diferentes tipos e estruturas de dados, o funcionamento das funções, os mecanismos de atribuição, as estruturas de controle, os ambientes de execução, o escopo léxico e a organização das funcionalidades por meio de pacotes. Esses conceitos permitem compreender não apenas como executar determinado procedimento, mas também como o R interpreta e organiza as instruções fornecidas pelo usuário.
+
+Associado ao R, o RStudio constitui um Ambiente Integrado de Desenvolvimento — IDE (Integrated Development Environment) — que facilita a escrita, organização e execução dos códigos. Sua interface reúne editor de scripts, console, ambiente de objetos, histórico de comandos, arquivos, gráficos, pacotes e documentação, proporcionando uma estrutura adequada ao desenvolvimento de análises computacionais.
+
+Outra característica importante do R é sua capacidade de expansão. A linguagem possui um amplo ecossistema de pacotes desenvolvidos para diferentes finalidades, além de permitir interfaces com outras linguagens e tecnologias computacionais. Dessa forma, o R pode ser compreendido não apenas como um programa destinado ao cálculo estatístico, mas como um ambiente de programação capaz de integrar diferentes recursos em um mesmo fluxo de trabalho.
+
+Entre suas principais aplicações encontra-se a análise estatística de dados. Na Engenharia Civil, resultados provenientes de ensaios de laboratório, levantamentos de campo e procedimentos de controle tecnológico apresentam variabilidade e necessitam ser organizados e interpretados. A Estatística Descritiva fornece recursos para essa finalidade por meio de distribuições de frequência, representações gráficas e medidas de posição, dispersão e forma.
+
+Diante disso, o presente trabalho tem como eixo principal o estudo e a aplicação da linguagem R como ferramenta computacional, abordando seus fundamentos, estruturas de dados, funções, ambientes, pacotes e mecanismos de programação. Posteriormente, esses conhecimentos são empregados na implementação de procedimentos de Estatística Descritiva aplicados a dados relacionados à Engenharia Civil, utilizando o ambiente RStudio e o pacote leem. Busca-se, assim, relacionar os fundamentos da programação em R à resolução computacional de um problema técnico de Engenharia.
 
 ## 🎯 Objetivos
 
@@ -55,52 +61,703 @@ Aplicar os fundamentos da Estatística Descritiva e da programação em R na an�
 ***
 
 ## 📚  Fundamentação Teórica
-### Fundamentos do R e do RStudio
-O R é um ambiente computacional de código aberto destinado à manipulação e análise de dados, realização de cálculos estatísticos e produção de gráficos. Além de suas funções nativas, permite a criação e o compartilhamento de novas funcionalidades por meio de pacotes desenvolvidos pela comunidade.
+### A linguagem e o ambiente computacional R
+O R é uma linguagem de programação e um ambiente computacional de código aberto utilizado para manipulação, processamento, análise e representação de dados. Embora apresente forte relação histórica com a Estatística, sua estrutura permite desenvolver aplicações que envolvem programação, cálculos numéricos, visualização, produção de documentos e integração com outras tecnologias.
 
-O projeto foi iniciado em 1991, na Nova Zelândia, pelos pesquisadores Ross Ihaka e Robert Gentleman, tendo sua primeira versão oficial disponibilizada em 1995. Em 1997, foi criado o CRAN (Comprehensive R Archive Network), responsável pela distribuição do R, de sua documentação e de milhares de pacotes.
+O desenvolvimento do R teve início na década de 1990 a partir dos trabalhos de Ross Ihaka e Robert Gentleman, na Universidade de Auckland, na Nova Zelândia, apresentando influência da linguagem S. Posteriormente, seu desenvolvimento passou a ocorrer de maneira colaborativa, com participação do R Core Team e de uma ampla comunidade de usuários e desenvolvedores.
 
-O RStudio é uma IDE (Integrated Development Environment) desenvolvida para facilitar a utilização do R. Ele não substitui o R, mas oferece uma interface organizada para escrita e execução de códigos. Sua estrutura reúne, principalmente, o editor de scripts, o console, o painel de ambiente e histórico e as áreas destinadas a arquivos, gráficos, pacotes e ajuda.
+Uma característica importante do R é seu caráter aberto e extensível. Além das funcionalidades disponibilizadas em sua instalação, novos recursos podem ser incorporados por meio de pacotes, permitindo que pesquisadores e desenvolvedores disponibilizem funções, dados e métodos específicos para diferentes áreas do conhecimento.
 
-#### Princípios fundamentais do R
-A lógica do R pode ser compreendida a partir de três princípios básicos:
+Grande parte desses pacotes é distribuída pelo CRAN (Comprehensive R Archive Network), que constitui uma das principais estruturas de distribuição do R e dos pacotes associados ao seu ecossistema.
 
-**Tudo é um objeto:** números, textos, conjuntos de dados, gráficos e funções podem ser armazenados e manipulados como objetos.
+Dessa forma, o R pode ser compreendido simultaneamente como uma linguagem de programação, por possuir sintaxe, funções e estruturas próprias, e como um ambiente computacional, por fornecer mecanismos destinados à criação e manipulação de objetos, execução de procedimentos, gerenciamento de pacotes e integração com outras ferramentas.
 
-**As operações são realizadas por funções:** diferentes comandos e cálculos são processados por meio de funções.
+### R e RStudio
+Embora frequentemente utilizados de maneira conjunta, R e RStudio não correspondem à mesma ferramenta. O R é responsável pela interpretação e execução das instruções da linguagem, enquanto o RStudio fornece uma interface destinada a facilitar a interação do usuário com esse ambiente.
 
-**Integração com outros sistemas:** o R pode interagir com linguagens e tecnologias como C, C++, Python, HTML e JavaScript.
+O RStudio é classificado como uma IDE — Integrated Development Environment, ou Ambiente Integrado de Desenvolvimento. Sua principal função é reunir em uma mesma interface diferentes recursos utilizados durante a programação.
 
-#### Sintaxe e principais comandos
-A sintaxe corresponde às regras utilizadas para escrever corretamente os comandos, enquanto a semântica está relacionada ao significado e ao resultado dessas instruções.
+Entre seus principais componentes encontram-se:
 
-Ao iniciar o R ou o RStudio, o símbolo > indica que o console está pronto para receber um comando. Quando uma instrução está incompleta, o símbolo + indica que o R aguarda sua continuação.
+editor de scripts: utilizado para escrever, organizar e armazenar códigos;
+console: local em que os comandos são interpretados e executados pelo R;
+  - Environment: apresenta os objetos existentes no ambiente de trabalho;
+  - History: registra comandos executados durante a sessão;
+  - Files: permite navegar pelos arquivos e diretórios;
+  - Plots: apresenta as representações gráficas produzidas;
+  - Packages: auxilia no gerenciamento dos pacotes;
+  - Help: fornece acesso à documentação das funções e dos pacotes.
 
-Os comentários são inseridos utilizando # e servem para documentar o código sem serem executados.
+Essa organização facilita o desenvolvimento de análises mais extensas, principalmente quando os procedimentos precisam ser registrados, corrigidos, repetidos ou compartilhados.
 
-Os objetos devem receber nomes válidos, sem espaços ou operadores matemáticos. O R diferencia letras maiúsculas de minúsculas, de modo que idade e Idade representam objetos diferentes. Também é necessário evitar palavras reservadas da linguagem, como if, else, for e function.
+O uso do editor de scripts é particularmente importante. Embora os comandos possam ser digitados diretamente no console, o armazenamento do código em arquivos permite preservar a sequência das operações realizadas e executar novamente a análise quando necessário.
 
-As operações podem ser executadas diretamente ou armazenadas em objetos. Para atribuições, recomenda-se o uso do operador <-
+### Princípios fundamentais do R
+A estrutura da linguagem R pode ser compreendida a partir de três princípios fundamentais: objeto, função e interface. Esses princípios auxiliam na compreensão do comportamento da linguagem e estabelecem relações entre os diferentes conteúdos utilizados durante a programação.
 
-É possível ainda executar vários comandos na mesma linha utilizando ;
+#### Princípio do objeto
+No R, praticamente todos os elementos manipulados podem ser tratados como objetos. Valores numéricos, textos, vetores, matrizes, listas, bancos de dados e funções podem ser associados a nomes e posteriormente recuperados ou modificados.
 
-### Gerenciamento dos objetos e do diretório de trabalho.
-Os objetos criados durante uma sessão ficam armazenados no ambiente de trabalho do R. O comando ls() permite visualizar os objetos existentes.
+Por exemplo
+```
+x <- 10
+```
+Nesse comando, o valor 10 corresponde a um objeto e x representa o nome associado a esse objeto no ambiente considerado.
 
-O diretório de trabalho pode ser consultado com getwd() e alterado utilizando setwd():
+Os objetos possuem características próprias, como tipo, comprimento, classe e atributos. Essas características determinam a forma como os dados são armazenados e como determinadas funções irão se comportar quando aplicadas a eles.
 
-#### Tipos de dados e pacotes
-O R trabalha com diferentes tipos básicos de dados, como logical, integer, double e character. Também possui estruturas mais complexas, como data frames, amplamente utilizadas para organizar dados em linhas e colunas.
-As funcionalidades do R podem ser ampliadas por meio de pacotes, que reúnem funções e outros recursos desenvolvidos para finalidades específicas. Para utilizar um pacote, normalmente é necessário instalá-lo e carregá-lo:
+#### Princípio da função
+Outro princípio importante estabelece que as operações realizadas no R estão relacionadas a chamadas de funções.
 
+Uma função pode ser entendida como um conjunto de instruções destinado à realização de determinada tarefa. De maneira geral, recebe informações de entrada, realiza um processamento e retorna determinado resultado.
+
+Sua representação básica pode ser expressa por:
+```
+nome_funcao(argumentos)
+```
+pode ser representado por:
+```
+`+`(10, 20)
+```
+Essa característica evidencia a importância das funções na estrutura da linguagem.
+
+#### Princípio da interface
+
+O terceiro princípio está relacionado à capacidade do R de estabelecer interfaces com outras linguagens e sistemas computacionais.
+
+O próprio funcionamento do R utiliza rotinas implementadas em linguagens como C e Fortran, principalmente em operações que demandam processamento numérico eficiente. Além disso, existem recursos que permitem integração com C++, Python e outras tecnologias.
+
+Portanto, o R não constitui um ambiente computacional completamente isolado. Sua arquitetura permite aproveitar recursos desenvolvidos em diferentes linguagens e incorporá-los ao fluxo de trabalho.
+
+### Sintaxe e semântica
+
+A utilização de uma linguagem de programação exige o conhecimento de sua sintaxe e de sua semântica.
+
+A sintaxe corresponde às regras que determinam como as instruções devem ser escritas. Uma expressão que não respeita essas regras pode produzir um erro e impedir sua interpretação.
+
+A semântica, por outro lado, está relacionada ao significado da instrução. Um comando pode apresentar sintaxe válida e, ainda assim, produzir um resultado diferente daquele pretendido pelo usuário.
+
+No console do R, o símbolo:
+```
+>
+```
+indica que o sistema está preparado para receber uma instrução.
+
+Quando uma expressão ainda não foi finalizada, pode aparecer:
+```
++
+```
+indicando que o R aguarda sua continuação.
+
+Os comentários são introduzidos pelo símbolo:
+```
+# Comentário
+```
+e não são executados pelo programa. Eles são utilizados para documentar o código e facilitar sua compreensão.
+
+O R diferencia letras maiúsculas de minúsculas. Assim:
+```
+idade
+```
+e:
+```
+Idade
+```
+representam nomes diferentes.
+
+Existem também palavras reservadas da linguagem, como:
+
+`if`
+`else`
+`for`
+`while`
+`function`
+
+que possuem significado específico dentro da sintaxe e não devem ser utilizadas de maneira inadequada como nomes de objetos.
+
+### Objetos e atribuição
+
+Para utilizar um resultado posteriormente, ele pode ser associado a um nome por meio de uma operação de atribuição.
+
+Uma forma amplamente utilizada no R é o operador:
+```
+<-
+```
+Por exemplo:
+```
+grau_compactacao <- 97.2
+```
+Nesse caso, estabelece-se uma ligação entre o nome grau_compactacao e o objeto numérico correspondente ao valor 97.2.
+
+Outro exemplo é:
+```
+obra <- "Aterro Experimental"
+```
+em que o objeto criado apresenta conteúdo textual.
+
+A atribuição é fundamental porque permite dividir uma análise em diferentes etapas. Um resultado pode ser calculado, armazenado em determinado objeto e posteriormente utilizado por outras funções.
+
+A função:
+```
+ls()
+```
+permite consultar os nomes dos objetos existentes no ambiente considerado.
+
+### Tipos básicos de dados
+
+Os objetos podem apresentar diferentes tipos internos, relacionados à maneira como seus valores são representados.
+
+Entre os principais tipos utilizados no R encontram-se:
+```
+logical;
+integer;
+double;
+character;
+complex;
+raw.
+```
+O tipo logical representa valores lógicos:
+```
+TRUE
+FALSE
+```
+O tipo integer representa valores inteiros. A letra L pode ser utilizada para indicar explicitamente esse tipo:
+```
+10L
+```
+Valores numéricos como:
+```
+10.5
+```
+são normalmente representados como double.
+
+O tipo character armazena sequências de caracteres:
+```
+"Engenharia Civil"
+```
+As funções:
+```{
+typeof()
+mode()
+class()
+``` 
+podem fornecer diferentes informações sobre a natureza de determinado objeto.
+
+É importante distinguir tipo, modo e classe, pois esses conceitos descrevem características diferentes do objeto e podem influenciar o comportamento das funções.
+
+### Valores especiais
+
+O R também apresenta valores especiais utilizados para representar determinadas situações.
+
+O valor:
+```
+NA
+```
+indica, de maneira geral, um valor ausente.
+
+O valor:
+```
+NaN
+```
+representa resultados numéricos indefinidos, como determinadas operações matemáticas sem resultado numérico convencional.
+
+Também podem ocorrer:
+```
+Inf
+-Inf
+```
+representando infinito positivo e negativo.
+
+Por sua vez:
+```
+NULL
+```
+representa a ausência de um objeto ou componente em determinados contextos e possui comportamento diferente de NA.
+
+Essa distinção é importante durante a análise de dados, especialmente porque valores ausentes podem interferir em cálculos estatísticos.
+
+Por exemplo:
+```
+mean(x, na.rm = TRUE)
+```
+utiliza o argumento na.rm = TRUE para desconsiderar valores ausentes durante o cálculo da média.
+
+### Estruturas de dados
+
+Além dos tipos básicos, o R organiza os dados em diferentes estruturas, cada uma adequada a determinadas situações.
+
+#### Vetores
+
+Os vetores constituem uma das estruturas fundamentais da linguagem. Um vetor atômico reúne elementos de um mesmo tipo.
+
+Pode ser criado utilizando:
+```
+x <- c(10, 20, 30, 40)
+```
+A função c() combina os elementos em um vetor.
+
+Outras formas de criação incluem:
+```
+1:10
+```
+para produzir uma sequência, e:
+```
+seq(0, 10, by = 2)
+``` 
+para criar sequências com intervalos especificados.
+
+Também pode ser utilizada:
+```
+rep(5, 3)
+```
+para repetir determinado elemento.
+
+A seleção dos elementos é realizada por indexação:
+```
+x[2]
+```
+retornando o segundo elemento.
+
+Também podem ser selecionados vários elementos:
+```
+x[c(1, 3)]
+```
+As operações com vetores são frequentemente vetorizadas. Por exemplo:
+```
+x * 2
+```
+multiplica cada elemento do vetor por 2.
+
+#### Matrizes
+
+Uma matriz pode ser compreendida, em sua estrutura básica, como um vetor atômico associado a um atributo de dimensões.
+
+Pode ser criada por:
+```
+m <- matrix(
+  1:6,
+  nrow = 2,
+  ncol = 3
+)
+```
+A seleção utiliza dois índices:
+```
+m[1, 2]
+```
+em que o primeiro representa a linha e o segundo a coluna.
+
+O operador:
+```
+%*%
+```
+é utilizado para multiplicação matricial, enquanto:
+```
+*
+```
+realiza multiplicação elemento a elemento.
+
+#### Arrays
+Os arrays ampliam a organização matricial para mais de duas dimensões.
+
+Por exemplo:
+```
+a <- array(
+  1:12,
+  dim = c(2, 3, 2)
+)
+```
+Nesse caso, a estrutura apresenta três dimensões e pode ser acessada por:
+```
+a[linha, coluna, camada]
+Listas
+```
+As listas diferenciam-se dos vetores atômicos por permitirem armazenar elementos de diferentes tipos e estruturas.
+
+Por exemplo:
+```
+ensaio <- list(
+  identificacao = "P01",
+  gc = c(96.5, 97.1, 98.0),
+  aprovado = TRUE
+)
+```
+Seus elementos podem ser acessados utilizando:
+```
+ensaio$gc
+```
+ou:
+```
+ensaio[[2]]
+```
+As listas possuem grande importância na linguagem porque diversas estruturas mais complexas são construídas a partir delas.
+
+#### Data frames
+
+Os data frames constituem uma das estruturas mais importantes para análise de dados.
+
+Apresentam organização tabular, na qual normalmente:
+
+cada linha corresponde a uma observação;
+cada coluna corresponde a uma variável.
+
+Exemplo:
+```
+dados <- data.frame(
+  ensaio = c("P01", "P02", "P03"),
+  gc = c(96.5, 97.1, 94.8),
+  aprovado = c(TRUE, TRUE, FALSE)
+)
+```
+Uma característica importante é que diferentes colunas podem apresentar diferentes tipos de dados.
+
+Uma variável pode ser acessada por:
+```
+dados$gc
+```
+ou por indexação:
+```
+dados[1, 2]
+```
+A estrutura data.frame possui especial importância na Estatística, pois representa de maneira natural conjuntos de observações e variáveis.
+
+### Funções
+
+As funções representam um dos elementos centrais da linguagem R. Uma função recebe argumentos, executa um conjunto de instruções e pode produzir determinado resultado.
+
+Por exemplo:
+```
+mean(x)
+```
+utiliza x como argumento para calcular a média.
+
+As funções podem apresentar diversos argumentos:
+```
+mean(x, na.rm = TRUE)
+```
+Nesse exemplo, na.rm modifica o comportamento da função ao indicar que valores ausentes devem ser removidos antes do cálculo.
+
+Os argumentos podem ser fornecidos de maneira posicional ou pelo nome. A identificação pelo nome pode melhorar a legibilidade quando a função apresenta diversos parâmetros.
+
+### Criação de funções próprias
+
+O usuário também pode desenvolver suas próprias funções utilizando:
+```
+function()
+```
+Por exemplo:
+```
+calcular_cv <- function(media, desvio_padrao) {
+  100 * desvio_padrao / media
+}
+```
+Posteriormente:
+```
+calcular_cv(97.1, 1.5)
+```
+executará as instruções definidas no corpo da função.
+
+Uma função criada no R apresenta três componentes particularmente importantes:
+
+`argumentos;`
+`corpo;`
+`ambiente associado à sua definição.`
+
+O resultado da última expressão avaliada pode ser retornado automaticamente. Também é possível utilizar explicitamente:
+```
+return()
+```
+quando isso contribui para a lógica da função.
+
+As funções podem ainda ser anônimas, ou seja, utilizadas sem que seja necessário associá-las previamente a um nome.
+
+### Estruturas de controle
+
+As estruturas de controle modificam o fluxo de execução de acordo com determinadas condições.
+
+A estrutura:
+```
+if (condicao) {
+  comando
+}
+```
+executa determinado bloco quando a condição é verdadeira.
+
+Quando existem duas alternativas, pode-se utilizar:
+```
+if (condicao) {
+  comando_1
+} else {
+  comando_2
+}
+```
+Para operações vetorizadas, `ifelse()` pode ser utilizado em determinadas situações:
+```
+classificacao <- ifelse(
+  grau_compactacao >= 95,
+  "Atende",
+  "Não atende"
+)
+```
+Também existem estruturas de repetição.
+
+O for` `` ` percorre elementos de uma sequência:
+```
+for (i in 1:5) {
+  print(i)
+}
+```
+O `while` executa o bloco enquanto determinada condição permanecer verdadeira:
+```
+i <- 1
+while (i <= 5) {
+  print(i)
+  i <- i + 1
+}
+```
+O `repeat` executa repetidamente um bloco até que exista uma condição explícita de interrupção, normalmente por break.
+
+O comando `break` encerra o loop, enquanto `next` interrompe somente a iteração corrente e inicia a próxima.
+
+### Vetorização e encadeamento de operações
+
+Uma característica importante do R é sua capacidade de executar operações diretamente sobre vetores e outras estruturas, reduzindo a necessidade de percorrer individualmente cada elemento.
+
+Por exemplo:
+```
+x <- c(10, 20, 30)
+x * 2
+```
+produz:
+```
+20 40 60
+```
+sem a necessidade de um for.
+
+Além disso, diferentes funções podem ser encadeadas.
+
+Uma forma tradicional é:
+```
+sqrt(var(x))
+```
+Nesse caso, primeiro calcula-se a variância e, posteriormente, sua raiz quadrada.
+
+Também é possível armazenar resultados intermediários:
+```
+variancia <- var(x)
+desvio_padrao <- sqrt(variancia)
+```
+Outra alternativa é utilizar o operador pipe:
+```
+x |>
+  var() |>
+  sqrt()
+```
+O `pipe` permite organizar sequências de operações de maneira linear, facilitando a leitura em procedimentos compostos por diversas etapas.
+
+### Escopo léxico e ambientes das funções
+
+Quando uma função é executada, é criado um ambiente associado àquela chamada. Objetos criados dentro desse contexto normalmente permanecem locais à execução.
+
+Se uma função utiliza um nome que não está disponível localmente, o R pode procurá-lo nos ambientes relacionados à definição da função. Esse mecanismo constitui o escopo léxico.
+
+Considere:
+```
+x <- 10
+f <- function() {
+  x
+}
+```
+Ao executar:
+```
+f()
+```
+a função pode encontrar x no ambiente externo associado à sua definição.
+
+Esse comportamento permite que funções utilizem objetos existentes em ambientes envolventes e constitui uma característica fundamental para compreender funções mais complexas.
+
+### Atribuição <- e superatribuição <<-
+
+A atribuição:
+```
+<-
+```
+é utilizada normalmente para criar ou modificar uma ligação no ambiente corrente.
+
+O R também apresenta:
+```
+<<-
+```
+denominado operador de superatribuição.
+
+Esse operador procura uma ligação correspondente nos ambientes envolventes e modifica a primeira encontrada. Caso não encontre uma ligação apropriada na cadeia de ambientes, o comportamento pode resultar na criação de uma ligação no ambiente global.
+
+Por exemplo, funções internas podem utilizar esse recurso para manter determinado estado entre diferentes chamadas.
+
+Apesar de útil em situações específicas, `<<-` deve ser empregado com cautela, pois pode modificar objetos existentes fora do ambiente local e tornar o comportamento do programa menos evidente.
+
+### Diretório de trabalho e scripts
+
+O diretório de trabalho corresponde à localização utilizada como referência para leitura e gravação de arquivos.
+
+Pode ser consultado por:
+```
+getwd()
+```
+e alterado por:
+```
+setwd("caminho")
+```
+O diretório de trabalho não deve ser confundido com o ambiente de objetos. O diretório corresponde a uma localização no sistema de arquivos, enquanto um ambiente mantém associações entre nomes e objetos durante a execução do R.
+
+Os códigos podem ser armazenados em arquivos de script com extensão:
+
+`.R`
+
+Essa prática permite executar novamente os procedimentos e facilita a correção, documentação e reprodução das análises.
+
+Outro script pode ser executado por:
+```
+source("arquivo.R")
+```
+Em trabalhos acadêmicos, o armazenamento adequado do código é fundamental para a reprodutibilidade computacional.
+
+### Pacotes
+
+Os pacotes são estruturas utilizadas para organizar e distribuir funções, conjuntos de dados, documentação e outros recursos.
+
+Um pacote pode ser instalado utilizando:
+```
 install.packages("nome_do_pacote")
+```
+Depois de instalado, pode ser carregado e anexado à sessão por:
+```
 library(nome_do_pacote)
+```
+É importante diferenciar instalação e utilização na sessão. A instalação disponibiliza os arquivos do pacote no sistema. Já library() carrega os recursos necessários e anexa as funções exportadas ao caminho de busca.
 
-Também é possível utilizar diretamente uma função de determinado pacote por meio do operador :::
+Pacotes podem ser obtidos principalmente pelo CRAN, embora também existam outras fontes de distribuição.
 
-nome_do_pacote::nome_da_funcao(argumentos)
+Em sua estrutura, podem existir elementos destinados aos códigos, documentação, metadados e controle das funções disponibilizadas aos usuários.
 
-O domínio desses fundamentos permite compreender a estrutura básica do R, facilitando a criação, organização e execução de códigos e fornecendo uma base para atividades de tratamento, visualização e análise estatística de dados.
+### Namespace e caminho de busca
+
+Os pacotes utilizam namespaces para organizar suas funções e controlar quais objetos são disponibilizados externamente.
+
+Uma função exportada pode ser acessada diretamente por:
+```
+pacote::funcao()
+```
+Por exemplo:
+```
+knitr::kable(dados)
+```
+Nesse caso, fica explícito que kable() pertence ao pacote knitr.
+
+O operador:
+``` 
+::
+```
+acessa objetos exportados pelo pacote sem a necessidade de anexá-lo ao caminho de busca.
+
+### Interfaces com outras linguagens
+
+A capacidade de estabelecer interfaces constitui uma das características importantes do R.
+
+A integração com `Python` pode ser realizada por ferramentas específicas, como o pacote reticulate. Dessa forma, funções ou códigos desenvolvidos em Python podem participar de um fluxo de trabalho executado no R.
+
+A integração com `C++` pode ser realizada por ferramentas como Rcpp, permitindo compilar rotinas e disponibilizar funções para utilização no R.
+
+De maneira conceitual, essa integração pode ser representada por:
+
+*R → interface → outra linguagem → processamento → resultado disponível no R.*
+
+O R também apresenta recursos de comunicação com `Tcl/Tk`, que pode ser utilizado na construção de interfaces gráficas com janelas, botões, campos de entrada e outros componentes.
+
+Além dessas linguagens, o ecossistema R permite integração com diferentes tecnologias utilizadas para produção de documentos, páginas e aplicações.
+
+Essa capacidade demonstra que o R não deve ser entendido somente como um software para cálculos estatísticos, mas como um ambiente computacional extensível e integrável.
+
+### Boas práticas de programação em R
+
+A qualidade de um programa não depende somente de sua capacidade de produzir o resultado esperado. O código deve também apresentar características que facilitem sua leitura, manutenção e reprodução.
+
+A utilização de nomes descritivos constitui uma das práticas mais importantes.
+
+Por exemplo:
+```
+grau_compactacao
+```
+é mais informativo do que:
+```
+x
+```
+quando o objeto representa resultados de grau de compactação.
+
+A indentação também auxilia na identificação da estrutura lógica:
+```
+if (grau_compactacao >= 95) {
+  classificacao <- "Atende"
+} else {
+  classificacao <- "Não atende"
+}
+```
+Os comentários devem ser empregados para explicar decisões ou etapas relevantes:
+```
+# Cálculo da média dos resultados válidos
+gc_media <- mean(grau_compactacao, na.rm = TRUE)
+```
+Também é recomendável manter consistência no uso de espaços, operadores, parênteses, colchetes e chaves.
+
+A organização adequada torna-se ainda mais importante quando o código é utilizado em um trabalho acadêmico, pois outras pessoas podem precisar compreender como os resultados foram produzidos.
+
+### R, Quarto e reprodutibilidade
+
+Além dos scripts tradicionais, o R pode ser utilizado em sistemas de publicação científica e técnica.
+O Quarto permite integrar em um mesmo documento:
+
+*texto*
+*código*
+*equações*
+*tabelas*
+*gráficos*
+*resultados computacionais*
+*referências*
+
+Arquivos com extensão:
+```
+.qmd
+```
+podem conter blocos de código R que são executados durante a geração do documento.
+
+Essa integração apresenta uma vantagem importante: o código responsável pela obtenção dos resultados permanece associado ao texto em que esses resultados são apresentados e discutidos.
+
+Em um fluxo tradicional, o pesquisador poderia executar um cálculo separadamente e posteriormente copiar seu resultado para o relatório. Em um documento computacional reprodutível, o próprio código pode produzir o resultado utilizado no texto.
+
+Essa estrutura reduz inconsistências decorrentes da transferência manual de resultados e facilita a atualização do documento quando os dados ou procedimentos são modificados.
+
+### O R como ferramenta para análise estatística
+
+Entre as diferentes aplicações do R, destaca-se sua utilização na análise estatística de dados.
+
+A linguagem apresenta funções para cálculo de diferentes medidas. Por exemplo:
+```
+mean(x)
+median(x)
+var(x)
+sd(x)
+min(x)
+max(x)
+```
+permitem calcular, respectivamente, média, mediana, variância, desvio padrão, mínimo e máximo.
+
+A análise computacional, entretanto, não substitui o conhecimento estatístico. O programa executa as operações especificadas, mas a seleção do procedimento adequado e a interpretação dos resultados dependem da compreensão dos conceitos envolvidos.
+
+Dessa forma, a aplicação estatística pode ser compreendida como uma sequência:
+
+*dados → estruturação no R → processamento → resultado estatístico → interpretação técnica.*
+
+No presente trabalho, essa relação é explorada utilizando dados associados à Engenharia Civil, de modo que os conceitos de programação estudados sejam empregados na resolução de um problema quantitativo.
+
 
 ### Conceitos fundamentais da estatística 
 #### População e Amostra
