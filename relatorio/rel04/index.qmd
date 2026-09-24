@@ -1,0 +1,436 @@
+---
+# Só mude aqui!!!!
+author: "Marcus Fillipe e Gustavo Daudt"
+title: "Relatório de Aula Prática 04"
+bibliography: referencias.bib
+# A partir daqui nao faca alteracoes!!!!!
+link-citations: true
+csl: associacao-brasileira-de-normas-tecnicas-ipea.csl
+subtitle: "<a href='https://bendeivide.github.io/courses/epaec/' target='_blank'>Estatística e Probabilidade</a> </br> <a href='https://bendeivide.github.io' target='_blank'>Prof. Ben Dêivide (DEFIM/CAP/UFSJ)</a>"
+include-before-body: header.html
+date: today
+lang: pt-BR
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme: bootstrap
+    #css: styles.css
+    code-fold: true
+    code-tools: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+install.packages("ggplot")
+install.packages("scales")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("highcharter")
+install.packages("plotly")
+install.packages("leaflet")
+```{r setup, include=FALSE}
+
+
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(highcharter)
+library(leaflet)
+library(scales)
+
+dados <- read.csv("dados_engenharia_civil.csv")
+```                   
+## 📌 Introdução
+
+O avanço das ferramentas computacionais tem ampliado significativamente as possibilidades de tratamento, análise, visualização e comunicação de dados na Engenharia Civil. A crescente quantidade de informações produzidas durante as etapas de planejamento, execução, controle e acompanhamento de obras exige do profissional não apenas conhecimentos técnicos específicos da engenharia, mas também capacidade para organizar e interpretar grandes conjuntos de dados e transformá-los em informações úteis para a tomada de decisão.
+
+Nesse contexto, a linguagem R constitui uma importante ferramenta computacional para análise de dados, reunindo em um único ambiente recursos destinados à importação, organização, transformação, análise estatística, visualização e apresentação dos resultados. Por ser uma linguagem voltada especialmente à computação estatística e à análise de dados, o R possibilita que diferentes etapas de um estudo sejam desenvolvidas de maneira integrada e reproduzível.
+
+A utilização do R pode ser associada ao RStudio, ambiente integrado de desenvolvimento que facilita a criação, organização e execução dos códigos, e ao Quarto, sistema de publicação científica e técnica que permite combinar textos, códigos, tabelas, equações, gráficos e resultados computacionais em um mesmo documento. Dessa forma, os procedimentos utilizados para produzir determinada análise permanecem registrados juntamente com os resultados obtidos, contribuindo para a rastreabilidade e a reprodutibilidade do trabalho.
+
+Entre os diferentes recursos disponibilizados pela linguagem R, destaca-se a visualização de dados, etapa fundamental do processo de análise. A representação gráfica permite sintetizar conjuntos extensos de informações e identificar características que podem não ser facilmente percebidas pela observação isolada de tabelas ou medidas numéricas. Distribuições, tendências, diferenças entre grupos, relações entre variáveis, concentrações e possíveis valores discrepantes podem ser reconhecidos com maior facilidade por meio de representações gráficas adequadamente construídas.
+
+Na Engenharia Civil, essa capacidade possui aplicação direta em diferentes situações. Dados relacionados ao controle tecnológico de materiais, custos, prazos, produtividade, características das obras, manifestações patológicas, desempenho e localização dos empreendimentos podem ser representados graficamente para facilitar tanto a análise técnica quanto a comunicação dos resultados. Assim, os gráficos deixam de possuir função meramente ilustrativa e passam a constituir instrumentos de apoio à interpretação e à tomada de decisões.
+
+Entretanto, diferentes problemas exigem diferentes formas de representação. Um gráfico de dispersão, por exemplo, pode ser adequado para investigar a relação entre duas variáveis quantitativas, enquanto um histograma permite estudar a distribuição de uma variável, um boxplot facilita a comparação entre grupos e a identificação de valores discrepantes, e um gráfico de barras permite comparar categorias. Quando os dados apresentam componente espacial, mapas podem oferecer uma representação mais apropriada. Além disso, gráficos interativos permitem explorar informações específicas por meio de recursos como aproximação, seleção, identificação de pontos e exibição dinâmica de informações.
+
+A linguagem R disponibiliza diferentes sistemas e pacotes destinados a essas finalidades. Neste relatório são explorados cinco recursos principais: **Base R**, **ggplot2**, **plotly**, **highcharter** e **leaflet**. Cada sistema apresenta características próprias e diferentes níveis de complexidade, personalização e interatividade.
+
+O Base R disponibiliza funções gráficas incorporadas à própria linguagem, como `plot()`, `hist()`, `boxplot()` e ```barplot()```, permitindo a construção direta de representações gráficas sem a necessidade de pacotes adicionais. O `ggplot2`, por sua vez, introduz uma abordagem estruturada baseada na denominada Grammar of Graphics, na qual os gráficos são construídos progressivamente pela combinação entre dados, mapeamentos estéticos, geometrias, escalas, facetas e temas.
+
+A interatividade é incorporada por ferramentas como `plotly` e `highcharter`. O primeiro permite tanto transformar objetos produzidos pelo `ggplot2` em gráficos interativos quanto desenvolver visualizações diretamente por meio de `plot_ly()`. O segundo disponibiliza recursos mais avançados de interação e apresentação, incluindo tooltips, animações, zoom e múltiplas séries. Para informações geográficas, o `leaflet` possibilita a criação de mapas interativos contendo marcadores, círculos, camadas e janelas informativas.
+
+Neste relatório, essas ferramentas são aplicadas a uma base composta por 300 obras de Engenharia Civil executadas em diferentes regiões do Brasil, contendo informações referentes ao tipo de obra, região, área construída, custo total, prazo de execução, resistência à compressão do concreto, consumo de cimento, índice de falhas, satisfação do cliente e adoção de práticas sustentáveis.
+
+Dessa forma, o estudo não se limita à construção de gráficos. Busca-se compreender como a linguagem R pode ser utilizada para selecionar, construir, personalizar e interpretar diferentes representações gráficas, relacionando cada ferramenta às características das variáveis e às questões técnicas investigadas. A visualização é, portanto, tratada como parte integrante do processo de análise de dados e como instrumento para transformar resultados numéricos em informações compreensíveis e úteis à Engenharia Civil.
+
+## 🎯 Objetivos
+
+### Objetivo geral
+
+Explorar os recursos de visualização e comunicação de dados disponibilizados pela linguagem R, aplicando diferentes sistemas gráficos à análise de uma base de dados relacionada à Engenharia Civil, de forma a desenvolver representações capazes de auxiliar a interpretação de informações técnicas e gerenciais.
+
+### Objetivos específicos
+
+Para alcançar o objetivo geral, pretende-se:
+
+- Compreender a utilização da linguagem R como ferramenta computacional para organização, transformação, análise e visualização de dados;
+- Conhecer a estrutura da base de dados contendo informações referentes a 300 obras de Engenharia Civil;
+- Identificar as características e classificações das variáveis presentes na base;
+- Utilizar as funções gráficas nativas do Base R, com destaque para plot(), hist(), boxplot() e barplot();
+- Compreender os princípios da Grammar of Graphics empregados pelo pacote ggplot2;
+- Construir gráficos com ggplot2 utilizando aes(), funções geom_*(), escalas, facetas, rótulos e temas;
+- Converter gráficos estáticos em representações interativas utilizando plotly;
+- Explorar recursos gráficos interativos disponibilizados pelo highcharter;
+- Representar espacialmente informações relacionadas às obras utilizando mapas interativos produzidos com leaflet;
+- Analisar distribuições, relações entre variáveis, diferenças entre categorias e possíveis valores discrepantes;
+- Relacionar as representações gráficas obtidas com situações práticas da Engenharia Civil;
+- Desenvolver formas adequadas de comunicação visual para públicos técnicos e gerenciais.
+
+---
+
+## 📚  Fundamentação Teórica
+
+### A linguagem R como ferramenta para análise de dados
+
+O R é uma linguagem e ambiente computacional desenvolvido especialmente para computação estatística, análise de dados e produção gráfica. Sua estrutura permite trabalhar com diferentes tipos de objetos, realizar operações matemáticas e estatísticas, importar bases de dados, transformar variáveis e produzir representações gráficas.
+
+Uma característica importante do R é sua capacidade de expansão por meio de pacotes. Esses pacotes acrescentam funções especializadas à linguagem e permitem adaptar o ambiente a diferentes tipos de análises. Assim, além das funções disponíveis originalmente no Base R, podem ser incorporadas ferramentas destinadas à manipulação de dados, estatística, visualização, elaboração de mapas e construção de gráficos interativos.
+
+Essa característica torna o R particularmente útil para trabalhos acadêmicos e técnicos, pois permite desenvolver um fluxo completo de análise dentro do mesmo ambiente computacional. Uma base pode ser importada, inspecionada, modificada, analisada estatisticamente e posteriormente representada graficamente sem a necessidade de transferência constante das informações entre diferentes programas.
+
+Na Engenharia Civil, essa estrutura pode ser aplicada a diferentes conjuntos de informações, como resultados de ensaios laboratoriais, dados de controle tecnológico, características de solos e concretos, custos, produtividade, prazos de execução, inspeções, monitoramentos e informações geográficas.
+
+Além disso, quando utilizado em conjunto com o RStudio e documentos Quarto (.qmd), o R possibilita integrar programação e produção do relatório. O código responsável pelas análises pode permanecer incorporado ao documento, permitindo que tabelas, gráficos e resultados sejam atualizados quando os dados ou procedimentos forem modificados.
+
+### Visualização de dados
+
+A visualização de dados corresponde à representação gráfica de informações com a finalidade de facilitar sua exploração, interpretação e comunicação. Uma representação adequada permite resumir grandes quantidades de dados e revelar características que podem permanecer pouco evidentes quando os resultados são apresentados exclusivamente na forma numérica.
+
+A escolha do gráfico deve estar relacionada principalmente à natureza das variáveis e à pergunta que se pretende responder. Dessa forma, a visualização não deve ser selecionada apenas por critérios estéticos.
+
+Quando o interesse está na distribuição de uma variável quantitativa, podem ser utilizados histogramas ou boxplots. Para investigar a relação entre duas variáveis quantitativas, gráficos de dispersão apresentam maior adequação. Comparações entre categorias podem ser realizadas por gráficos de barras ou boxplots agrupados. Quando a posição geográfica representa parte importante da informação, mapas constituem uma alternativa mais apropriada.
+
+Assim, a elaboração de um gráfico envolve pelo menos três etapas fundamentais: definição da pergunta de análise, seleção das variáveis e escolha da representação gráfica. Posteriormente, elementos como títulos, rótulos, unidades, escalas, legendas e cores podem ser ajustados para melhorar a comunicação.
+
+### Sistemas gráficos na linguagem R
+
+A linguagem R disponibiliza diferentes sistemas para produção gráfica. Neste estudo são empregados Base R, ggplot2, plotly, highcharter e leaflet, que apresentam diferentes formas de construção e níveis de interação.
+```{r}
+#| label: tbl-sistemas-graficos
+#| tbl-cap: "Sistemas gráficos utilizados na linguagem R"
+
+sistemas_graficos <- data.frame(
+  Sistema = c(
+    "Base R",
+    "ggplot2",
+    "plotly",
+    "highcharter",
+    "leaflet"
+  ),
+  
+  `Aplicação principal` = c(
+    "Gráficos estáticos",
+    "Visualizações estruturadas",
+    "Gráficos interativos",
+    "Visualizações interativas avançadas",
+    "Representação espacial"
+  ),
+  
+  Características = c(
+    "Simplicidade e integração nativa ao R",
+    "Construção por camadas e ampla personalização",
+    "Hover, zoom e transformação de objetos ggplot",
+    "Tooltips, animações, zoom e múltiplas séries",
+    "Mapas, marcadores, círculos, popups e camadas"
+  ),
+  
+  check.names = FALSE
+)
+
+knitr::kable(
+  sistemas_graficos,
+  align = c("l", "l", "l")
+)
+```
+
+A existência de diferentes sistemas permite selecionar a ferramenta de acordo com a finalidade da análise. Um gráfico exploratório simples pode ser produzido rapidamente utilizando `Base R`, enquanto uma representação destinada à publicação pode exigir maior controle estético com `ggplot2`. Da mesma forma, análises destinadas à exploração dinâmica podem ser beneficiadas por `plotly` ou `highcharter`, enquanto dados associados à localização podem ser apresentados com leaflet.
+
+### Sistema gráfico Base R
+
+O `Base R` corresponde ao conjunto de funções disponibilizadas diretamente pela instalação padrão da linguagem. Entre seus recursos encontram-se funções estatísticas, manipulação de objetos e ferramentas gráficas.
+
+Para visualização, algumas das funções mais utilizadas são:
+
+`plot()` — utilizada principalmente para gráficos de dispersão e representações genéricas;
+`hist()` — construção de histogramas;
+`boxplot()` — elaboração de diagramas de caixa;
+`barplot()` — construção de gráficos de barras.
+
+A função `plot()` possui comportamento dependente dos objetos fornecidos como argumentos. Quando duas variáveis quantitativas são informadas, por exemplo, pode produzir um gráfico de dispersão que permite observar possíveis relações entre elas.
+
+O `hist()` divide uma variável quantitativa em intervalos e representa a frequência de observações presente em cada classe. Esse recurso permite avaliar a forma da distribuição dos dados.
+
+O `boxplot()` resume a distribuição utilizando medidas de posição e dispersão, possibilitando observar mediana, quartis, amplitude interquartil e observações potencialmente discrepantes.
+
+Já `barplot()` é utilizado para representar valores ou frequências associados a categorias, sendo adequado para comparações entre diferentes grupos.
+
+Apesar de possuir estrutura relativamente simples, o `Base R` permite modificar títulos, eixos, símbolos e diversos parâmetros gráficos, constituindo uma ferramenta importante para análises exploratórias e para a compreensão dos fundamentos da representação gráfica.
+
+### Gramática de gráficos e o pacote ggplot2
+
+O ggplot2 utiliza uma abordagem diferente da encontrada no sistema gráfico tradicional do R. Em vez de existir uma função independente para cada gráfico, a visualização é construída pela combinação de componentes.
+
+A estrutura básica pode ser representada conceitualmente por:
+
+**dados + mapeamentos estéticos + geometria + escalas + facetas + tema**
+
+A função ggplot() inicia a construção da visualização, enquanto `aes()` define os mapeamentos estéticos, isto é, estabelece quais variáveis serão associadas aos elementos visuais do gráfico.
+
+Por exemplo:
+
+```{r}
+ggplot (dados, aes(x = consumo_cimento,
+                  y = resistencia_mpa)) +
+  geom_point()
+```
+
+Nesse caso, `consumo_cimento` é associado ao eixo horizontal e `resistencia_mpa` ao eixo vertical. A função `geom_point()` determina que as observações sejam representadas por pontos.
+
+A utilização de `+` permite adicionar novas camadas ao gráfico. Dessa forma, títulos, linhas de tendência, escalas, temas, facetas e outras geometrias podem ser incorporados progressivamente.
+
+Essa organização proporciona grande flexibilidade, pois uma mesma base pode ser representada de diferentes maneiras apenas modificando os mapeamentos e geometrias empregados.
+
+### Mapeamentos estéticos, geometrias e camadas
+
+No `ggplot2`, as características visuais são controladas principalmente por meio de `aes()`. Variáveis podem ser associadas a propriedades como posição, cor, tamanho, forma e preenchimento.
+
+É importante distinguir mapeamento de configuração estética. Quando uma variável é colocada dentro de `aes()`, a aparência do elemento gráfico passa a depender dos valores dessa variável. Quando uma propriedade é definida fora de aes(), todos os elementos recebem a mesma configuração.
+
+As funções geom_*() determinam a forma utilizada para representar os dados. Entre as mais comuns encontram-se:
+
+`geom_point()` para pontos;
+
+`geom_line()` para linhas;
+
+`geom_col()` e geom_bar() para barras;
+
+`geom_histogram()` para histogramas;
+
+`geom_boxplot()` para boxplots;
+
+`geom_smooth()` para linhas ou curvas de tendência.
+
+Essa estrutura permite combinar diferentes geometrias no mesmo gráfico e acrescentar informações complementares sem reconstruir toda a visualização.
+
+### Transformação dos dados antes da visualização
+
+A construção de gráficos frequentemente exige que os dados sejam previamente organizados ou resumidos. Para isso, funções de manipulação podem ser combinadas com o operador nativo `|>`.
+
+Um fluxo típico utilizado neste trabalho pode ser representado por:
+```{r}
+dados |>
+  group_by(tipo_obra) |>
+  summarise(
+    resistencia_media = mean(resistencia_mpa,
+                             na.rm = TRUE)
+  ) |>
+  ggplot(
+    aes(x = tipo_obra,
+        y = resistencia_media)
+  ) +
+  geom_col()
+```
+Nesse procedimento, `group_by()` divide os dados segundo as categorias de `tipo_obra`, enquanto `summarise()` calcula a resistência média de cada grupo. O resultado dessa transformação é então encaminhado diretamente para `ggplot()`.
+
+O operador `|>` contribui para que o código represente uma sequência lógica de operações, facilitando sua leitura: parte-se da base original, realizam-se as transformações necessárias e, por fim, produz-se a visualização.
+
+### Gráficos de dispersão e análise de relações
+
+O gráfico de dispersão é empregado para estudar a relação entre duas variáveis quantitativas. Cada observação é representada por um ponto determinado por suas coordenadas nos eixos horizontal e vertical.
+
+No contexto deste trabalho, essa representação pode ser utilizada, por exemplo, para investigar a relação entre consumo de cimento e resistência à compressão, ou entre área construída e custo total da obra.
+
+A disposição dos pontos pode indicar tendências positivas, negativas ou ausência de um padrão visual evidente. Entretanto, a interpretação deve considerar que a presença de associação entre duas variáveis não demonstra, isoladamente, relação de causa e efeito.
+
+O gráfico pode ser complementado por linhas de tendência e medidas estatísticas de associação, permitindo combinar avaliação visual e análise quantitativa.
+
+### Histograma e distribuição dos dados
+
+O histograma representa a distribuição de frequências de uma variável quantitativa contínua. Os valores são agrupados em intervalos ou classes, e a altura das barras representa a quantidade ou proporção de observações em cada intervalo.
+
+Essa representação possibilita observar concentração, dispersão, assimetria e possíveis regiões com baixa ou elevada frequência.
+
+Na Engenharia Civil, histogramas podem ser utilizados para analisar variáveis como resistência do concreto, custo das obras, área construída e duração dos empreendimentos.
+
+A escolha da quantidade e da amplitude das classes influencia a aparência do histograma e, consequentemente, sua interpretação. Portanto, a definição dos intervalos deve ser realizada de forma coerente com a distribuição e a escala da variável estudada.
+
+### Boxplot e identificação de valores discrepantes
+
+O boxplot ou diagrama de caixa resume graficamente uma distribuição a partir dos quartis e da mediana. A caixa representa o intervalo compreendido entre o primeiro e o terceiro quartis, enquanto uma linha interna identifica a mediana.
+
+A amplitude interquartil pode ser expressa por:
+
+$$
+AIQ = Q_3 - Q_1
+$$
+e é utilizada como referência para a identificação gráfica de observações potencialmente discrepantes.
+
+Tradicionalmente, são considerados limites:
+
+$$
+LI=Q_1-1,5(AIQ)
+$$
+
+
+$$LS=Q_3+1,5(AIQ)$$
+Observações posicionadas além desses limites podem aparecer individualmente no gráfico. Entretanto, a classificação estatística de uma observação como potencial outlier não significa necessariamente que o valor esteja incorreto. No contexto da Engenharia Civil, sua interpretação deve considerar as características técnicas do empreendimento, do material ou do processo analisado.
+
+Outra vantagem do boxplot é permitir comparações entre grupos. Assim, a distribuição da resistência do concreto pode ser comparada entre tipos de obra ou regiões, facilitando a identificação de diferenças na posição e dispersão dos resultados.
+
+### Interatividade com plotly
+
+O pacote `plotly` amplia as possibilidades de exploração dos gráficos ao acrescentar recursos interativos. Um objeto desenvolvido em `ggplot2` pode ser convertido por meio de:
+```
+ggplotly(grafico)
+```
+Com essa transformação, o usuário pode interagir diretamente com a visualização, utilizando recursos como zoom, aproximação, seleção e identificação das observações por meio do cursor.
+
+Também é possível construir gráficos diretamente com `plot_ly()`, proporcionando maior controle sobre determinados elementos interativos.
+
+Em conjuntos de dados contendo numerosas observações, essa funcionalidade pode facilitar a identificação de obras específicas que se destacam em relação ao conjunto.
+
+### Visualizações interativas com highcharter
+
+O pacote `highcharter` disponibiliza uma interface entre `R` e a biblioteca gráfica `Highcharts`. Seu foco está na criação de gráficos interativos com elevado grau de personalização.
+
+Entre os recursos disponíveis destacam-se tooltips, animações, controle de zoom, diferentes temas e representação de múltiplas séries.
+
+Essas características tornam o highcharter particularmente interessante para apresentações e painéis nos quais o usuário necessita explorar os resultados dinamicamente.
+
+Em aplicações de Engenharia Civil, podem ser construídos painéis comparativos envolvendo custos, prazos, resistência, falhas ou outros indicadores relacionados aos empreendimentos.
+
+### Representação espacial com leaflet
+
+Determinadas informações possuem uma dimensão geográfica que não é adequadamente representada apenas por gráficos convencionais. Quando a localização das observações é relevante, mapas permitem incorporar o componente espacial à análise.
+
+O pacote `leaflet` possibilita criar mapas interativos diretamente no ambiente R. Sua estrutura é baseada na adição progressiva de camadas, de forma semelhante ao princípio de construção por componentes utilizado em outros sistemas gráficos.
+
+Entre os recursos disponíveis encontram-se mapas-base, marcadores, círculos, polígonos e popups contendo informações adicionais.
+
+No contexto de obras executadas em diferentes regiões do Brasil, a representação espacial pode contribuir para visualizar a distribuição dos empreendimentos e relacionar sua localização com variáveis técnicas ou gerenciais.
+
+### Visualização de dados aplicada à Engenharia Civil
+
+A utilização de ferramentas gráficas na Engenharia Civil deve estar associada à interpretação técnica dos dados. Um gráfico bem elaborado deve responder a uma pergunta ou contribuir para a compreensão de determinado fenômeno.
+
+No controle tecnológico do concreto, por exemplo, podem ser investigadas distribuições de resistência, diferenças entre grupos e relações com variáveis de dosagem. Na gestão de obras, podem ser avaliadas relações entre custo, área construída e prazo. Indicadores de falhas podem ser comparados entre tipos de empreendimento, enquanto informações de satisfação podem ser relacionadas a diferentes características das obras.
+
+Dessa forma, a visualização atua como elo entre dados, análise e comunicação. Para o engenheiro, isso significa transformar registros numéricos em informações que possam ser interpretadas e utilizadas no acompanhamento dos empreendimentos e no suporte às decisões técnicas e gerenciais.
+
+---
+
+## ⚙️ Metodologia
+
+### Ambiente computacional e preparação dos dados
+
+O desenvolvimento das análises foi realizado utilizando a linguagem R, em ambiente RStudio, com a elaboração do relatório por meio do sistema Quarto (.qmd). Essa combinação permitiu integrar, em um único documento, os procedimentos computacionais, os gráficos produzidos e suas respectivas interpretações.
+
+Além das funções disponíveis no Base R, foram utilizados os pacotes dplyr, ggplot2, plotly, highcharter, leaflet e scales. O pacote dplyr foi empregado para agrupamento e sumarização dos dados; ggplot2, para construção de gráficos utilizando a gramática de gráficos; plotly e highcharter, para visualizações interativas; leaflet, para representação espacial; e scales, para auxiliar na formatação das escalas numéricas.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(highcharter)
+library(leaflet)
+library(scales)
+```
+Sempre que possível, empregou-se o operador |> para organizar sequencialmente as etapas de transformação dos dados antes da construção das visualizações. Essa abordagem permite representar de maneira clara o fluxo que parte da base original, realiza operações de agrupamento ou resumo e encaminha o resultado para a ferramenta gráfica selecionada.
+
+### Importação e inspeção inicial da base
+
+A base dados_engenharia_civil.csv foi importada para o R e atribuída ao objeto dados.
+
+```{r}
+dados <- read.csv("dados_engenharia_civil.csv")
+
+head(dados)
+tail(dados)
+dim(dados)
+```
+Antes da elaboração dos gráficos, realizou-se uma inspeção inicial com `str()`, `dplyr`,`glimpse()`, `summary()` e verificação de valores ausentes. Essa etapa teve como objetivo conhecer as dimensões da base, identificar os tipos de variáveis reconhecidos pelo `R` e verificar possíveis características que pudessem interferir nas análises posteriores.
+```{r}
+str(dados)
+dplyr::glimpse(dados)
+summary(dados)
+
+colSums(is.na(dados))
+sum(is.na(dados))
+```
+A atividade foi direcionada principalmente à exploração e comunicação visual, e não a procedimentos de limpeza dos dados. Dessa forma, após a inspeção inicial, os dados foram utilizados na elaboração das diferentes representações gráficas solicitadas.
+
+### Estratégia de análise gráfica
+
+A análise foi organizada de maneira progressiva, partindo das funções gráficas nativas do R e avançando para sistemas que permitem maior personalização, interatividade e representação espacial.
+
+Inicialmente, utilizaram-se as funções `plot()`, `hist()`, `boxplot()` e `barplot()` do `Base R`. Essa etapa permitiu analisar relações entre variáveis, distribuições, diferenças entre grupos e frequências de categorias.
+
+Posteriormente, as análises foram ampliadas utilizando o `ggplot2`, por meio de mapeamentos estéticos, geometrias, camadas, escalas, temas e facetas. A utilização de `ggplot2` permitiu maior controle sobre a apresentação gráfica e possibilitou incorporar variáveis categóricas às representações por meio de cores, preenchimentos e painéis.
+
+Na sequência, o `plotly` foi empregado para transformar gráficos estáticos em objetos interativos e possibilitar a identificação individual das obras. O `highcharter` foi utilizado na construção de representações interativas destinadas principalmente à comparação de indicadores agregados. Por fim, o `leaflet` foi empregado para representar espacialmente a quantidade de obras distribuídas entre as regiões brasileiras.
+
+A seleção das geometrias foi realizada considerando a natureza das variáveis e a finalidade de cada análise. Gráficos de dispersão foram empregados para investigar relações entre variáveis quantitativas; histogramas, para estudar distribuições; boxplots, para comparar distribuições entre categorias; gráficos de barras e colunas, para comparar frequências e valores agregados; e mapas, para representar informações geográficas.
+
+---
+
+## 🔍 Resultados e Discussão
+
+Apresente e interprete os resultados obtidos a partir dos dados coletados.
+
+- Descreva os principais resultados numéricos (média, variabilidade, etc.).
+- Comente o comportamento dos dados observados nos gráficos.
+- Indique se há presença de valores discrepantes (outliers).
+- Avalie se os dados apresentam simetria ou tendência.
+
+Em seguida, discuta os resultados à luz dos conceitos teóricos:
+
+- Os resultados estão de acordo com o esperado?
+- Há grande variabilidade? O que isso significa no contexto do experimento?
+- Quais fatores podem ter influenciado os resultados?
+- Existem possíveis fontes de erro experimental?
+
+Procure não apenas descrever, mas **interpretar os dados**.
+
+### 💬 Exemplo de como citar uma referência bibliográfica
+
+Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
+
+- Segundo @Rbasico2022
+- Tudo é um objeto em R [@Rbasico2022]
+
+### 📊  Análise de Dados
+
+```{r}
+distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
+distancia
+```
+
+## 🧠 Considerações finais
+
+Apresente uma síntese dos principais pontos observados no experimento.
+
+- Retome o objetivo da prática e indique se ele foi alcançado.
+- Destaque os principais aprendizados obtidos.
+- Comente brevemente sobre a qualidade dos dados coletados.
+- Sugira possíveis melhorias no procedimento experimental.
+
+Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+
+## Aprenda Quarto
+
+Acesse [Quarto](https://quarto.org/).
+
+## 📖 Referências

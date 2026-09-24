@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marcus Fillipe e Gustavo Daudt">
+
+<title>Relatório de Aula Prática 04</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> 📌 Introdução</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">2</span> 🎯 Objetivos</a>
+  <ul class="collapse">
+  <li><a href="#objetivo-geral" id="toc-objetivo-geral" class="nav-link" data-scroll-target="#objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</a></li>
+  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos"><span class="header-section-number">2.2</span> Objetivos específicos</a></li>
+  </ul></li>
+  <li><a href="#fundamentação-teórica" id="toc-fundamentação-teórica" class="nav-link" data-scroll-target="#fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</a>
+  <ul class="collapse">
+  <li><a href="#a-linguagem-r-como-ferramenta-para-análise-de-dados" id="toc-a-linguagem-r-como-ferramenta-para-análise-de-dados" class="nav-link" data-scroll-target="#a-linguagem-r-como-ferramenta-para-análise-de-dados"><span class="header-section-number">3.1</span> A linguagem R como ferramenta para análise de dados</a></li>
+  <li><a href="#visualização-de-dados" id="toc-visualização-de-dados" class="nav-link" data-scroll-target="#visualização-de-dados"><span class="header-section-number">3.2</span> Visualização de dados</a></li>
+  <li><a href="#sistemas-gráficos-na-linguagem-r" id="toc-sistemas-gráficos-na-linguagem-r" class="nav-link" data-scroll-target="#sistemas-gráficos-na-linguagem-r"><span class="header-section-number">3.3</span> Sistemas gráficos na linguagem R</a></li>
+  <li><a href="#sistema-gráfico-base-r" id="toc-sistema-gráfico-base-r" class="nav-link" data-scroll-target="#sistema-gráfico-base-r"><span class="header-section-number">3.4</span> Sistema gráfico Base R</a></li>
+  <li><a href="#gramática-de-gráficos-e-o-pacote-ggplot2" id="toc-gramática-de-gráficos-e-o-pacote-ggplot2" class="nav-link" data-scroll-target="#gramática-de-gráficos-e-o-pacote-ggplot2"><span class="header-section-number">3.5</span> Gramática de gráficos e o pacote ggplot2</a></li>
+  <li><a href="#mapeamentos-estéticos-geometrias-e-camadas" id="toc-mapeamentos-estéticos-geometrias-e-camadas" class="nav-link" data-scroll-target="#mapeamentos-estéticos-geometrias-e-camadas"><span class="header-section-number">3.6</span> Mapeamentos estéticos, geometrias e camadas</a></li>
+  <li><a href="#transformação-dos-dados-antes-da-visualização" id="toc-transformação-dos-dados-antes-da-visualização" class="nav-link" data-scroll-target="#transformação-dos-dados-antes-da-visualização"><span class="header-section-number">3.7</span> Transformação dos dados antes da visualização</a></li>
+  <li><a href="#gráficos-de-dispersão-e-análise-de-relações" id="toc-gráficos-de-dispersão-e-análise-de-relações" class="nav-link" data-scroll-target="#gráficos-de-dispersão-e-análise-de-relações"><span class="header-section-number">3.8</span> Gráficos de dispersão e análise de relações</a></li>
+  <li><a href="#histograma-e-distribuição-dos-dados" id="toc-histograma-e-distribuição-dos-dados" class="nav-link" data-scroll-target="#histograma-e-distribuição-dos-dados"><span class="header-section-number">3.9</span> Histograma e distribuição dos dados</a></li>
+  <li><a href="#boxplot-e-identificação-de-valores-discrepantes" id="toc-boxplot-e-identificação-de-valores-discrepantes" class="nav-link" data-scroll-target="#boxplot-e-identificação-de-valores-discrepantes"><span class="header-section-number">3.10</span> Boxplot e identificação de valores discrepantes</a></li>
+  <li><a href="#interatividade-com-plotly" id="toc-interatividade-com-plotly" class="nav-link" data-scroll-target="#interatividade-com-plotly"><span class="header-section-number">3.11</span> Interatividade com plotly</a></li>
+  <li><a href="#visualizações-interativas-com-highcharter" id="toc-visualizações-interativas-com-highcharter" class="nav-link" data-scroll-target="#visualizações-interativas-com-highcharter"><span class="header-section-number">3.12</span> Visualizações interativas com highcharter</a></li>
+  <li><a href="#representação-espacial-com-leaflet" id="toc-representação-espacial-com-leaflet" class="nav-link" data-scroll-target="#representação-espacial-com-leaflet"><span class="header-section-number">3.13</span> Representação espacial com leaflet</a></li>
+  <li><a href="#visualização-de-dados-aplicada-à-engenharia-civil" id="toc-visualização-de-dados-aplicada-à-engenharia-civil" class="nav-link" data-scroll-target="#visualização-de-dados-aplicada-à-engenharia-civil"><span class="header-section-number">3.14</span> Visualização de dados aplicada à Engenharia Civil</a></li>
+  </ul></li>
+  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a>
+  <ul class="collapse">
+  <li><a href="#ambiente-computacional-e-preparação-dos-dados" id="toc-ambiente-computacional-e-preparação-dos-dados" class="nav-link" data-scroll-target="#ambiente-computacional-e-preparação-dos-dados"><span class="header-section-number">4.1</span> Ambiente computacional e preparação dos dados</a></li>
+  <li><a href="#importação-e-inspeção-inicial-da-base" id="toc-importação-e-inspeção-inicial-da-base" class="nav-link" data-scroll-target="#importação-e-inspeção-inicial-da-base"><span class="header-section-number">4.2</span> Importação e inspeção inicial da base</a></li>
+  <li><a href="#estratégia-de-análise-gráfica" id="toc-estratégia-de-análise-gráfica" class="nav-link" data-scroll-target="#estratégia-de-análise-gráfica"><span class="header-section-number">4.3</span> Estratégia de análise gráfica</a></li>
+  </ul></li>
+  <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-de-como-citar-uma-referência-bibliográfica" id="toc-exemplo-de-como-citar-uma-referência-bibliográfica" class="nav-link" data-scroll-target="#exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Exemplo de como citar uma referência bibliográfica</a></li>
+  <li><a href="#análise-de-dados" id="toc-análise-de-dados" class="nav-link" data-scroll-target="#análise-de-dados"><span class="header-section-number">5.2</span> 📊 Análise de Dados</a></li>
+  </ul></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</a></li>
+  <li><a href="#aprenda-quarto" id="toc-aprenda-quarto" class="nav-link" data-scroll-target="#aprenda-quarto"><span class="header-section-number">7</span> Aprenda Quarto</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">8</span> 📖 Referências</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+<div class="logos" style="display: flex; justify-content: center; align-items: center; height: 200px; gap: 20px;">
+  <a href="https://ufsj.edu.br">
+    <img src="imagens/ufsj.png" width="220px">
+  </a>
+  <a href="https://ufsj.edu.br/defim">
+    <img src="imagens/defim.png" width="220px">
+  </a>
+</div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Relatório de Aula Prática 04</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar o código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder o código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver o código fonte</a></li></ul></div></div>
+<p class="subtitle lead"><a href="https://bendeivide.github.io/courses/epaec/" target="_blank">Estatística e Probabilidade</a> <br> <a href="https://bendeivide.github.io" target="_blank">Prof.&nbsp;Ben Dêivide (DEFIM/CAP/UFSJ)</a></p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Marcus Fillipe e Gustavo Daudt </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data de Publicação</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">24 de setembro de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>install.packages(“ggplot”) install.packages(“scales”) install.packages(“ggplot2”) install.packages(“dplyr”) install.packages(“highcharter”) install.packages(“plotly”) install.packages(“leaflet”)</p>
+<section id="introdução" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> 📌 Introdução</h2>
+<p>O avanço das ferramentas computacionais tem ampliado significativamente as possibilidades de tratamento, análise, visualização e comunicação de dados na Engenharia Civil. A crescente quantidade de informações produzidas durante as etapas de planejamento, execução, controle e acompanhamento de obras exige do profissional não apenas conhecimentos técnicos específicos da engenharia, mas também capacidade para organizar e interpretar grandes conjuntos de dados e transformá-los em informações úteis para a tomada de decisão.</p>
+<p>Nesse contexto, a linguagem R constitui uma importante ferramenta computacional para análise de dados, reunindo em um único ambiente recursos destinados à importação, organização, transformação, análise estatística, visualização e apresentação dos resultados. Por ser uma linguagem voltada especialmente à computação estatística e à análise de dados, o R possibilita que diferentes etapas de um estudo sejam desenvolvidas de maneira integrada e reproduzível.</p>
+<p>A utilização do R pode ser associada ao RStudio, ambiente integrado de desenvolvimento que facilita a criação, organização e execução dos códigos, e ao Quarto, sistema de publicação científica e técnica que permite combinar textos, códigos, tabelas, equações, gráficos e resultados computacionais em um mesmo documento. Dessa forma, os procedimentos utilizados para produzir determinada análise permanecem registrados juntamente com os resultados obtidos, contribuindo para a rastreabilidade e a reprodutibilidade do trabalho.</p>
+<p>Entre os diferentes recursos disponibilizados pela linguagem R, destaca-se a visualização de dados, etapa fundamental do processo de análise. A representação gráfica permite sintetizar conjuntos extensos de informações e identificar características que podem não ser facilmente percebidas pela observação isolada de tabelas ou medidas numéricas. Distribuições, tendências, diferenças entre grupos, relações entre variáveis, concentrações e possíveis valores discrepantes podem ser reconhecidos com maior facilidade por meio de representações gráficas adequadamente construídas.</p>
+<p>Na Engenharia Civil, essa capacidade possui aplicação direta em diferentes situações. Dados relacionados ao controle tecnológico de materiais, custos, prazos, produtividade, características das obras, manifestações patológicas, desempenho e localização dos empreendimentos podem ser representados graficamente para facilitar tanto a análise técnica quanto a comunicação dos resultados. Assim, os gráficos deixam de possuir função meramente ilustrativa e passam a constituir instrumentos de apoio à interpretação e à tomada de decisões.</p>
+<p>Entretanto, diferentes problemas exigem diferentes formas de representação. Um gráfico de dispersão, por exemplo, pode ser adequado para investigar a relação entre duas variáveis quantitativas, enquanto um histograma permite estudar a distribuição de uma variável, um boxplot facilita a comparação entre grupos e a identificação de valores discrepantes, e um gráfico de barras permite comparar categorias. Quando os dados apresentam componente espacial, mapas podem oferecer uma representação mais apropriada. Além disso, gráficos interativos permitem explorar informações específicas por meio de recursos como aproximação, seleção, identificação de pontos e exibição dinâmica de informações.</p>
+<p>A linguagem R disponibiliza diferentes sistemas e pacotes destinados a essas finalidades. Neste relatório são explorados cinco recursos principais: <strong>Base R</strong>, <strong>ggplot2</strong>, <strong>plotly</strong>, <strong>highcharter</strong> e <strong>leaflet</strong>. Cada sistema apresenta características próprias e diferentes níveis de complexidade, personalização e interatividade.</p>
+<p>O Base R disponibiliza funções gráficas incorporadas à própria linguagem, como <code>plot()</code>, <code>hist()</code>, <code>boxplot()</code> e <code>barplot()</code>, permitindo a construção direta de representações gráficas sem a necessidade de pacotes adicionais. O <code>ggplot2</code>, por sua vez, introduz uma abordagem estruturada baseada na denominada Grammar of Graphics, na qual os gráficos são construídos progressivamente pela combinação entre dados, mapeamentos estéticos, geometrias, escalas, facetas e temas.</p>
+<p>A interatividade é incorporada por ferramentas como <code>plotly</code> e <code>highcharter</code>. O primeiro permite tanto transformar objetos produzidos pelo <code>ggplot2</code> em gráficos interativos quanto desenvolver visualizações diretamente por meio de <code>plot_ly()</code>. O segundo disponibiliza recursos mais avançados de interação e apresentação, incluindo tooltips, animações, zoom e múltiplas séries. Para informações geográficas, o <code>leaflet</code> possibilita a criação de mapas interativos contendo marcadores, círculos, camadas e janelas informativas.</p>
+<p>Neste relatório, essas ferramentas são aplicadas a uma base composta por 300 obras de Engenharia Civil executadas em diferentes regiões do Brasil, contendo informações referentes ao tipo de obra, região, área construída, custo total, prazo de execução, resistência à compressão do concreto, consumo de cimento, índice de falhas, satisfação do cliente e adoção de práticas sustentáveis.</p>
+<p>Dessa forma, o estudo não se limita à construção de gráficos. Busca-se compreender como a linguagem R pode ser utilizada para selecionar, construir, personalizar e interpretar diferentes representações gráficas, relacionando cada ferramenta às características das variáveis e às questões técnicas investigadas. A visualização é, portanto, tratada como parte integrante do processo de análise de dados e como instrumento para transformar resultados numéricos em informações compreensíveis e úteis à Engenharia Civil.</p>
+</section>
+<section id="objetivos" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">2</span> 🎯 Objetivos</h2>
+<section id="objetivo-geral" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</h3>
+<p>Explorar os recursos de visualização e comunicação de dados disponibilizados pela linguagem R, aplicando diferentes sistemas gráficos à análise de uma base de dados relacionada à Engenharia Civil, de forma a desenvolver representações capazes de auxiliar a interpretação de informações técnicas e gerenciais.</p>
+</section>
+<section id="objetivos-específicos" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="objetivos-específicos"><span class="header-section-number">2.2</span> Objetivos específicos</h3>
+<p>Para alcançar o objetivo geral, pretende-se:</p>
+<ul>
+<li>Compreender a utilização da linguagem R como ferramenta computacional para organização, transformação, análise e visualização de dados;</li>
+<li>Conhecer a estrutura da base de dados contendo informações referentes a 300 obras de Engenharia Civil;</li>
+<li>Identificar as características e classificações das variáveis presentes na base;</li>
+<li>Utilizar as funções gráficas nativas do Base R, com destaque para plot(), hist(), boxplot() e barplot();</li>
+<li>Compreender os princípios da Grammar of Graphics empregados pelo pacote ggplot2;</li>
+<li>Construir gráficos com ggplot2 utilizando aes(), funções geom_*(), escalas, facetas, rótulos e temas;</li>
+<li>Converter gráficos estáticos em representações interativas utilizando plotly;</li>
+<li>Explorar recursos gráficos interativos disponibilizados pelo highcharter;</li>
+<li>Representar espacialmente informações relacionadas às obras utilizando mapas interativos produzidos com leaflet;</li>
+<li>Analisar distribuições, relações entre variáveis, diferenças entre categorias e possíveis valores discrepantes;</li>
+<li>Relacionar as representações gráficas obtidas com situações práticas da Engenharia Civil;</li>
+<li>Desenvolver formas adequadas de comunicação visual para públicos técnicos e gerenciais.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="fundamentação-teórica" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</h2>
+<section id="a-linguagem-r-como-ferramenta-para-análise-de-dados" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="a-linguagem-r-como-ferramenta-para-análise-de-dados"><span class="header-section-number">3.1</span> A linguagem R como ferramenta para análise de dados</h3>
+<p>O R é uma linguagem e ambiente computacional desenvolvido especialmente para computação estatística, análise de dados e produção gráfica. Sua estrutura permite trabalhar com diferentes tipos de objetos, realizar operações matemáticas e estatísticas, importar bases de dados, transformar variáveis e produzir representações gráficas.</p>
+<p>Uma característica importante do R é sua capacidade de expansão por meio de pacotes. Esses pacotes acrescentam funções especializadas à linguagem e permitem adaptar o ambiente a diferentes tipos de análises. Assim, além das funções disponíveis originalmente no Base R, podem ser incorporadas ferramentas destinadas à manipulação de dados, estatística, visualização, elaboração de mapas e construção de gráficos interativos.</p>
+<p>Essa característica torna o R particularmente útil para trabalhos acadêmicos e técnicos, pois permite desenvolver um fluxo completo de análise dentro do mesmo ambiente computacional. Uma base pode ser importada, inspecionada, modificada, analisada estatisticamente e posteriormente representada graficamente sem a necessidade de transferência constante das informações entre diferentes programas.</p>
+<p>Na Engenharia Civil, essa estrutura pode ser aplicada a diferentes conjuntos de informações, como resultados de ensaios laboratoriais, dados de controle tecnológico, características de solos e concretos, custos, produtividade, prazos de execução, inspeções, monitoramentos e informações geográficas.</p>
+<p>Além disso, quando utilizado em conjunto com o RStudio e documentos Quarto (.qmd), o R possibilita integrar programação e produção do relatório. O código responsável pelas análises pode permanecer incorporado ao documento, permitindo que tabelas, gráficos e resultados sejam atualizados quando os dados ou procedimentos forem modificados.</p>
+</section>
+<section id="visualização-de-dados" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="visualização-de-dados"><span class="header-section-number">3.2</span> Visualização de dados</h3>
+<p>A visualização de dados corresponde à representação gráfica de informações com a finalidade de facilitar sua exploração, interpretação e comunicação. Uma representação adequada permite resumir grandes quantidades de dados e revelar características que podem permanecer pouco evidentes quando os resultados são apresentados exclusivamente na forma numérica.</p>
+<p>A escolha do gráfico deve estar relacionada principalmente à natureza das variáveis e à pergunta que se pretende responder. Dessa forma, a visualização não deve ser selecionada apenas por critérios estéticos.</p>
+<p>Quando o interesse está na distribuição de uma variável quantitativa, podem ser utilizados histogramas ou boxplots. Para investigar a relação entre duas variáveis quantitativas, gráficos de dispersão apresentam maior adequação. Comparações entre categorias podem ser realizadas por gráficos de barras ou boxplots agrupados. Quando a posição geográfica representa parte importante da informação, mapas constituem uma alternativa mais apropriada.</p>
+<p>Assim, a elaboração de um gráfico envolve pelo menos três etapas fundamentais: definição da pergunta de análise, seleção das variáveis e escolha da representação gráfica. Posteriormente, elementos como títulos, rótulos, unidades, escalas, legendas e cores podem ser ajustados para melhorar a comunicação.</p>
+</section>
+<section id="sistemas-gráficos-na-linguagem-r" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="sistemas-gráficos-na-linguagem-r"><span class="header-section-number">3.3</span> Sistemas gráficos na linguagem R</h3>
+<p>A linguagem R disponibiliza diferentes sistemas para produção gráfica. Neste estudo são empregados Base R, ggplot2, plotly, highcharter e leaflet, que apresentam diferentes formas de construção e níveis de interação.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sistemas_graficos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sistema =</span> <span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Base R"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ggplot2"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"plotly"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"highcharter"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"leaflet"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Aplicação principal</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gráficos estáticos"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visualizações estruturadas"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gráficos interativos"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visualizações interativas avançadas"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Representação espacial"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  Características <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Simplicidade e integração nativa ao R"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Construção por camadas e ampla personalização"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hover, zoom e transformação de objetos ggplot"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tooltips, animações, zoom e múltiplas séries"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mapas, marcadores, círculos, popups e camadas"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  sistemas_graficos,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"l"</span>, <span class="st">"l"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-sistemas-graficos" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sistemas-graficos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1: Sistemas gráficos utilizados na linguagem R
+</figcaption>
+<div aria-describedby="tbl-sistemas-graficos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 38%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sistema</th>
+<th style="text-align: left;">Aplicação principal</th>
+<th style="text-align: left;">Características</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Base R</td>
+<td style="text-align: left;">Gráficos estáticos</td>
+<td style="text-align: left;">Simplicidade e integração nativa ao R</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ggplot2</td>
+<td style="text-align: left;">Visualizações estruturadas</td>
+<td style="text-align: left;">Construção por camadas e ampla personalização</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">plotly</td>
+<td style="text-align: left;">Gráficos interativos</td>
+<td style="text-align: left;">Hover, zoom e transformação de objetos ggplot</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">highcharter</td>
+<td style="text-align: left;">Visualizações interativas avançadas</td>
+<td style="text-align: left;">Tooltips, animações, zoom e múltiplas séries</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">leaflet</td>
+<td style="text-align: left;">Representação espacial</td>
+<td style="text-align: left;">Mapas, marcadores, círculos, popups e camadas</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>A existência de diferentes sistemas permite selecionar a ferramenta de acordo com a finalidade da análise. Um gráfico exploratório simples pode ser produzido rapidamente utilizando <code>Base R</code>, enquanto uma representação destinada à publicação pode exigir maior controle estético com <code>ggplot2</code>. Da mesma forma, análises destinadas à exploração dinâmica podem ser beneficiadas por <code>plotly</code> ou <code>highcharter</code>, enquanto dados associados à localização podem ser apresentados com leaflet.</p>
+</section>
+<section id="sistema-gráfico-base-r" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="sistema-gráfico-base-r"><span class="header-section-number">3.4</span> Sistema gráfico Base R</h3>
+<p>O <code>Base R</code> corresponde ao conjunto de funções disponibilizadas diretamente pela instalação padrão da linguagem. Entre seus recursos encontram-se funções estatísticas, manipulação de objetos e ferramentas gráficas.</p>
+<p>Para visualização, algumas das funções mais utilizadas são:</p>
+<p><code>plot()</code> — utilizada principalmente para gráficos de dispersão e representações genéricas; <code>hist()</code> — construção de histogramas; <code>boxplot()</code> — elaboração de diagramas de caixa; <code>barplot()</code> — construção de gráficos de barras.</p>
+<p>A função <code>plot()</code> possui comportamento dependente dos objetos fornecidos como argumentos. Quando duas variáveis quantitativas são informadas, por exemplo, pode produzir um gráfico de dispersão que permite observar possíveis relações entre elas.</p>
+<p>O <code>hist()</code> divide uma variável quantitativa em intervalos e representa a frequência de observações presente em cada classe. Esse recurso permite avaliar a forma da distribuição dos dados.</p>
+<p>O <code>boxplot()</code> resume a distribuição utilizando medidas de posição e dispersão, possibilitando observar mediana, quartis, amplitude interquartil e observações potencialmente discrepantes.</p>
+<p>Já <code>barplot()</code> é utilizado para representar valores ou frequências associados a categorias, sendo adequado para comparações entre diferentes grupos.</p>
+<p>Apesar de possuir estrutura relativamente simples, o <code>Base R</code> permite modificar títulos, eixos, símbolos e diversos parâmetros gráficos, constituindo uma ferramenta importante para análises exploratórias e para a compreensão dos fundamentos da representação gráfica.</p>
+</section>
+<section id="gramática-de-gráficos-e-o-pacote-ggplot2" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="gramática-de-gráficos-e-o-pacote-ggplot2"><span class="header-section-number">3.5</span> Gramática de gráficos e o pacote ggplot2</h3>
+<p>O ggplot2 utiliza uma abordagem diferente da encontrada no sistema gráfico tradicional do R. Em vez de existir uma função independente para cada gráfico, a visualização é construída pela combinação de componentes.</p>
+<p>A estrutura básica pode ser representada conceitualmente por:</p>
+<p><strong>dados + mapeamentos estéticos + geometria + escalas + facetas + tema</strong></p>
+<p>A função ggplot() inicia a construção da visualização, enquanto <code>aes()</code> define os mapeamentos estéticos, isto é, estabelece quais variáveis serão associadas aos elementos visuais do gráfico.</p>
+<p>Por exemplo:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span> (dados, <span class="fu">aes</span>(<span class="at">x =</span> consumo_cimento,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> resistencia_mpa)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nesse caso, <code>consumo_cimento</code> é associado ao eixo horizontal e <code>resistencia_mpa</code> ao eixo vertical. A função <code>geom_point()</code> determina que as observações sejam representadas por pontos.</p>
+<p>A utilização de <code>+</code> permite adicionar novas camadas ao gráfico. Dessa forma, títulos, linhas de tendência, escalas, temas, facetas e outras geometrias podem ser incorporados progressivamente.</p>
+<p>Essa organização proporciona grande flexibilidade, pois uma mesma base pode ser representada de diferentes maneiras apenas modificando os mapeamentos e geometrias empregados.</p>
+</section>
+<section id="mapeamentos-estéticos-geometrias-e-camadas" class="level3" data-number="3.6">
+<h3 data-number="3.6" class="anchored" data-anchor-id="mapeamentos-estéticos-geometrias-e-camadas"><span class="header-section-number">3.6</span> Mapeamentos estéticos, geometrias e camadas</h3>
+<p>No <code>ggplot2</code>, as características visuais são controladas principalmente por meio de <code>aes()</code>. Variáveis podem ser associadas a propriedades como posição, cor, tamanho, forma e preenchimento.</p>
+<p>É importante distinguir mapeamento de configuração estética. Quando uma variável é colocada dentro de <code>aes()</code>, a aparência do elemento gráfico passa a depender dos valores dessa variável. Quando uma propriedade é definida fora de aes(), todos os elementos recebem a mesma configuração.</p>
+<p>As funções geom_*() determinam a forma utilizada para representar os dados. Entre as mais comuns encontram-se:</p>
+<p><code>geom_point()</code> para pontos;</p>
+<p><code>geom_line()</code> para linhas;</p>
+<p><code>geom_col()</code> e geom_bar() para barras;</p>
+<p><code>geom_histogram()</code> para histogramas;</p>
+<p><code>geom_boxplot()</code> para boxplots;</p>
+<p><code>geom_smooth()</code> para linhas ou curvas de tendência.</p>
+<p>Essa estrutura permite combinar diferentes geometrias no mesmo gráfico e acrescentar informações complementares sem reconstruir toda a visualização.</p>
+</section>
+<section id="transformação-dos-dados-antes-da-visualização" class="level3" data-number="3.7">
+<h3 data-number="3.7" class="anchored" data-anchor-id="transformação-dos-dados-antes-da-visualização"><span class="header-section-number">3.7</span> Transformação dos dados antes da visualização</h3>
+<p>A construção de gráficos frequentemente exige que os dados sejam previamente organizados ou resumidos. Para isso, funções de manipulação podem ser combinadas com o operador nativo <code>|&gt;</code>.</p>
+<p>Um fluxo típico utilizado neste trabalho pode ser representado por:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tipo_obra) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">resistencia_media =</span> <span class="fu">mean</span>(resistencia_mpa,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> tipo_obra,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> resistencia_media)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nesse procedimento, <code>group_by()</code> divide os dados segundo as categorias de <code>tipo_obra</code>, enquanto <code>summarise()</code> calcula a resistência média de cada grupo. O resultado dessa transformação é então encaminhado diretamente para <code>ggplot()</code>.</p>
+<p>O operador <code>|&gt;</code> contribui para que o código represente uma sequência lógica de operações, facilitando sua leitura: parte-se da base original, realizam-se as transformações necessárias e, por fim, produz-se a visualização.</p>
+</section>
+<section id="gráficos-de-dispersão-e-análise-de-relações" class="level3" data-number="3.8">
+<h3 data-number="3.8" class="anchored" data-anchor-id="gráficos-de-dispersão-e-análise-de-relações"><span class="header-section-number">3.8</span> Gráficos de dispersão e análise de relações</h3>
+<p>O gráfico de dispersão é empregado para estudar a relação entre duas variáveis quantitativas. Cada observação é representada por um ponto determinado por suas coordenadas nos eixos horizontal e vertical.</p>
+<p>No contexto deste trabalho, essa representação pode ser utilizada, por exemplo, para investigar a relação entre consumo de cimento e resistência à compressão, ou entre área construída e custo total da obra.</p>
+<p>A disposição dos pontos pode indicar tendências positivas, negativas ou ausência de um padrão visual evidente. Entretanto, a interpretação deve considerar que a presença de associação entre duas variáveis não demonstra, isoladamente, relação de causa e efeito.</p>
+<p>O gráfico pode ser complementado por linhas de tendência e medidas estatísticas de associação, permitindo combinar avaliação visual e análise quantitativa.</p>
+</section>
+<section id="histograma-e-distribuição-dos-dados" class="level3" data-number="3.9">
+<h3 data-number="3.9" class="anchored" data-anchor-id="histograma-e-distribuição-dos-dados"><span class="header-section-number">3.9</span> Histograma e distribuição dos dados</h3>
+<p>O histograma representa a distribuição de frequências de uma variável quantitativa contínua. Os valores são agrupados em intervalos ou classes, e a altura das barras representa a quantidade ou proporção de observações em cada intervalo.</p>
+<p>Essa representação possibilita observar concentração, dispersão, assimetria e possíveis regiões com baixa ou elevada frequência.</p>
+<p>Na Engenharia Civil, histogramas podem ser utilizados para analisar variáveis como resistência do concreto, custo das obras, área construída e duração dos empreendimentos.</p>
+<p>A escolha da quantidade e da amplitude das classes influencia a aparência do histograma e, consequentemente, sua interpretação. Portanto, a definição dos intervalos deve ser realizada de forma coerente com a distribuição e a escala da variável estudada.</p>
+</section>
+<section id="boxplot-e-identificação-de-valores-discrepantes" class="level3" data-number="3.10">
+<h3 data-number="3.10" class="anchored" data-anchor-id="boxplot-e-identificação-de-valores-discrepantes"><span class="header-section-number">3.10</span> Boxplot e identificação de valores discrepantes</h3>
+<p>O boxplot ou diagrama de caixa resume graficamente uma distribuição a partir dos quartis e da mediana. A caixa representa o intervalo compreendido entre o primeiro e o terceiro quartis, enquanto uma linha interna identifica a mediana.</p>
+<p>A amplitude interquartil pode ser expressa por:</p>
+<p><span class="math display">\[
+AIQ = Q_3 - Q_1
+\]</span> e é utilizada como referência para a identificação gráfica de observações potencialmente discrepantes.</p>
+<p>Tradicionalmente, são considerados limites:</p>
+<p><span class="math display">\[
+LI=Q_1-1,5(AIQ)
+\]</span></p>
+<p><span class="math display">\[LS=Q_3+1,5(AIQ)\]</span> Observações posicionadas além desses limites podem aparecer individualmente no gráfico. Entretanto, a classificação estatística de uma observação como potencial outlier não significa necessariamente que o valor esteja incorreto. No contexto da Engenharia Civil, sua interpretação deve considerar as características técnicas do empreendimento, do material ou do processo analisado.</p>
+<p>Outra vantagem do boxplot é permitir comparações entre grupos. Assim, a distribuição da resistência do concreto pode ser comparada entre tipos de obra ou regiões, facilitando a identificação de diferenças na posição e dispersão dos resultados.</p>
+</section>
+<section id="interatividade-com-plotly" class="level3" data-number="3.11">
+<h3 data-number="3.11" class="anchored" data-anchor-id="interatividade-com-plotly"><span class="header-section-number">3.11</span> Interatividade com plotly</h3>
+<p>O pacote <code>plotly</code> amplia as possibilidades de exploração dos gráficos ao acrescentar recursos interativos. Um objeto desenvolvido em <code>ggplot2</code> pode ser convertido por meio de:</p>
+<pre><code>ggplotly(grafico)</code></pre>
+<p>Com essa transformação, o usuário pode interagir diretamente com a visualização, utilizando recursos como zoom, aproximação, seleção e identificação das observações por meio do cursor.</p>
+<p>Também é possível construir gráficos diretamente com <code>plot_ly()</code>, proporcionando maior controle sobre determinados elementos interativos.</p>
+<p>Em conjuntos de dados contendo numerosas observações, essa funcionalidade pode facilitar a identificação de obras específicas que se destacam em relação ao conjunto.</p>
+</section>
+<section id="visualizações-interativas-com-highcharter" class="level3" data-number="3.12">
+<h3 data-number="3.12" class="anchored" data-anchor-id="visualizações-interativas-com-highcharter"><span class="header-section-number">3.12</span> Visualizações interativas com highcharter</h3>
+<p>O pacote <code>highcharter</code> disponibiliza uma interface entre <code>R</code> e a biblioteca gráfica <code>Highcharts</code>. Seu foco está na criação de gráficos interativos com elevado grau de personalização.</p>
+<p>Entre os recursos disponíveis destacam-se tooltips, animações, controle de zoom, diferentes temas e representação de múltiplas séries.</p>
+<p>Essas características tornam o highcharter particularmente interessante para apresentações e painéis nos quais o usuário necessita explorar os resultados dinamicamente.</p>
+<p>Em aplicações de Engenharia Civil, podem ser construídos painéis comparativos envolvendo custos, prazos, resistência, falhas ou outros indicadores relacionados aos empreendimentos.</p>
+</section>
+<section id="representação-espacial-com-leaflet" class="level3" data-number="3.13">
+<h3 data-number="3.13" class="anchored" data-anchor-id="representação-espacial-com-leaflet"><span class="header-section-number">3.13</span> Representação espacial com leaflet</h3>
+<p>Determinadas informações possuem uma dimensão geográfica que não é adequadamente representada apenas por gráficos convencionais. Quando a localização das observações é relevante, mapas permitem incorporar o componente espacial à análise.</p>
+<p>O pacote <code>leaflet</code> possibilita criar mapas interativos diretamente no ambiente R. Sua estrutura é baseada na adição progressiva de camadas, de forma semelhante ao princípio de construção por componentes utilizado em outros sistemas gráficos.</p>
+<p>Entre os recursos disponíveis encontram-se mapas-base, marcadores, círculos, polígonos e popups contendo informações adicionais.</p>
+<p>No contexto de obras executadas em diferentes regiões do Brasil, a representação espacial pode contribuir para visualizar a distribuição dos empreendimentos e relacionar sua localização com variáveis técnicas ou gerenciais.</p>
+</section>
+<section id="visualização-de-dados-aplicada-à-engenharia-civil" class="level3" data-number="3.14">
+<h3 data-number="3.14" class="anchored" data-anchor-id="visualização-de-dados-aplicada-à-engenharia-civil"><span class="header-section-number">3.14</span> Visualização de dados aplicada à Engenharia Civil</h3>
+<p>A utilização de ferramentas gráficas na Engenharia Civil deve estar associada à interpretação técnica dos dados. Um gráfico bem elaborado deve responder a uma pergunta ou contribuir para a compreensão de determinado fenômeno.</p>
+<p>No controle tecnológico do concreto, por exemplo, podem ser investigadas distribuições de resistência, diferenças entre grupos e relações com variáveis de dosagem. Na gestão de obras, podem ser avaliadas relações entre custo, área construída e prazo. Indicadores de falhas podem ser comparados entre tipos de empreendimento, enquanto informações de satisfação podem ser relacionadas a diferentes características das obras.</p>
+<p>Dessa forma, a visualização atua como elo entre dados, análise e comunicação. Para o engenheiro, isso significa transformar registros numéricos em informações que possam ser interpretadas e utilizadas no acompanhamento dos empreendimentos e no suporte às decisões técnicas e gerenciais.</p>
+<hr>
+</section>
+</section>
+<section id="metodologia" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</h2>
+<section id="ambiente-computacional-e-preparação-dos-dados" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="ambiente-computacional-e-preparação-dos-dados"><span class="header-section-number">4.1</span> Ambiente computacional e preparação dos dados</h3>
+<p>O desenvolvimento das análises foi realizado utilizando a linguagem R, em ambiente RStudio, com a elaboração do relatório por meio do sistema Quarto (.qmd). Essa combinação permitiu integrar, em um único documento, os procedimentos computacionais, os gráficos produzidos e suas respectivas interpretações.</p>
+<p>Além das funções disponíveis no Base R, foram utilizados os pacotes dplyr, ggplot2, plotly, highcharter, leaflet e scales. O pacote dplyr foi empregado para agrupamento e sumarização dos dados; ggplot2, para construção de gráficos utilizando a gramática de gráficos; plotly e highcharter, para visualizações interativas; leaflet, para representação espacial; e scales, para auxiliar na formatação das escalas numéricas.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(highcharter)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Sempre que possível, empregou-se o operador |&gt; para organizar sequencialmente as etapas de transformação dos dados antes da construção das visualizações. Essa abordagem permite representar de maneira clara o fluxo que parte da base original, realiza operações de agrupamento ou resumo e encaminha o resultado para a ferramenta gráfica selecionada.</p>
+</section>
+<section id="importação-e-inspeção-inicial-da-base" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="importação-e-inspeção-inicial-da-base"><span class="header-section-number">4.2</span> Importação e inspeção inicial da base</h3>
+<p>A base dados_engenharia_civil.csv foi importada para o R e atribuída ao objeto dados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dados_engenharia_civil.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id_obra   tipo_obra       regiao area_construida custo_total prazo_meses
+1       1  Industrial     Nordeste           802.5     1608826          36
+2       2   Comercial     Nordeste           791.5     2870992          20
+3       3 Residencial          Sul           575.4     1683606          13
+4       4 Residencial      Sudeste          1156.6     3469884          23
+5       5   Comercial Centro-Oeste           581.5     2176259          28
+6       6 Residencial      Sudeste           606.9     1350551          27
+  resistencia_mpa consumo_cimento indice_falhas satisfacao sustentavel
+1           26.80           393.1             1        6.2         Sim
+2           28.05           394.1             2        7.8         Sim
+3           33.12           387.0             4        3.8         Não
+4           31.06           368.7             1        3.8         Sim
+5           28.29           389.4             2        6.7         Sim
+6           32.94           329.8             4        1.0         Sim</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id_obra   tipo_obra   regiao area_construida custo_total prazo_meses
+295     295  Industrial Nordeste           586.3     1420749          11
+296     296   Comercial  Sudeste           800.2     2983588          18
+297     297   Comercial Nordeste           360.5     1229413          32
+298     298   Comercial    Norte           785.3     2676964           7
+299     299 Residencial Nordeste           430.3     1533911          20
+300     300   Comercial    Norte           405.2     1415176          35
+    resistencia_mpa consumo_cimento indice_falhas satisfacao sustentavel
+295           33.60           390.4             4        2.5         Não
+296           29.15           351.1             3        4.3         Sim
+297           28.97           364.4             2        7.8         Sim
+298           30.53           295.0             2        3.8         Sim
+299           31.88           308.2             3        5.0         Não
+300           28.53           378.9             2        8.7         Não</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 300  11</code></pre>
+</div>
+</div>
+<p>Antes da elaboração dos gráficos, realizou-se uma inspeção inicial com <code>str()</code>, <code>dplyr</code>,<code>glimpse()</code>, <code>summary()</code> e verificação de valores ausentes. Essa etapa teve como objetivo conhecer as dimensões da base, identificar os tipos de variáveis reconhecidos pelo <code>R</code> e verificar possíveis características que pudessem interferir nas análises posteriores.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   300 obs. of  11 variables:
+ $ id_obra        : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ tipo_obra      : chr  "Industrial" "Comercial" "Residencial" "Residencial" ...
+ $ regiao         : chr  "Nordeste" "Nordeste" "Sul" "Sudeste" ...
+ $ area_construida: num  802 792 575 1157 582 ...
+ $ custo_total    : num  1608826 2870992 1683606 3469884 2176259 ...
+ $ prazo_meses    : int  36 20 13 23 28 27 20 15 35 15 ...
+ $ resistencia_mpa: num  26.8 28.1 33.1 31.1 28.3 ...
+ $ consumo_cimento: num  393 394 387 369 389 ...
+ $ indice_falhas  : int  1 2 4 1 2 4 1 2 0 1 ...
+ $ satisfacao     : num  6.2 7.8 3.8 3.8 6.7 1 9.7 8.8 7.6 5.1 ...
+ $ sustentavel    : chr  "Sim" "Sim" "Não" "Sim" ...</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 300
+Columns: 11
+$ id_obra         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
+$ tipo_obra       &lt;chr&gt; "Industrial", "Comercial", "Residencial", "Residencial…
+$ regiao          &lt;chr&gt; "Nordeste", "Nordeste", "Sul", "Sudeste", "Centro-Oest…
+$ area_construida &lt;dbl&gt; 802.5, 791.5, 575.4, 1156.6, 581.5, 606.9, 572.7, 1380…
+$ custo_total     &lt;dbl&gt; 1608825.8, 2870991.8, 1683605.5, 3469884.2, 2176258.5,…
+$ prazo_meses     &lt;int&gt; 36, 20, 13, 23, 28, 27, 20, 15, 35, 15, 36, 23, 32, 12…
+$ resistencia_mpa &lt;dbl&gt; 26.80, 28.05, 33.12, 31.06, 28.29, 32.94, 35.05, 42.62…
+$ consumo_cimento &lt;dbl&gt; 393.1, 394.1, 387.0, 368.7, 389.4, 329.8, 422.6, 347.3…
+$ indice_falhas   &lt;int&gt; 1, 2, 4, 1, 2, 4, 1, 2, 0, 1, 0, 1, 2, 1, 1, 3, 1, 1, …
+$ satisfacao      &lt;dbl&gt; 6.2, 7.8, 3.8, 3.8, 6.7, 1.0, 9.7, 8.8, 7.6, 5.1, 2.6,…
+$ sustentavel     &lt;chr&gt; "Sim", "Sim", "Não", "Sim", "Sim", "Sim", "Não", "Não"…</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id_obra           tipo_obra         regiao    area_construida 
+ Min.   :  1.00   Length   :300   Length   :300   Min.   :  45.9  
+ 1st Qu.: 75.75   N.unique :  4   N.unique :  5   1st Qu.: 629.4  
+ Median :150.50   N.blank  :  0   N.blank  :  0   Median : 909.1  
+ Mean   :150.50   Min.nchar:  9   Min.nchar:  3   Mean   : 873.0  
+ 3rd Qu.:225.25   Max.nchar: 14   Max.nchar: 12   3rd Qu.:1087.5  
+ Max.   :300.00                                   Max.   :1855.9  
+  custo_total       prazo_meses    resistencia_mpa consumo_cimento
+ Min.   : 112443   Min.   : 6.00   Min.   :17.82   Min.   :188.4  
+ 1st Qu.:1754793   1st Qu.:14.00   1st Qu.:28.97   1st Qu.:312.0  
+ Median :2548002   Median :20.00   Median :31.94   Median :344.4  
+ Mean   :2689385   Mean   :20.98   Mean   :32.18   Mean   :341.3  
+ 3rd Qu.:3475290   3rd Qu.:29.00   3rd Qu.:35.51   3rd Qu.:373.4  
+ Max.   :6526477   Max.   :36.00   Max.   :44.43   Max.   :467.6  
+ indice_falhas     satisfacao       sustentavel 
+ Min.   :0.000   Min.   : 1.00   Length   :300  
+ 1st Qu.:1.000   1st Qu.: 3.50   N.unique :  2  
+ Median :2.000   Median : 5.70   N.blank  :  0  
+ Mean   :2.203   Mean   : 5.74   Min.nchar:  3  
+ 3rd Qu.:3.000   3rd Qu.: 8.10   Max.nchar:  3  
+ Max.   :7.000   Max.   :10.00                  </code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dados))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        id_obra       tipo_obra          regiao area_construida     custo_total 
+              0               0               0               0               0 
+    prazo_meses resistencia_mpa consumo_cimento   indice_falhas      satisfacao 
+              0               0               0               0               0 
+    sustentavel 
+              0 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(dados))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>A atividade foi direcionada principalmente à exploração e comunicação visual, e não a procedimentos de limpeza dos dados. Dessa forma, após a inspeção inicial, os dados foram utilizados na elaboração das diferentes representações gráficas solicitadas.</p>
+</section>
+<section id="estratégia-de-análise-gráfica" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="estratégia-de-análise-gráfica"><span class="header-section-number">4.3</span> Estratégia de análise gráfica</h3>
+<p>A análise foi organizada de maneira progressiva, partindo das funções gráficas nativas do R e avançando para sistemas que permitem maior personalização, interatividade e representação espacial.</p>
+<p>Inicialmente, utilizaram-se as funções <code>plot()</code>, <code>hist()</code>, <code>boxplot()</code> e <code>barplot()</code> do <code>Base R</code>. Essa etapa permitiu analisar relações entre variáveis, distribuições, diferenças entre grupos e frequências de categorias.</p>
+<p>Posteriormente, as análises foram ampliadas utilizando o <code>ggplot2</code>, por meio de mapeamentos estéticos, geometrias, camadas, escalas, temas e facetas. A utilização de <code>ggplot2</code> permitiu maior controle sobre a apresentação gráfica e possibilitou incorporar variáveis categóricas às representações por meio de cores, preenchimentos e painéis.</p>
+<p>Na sequência, o <code>plotly</code> foi empregado para transformar gráficos estáticos em objetos interativos e possibilitar a identificação individual das obras. O <code>highcharter</code> foi utilizado na construção de representações interativas destinadas principalmente à comparação de indicadores agregados. Por fim, o <code>leaflet</code> foi empregado para representar espacialmente a quantidade de obras distribuídas entre as regiões brasileiras.</p>
+<p>A seleção das geometrias foi realizada considerando a natureza das variáveis e a finalidade de cada análise. Gráficos de dispersão foram empregados para investigar relações entre variáveis quantitativas; histogramas, para estudar distribuições; boxplots, para comparar distribuições entre categorias; gráficos de barras e colunas, para comparar frequências e valores agregados; e mapas, para representar informações geográficas.</p>
+<hr>
+</section>
+</section>
+<section id="resultados-e-discussão" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</h2>
+<p>Apresente e interprete os resultados obtidos a partir dos dados coletados.</p>
+<ul>
+<li>Descreva os principais resultados numéricos (média, variabilidade, etc.).</li>
+<li>Comente o comportamento dos dados observados nos gráficos.</li>
+<li>Indique se há presença de valores discrepantes (outliers).</li>
+<li>Avalie se os dados apresentam simetria ou tendência.</li>
+</ul>
+<p>Em seguida, discuta os resultados à luz dos conceitos teóricos:</p>
+<ul>
+<li>Os resultados estão de acordo com o esperado?</li>
+<li>Há grande variabilidade? O que isso significa no contexto do experimento?</li>
+<li>Quais fatores podem ter influenciado os resultados?</li>
+<li>Existem possíveis fontes de erro experimental?</li>
+</ul>
+<p>Procure não apenas descrever, mas <strong>interpretar os dados</strong>.</p>
+<section id="exemplo-de-como-citar-uma-referência-bibliográfica" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Exemplo de como citar uma referência bibliográfica</h3>
+<p>Depois de inserido as informaçõe no arquivo <strong>referencias.bib</strong>, use:</p>
+<ul>
+<li>Segundo <span class="citation" data-cites="Rbasico2022">Batista e Oliveira (<a href="#ref-Rbasico2022" role="doc-biblioref">2022</a>)</span></li>
+<li>Tudo é um objeto em R <span class="citation" data-cites="Rbasico2022">(<a href="#ref-Rbasico2022" role="doc-biblioref">Batista e Oliveira, 2022</a>)</span></li>
+</ul>
+</section>
+<section id="análise-de-dados" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="análise-de-dados"><span class="header-section-number">5.2</span> 📊 Análise de Dados</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.2  9.8 10.5 10.1  9.9 10.3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="considerações-finais" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</h2>
+<p>Apresente uma síntese dos principais pontos observados no experimento.</p>
+<ul>
+<li>Retome o objetivo da prática e indique se ele foi alcançado.</li>
+<li>Destaque os principais aprendizados obtidos.</li>
+<li>Comente brevemente sobre a qualidade dos dados coletados.</li>
+<li>Sugira possíveis melhorias no procedimento experimental.</li>
+</ul>
+<p>Evite repetir apenas os resultados; foque nas <strong>conclusões e reflexões</strong> sobre a prática realizada.</p>
+</section>
+<section id="aprenda-quarto" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="aprenda-quarto"><span class="header-section-number">7</span> Aprenda Quarto</h2>
+<p>Acesse <a href="https://quarto.org/">Quarto</a>.</p>
+</section>
+<section id="referências" class="level2" data-number="8">
+
+<!-- -->
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">8 📖 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Rbasico2022" class="csl-entry" role="listitem">
+BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro Branco, MG: [s.n.], 2022. p. 321
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Marcus Fillipe e Gustavo Daudt"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Relatório de Aula Prática 04"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>install.packages("ggplot")</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>install.packages("scales")</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>install.packages("ggplot2")</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>install.packages("dplyr")</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>install.packages("highcharter")</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>install.packages("plotly")</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>install.packages("leaflet")</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(highcharter)</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dados_engenharia_civil.csv"</span>)</span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span>                   </span>
+<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
+<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-47"><a href="#cb24-47" aria-hidden="true" tabindex="-1"></a>O avanço das ferramentas computacionais tem ampliado significativamente as possibilidades de tratamento, análise, visualização e comunicação de dados na Engenharia Civil. A crescente quantidade de informações produzidas durante as etapas de planejamento, execução, controle e acompanhamento de obras exige do profissional não apenas conhecimentos técnicos específicos da engenharia, mas também capacidade para organizar e interpretar grandes conjuntos de dados e transformá-los em informações úteis para a tomada de decisão.</span>
+<span id="cb24-48"><a href="#cb24-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-49"><a href="#cb24-49" aria-hidden="true" tabindex="-1"></a>Nesse contexto, a linguagem R constitui uma importante ferramenta computacional para análise de dados, reunindo em um único ambiente recursos destinados à importação, organização, transformação, análise estatística, visualização e apresentação dos resultados. Por ser uma linguagem voltada especialmente à computação estatística e à análise de dados, o R possibilita que diferentes etapas de um estudo sejam desenvolvidas de maneira integrada e reproduzível.</span>
+<span id="cb24-50"><a href="#cb24-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-51"><a href="#cb24-51" aria-hidden="true" tabindex="-1"></a>A utilização do R pode ser associada ao RStudio, ambiente integrado de desenvolvimento que facilita a criação, organização e execução dos códigos, e ao Quarto, sistema de publicação científica e técnica que permite combinar textos, códigos, tabelas, equações, gráficos e resultados computacionais em um mesmo documento. Dessa forma, os procedimentos utilizados para produzir determinada análise permanecem registrados juntamente com os resultados obtidos, contribuindo para a rastreabilidade e a reprodutibilidade do trabalho.</span>
+<span id="cb24-52"><a href="#cb24-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a>Entre os diferentes recursos disponibilizados pela linguagem R, destaca-se a visualização de dados, etapa fundamental do processo de análise. A representação gráfica permite sintetizar conjuntos extensos de informações e identificar características que podem não ser facilmente percebidas pela observação isolada de tabelas ou medidas numéricas. Distribuições, tendências, diferenças entre grupos, relações entre variáveis, concentrações e possíveis valores discrepantes podem ser reconhecidos com maior facilidade por meio de representações gráficas adequadamente construídas.</span>
+<span id="cb24-54"><a href="#cb24-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-55"><a href="#cb24-55" aria-hidden="true" tabindex="-1"></a>Na Engenharia Civil, essa capacidade possui aplicação direta em diferentes situações. Dados relacionados ao controle tecnológico de materiais, custos, prazos, produtividade, características das obras, manifestações patológicas, desempenho e localização dos empreendimentos podem ser representados graficamente para facilitar tanto a análise técnica quanto a comunicação dos resultados. Assim, os gráficos deixam de possuir função meramente ilustrativa e passam a constituir instrumentos de apoio à interpretação e à tomada de decisões.</span>
+<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-57"><a href="#cb24-57" aria-hidden="true" tabindex="-1"></a>Entretanto, diferentes problemas exigem diferentes formas de representação. Um gráfico de dispersão, por exemplo, pode ser adequado para investigar a relação entre duas variáveis quantitativas, enquanto um histograma permite estudar a distribuição de uma variável, um boxplot facilita a comparação entre grupos e a identificação de valores discrepantes, e um gráfico de barras permite comparar categorias. Quando os dados apresentam componente espacial, mapas podem oferecer uma representação mais apropriada. Além disso, gráficos interativos permitem explorar informações específicas por meio de recursos como aproximação, seleção, identificação de pontos e exibição dinâmica de informações.</span>
+<span id="cb24-58"><a href="#cb24-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-59"><a href="#cb24-59" aria-hidden="true" tabindex="-1"></a>A linguagem R disponibiliza diferentes sistemas e pacotes destinados a essas finalidades. Neste relatório são explorados cinco recursos principais: **Base R**, **ggplot2**, **plotly**, **highcharter** e **leaflet**. Cada sistema apresenta características próprias e diferentes níveis de complexidade, personalização e interatividade.</span>
+<span id="cb24-60"><a href="#cb24-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-61"><a href="#cb24-61" aria-hidden="true" tabindex="-1"></a>O Base R disponibiliza funções gráficas incorporadas à própria linguagem, como <span class="in">`plot()`</span>, <span class="in">`hist()`</span>, <span class="in">`boxplot()`</span> e ```barplot()``<span class="in">`, permitindo a construção direta de representações gráficas sem a necessidade de pacotes adicionais. O `</span>ggplot2`, por sua vez, introduz uma abordagem estruturada baseada na denominada Grammar of Graphics, na qual os gráficos são construídos progressivamente pela combinação entre dados, mapeamentos estéticos, geometrias, escalas, facetas e temas.</span>
+<span id="cb24-62"><a href="#cb24-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-63"><a href="#cb24-63" aria-hidden="true" tabindex="-1"></a>A interatividade é incorporada por ferramentas como <span class="in">`plotly`</span> e <span class="in">`highcharter`</span>. O primeiro permite tanto transformar objetos produzidos pelo <span class="in">`ggplot2`</span> em gráficos interativos quanto desenvolver visualizações diretamente por meio de <span class="in">`plot_ly()`</span>. O segundo disponibiliza recursos mais avançados de interação e apresentação, incluindo tooltips, animações, zoom e múltiplas séries. Para informações geográficas, o <span class="in">`leaflet`</span> possibilita a criação de mapas interativos contendo marcadores, círculos, camadas e janelas informativas.</span>
+<span id="cb24-64"><a href="#cb24-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-65"><a href="#cb24-65" aria-hidden="true" tabindex="-1"></a>Neste relatório, essas ferramentas são aplicadas a uma base composta por 300 obras de Engenharia Civil executadas em diferentes regiões do Brasil, contendo informações referentes ao tipo de obra, região, área construída, custo total, prazo de execução, resistência à compressão do concreto, consumo de cimento, índice de falhas, satisfação do cliente e adoção de práticas sustentáveis.</span>
+<span id="cb24-66"><a href="#cb24-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-67"><a href="#cb24-67" aria-hidden="true" tabindex="-1"></a>Dessa forma, o estudo não se limita à construção de gráficos. Busca-se compreender como a linguagem R pode ser utilizada para selecionar, construir, personalizar e interpretar diferentes representações gráficas, relacionando cada ferramenta às características das variáveis e às questões técnicas investigadas. A visualização é, portanto, tratada como parte integrante do processo de análise de dados e como instrumento para transformar resultados numéricos em informações compreensíveis e úteis à Engenharia Civil.</span>
+<span id="cb24-68"><a href="#cb24-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-69"><a href="#cb24-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb24-70"><a href="#cb24-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-71"><a href="#cb24-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb24-72"><a href="#cb24-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-73"><a href="#cb24-73" aria-hidden="true" tabindex="-1"></a>Explorar os recursos de visualização e comunicação de dados disponibilizados pela linguagem R, aplicando diferentes sistemas gráficos à análise de uma base de dados relacionada à Engenharia Civil, de forma a desenvolver representações capazes de auxiliar a interpretação de informações técnicas e gerenciais.</span>
+<span id="cb24-74"><a href="#cb24-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-75"><a href="#cb24-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb24-76"><a href="#cb24-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-77"><a href="#cb24-77" aria-hidden="true" tabindex="-1"></a>Para alcançar o objetivo geral, pretende-se:</span>
+<span id="cb24-78"><a href="#cb24-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-79"><a href="#cb24-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender a utilização da linguagem R como ferramenta computacional para organização, transformação, análise e visualização de dados;</span>
+<span id="cb24-80"><a href="#cb24-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conhecer a estrutura da base de dados contendo informações referentes a 300 obras de Engenharia Civil;</span>
+<span id="cb24-81"><a href="#cb24-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Identificar as características e classificações das variáveis presentes na base;</span>
+<span id="cb24-82"><a href="#cb24-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Utilizar as funções gráficas nativas do Base R, com destaque para plot(), hist(), boxplot() e barplot();</span>
+<span id="cb24-83"><a href="#cb24-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compreender os princípios da Grammar of Graphics empregados pelo pacote ggplot2;</span>
+<span id="cb24-84"><a href="#cb24-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construir gráficos com ggplot2 utilizando aes(), funções geom_*(), escalas, facetas, rótulos e temas;</span>
+<span id="cb24-85"><a href="#cb24-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Converter gráficos estáticos em representações interativas utilizando plotly;</span>
+<span id="cb24-86"><a href="#cb24-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explorar recursos gráficos interativos disponibilizados pelo highcharter;</span>
+<span id="cb24-87"><a href="#cb24-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Representar espacialmente informações relacionadas às obras utilizando mapas interativos produzidos com leaflet;</span>
+<span id="cb24-88"><a href="#cb24-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Analisar distribuições, relações entre variáveis, diferenças entre categorias e possíveis valores discrepantes;</span>
+<span id="cb24-89"><a href="#cb24-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Relacionar as representações gráficas obtidas com situações práticas da Engenharia Civil;</span>
+<span id="cb24-90"><a href="#cb24-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Desenvolver formas adequadas de comunicação visual para públicos técnicos e gerenciais.</span>
+<span id="cb24-91"><a href="#cb24-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-92"><a href="#cb24-92" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb24-93"><a href="#cb24-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-94"><a href="#cb24-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
+<span id="cb24-95"><a href="#cb24-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-96"><a href="#cb24-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### A linguagem R como ferramenta para análise de dados</span></span>
+<span id="cb24-97"><a href="#cb24-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-98"><a href="#cb24-98" aria-hidden="true" tabindex="-1"></a>O R é uma linguagem e ambiente computacional desenvolvido especialmente para computação estatística, análise de dados e produção gráfica. Sua estrutura permite trabalhar com diferentes tipos de objetos, realizar operações matemáticas e estatísticas, importar bases de dados, transformar variáveis e produzir representações gráficas.</span>
+<span id="cb24-99"><a href="#cb24-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-100"><a href="#cb24-100" aria-hidden="true" tabindex="-1"></a>Uma característica importante do R é sua capacidade de expansão por meio de pacotes. Esses pacotes acrescentam funções especializadas à linguagem e permitem adaptar o ambiente a diferentes tipos de análises. Assim, além das funções disponíveis originalmente no Base R, podem ser incorporadas ferramentas destinadas à manipulação de dados, estatística, visualização, elaboração de mapas e construção de gráficos interativos.</span>
+<span id="cb24-101"><a href="#cb24-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-102"><a href="#cb24-102" aria-hidden="true" tabindex="-1"></a>Essa característica torna o R particularmente útil para trabalhos acadêmicos e técnicos, pois permite desenvolver um fluxo completo de análise dentro do mesmo ambiente computacional. Uma base pode ser importada, inspecionada, modificada, analisada estatisticamente e posteriormente representada graficamente sem a necessidade de transferência constante das informações entre diferentes programas.</span>
+<span id="cb24-103"><a href="#cb24-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-104"><a href="#cb24-104" aria-hidden="true" tabindex="-1"></a>Na Engenharia Civil, essa estrutura pode ser aplicada a diferentes conjuntos de informações, como resultados de ensaios laboratoriais, dados de controle tecnológico, características de solos e concretos, custos, produtividade, prazos de execução, inspeções, monitoramentos e informações geográficas.</span>
+<span id="cb24-105"><a href="#cb24-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-106"><a href="#cb24-106" aria-hidden="true" tabindex="-1"></a>Além disso, quando utilizado em conjunto com o RStudio e documentos Quarto (.qmd), o R possibilita integrar programação e produção do relatório. O código responsável pelas análises pode permanecer incorporado ao documento, permitindo que tabelas, gráficos e resultados sejam atualizados quando os dados ou procedimentos forem modificados.</span>
+<span id="cb24-107"><a href="#cb24-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-108"><a href="#cb24-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualização de dados</span></span>
+<span id="cb24-109"><a href="#cb24-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-110"><a href="#cb24-110" aria-hidden="true" tabindex="-1"></a>A visualização de dados corresponde à representação gráfica de informações com a finalidade de facilitar sua exploração, interpretação e comunicação. Uma representação adequada permite resumir grandes quantidades de dados e revelar características que podem permanecer pouco evidentes quando os resultados são apresentados exclusivamente na forma numérica.</span>
+<span id="cb24-111"><a href="#cb24-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-112"><a href="#cb24-112" aria-hidden="true" tabindex="-1"></a>A escolha do gráfico deve estar relacionada principalmente à natureza das variáveis e à pergunta que se pretende responder. Dessa forma, a visualização não deve ser selecionada apenas por critérios estéticos.</span>
+<span id="cb24-113"><a href="#cb24-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-114"><a href="#cb24-114" aria-hidden="true" tabindex="-1"></a>Quando o interesse está na distribuição de uma variável quantitativa, podem ser utilizados histogramas ou boxplots. Para investigar a relação entre duas variáveis quantitativas, gráficos de dispersão apresentam maior adequação. Comparações entre categorias podem ser realizadas por gráficos de barras ou boxplots agrupados. Quando a posição geográfica representa parte importante da informação, mapas constituem uma alternativa mais apropriada.</span>
+<span id="cb24-115"><a href="#cb24-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-116"><a href="#cb24-116" aria-hidden="true" tabindex="-1"></a>Assim, a elaboração de um gráfico envolve pelo menos três etapas fundamentais: definição da pergunta de análise, seleção das variáveis e escolha da representação gráfica. Posteriormente, elementos como títulos, rótulos, unidades, escalas, legendas e cores podem ser ajustados para melhorar a comunicação.</span>
+<span id="cb24-117"><a href="#cb24-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-118"><a href="#cb24-118" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sistemas gráficos na linguagem R</span></span>
+<span id="cb24-119"><a href="#cb24-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-120"><a href="#cb24-120" aria-hidden="true" tabindex="-1"></a>A linguagem R disponibiliza diferentes sistemas para produção gráfica. Neste estudo são empregados Base R, ggplot2, plotly, highcharter e leaflet, que apresentam diferentes formas de construção e níveis de interação.</span>
+<span id="cb24-123"><a href="#cb24-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-124"><a href="#cb24-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-sistemas-graficos</span></span>
+<span id="cb24-125"><a href="#cb24-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Sistemas gráficos utilizados na linguagem R"</span></span>
+<span id="cb24-126"><a href="#cb24-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-127"><a href="#cb24-127" aria-hidden="true" tabindex="-1"></a>sistemas_graficos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb24-128"><a href="#cb24-128" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sistema =</span> <span class="fu">c</span>(</span>
+<span id="cb24-129"><a href="#cb24-129" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Base R"</span>,</span>
+<span id="cb24-130"><a href="#cb24-130" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ggplot2"</span>,</span>
+<span id="cb24-131"><a href="#cb24-131" aria-hidden="true" tabindex="-1"></a>    <span class="st">"plotly"</span>,</span>
+<span id="cb24-132"><a href="#cb24-132" aria-hidden="true" tabindex="-1"></a>    <span class="st">"highcharter"</span>,</span>
+<span id="cb24-133"><a href="#cb24-133" aria-hidden="true" tabindex="-1"></a>    <span class="st">"leaflet"</span></span>
+<span id="cb24-134"><a href="#cb24-134" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-135"><a href="#cb24-135" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-136"><a href="#cb24-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Aplicação principal</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb24-137"><a href="#cb24-137" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gráficos estáticos"</span>,</span>
+<span id="cb24-138"><a href="#cb24-138" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visualizações estruturadas"</span>,</span>
+<span id="cb24-139"><a href="#cb24-139" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gráficos interativos"</span>,</span>
+<span id="cb24-140"><a href="#cb24-140" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visualizações interativas avançadas"</span>,</span>
+<span id="cb24-141"><a href="#cb24-141" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Representação espacial"</span></span>
+<span id="cb24-142"><a href="#cb24-142" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-143"><a href="#cb24-143" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-144"><a href="#cb24-144" aria-hidden="true" tabindex="-1"></a>  Características <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb24-145"><a href="#cb24-145" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Simplicidade e integração nativa ao R"</span>,</span>
+<span id="cb24-146"><a href="#cb24-146" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Construção por camadas e ampla personalização"</span>,</span>
+<span id="cb24-147"><a href="#cb24-147" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hover, zoom e transformação de objetos ggplot"</span>,</span>
+<span id="cb24-148"><a href="#cb24-148" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tooltips, animações, zoom e múltiplas séries"</span>,</span>
+<span id="cb24-149"><a href="#cb24-149" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mapas, marcadores, círculos, popups e camadas"</span></span>
+<span id="cb24-150"><a href="#cb24-150" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-151"><a href="#cb24-151" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-152"><a href="#cb24-152" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb24-153"><a href="#cb24-153" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-154"><a href="#cb24-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-155"><a href="#cb24-155" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb24-156"><a href="#cb24-156" aria-hidden="true" tabindex="-1"></a>  sistemas_graficos,</span>
+<span id="cb24-157"><a href="#cb24-157" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"l"</span>, <span class="st">"l"</span>)</span>
+<span id="cb24-158"><a href="#cb24-158" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-159"><a href="#cb24-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-160"><a href="#cb24-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-161"><a href="#cb24-161" aria-hidden="true" tabindex="-1"></a>A existência de diferentes sistemas permite selecionar a ferramenta de acordo com a finalidade da análise. Um gráfico exploratório simples pode ser produzido rapidamente utilizando <span class="in">`Base R`</span>, enquanto uma representação destinada à publicação pode exigir maior controle estético com <span class="in">`ggplot2`</span>. Da mesma forma, análises destinadas à exploração dinâmica podem ser beneficiadas por <span class="in">`plotly`</span> ou <span class="in">`highcharter`</span>, enquanto dados associados à localização podem ser apresentados com leaflet.</span>
+<span id="cb24-162"><a href="#cb24-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-163"><a href="#cb24-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sistema gráfico Base R</span></span>
+<span id="cb24-164"><a href="#cb24-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-165"><a href="#cb24-165" aria-hidden="true" tabindex="-1"></a>O <span class="in">`Base R`</span> corresponde ao conjunto de funções disponibilizadas diretamente pela instalação padrão da linguagem. Entre seus recursos encontram-se funções estatísticas, manipulação de objetos e ferramentas gráficas.</span>
+<span id="cb24-166"><a href="#cb24-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-167"><a href="#cb24-167" aria-hidden="true" tabindex="-1"></a>Para visualização, algumas das funções mais utilizadas são:</span>
+<span id="cb24-168"><a href="#cb24-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-169"><a href="#cb24-169" aria-hidden="true" tabindex="-1"></a><span class="in">`plot()`</span> — utilizada principalmente para gráficos de dispersão e representações genéricas;</span>
+<span id="cb24-170"><a href="#cb24-170" aria-hidden="true" tabindex="-1"></a><span class="in">`hist()`</span> — construção de histogramas;</span>
+<span id="cb24-171"><a href="#cb24-171" aria-hidden="true" tabindex="-1"></a><span class="in">`boxplot()`</span> — elaboração de diagramas de caixa;</span>
+<span id="cb24-172"><a href="#cb24-172" aria-hidden="true" tabindex="-1"></a><span class="in">`barplot()`</span> — construção de gráficos de barras.</span>
+<span id="cb24-173"><a href="#cb24-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-174"><a href="#cb24-174" aria-hidden="true" tabindex="-1"></a>A função <span class="in">`plot()`</span> possui comportamento dependente dos objetos fornecidos como argumentos. Quando duas variáveis quantitativas são informadas, por exemplo, pode produzir um gráfico de dispersão que permite observar possíveis relações entre elas.</span>
+<span id="cb24-175"><a href="#cb24-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-176"><a href="#cb24-176" aria-hidden="true" tabindex="-1"></a>O <span class="in">`hist()`</span> divide uma variável quantitativa em intervalos e representa a frequência de observações presente em cada classe. Esse recurso permite avaliar a forma da distribuição dos dados.</span>
+<span id="cb24-177"><a href="#cb24-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-178"><a href="#cb24-178" aria-hidden="true" tabindex="-1"></a>O <span class="in">`boxplot()`</span> resume a distribuição utilizando medidas de posição e dispersão, possibilitando observar mediana, quartis, amplitude interquartil e observações potencialmente discrepantes.</span>
+<span id="cb24-179"><a href="#cb24-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-180"><a href="#cb24-180" aria-hidden="true" tabindex="-1"></a>Já <span class="in">`barplot()`</span> é utilizado para representar valores ou frequências associados a categorias, sendo adequado para comparações entre diferentes grupos.</span>
+<span id="cb24-181"><a href="#cb24-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-182"><a href="#cb24-182" aria-hidden="true" tabindex="-1"></a>Apesar de possuir estrutura relativamente simples, o <span class="in">`Base R`</span> permite modificar títulos, eixos, símbolos e diversos parâmetros gráficos, constituindo uma ferramenta importante para análises exploratórias e para a compreensão dos fundamentos da representação gráfica.</span>
+<span id="cb24-183"><a href="#cb24-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-184"><a href="#cb24-184" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gramática de gráficos e o pacote ggplot2</span></span>
+<span id="cb24-185"><a href="#cb24-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-186"><a href="#cb24-186" aria-hidden="true" tabindex="-1"></a>O ggplot2 utiliza uma abordagem diferente da encontrada no sistema gráfico tradicional do R. Em vez de existir uma função independente para cada gráfico, a visualização é construída pela combinação de componentes.</span>
+<span id="cb24-187"><a href="#cb24-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-188"><a href="#cb24-188" aria-hidden="true" tabindex="-1"></a>A estrutura básica pode ser representada conceitualmente por:</span>
+<span id="cb24-189"><a href="#cb24-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-190"><a href="#cb24-190" aria-hidden="true" tabindex="-1"></a>**dados + mapeamentos estéticos + geometria + escalas + facetas + tema**</span>
+<span id="cb24-191"><a href="#cb24-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-192"><a href="#cb24-192" aria-hidden="true" tabindex="-1"></a>A função ggplot() inicia a construção da visualização, enquanto <span class="in">`aes()`</span> define os mapeamentos estéticos, isto é, estabelece quais variáveis serão associadas aos elementos visuais do gráfico.</span>
+<span id="cb24-193"><a href="#cb24-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-194"><a href="#cb24-194" aria-hidden="true" tabindex="-1"></a>Por exemplo:</span>
+<span id="cb24-195"><a href="#cb24-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-198"><a href="#cb24-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-199"><a href="#cb24-199" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span> (dados, <span class="fu">aes</span>(<span class="at">x =</span> consumo_cimento,</span>
+<span id="cb24-200"><a href="#cb24-200" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> resistencia_mpa)) <span class="sc">+</span></span>
+<span id="cb24-201"><a href="#cb24-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb24-202"><a href="#cb24-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-203"><a href="#cb24-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-204"><a href="#cb24-204" aria-hidden="true" tabindex="-1"></a>Nesse caso, <span class="in">`consumo_cimento`</span> é associado ao eixo horizontal e <span class="in">`resistencia_mpa`</span> ao eixo vertical. A função <span class="in">`geom_point()`</span> determina que as observações sejam representadas por pontos.</span>
+<span id="cb24-205"><a href="#cb24-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-206"><a href="#cb24-206" aria-hidden="true" tabindex="-1"></a>A utilização de <span class="in">`+`</span> permite adicionar novas camadas ao gráfico. Dessa forma, títulos, linhas de tendência, escalas, temas, facetas e outras geometrias podem ser incorporados progressivamente.</span>
+<span id="cb24-207"><a href="#cb24-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-208"><a href="#cb24-208" aria-hidden="true" tabindex="-1"></a>Essa organização proporciona grande flexibilidade, pois uma mesma base pode ser representada de diferentes maneiras apenas modificando os mapeamentos e geometrias empregados.</span>
+<span id="cb24-209"><a href="#cb24-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-210"><a href="#cb24-210" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mapeamentos estéticos, geometrias e camadas</span></span>
+<span id="cb24-211"><a href="#cb24-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-212"><a href="#cb24-212" aria-hidden="true" tabindex="-1"></a>No <span class="in">`ggplot2`</span>, as características visuais são controladas principalmente por meio de <span class="in">`aes()`</span>. Variáveis podem ser associadas a propriedades como posição, cor, tamanho, forma e preenchimento.</span>
+<span id="cb24-213"><a href="#cb24-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-214"><a href="#cb24-214" aria-hidden="true" tabindex="-1"></a>É importante distinguir mapeamento de configuração estética. Quando uma variável é colocada dentro de <span class="in">`aes()`</span>, a aparência do elemento gráfico passa a depender dos valores dessa variável. Quando uma propriedade é definida fora de aes(), todos os elementos recebem a mesma configuração.</span>
+<span id="cb24-215"><a href="#cb24-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-216"><a href="#cb24-216" aria-hidden="true" tabindex="-1"></a>As funções geom_*() determinam a forma utilizada para representar os dados. Entre as mais comuns encontram-se:</span>
+<span id="cb24-217"><a href="#cb24-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-218"><a href="#cb24-218" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_point()`</span> para pontos;</span>
+<span id="cb24-219"><a href="#cb24-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-220"><a href="#cb24-220" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_line()`</span> para linhas;</span>
+<span id="cb24-221"><a href="#cb24-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-222"><a href="#cb24-222" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_col()`</span> e geom_bar() para barras;</span>
+<span id="cb24-223"><a href="#cb24-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-224"><a href="#cb24-224" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_histogram()`</span> para histogramas;</span>
+<span id="cb24-225"><a href="#cb24-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-226"><a href="#cb24-226" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_boxplot()`</span> para boxplots;</span>
+<span id="cb24-227"><a href="#cb24-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-228"><a href="#cb24-228" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_smooth()`</span> para linhas ou curvas de tendência.</span>
+<span id="cb24-229"><a href="#cb24-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-230"><a href="#cb24-230" aria-hidden="true" tabindex="-1"></a>Essa estrutura permite combinar diferentes geometrias no mesmo gráfico e acrescentar informações complementares sem reconstruir toda a visualização.</span>
+<span id="cb24-231"><a href="#cb24-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-232"><a href="#cb24-232" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transformação dos dados antes da visualização</span></span>
+<span id="cb24-233"><a href="#cb24-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-234"><a href="#cb24-234" aria-hidden="true" tabindex="-1"></a>A construção de gráficos frequentemente exige que os dados sejam previamente organizados ou resumidos. Para isso, funções de manipulação podem ser combinadas com o operador nativo <span class="in">`|&gt;`</span>.</span>
+<span id="cb24-235"><a href="#cb24-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-236"><a href="#cb24-236" aria-hidden="true" tabindex="-1"></a>Um fluxo típico utilizado neste trabalho pode ser representado por:</span>
+<span id="cb24-239"><a href="#cb24-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-240"><a href="#cb24-240" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<span id="cb24-241"><a href="#cb24-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tipo_obra) <span class="sc">|&gt;</span></span>
+<span id="cb24-242"><a href="#cb24-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-243"><a href="#cb24-243" aria-hidden="true" tabindex="-1"></a>    <span class="at">resistencia_media =</span> <span class="fu">mean</span>(resistencia_mpa,</span>
+<span id="cb24-244"><a href="#cb24-244" aria-hidden="true" tabindex="-1"></a>                             <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-245"><a href="#cb24-245" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb24-246"><a href="#cb24-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb24-247"><a href="#cb24-247" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> tipo_obra,</span>
+<span id="cb24-248"><a href="#cb24-248" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> resistencia_media)</span>
+<span id="cb24-249"><a href="#cb24-249" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-250"><a href="#cb24-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb24-251"><a href="#cb24-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-252"><a href="#cb24-252" aria-hidden="true" tabindex="-1"></a>Nesse procedimento, <span class="in">`group_by()`</span> divide os dados segundo as categorias de <span class="in">`tipo_obra`</span>, enquanto <span class="in">`summarise()`</span> calcula a resistência média de cada grupo. O resultado dessa transformação é então encaminhado diretamente para <span class="in">`ggplot()`</span>.</span>
+<span id="cb24-253"><a href="#cb24-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-254"><a href="#cb24-254" aria-hidden="true" tabindex="-1"></a>O operador <span class="in">`|&gt;`</span> contribui para que o código represente uma sequência lógica de operações, facilitando sua leitura: parte-se da base original, realizam-se as transformações necessárias e, por fim, produz-se a visualização.</span>
+<span id="cb24-255"><a href="#cb24-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-256"><a href="#cb24-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gráficos de dispersão e análise de relações</span></span>
+<span id="cb24-257"><a href="#cb24-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-258"><a href="#cb24-258" aria-hidden="true" tabindex="-1"></a>O gráfico de dispersão é empregado para estudar a relação entre duas variáveis quantitativas. Cada observação é representada por um ponto determinado por suas coordenadas nos eixos horizontal e vertical.</span>
+<span id="cb24-259"><a href="#cb24-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-260"><a href="#cb24-260" aria-hidden="true" tabindex="-1"></a>No contexto deste trabalho, essa representação pode ser utilizada, por exemplo, para investigar a relação entre consumo de cimento e resistência à compressão, ou entre área construída e custo total da obra.</span>
+<span id="cb24-261"><a href="#cb24-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-262"><a href="#cb24-262" aria-hidden="true" tabindex="-1"></a>A disposição dos pontos pode indicar tendências positivas, negativas ou ausência de um padrão visual evidente. Entretanto, a interpretação deve considerar que a presença de associação entre duas variáveis não demonstra, isoladamente, relação de causa e efeito.</span>
+<span id="cb24-263"><a href="#cb24-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-264"><a href="#cb24-264" aria-hidden="true" tabindex="-1"></a>O gráfico pode ser complementado por linhas de tendência e medidas estatísticas de associação, permitindo combinar avaliação visual e análise quantitativa.</span>
+<span id="cb24-265"><a href="#cb24-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-266"><a href="#cb24-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histograma e distribuição dos dados</span></span>
+<span id="cb24-267"><a href="#cb24-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-268"><a href="#cb24-268" aria-hidden="true" tabindex="-1"></a>O histograma representa a distribuição de frequências de uma variável quantitativa contínua. Os valores são agrupados em intervalos ou classes, e a altura das barras representa a quantidade ou proporção de observações em cada intervalo.</span>
+<span id="cb24-269"><a href="#cb24-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-270"><a href="#cb24-270" aria-hidden="true" tabindex="-1"></a>Essa representação possibilita observar concentração, dispersão, assimetria e possíveis regiões com baixa ou elevada frequência.</span>
+<span id="cb24-271"><a href="#cb24-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-272"><a href="#cb24-272" aria-hidden="true" tabindex="-1"></a>Na Engenharia Civil, histogramas podem ser utilizados para analisar variáveis como resistência do concreto, custo das obras, área construída e duração dos empreendimentos.</span>
+<span id="cb24-273"><a href="#cb24-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-274"><a href="#cb24-274" aria-hidden="true" tabindex="-1"></a>A escolha da quantidade e da amplitude das classes influencia a aparência do histograma e, consequentemente, sua interpretação. Portanto, a definição dos intervalos deve ser realizada de forma coerente com a distribuição e a escala da variável estudada.</span>
+<span id="cb24-275"><a href="#cb24-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-276"><a href="#cb24-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### Boxplot e identificação de valores discrepantes</span></span>
+<span id="cb24-277"><a href="#cb24-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-278"><a href="#cb24-278" aria-hidden="true" tabindex="-1"></a>O boxplot ou diagrama de caixa resume graficamente uma distribuição a partir dos quartis e da mediana. A caixa representa o intervalo compreendido entre o primeiro e o terceiro quartis, enquanto uma linha interna identifica a mediana.</span>
+<span id="cb24-279"><a href="#cb24-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-280"><a href="#cb24-280" aria-hidden="true" tabindex="-1"></a>A amplitude interquartil pode ser expressa por:</span>
+<span id="cb24-281"><a href="#cb24-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-282"><a href="#cb24-282" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb24-283"><a href="#cb24-283" aria-hidden="true" tabindex="-1"></a>AIQ = Q_3 - Q_1</span>
+<span id="cb24-284"><a href="#cb24-284" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb24-285"><a href="#cb24-285" aria-hidden="true" tabindex="-1"></a>e é utilizada como referência para a identificação gráfica de observações potencialmente discrepantes.</span>
+<span id="cb24-286"><a href="#cb24-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-287"><a href="#cb24-287" aria-hidden="true" tabindex="-1"></a>Tradicionalmente, são considerados limites:</span>
+<span id="cb24-288"><a href="#cb24-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-289"><a href="#cb24-289" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb24-290"><a href="#cb24-290" aria-hidden="true" tabindex="-1"></a>LI=Q_1-1,5(AIQ)</span>
+<span id="cb24-291"><a href="#cb24-291" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb24-292"><a href="#cb24-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-293"><a href="#cb24-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-294"><a href="#cb24-294" aria-hidden="true" tabindex="-1"></a>$$LS=Q_3+1,5(AIQ)$$</span>
+<span id="cb24-295"><a href="#cb24-295" aria-hidden="true" tabindex="-1"></a>Observações posicionadas além desses limites podem aparecer individualmente no gráfico. Entretanto, a classificação estatística de uma observação como potencial outlier não significa necessariamente que o valor esteja incorreto. No contexto da Engenharia Civil, sua interpretação deve considerar as características técnicas do empreendimento, do material ou do processo analisado.</span>
+<span id="cb24-296"><a href="#cb24-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-297"><a href="#cb24-297" aria-hidden="true" tabindex="-1"></a>Outra vantagem do boxplot é permitir comparações entre grupos. Assim, a distribuição da resistência do concreto pode ser comparada entre tipos de obra ou regiões, facilitando a identificação de diferenças na posição e dispersão dos resultados.</span>
+<span id="cb24-298"><a href="#cb24-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-299"><a href="#cb24-299" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interatividade com plotly</span></span>
+<span id="cb24-300"><a href="#cb24-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-301"><a href="#cb24-301" aria-hidden="true" tabindex="-1"></a>O pacote <span class="in">`plotly`</span> amplia as possibilidades de exploração dos gráficos ao acrescentar recursos interativos. Um objeto desenvolvido em <span class="in">`ggplot2`</span> pode ser convertido por meio de:</span>
+<span id="cb24-302"><a href="#cb24-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-303"><a href="#cb24-303" aria-hidden="true" tabindex="-1"></a><span class="in">ggplotly(grafico)</span></span>
+<span id="cb24-304"><a href="#cb24-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-305"><a href="#cb24-305" aria-hidden="true" tabindex="-1"></a>Com essa transformação, o usuário pode interagir diretamente com a visualização, utilizando recursos como zoom, aproximação, seleção e identificação das observações por meio do cursor.</span>
+<span id="cb24-306"><a href="#cb24-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-307"><a href="#cb24-307" aria-hidden="true" tabindex="-1"></a>Também é possível construir gráficos diretamente com <span class="in">`plot_ly()`</span>, proporcionando maior controle sobre determinados elementos interativos.</span>
+<span id="cb24-308"><a href="#cb24-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-309"><a href="#cb24-309" aria-hidden="true" tabindex="-1"></a>Em conjuntos de dados contendo numerosas observações, essa funcionalidade pode facilitar a identificação de obras específicas que se destacam em relação ao conjunto.</span>
+<span id="cb24-310"><a href="#cb24-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-311"><a href="#cb24-311" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualizações interativas com highcharter</span></span>
+<span id="cb24-312"><a href="#cb24-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-313"><a href="#cb24-313" aria-hidden="true" tabindex="-1"></a>O pacote <span class="in">`highcharter`</span> disponibiliza uma interface entre <span class="in">`R`</span> e a biblioteca gráfica <span class="in">`Highcharts`</span>. Seu foco está na criação de gráficos interativos com elevado grau de personalização.</span>
+<span id="cb24-314"><a href="#cb24-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-315"><a href="#cb24-315" aria-hidden="true" tabindex="-1"></a>Entre os recursos disponíveis destacam-se tooltips, animações, controle de zoom, diferentes temas e representação de múltiplas séries.</span>
+<span id="cb24-316"><a href="#cb24-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-317"><a href="#cb24-317" aria-hidden="true" tabindex="-1"></a>Essas características tornam o highcharter particularmente interessante para apresentações e painéis nos quais o usuário necessita explorar os resultados dinamicamente.</span>
+<span id="cb24-318"><a href="#cb24-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-319"><a href="#cb24-319" aria-hidden="true" tabindex="-1"></a>Em aplicações de Engenharia Civil, podem ser construídos painéis comparativos envolvendo custos, prazos, resistência, falhas ou outros indicadores relacionados aos empreendimentos.</span>
+<span id="cb24-320"><a href="#cb24-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-321"><a href="#cb24-321" aria-hidden="true" tabindex="-1"></a><span class="fu">### Representação espacial com leaflet</span></span>
+<span id="cb24-322"><a href="#cb24-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-323"><a href="#cb24-323" aria-hidden="true" tabindex="-1"></a>Determinadas informações possuem uma dimensão geográfica que não é adequadamente representada apenas por gráficos convencionais. Quando a localização das observações é relevante, mapas permitem incorporar o componente espacial à análise.</span>
+<span id="cb24-324"><a href="#cb24-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-325"><a href="#cb24-325" aria-hidden="true" tabindex="-1"></a>O pacote <span class="in">`leaflet`</span> possibilita criar mapas interativos diretamente no ambiente R. Sua estrutura é baseada na adição progressiva de camadas, de forma semelhante ao princípio de construção por componentes utilizado em outros sistemas gráficos.</span>
+<span id="cb24-326"><a href="#cb24-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-327"><a href="#cb24-327" aria-hidden="true" tabindex="-1"></a>Entre os recursos disponíveis encontram-se mapas-base, marcadores, círculos, polígonos e popups contendo informações adicionais.</span>
+<span id="cb24-328"><a href="#cb24-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-329"><a href="#cb24-329" aria-hidden="true" tabindex="-1"></a>No contexto de obras executadas em diferentes regiões do Brasil, a representação espacial pode contribuir para visualizar a distribuição dos empreendimentos e relacionar sua localização com variáveis técnicas ou gerenciais.</span>
+<span id="cb24-330"><a href="#cb24-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-331"><a href="#cb24-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualização de dados aplicada à Engenharia Civil</span></span>
+<span id="cb24-332"><a href="#cb24-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-333"><a href="#cb24-333" aria-hidden="true" tabindex="-1"></a>A utilização de ferramentas gráficas na Engenharia Civil deve estar associada à interpretação técnica dos dados. Um gráfico bem elaborado deve responder a uma pergunta ou contribuir para a compreensão de determinado fenômeno.</span>
+<span id="cb24-334"><a href="#cb24-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-335"><a href="#cb24-335" aria-hidden="true" tabindex="-1"></a>No controle tecnológico do concreto, por exemplo, podem ser investigadas distribuições de resistência, diferenças entre grupos e relações com variáveis de dosagem. Na gestão de obras, podem ser avaliadas relações entre custo, área construída e prazo. Indicadores de falhas podem ser comparados entre tipos de empreendimento, enquanto informações de satisfação podem ser relacionadas a diferentes características das obras.</span>
+<span id="cb24-336"><a href="#cb24-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-337"><a href="#cb24-337" aria-hidden="true" tabindex="-1"></a>Dessa forma, a visualização atua como elo entre dados, análise e comunicação. Para o engenheiro, isso significa transformar registros numéricos em informações que possam ser interpretadas e utilizadas no acompanhamento dos empreendimentos e no suporte às decisões técnicas e gerenciais.</span>
+<span id="cb24-338"><a href="#cb24-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-339"><a href="#cb24-339" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb24-340"><a href="#cb24-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-341"><a href="#cb24-341" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb24-342"><a href="#cb24-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-343"><a href="#cb24-343" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ambiente computacional e preparação dos dados</span></span>
+<span id="cb24-344"><a href="#cb24-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-345"><a href="#cb24-345" aria-hidden="true" tabindex="-1"></a>O desenvolvimento das análises foi realizado utilizando a linguagem R, em ambiente RStudio, com a elaboração do relatório por meio do sistema Quarto (.qmd). Essa combinação permitiu integrar, em um único documento, os procedimentos computacionais, os gráficos produzidos e suas respectivas interpretações.</span>
+<span id="cb24-346"><a href="#cb24-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-347"><a href="#cb24-347" aria-hidden="true" tabindex="-1"></a>Além das funções disponíveis no Base R, foram utilizados os pacotes dplyr, ggplot2, plotly, highcharter, leaflet e scales. O pacote dplyr foi empregado para agrupamento e sumarização dos dados; ggplot2, para construção de gráficos utilizando a gramática de gráficos; plotly e highcharter, para visualizações interativas; leaflet, para representação espacial; e scales, para auxiliar na formatação das escalas numéricas.</span>
+<span id="cb24-348"><a href="#cb24-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-351"><a href="#cb24-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-352"><a href="#cb24-352" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-353"><a href="#cb24-353" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-354"><a href="#cb24-354" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb24-355"><a href="#cb24-355" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(highcharter)</span>
+<span id="cb24-356"><a href="#cb24-356" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb24-357"><a href="#cb24-357" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb24-358"><a href="#cb24-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-359"><a href="#cb24-359" aria-hidden="true" tabindex="-1"></a>Sempre que possível, empregou-se o operador |&gt; para organizar sequencialmente as etapas de transformação dos dados antes da construção das visualizações. Essa abordagem permite representar de maneira clara o fluxo que parte da base original, realiza operações de agrupamento ou resumo e encaminha o resultado para a ferramenta gráfica selecionada.</span>
+<span id="cb24-360"><a href="#cb24-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-361"><a href="#cb24-361" aria-hidden="true" tabindex="-1"></a><span class="fu">### Importação e inspeção inicial da base</span></span>
+<span id="cb24-362"><a href="#cb24-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-363"><a href="#cb24-363" aria-hidden="true" tabindex="-1"></a>A base dados_engenharia_civil.csv foi importada para o R e atribuída ao objeto dados.</span>
+<span id="cb24-364"><a href="#cb24-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-367"><a href="#cb24-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-368"><a href="#cb24-368" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dados_engenharia_civil.csv"</span>)</span>
+<span id="cb24-369"><a href="#cb24-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-370"><a href="#cb24-370" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span>
+<span id="cb24-371"><a href="#cb24-371" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dados)</span>
+<span id="cb24-372"><a href="#cb24-372" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span>
+<span id="cb24-373"><a href="#cb24-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-374"><a href="#cb24-374" aria-hidden="true" tabindex="-1"></a>Antes da elaboração dos gráficos, realizou-se uma inspeção inicial com <span class="in">`str()`</span>, <span class="in">`dplyr`</span>,<span class="in">`glimpse()`</span>, <span class="in">`summary()`</span> e verificação de valores ausentes. Essa etapa teve como objetivo conhecer as dimensões da base, identificar os tipos de variáveis reconhecidos pelo <span class="in">`R`</span> e verificar possíveis características que pudessem interferir nas análises posteriores.</span>
+<span id="cb24-377"><a href="#cb24-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-378"><a href="#cb24-378" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dados)</span>
+<span id="cb24-379"><a href="#cb24-379" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(dados)</span>
+<span id="cb24-380"><a href="#cb24-380" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span>
+<span id="cb24-381"><a href="#cb24-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-382"><a href="#cb24-382" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dados))</span>
+<span id="cb24-383"><a href="#cb24-383" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(dados))</span>
+<span id="cb24-384"><a href="#cb24-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-385"><a href="#cb24-385" aria-hidden="true" tabindex="-1"></a>A atividade foi direcionada principalmente à exploração e comunicação visual, e não a procedimentos de limpeza dos dados. Dessa forma, após a inspeção inicial, os dados foram utilizados na elaboração das diferentes representações gráficas solicitadas.</span>
+<span id="cb24-386"><a href="#cb24-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-387"><a href="#cb24-387" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estratégia de análise gráfica</span></span>
+<span id="cb24-388"><a href="#cb24-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-389"><a href="#cb24-389" aria-hidden="true" tabindex="-1"></a>A análise foi organizada de maneira progressiva, partindo das funções gráficas nativas do R e avançando para sistemas que permitem maior personalização, interatividade e representação espacial.</span>
+<span id="cb24-390"><a href="#cb24-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-391"><a href="#cb24-391" aria-hidden="true" tabindex="-1"></a>Inicialmente, utilizaram-se as funções <span class="in">`plot()`</span>, <span class="in">`hist()`</span>, <span class="in">`boxplot()`</span> e <span class="in">`barplot()`</span> do <span class="in">`Base R`</span>. Essa etapa permitiu analisar relações entre variáveis, distribuições, diferenças entre grupos e frequências de categorias.</span>
+<span id="cb24-392"><a href="#cb24-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-393"><a href="#cb24-393" aria-hidden="true" tabindex="-1"></a>Posteriormente, as análises foram ampliadas utilizando o <span class="in">`ggplot2`</span>, por meio de mapeamentos estéticos, geometrias, camadas, escalas, temas e facetas. A utilização de <span class="in">`ggplot2`</span> permitiu maior controle sobre a apresentação gráfica e possibilitou incorporar variáveis categóricas às representações por meio de cores, preenchimentos e painéis.</span>
+<span id="cb24-394"><a href="#cb24-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-395"><a href="#cb24-395" aria-hidden="true" tabindex="-1"></a>Na sequência, o <span class="in">`plotly`</span> foi empregado para transformar gráficos estáticos em objetos interativos e possibilitar a identificação individual das obras. O <span class="in">`highcharter`</span> foi utilizado na construção de representações interativas destinadas principalmente à comparação de indicadores agregados. Por fim, o <span class="in">`leaflet`</span> foi empregado para representar espacialmente a quantidade de obras distribuídas entre as regiões brasileiras.</span>
+<span id="cb24-396"><a href="#cb24-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-397"><a href="#cb24-397" aria-hidden="true" tabindex="-1"></a>A seleção das geometrias foi realizada considerando a natureza das variáveis e a finalidade de cada análise. Gráficos de dispersão foram empregados para investigar relações entre variáveis quantitativas; histogramas, para estudar distribuições; boxplots, para comparar distribuições entre categorias; gráficos de barras e colunas, para comparar frequências e valores agregados; e mapas, para representar informações geográficas.</span>
+<span id="cb24-398"><a href="#cb24-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-399"><a href="#cb24-399" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb24-400"><a href="#cb24-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-401"><a href="#cb24-401" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb24-402"><a href="#cb24-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-403"><a href="#cb24-403" aria-hidden="true" tabindex="-1"></a>Apresente e interprete os resultados obtidos a partir dos dados coletados.</span>
+<span id="cb24-404"><a href="#cb24-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-405"><a href="#cb24-405" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
+<span id="cb24-406"><a href="#cb24-406" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
+<span id="cb24-407"><a href="#cb24-407" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
+<span id="cb24-408"><a href="#cb24-408" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
+<span id="cb24-409"><a href="#cb24-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-410"><a href="#cb24-410" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
+<span id="cb24-411"><a href="#cb24-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-412"><a href="#cb24-412" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
+<span id="cb24-413"><a href="#cb24-413" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
+<span id="cb24-414"><a href="#cb24-414" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
+<span id="cb24-415"><a href="#cb24-415" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
+<span id="cb24-416"><a href="#cb24-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-417"><a href="#cb24-417" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
+<span id="cb24-418"><a href="#cb24-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-419"><a href="#cb24-419" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
+<span id="cb24-420"><a href="#cb24-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-421"><a href="#cb24-421" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
+<span id="cb24-422"><a href="#cb24-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-423"><a href="#cb24-423" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
+<span id="cb24-424"><a href="#cb24-424" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
+<span id="cb24-425"><a href="#cb24-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-426"><a href="#cb24-426" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
+<span id="cb24-427"><a href="#cb24-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-430"><a href="#cb24-430" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-431"><a href="#cb24-431" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
+<span id="cb24-432"><a href="#cb24-432" aria-hidden="true" tabindex="-1"></a>distancia</span>
+<span id="cb24-433"><a href="#cb24-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-434"><a href="#cb24-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-435"><a href="#cb24-435" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
+<span id="cb24-436"><a href="#cb24-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-437"><a href="#cb24-437" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
+<span id="cb24-438"><a href="#cb24-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-439"><a href="#cb24-439" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
+<span id="cb24-440"><a href="#cb24-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
+<span id="cb24-441"><a href="#cb24-441" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
+<span id="cb24-442"><a href="#cb24-442" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
+<span id="cb24-443"><a href="#cb24-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-444"><a href="#cb24-444" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
+<span id="cb24-445"><a href="#cb24-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-446"><a href="#cb24-446" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
+<span id="cb24-447"><a href="#cb24-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-448"><a href="#cb24-448" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
+<span id="cb24-449"><a href="#cb24-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-450"><a href="#cb24-450" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
+</code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
