@@ -1,21 +1,21 @@
 ---
 # Só mude aqui!!!!
 author: "Marcus Fillipe e Gustavo Daudt"
-title: "Relatório de Aula Prática 04"
+title: "Relatório 04 - Gráficos"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
 csl: associacao-brasileira-de-normas-tecnicas-ipea.csl
 subtitle: "<a href='https://bendeivide.github.io/courses/epaec/' target='_blank'>Estatística e Probabilidade</a> </br> <a href='https://bendeivide.github.io' target='_blank'>Prof. Ben Dêivide (DEFIM/CAP/UFSJ)</a>"
 include-before-body: header.html
-date: today
+date: now
+date-format: "DD/MM/YYYY, HH:mm"
 lang: pt-BR
 format:
   html:
     toc: true
     number-sections: true
     theme: bootstrap
-    #css: styles.css
     code-fold: true
     code-tools: true
 execute:
@@ -23,25 +23,69 @@ execute:
   warning: false
   message: false
 ---
-install.packages("ggplot")
-install.packages("scales")
-install.packages("ggplot2")
-install.packages("dplyr")
-install.packages("highcharter")
-install.packages("plotly")
-install.packages("leaflet")
-```{r setup, include=FALSE}
 
-
+```{r}
+#| label: setup
+#| include: false
+pacotes <- c("ggplot2", "dplyr", "plotly", "highcharter", "leaflet", "scales", "knitr", "htmlwidgets", "htmltools")
+faltantes <- pacotes[!vapply(pacotes, requireNamespace, logical(1), quietly = TRUE)]
+if (length(faltantes)) stop("No console, execute install.packages(c(", paste(shQuote(faltantes), collapse = ", "), ")) e renderize novamente.")
 library(ggplot2)
 library(dplyr)
 library(plotly)
 library(highcharter)
 library(leaflet)
 library(scales)
+options(OutDec = ",", scipen = 999)
+knitr::opts_chunk$set(fig.align = "center", out.width = "100%")
+set.seed(2026)
+dados <- read.csv("dados_engenharia_civil.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE)
+paleta <- c("Residencial" = "#2675A5", "Comercial" = "#CA863B", "Industrial" = "#6D65A8", "Infraestrutura" = "#298879")
+pal_sust <- c("Sim" = "#298879", "Não" = "#81909E")
+azul <- "#2675A5"; verde <- "#298879"; ouro <- "#CA863B"
+num <- function(x, casas = 2) formatC(x, format = "f", digits = casas, big.mark = ".", decimal.mark = ",")
+rotulo <- scales::label_number(big.mark = ".", decimal.mark = ",")
+tema_relatorio <- theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(), legend.position = "bottom",
+        plot.title = element_text(face = "bold", colour = "#183A4A", size = 13, margin = margin(b = 8)),
+        plot.subtitle = element_text(colour = "#526977", size = 10),
+        strip.text = element_text(face = "bold"),
+        legend.box = "vertical", legend.text = element_text(size = 10),
+        axis.title = element_text(size = 11), axis.text = element_text(size = 10),
+        plot.margin = margin(12, 22, 16, 12))
+theme_set(tema_relatorio)
+# Configuração compartilhada dos gráficos nativos, sem pacotes gráficos.
+base_estilo <- function() par(mar = c(5.5, 5.5, 3.5, 1.5), cex.main = 1.05, las = 1, bty = "l", col.axis = "#405564", col.lab = "#183A4A")
+# Tabelas com separador de milhar, vírgula decimal e nomes legíveis.
+nomes <- c(id_obra = "Obra", tipo_obra = "Tipo de obra", regiao = "Região",
+ area_construida = "Área (m²)", custo_total = "Custo (R$)", prazo_meses = "Prazo (meses)",
+ resistencia_mpa = "Resistência (MPa)", consumo_cimento = "Cimento (kg/m³)",
+ indice_falhas = "Falhas", satisfacao = "Satisfação", sustentavel = "Sustentável",
+ n = "Obras", media = "Média (R$)", mediana = "Mediana (R$)", aiq = "AIQ (R$)",
+ r = "Pearson r", custo = "Custo médio (R$)", prazo = "Prazo médio (meses)",
+ residuo_area = "Desvio da reta (R$)", mediana_m2 = "Mediana (R$/m²)")
+tabela <- function(x, digits = 2, caption = NULL, ...) {
+ x <- as.data.frame(x, check.names = FALSE)
+ for (i in seq_along(x)) {
+  if (is.numeric(x[[i]])) {
+   casas <- if (all(is.na(x[[i]]) | x[[i]] == floor(x[[i]]))) 0 else digits
+   x[[i]] <- ifelse(is.na(x[[i]]), "—", num(x[[i]], casas))
+  }
+ }
+ nms <- names(x); nomes_ok <- nms %in% names(nomes)
+ nms[nomes_ok] <- unname(nomes[nms[nomes_ok]])
+ knitr::kable(x, col.names = nms, row.names = FALSE, caption = caption, ...)
+}
+# Espaço de exibição definido explicitamente para cada mapa.
+ajustar_mapa <- function(m) htmlwidgets::onRender(m, "function(el,x){
+ var map=this;
+ requestAnimationFrame(function(){map.invalidateSize(false);});
+ setTimeout(function(){map.invalidateSize(false);},300);
+ if(window.ResizeObserver){new ResizeObserver(function(){map.invalidateSize(false);}).observe(el);}
+}")
 
-dados <- read.csv("dados_engenharia_civil.csv")
-```                   
+```
+
 ## 📌 Introdução
 
 O avanço das ferramentas computacionais tem ampliado significativamente as possibilidades de tratamento, análise, visualização e comunicação de dados na Engenharia Civil. A crescente quantidade de informações produzidas durante as etapas de planejamento, execução, controle e acompanhamento de obras exige do profissional não apenas conhecimentos técnicos específicos da engenharia, mas também capacidade para organizar e interpretar grandes conjuntos de dados e transformá-los em informações úteis para a tomada de decisão.
@@ -58,11 +102,11 @@ Entretanto, diferentes problemas exigem diferentes formas de representação. Um
 
 A linguagem R disponibiliza diferentes sistemas e pacotes destinados a essas finalidades. Neste relatório são explorados cinco recursos principais: **Base R**, **ggplot2**, **plotly**, **highcharter** e **leaflet**. Cada sistema apresenta características próprias e diferentes níveis de complexidade, personalização e interatividade.
 
-O Base R disponibiliza funções gráficas incorporadas à própria linguagem, como `plot()`, `hist()`, `boxplot()` e ```barplot()```, permitindo a construção direta de representações gráficas sem a necessidade de pacotes adicionais. O `ggplot2`, por sua vez, introduz uma abordagem estruturada baseada na denominada Grammar of Graphics, na qual os gráficos são construídos progressivamente pela combinação entre dados, mapeamentos estéticos, geometrias, escalas, facetas e temas.
+O Base R disponibiliza funções gráficas incorporadas à própria linguagem, como `plot()`, `hist()`, `boxplot()` e `barplot()`, permitindo a construção direta de representações gráficas sem a necessidade de pacotes adicionais. O `ggplot2`, por sua vez, introduz uma abordagem estruturada baseada na denominada Grammar of Graphics, na qual os gráficos são construídos progressivamente pela combinação entre dados, mapeamentos estéticos, geometrias, escalas, facetas e temas.
 
 A interatividade é incorporada por ferramentas como `plotly` e `highcharter`. O primeiro permite tanto transformar objetos produzidos pelo `ggplot2` em gráficos interativos quanto desenvolver visualizações diretamente por meio de `plot_ly()`. O segundo disponibiliza recursos mais avançados de interação e apresentação, incluindo tooltips, animações, zoom e múltiplas séries. Para informações geográficas, o `leaflet` possibilita a criação de mapas interativos contendo marcadores, círculos, camadas e janelas informativas.
 
-Neste relatório, essas ferramentas são aplicadas a uma base composta por 300 obras de Engenharia Civil executadas em diferentes regiões do Brasil, contendo informações referentes ao tipo de obra, região, área construída, custo total, prazo de execução, resistência à compressão do concreto, consumo de cimento, índice de falhas, satisfação do cliente e adoção de práticas sustentáveis.
+Neste relatório, essas ferramentas são aplicadas a uma base composta por 300 obras de Engenharia Civil, no cenário didático de diferentes regiões do Brasil, contendo informações referentes ao tipo de obra, região, área construída, custo total, prazo de execução, resistência à compressão do concreto, consumo de cimento, índice de falhas, satisfação do cliente e adoção de práticas sustentáveis.
 
 Dessa forma, o estudo não se limita à construção de gráficos. Busca-se compreender como a linguagem R pode ser utilizada para selecionar, construir, personalizar e interpretar diferentes representações gráficas, relacionando cada ferramenta às características das variáveis e às questões técnicas investigadas. A visualização é, portanto, tratada como parte integrante do processo de análise de dados e como instrumento para transformar resultados numéricos em informações compreensíveis e úteis à Engenharia Civil.
 
@@ -179,6 +223,8 @@ Já `barplot()` é utilizado para representar valores ou frequências associados
 
 Apesar de possuir estrutura relativamente simples, o `Base R` permite modificar títulos, eixos, símbolos e diversos parâmetros gráficos, constituindo uma ferramenta importante para análises exploratórias e para a compreensão dos fundamentos da representação gráfica.
 
+A construção por camadas é documentada no manual do ggplot2 [@ggplot2docs]; a integração de código e texto segue a documentação do Quarto [@quartor].
+
 ### Gramática de gráficos e o pacote ggplot2
 
 O ggplot2 utiliza uma abordagem diferente da encontrada no sistema gráfico tradicional do R. Em vez de existir uma função independente para cada gráfico, a visualização é construída pela combinação de componentes.
@@ -192,6 +238,7 @@ A função ggplot() inicia a construção da visualização, enquanto `aes()` de
 Por exemplo:
 
 ```{r}
+#| eval: false
 ggplot (dados, aes(x = consumo_cimento,
                   y = resistencia_mpa)) +
   geom_point()
@@ -231,6 +278,7 @@ A construção de gráficos frequentemente exige que os dados sejam previamente 
 
 Um fluxo típico utilizado neste trabalho pode ser representado por:
 ```{r}
+#| eval: false
 dados |>
   group_by(tipo_obra) |>
   summarise(
@@ -355,14 +403,16 @@ Sempre que possível, empregou-se o operador |> para organizar sequencialmente a
 A base dados_engenharia_civil.csv foi importada para o R e atribuída ao objeto dados.
 
 ```{r}
-dados <- read.csv("dados_engenharia_civil.csv")
+#| eval: false
+dados <- read.csv("dados_engenharia_civil.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE)
 
 head(dados)
 tail(dados)
 dim(dados)
 ```
-Antes da elaboração dos gráficos, realizou-se uma inspeção inicial com `str()`, `dplyr`,`glimpse()`, `summary()` e verificação de valores ausentes. Essa etapa teve como objetivo conhecer as dimensões da base, identificar os tipos de variáveis reconhecidos pelo `R` e verificar possíveis características que pudessem interferir nas análises posteriores.
+Antes da elaboração dos gráficos, realizou-se uma inspeção inicial com `str()`, `dplyr::glimpse()`, `summary()` e verificação de valores ausentes. Essa etapa teve como objetivo conhecer as dimensões da base, identificar os tipos de variáveis reconhecidos pelo `R` e verificar possíveis características que pudessem interferir nas análises posteriores.
 ```{r}
+#| eval: false
 str(dados)
 dplyr::glimpse(dados)
 summary(dados)
@@ -386,51 +436,941 @@ A seleção das geometrias foi realizada considerando a natureza das variáveis 
 
 ---
 
+
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+As seções identificam as 28 questões do roteiro. Todas as análises se referem à **base didática fornecida**, nomeada como "base_processamento_dados_engenharia_civil.csv". Os códigos calculam os indicadores e cada gráfico é acompanhado de interpretação e justificativa visual.
+:::
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+### Etapa 1 — Conhecendo a base
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
-
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
-
-Procure não apenas descrever, mas **interpretar os dados**.
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
+#### Questão 1 — Importação e conferência
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| label: q01
+dados <- read.csv("dados_engenharia_civil.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE)
+dados_brutos <- dados
+primeiras <- head(dados)
+ultimas <- tail(dados)
+dimensoes <- dim(dados)
+tabela(primeiras, caption = "Primeiras seis obras — use a rolagem horizontal para ver todas as variáveis.")
+tabela(ultimas, caption = "Últimas seis obras.")
 ```
+
+A primeira linha de dados corresponde à obra `r dados$id_obra[1]` e a última à obra `r tail(dados$id_obra, 1)`. As colunas ficaram separadas corretamente; a leitura preserva as unidades do enunciado.
+
+#### Questão 2 — Dimensões
+
+```{r}
+#| label: q02
+tabela(data.frame(Observações = nrow(dados), Variáveis = ncol(dados)))
+```
+
+Há **`r nrow(dados)` observações e `r ncol(dados)` variáveis**. Cada linha representa uma obra; não representa um corpo de prova individual nem uma medição temporal repetida.
+
+#### Questão 3 — Estrutura e natureza das variáveis
+
+```{r}
+#| label: q03
+estrutura_str <- capture.output(str(dados))
+estrutura_glimpse <- capture.output(dplyr::glimpse(dados))
+# As saídas integrais são preservadas nesses objetos; a síntese é apresentada em tabela.
+tipos <- data.frame(
+  Variável = names(dados),
+  Classe_R = vapply(dados, function(x) paste(class(x), collapse = "/"), character(1)),
+  Natureza = c("Identificador nominal", "Qualitativa nominal", "Qualitativa nominal",
+               "Quantitativa contínua", "Quantitativa contínua", "Quantitativa (meses inteiros)",
+               "Quantitativa contínua", "Quantitativa contínua", "Quantitativa discreta",
+               "Escore numérico limitado", "Qualitativa nominal binária"))
+tabela(tipos)
+```
+
+O R reconhece as três colunas textuais como `character` e as demais como numéricas (`integer` ou `numeric`). **Classe computacional e significado estatístico não são a mesma coisa:** `id_obra` é um identificador, mesmo armazenado como inteiro. `indice_falhas` é contagem; `prazo_meses` é duração registrada em meses inteiros. A satisfação é tratada como escore de 0 a 10, sem presumir que diferenças iguais tenham significado psicológico rigorosamente igual.
+
+#### Questão 4 — Resumo e plausibilidade
+
+```{r}
+#| label: q04
+# summary() é executado; seus resultados numéricos são organizados em tabela.
+resumo_original <- summary(dados)
+numericas <- setdiff(names(dados)[vapply(dados, is.numeric, logical(1))], "id_obra")
+resumo_num <- do.call(rbind, lapply(numericas, function(v) {
+ z <- summary(dados[[v]])
+ data.frame(Variável = nomes[[v]], Mínimo = as.numeric(z["Min."]),
+            Q1 = as.numeric(z["1st Qu."]), Mediana = as.numeric(z["Median"]),
+            Média = as.numeric(z["Mean"]), Q3 = as.numeric(z["3rd Qu."]),
+            Máximo = as.numeric(z["Max."]), check.names = FALSE)
+}))
+tabela(resumo_num, caption = "Resumo das sete variáveis numéricas substantivas; o ID não é uma medida.")
+resumo_categorias <- do.call(rbind, lapply(c("tipo_obra", "regiao", "sustentavel"), function(v) {
+ cont <- sort(table(dados[[v]]), decreasing = TRUE)
+ data.frame(Variável = nomes[[v]], Categoria = names(cont), Obras = as.integer(cont),
+            `Participação (%)` = as.numeric(cont)/nrow(dados)*100, check.names = FALSE)
+}))
+tabela(resumo_categorias, digits = 1, caption = "Variáveis qualitativas — maior frequência primeiro em cada grupo.")
+```
+
+A área varia de **`r num(min(dados$area_construida),1)` a `r num(max(dados$area_construida),1)` m²**, o custo de **R$ `r num(min(dados$custo_total))` a R$ `r num(max(dados$custo_total))`**, e o prazo de **`r min(dados$prazo_meses)` a `r max(dados$prazo_meses)` meses**. Os custos são positivos e a satisfação permanece no intervalo previsto. O valor mínimo de resistência é **`r num(min(dados$resistencia_mpa))` MPa**, na obra **`r dados$id_obra[which.min(dados$resistencia_mpa)]`**, e merece conferência do contexto do ensaio.
+
+::: {.callout-important title="Resistência medida não equivale automaticamente a fck"}
+O banco não informa idade do ensaio, classe especificada, lotes, amostragem ou condições de cura. Portanto, não é possível aprovar/reprovar o concreto nem estabelecer um “intervalo típico de projeto” válido para todas as obras. O valor de 17,82 MPa é um ponto para investigação, não prova isolada de não conformidade. Tampouco a distribuição observada substitui critérios de aceitação do projeto.
+:::
+
+#### Questão 5 — Valores ausentes e rastreabilidade
+
+```{r}
+#| label: q05
+tabela(data.frame(Variável = unname(nomes[names(dados)]), Ausentes = colSums(is.na(dados))))
+ausencias <- which(is.na(dados), arr.ind = TRUE)
+registros_incompletos <- dados[!complete.cases(dados), , drop = FALSE]
+tabela(data.frame(Indicador = c("Total de valores ausentes", "Obras com algum NA", "IDs duplicados"),
+                  Quantidade = c(sum(is.na(dados)), nrow(registros_incompletos), sum(duplicated(dados$id_obra)))))
+if (nrow(ausencias) > 0) {
+ local_ausencia <- data.frame(Linha = ausencias[,"row"],
+  Obra = dados$id_obra[ausencias[,"row"]], Variável = names(dados)[ausencias[,"col"]])
+ print(tabela(local_ausencia))
+}
+```
+
+Foram encontrados **`r sum(is.na(dados))` valores ausentes** e **`r sum(duplicated(dados$id_obra))` identificadores duplicados**. Assim, nenhuma variável e nenhuma observação apresenta `NA`; não foi necessário excluir ou imputar registros. A inexistência de `NA` não garante, por si só, qualidade técnica das medições.
+
+```{r}
+#| label: preparar-analises
+# As categorias são ordenadas pelo indicador relevante, não alfabeticamente.
+ordem_custo <- dados |> group_by(tipo_obra) |>
+ summarise(mediana = median(custo_total), .groups = "drop") |>
+ arrange(desc(mediana)) |> pull(tipo_obra)
+ordem_regiao <- dados |> count(regiao, sort = TRUE) |> pull(regiao)
+ordem_frequencia <- dados |> count(tipo_obra, sort = TRUE) |> pull(tipo_obra)
+ordem_prazo <- dados |> group_by(tipo_obra) |>
+ summarise(mediana = median(prazo_meses), .groups = "drop") |>
+ arrange(desc(mediana)) |> pull(tipo_obra)
+dados <- dados |>
+ mutate(tipo_obra = factor(tipo_obra, levels = ordem_custo),
+        regiao = factor(regiao, levels = ordem_regiao),
+        sustentavel = factor(sustentavel, levels = names(pal_sust)),
+        custo_milhoes = custo_total/1e6, custo_m2 = custo_total/area_construida)
+stopifnot(nrow(dados_brutos) == 300, ncol(dados_brutos) == 11,
+          !anyNA(dados), all(dados$area_construida > 0))
+resumo_tipo <- dados |> group_by(tipo_obra) |>
+ summarise(n = n(), media = mean(custo_total), mediana = median(custo_total),
+           aiq = IQR(custo_total), .groups = "drop") |> arrange(desc(mediana))
+resumo_regiao <- dados |> group_by(regiao) |>
+ summarise(n = n(), prazo = mean(prazo_meses), custo = mean(custo_total),
+           r = cor(area_construida, custo_total), .groups = "drop") |> arrange(desc(n))
+```
+
+### Etapa 2 — Gráficos no Base R
+
+#### Questão 6 — Área construída e custo total
+
+```{r}
+#| label: fig-q06
+#| fig-cap: "Área e custo total das 300 obras. Escala monetária em milhões de reais."
+base_estilo()
+plot(dados$area_construida, dados$custo_milhoes,
+     main = "Obras maiores tendem a apresentar maior custo",
+     xlab = "Área construída (m²)", ylab = "Custo total (R$ milhões)",
+     pch = 19, col = adjustcolor(azul, alpha.f = .55), cex = .8)
+modelo_area <- lm(custo_total ~ area_construida, data = dados)
+abline(a = coef(modelo_area)[1]/1e6, b = coef(modelo_area)[2]/1e6, col = ouro, lwd = 2)
+```
+
+**Interpretação.** A correlação de Pearson é **`r num(cor(dados$area_construida, dados$custo_total),3)`**, indicando associação linear positiva expressiva. A nuvem também possui dispersão vertical: obras de área semelhante podem apresentar custos diferentes. A reta resume a amostra e não constitui orçamento de referência.
+
+**Escolha visual.** Pontos sem conexão preservam a independência das obras; transparência reduz sobreposição, e milhões de reais tornam o eixo legível. Os casos com maiores desvios da reta são identificados na Questão 16, sem classificá-los automaticamente como superfaturamento ou economia.
+
+#### Questão 7 — Distribuição da resistência
+
+```{r}
+#| label: fig-q07
+#| fig-cap: "Histograma da resistência com média e mediana. Classes comuns à Questão 12."
+base_estilo()
+limites_res <- seq(15, 45, by = 2.5)
+hist(dados$resistencia_mpa, breaks = limites_res, col = "#AACCDC", border = "white",
+     main = "Resistência concentrada em torno de 32 MPa",
+     xlab = "Resistência à compressão (MPa)", ylab = "Frequência de obras")
+abline(v = mean(dados$resistencia_mpa), col = verde, lwd = 2)
+abline(v = median(dados$resistencia_mpa), col = ouro, lwd = 2, lty = 2)
+legend("topright", c("Média", "Mediana"), col = c(verde, ouro), lty = c(1,2), lwd = 2, bty = "n")
+```
+
+**Interpretação.** A média (**`r num(mean(dados$resistencia_mpa))` MPa**) e a mediana (**`r num(median(dados$resistencia_mpa))` MPa**) são próximas; a distribuição é aproximadamente simétrica, com maior concentração central. Isso não demonstra normalidade. O mínimo de 17,82 MPa está na cauda inferior; a adequação ao projeto permanece indeterminada.
+
+**Escolha visual.** Classes de 2,5 MPa mantêm detalhamento sem fragmentar excessivamente a amostra. Linhas com cores e traços distintos permitem reconhecer as medidas mesmo quando próximas.
+
+#### Questão 8 — Custo por tipo de obra
+
+```{r}
+#| label: fig-q08
+#| fig-cap: "Custos por tipo: caixas mostram dispersão e mediana; valores em milhões de reais."
+base_estilo()
+boxplot(custo_milhoes ~ tipo_obra, data = dados, col = unname(paleta[levels(dados$tipo_obra)]),
+        main = "Infraestrutura apresenta maior mediana de custo",
+        xlab = "", ylab = "Custo total (R$ milhões)", cex.axis = .85)
+```
+
+**Interpretação.** Infraestrutura tem a maior mediana (**R$ `r num(resumo_tipo$mediana[resumo_tipo$tipo_obra == "Infraestrutura"])`**) e a maior amplitude interquartil (**R$ `r num(resumo_tipo$aiq[resumo_tipo$tipo_obra == "Infraestrutura"])`**). Industrial apresenta a menor dispersão central. Não há observações além dos limites do boxplot por tipo nesta base.
+
+```{r}
+#| label: tabela-fig-q08
+# A regra nativa do boxplot usa hinges; ggplot2 usa quantis.
+# Conferimos ambos os critérios, pois podem diferir em amostras pequenas.
+out_base <- sapply(split(dados$custo_total, dados$tipo_obra), function(z) length(boxplot.stats(z)$out))
+tabela(resumo_tipo, digits = 2)
+tabela(data.frame(Tipo = names(out_base), `Outliers do boxplot` = as.integer(out_base), check.names = FALSE))
+```
+
+**Escolha visual.** O boxplot compara posição e dispersão simultaneamente. A cor é fixa por tipo em todo o relatório; o critério de dispersão usado na interpretação é a amplitude interquartil, não apenas a altura total dos extremos.
+
+#### Questão 9 — Contagem por região
+
+```{r}
+#| label: fig-q09
+#| fig-cap: "Distribuição regional da carteira didática."
+base_estilo()
+cont_reg <- sort(table(dados$regiao), decreasing = TRUE)
+b <- barplot(cont_reg, col = grDevices::hcl.colors(5, "Blues 3"), border = NA,
+             ylim = c(0, max(cont_reg)*1.18), main = "Sudeste reúne a maior parcela das obras",
+             ylab = "Número de obras", cex.names = .85)
+text(b, cont_reg, labels = as.integer(cont_reg), pos = 3)
+```
+
+**Interpretação.** Sudeste reúne **101 obras (33,7%)**, seguido de Nordeste (78), Sul (69), Centro-Oeste (34) e Norte (18). O padrão é compatível com a ideia de concentração regional, mas **não permite validar a distribuição nacional da construção civil**: seriam necessários dados setoriais externos comparáveis e desenho amostral conhecido.
+
+**Escolha visual.** Barras ordenadas, eixo iniciando em zero e contagens diretamente anotadas permitem comparação imediata; o mapa posterior reproduz exatamente estes totais.
+
+### Etapa 3 — Gramática de gráficos com ggplot2
+
+#### Questão 10 — Dispersão por tipo de obra
+
+```{r}
+#| label: fig-q10
+#| fig-cap: "Área e custo, com identificação do tipo por cor."
+p_area <- ggplot(dados, aes(area_construida, custo_milhoes, colour = tipo_obra)) +
+  geom_point(alpha = .55, size = 2) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = .95) +
+  scale_colour_manual(values = paleta, breaks = ordem_custo) +
+  scale_x_continuous(labels = rotulo) +
+  labs(title = "Área e custo mantêm associação positiva",
+       subtitle = "Pontos e retas compartilham a cor da tipologia",
+       x = "Área construída (m²)", y = "Custo total (R$ milhões)", colour = "Tipo de obra")
+p_area
+```
+
+**Interpretação.** A associação se mantém dentro de cada tipo (correlações entre aproximadamente 0,934 e 0,950). Infraestrutura se concentra em faixas de custo mais altas para áreas semelhantes; Industrial, mais baixas. A segmentação sugere que comparar custos apenas pela área deixa de considerar diferenças relevantes de tipologia e escopo.
+
+```{r}
+#| label: tabela-fig-q10
+dados |> group_by(tipo_obra) |>
+  summarise(r = cor(area_construida, custo_total), .groups = "drop") |>
+  tabela(digits = 3)
+```
+
+**Escolha visual.** Cada tipologia possui pontos e reta na mesma cor. A reta resume a tendência dentro do grupo e não conecta obras individuais. A legenda abaixo do gráfico identifica as quatro tipologias, ordenadas pela mediana do custo, e preserva a área da dispersão.
+
+#### Questão 11 — Boxplot com preenchimento
+
+```{r}
+#| label: fig-q11
+#| fig-cap: "Distribuição de custos por tipo no ggplot2."
+p_box <- ggplot(dados, aes(tipo_obra, custo_milhoes, fill = tipo_obra)) +
+  geom_boxplot(width = .6, alpha = .8, outlier.shape = 21) +
+  scale_fill_manual(values = paleta) +
+  labs(title = "Posição e dispersão diferem entre tipologias", x = NULL,
+       y = "Custo total (R$ milhões)") + theme(legend.position = "none")
+p_box
+```
+
+**Interpretação.** A leitura da Questão 8 é mantida: Infraestrutura apresenta a maior mediana e amplitude interquartil; Industrial, as menores. Não surgem outliers pelo critério de 1,5 AIQ usando os quantis do ggplot2.
+
+**Escolha visual.** O `ggplot2` facilita o reaproveitamento do tema, da paleta e das escalas, além de permitir acrescentar camadas e facetas. A legenda é suprimida porque repete os nomes no eixo. Ambos os sistemas permitem gráficos rigorosos e reproduzíveis.
+
+#### Questão 12 — Histograma com densidade
+
+```{r}
+#| label: fig-q12
+#| fig-cap: "Histograma em escala de densidade e estimativa suavizada."
+ggplot(dados, aes(resistencia_mpa)) +
+  geom_histogram(aes(y = after_stat(density)), breaks = limites_res,
+                 fill = "#AACCDC", colour = "white", closed = "right") +
+  geom_density(colour = verde, linewidth = 1) +
+  geom_vline(xintercept = mean(dados$resistencia_mpa), linetype = 2, colour = ouro) +
+  labs(title = "A densidade reforça a concentração central",
+       x = "Resistência à compressão (MPa)", y = "Densidade (MPa⁻¹)")
+```
+
+**Interpretação.** A curva suavizada reforça a leitura de distribuição aproximadamente simétrica e unimodal. Pequenas ondulações dependem do parâmetro de suavização; não demonstram populações distintas.
+
+**Escolha visual.** `after_stat(density)` coloca o histograma na mesma escala da curva; sobrepor densidade a frequências absolutas sem ajuste seria inadequado. As classes são iguais às da Questão 7 para preservar a comparabilidade [@ggplot2hist].
+
+#### Questão 13 — Sustentabilidade por tipo
+
+```{r}
+#| label: fig-q13
+#| fig-cap: "Contagens lado a lado; percentuais calculados dentro de cada tipo."
+ordem_adesao <- dados |> group_by(tipo_obra) |>
+  summarise(taxa = mean(sustentavel == "Sim"), .groups = "drop") |>
+  arrange(desc(taxa)) |> pull(tipo_obra) |> as.character()
+adesao <- dados |> mutate(tipo_obra = factor(tipo_obra, levels = ordem_adesao)) |> count(tipo_obra, sustentavel) |> group_by(tipo_obra) |>
+  mutate(proporcao = n/sum(n), rotulo = paste0(n, " | ", num(100*proporcao,1), "%")) |>
+  ungroup()
+ggplot(adesao, aes(tipo_obra, n, fill = sustentavel)) +
+  geom_col(position = position_dodge(.8), width = .7) +
+  geom_text(aes(label = rotulo), position = position_dodge(.8), vjust = -.5, size = 3) +
+  scale_fill_manual(values = pal_sust) +
+  scale_y_continuous(expand = expansion(mult = c(0, .16))) +
+  labs(title = "Adesão sustentável: Comercial lidera em proporção",
+       x = NULL, y = "Número de obras", fill = "Práticas sustentáveis")
+```
+
+**Interpretação.** Residencial tem mais obras sustentáveis em números absolutos (50), mas Comercial lidera em proporção interna (48,8%). Seguem Industrial (40,4%), Residencial (39,7%) e Infraestrutura (31,0%, a menor proporção).
+
+**Escolha visual.** Barras agrupadas são ordenadas pela proporção de “Sim”, da maior para a menor; os percentuais evitam confundir maior grupo com maior adesão. Dentro de cada grupo, a ordem das séries permanece fixa para facilitar a comparação. Verde identifica “Sim” e cinza identifica “Não” de modo consistente.
+
+#### Questão 14 — Comparação por região
+
+```{r}
+#| label: fig-q14
+#| fig-height: 6.4
+#| fig-cap: "Mesmas escalas em todas as regiões para permitir comparação visual."
+ggplot(dados, aes(area_construida, custo_milhoes)) +
+  geom_point(colour = azul, alpha = .55) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = ouro) +
+  facet_wrap(~regiao, ncol = 2) +
+  labs(title = "A associação positiva ocorre nas cinco regiões",
+       x = "Área construída (m²)", y = "Custo total (R$ milhões)")
+```
+
+**Interpretação.** As correlações regionais variam de **`r num(min(resumo_regiao$r),3)` a `r num(max(resumo_regiao$r),3)`**. Todas as regiões apresentam tendência positiva, sem inversão evidente. Norte possui somente 18 obras; sua reta é mais sensível às observações individuais. Custos elevados em Nordeste e Sudeste devem ser lidos junto à composição por tipo, não como efeito regional comprovado.
+
+```{r}
+#| label: tabela-fig-q14
+tabela(resumo_regiao[, c("regiao", "n", "r")], digits = 3)
+```
+
+**Escolha visual.** Facetas separam contextos sem sobrepor cinco retas; escalas fixas impedem que amplitudes diferentes aparentem a mesma magnitude. As retas são resumos descritivos, não evidência causal de clima ou logística.
+
+#### Questão 15 — Gráfico autoral: cimento e resistência
+
+```{r}
+#| label: fig-q15
+#| fig-height: 6
+#| fig-cap: "Relação entre consumo de cimento e resistência, comparada por tipo de obra."
+p_autoral <- ggplot(dados, aes(consumo_cimento, resistencia_mpa)) +
+  geom_point(aes(colour = sustentavel), alpha = .65, size = 1.8) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = ouro, linewidth = .8) +
+  facet_wrap(~tipo_obra, ncol = 2) +
+  scale_colour_manual(values = pal_sust) +
+  scale_x_continuous(labels = rotulo) +
+  labs(title = "Mais cimento não se traduz em maior resistência nesta amostra",
+       subtitle = "Comparação descritiva; escalas fixas entre tipologias",
+       x = "Consumo de cimento (kg/m³)", y = "Resistência (MPa)", colour = "Sustentável") +
+  theme(strip.background = element_rect(fill = "#EDF3F5", colour = NA))
+p_autoral
+```
+
+**Interpretação.** A correlação global é **`r num(cor(dados$consumo_cimento, dados$resistencia_mpa),3)`**, próxima de zero. O gráfico não revela uma relação linear forte; isso não demonstra que cimento seja irrelevante, pois dosagem, relação água/cimento, idade, agregados e cura não foram informados. Os dados não sustentam recomendar aumento ou redução de cimento isoladamente.
+
+```{r}
+#| label: tabela-fig-q15
+dados |> group_by(tipo_obra) |>
+  summarise(n = n(), r = cor(consumo_cimento, resistencia_mpa), .groups = "drop") |>
+  tabela(digits = 3)
+```
+
+**Escolha visual.** As duas camadas distinguem observações e tendência. As facetas investigam se a associação agregada esconde padrões por tipo. A cor acrescenta a classificação de sustentabilidade sem presumir que ela descreva diretamente o traço do concreto.
+
+### Etapa 4 — Interatividade com plotly
+
+#### Questão 16 — Identificação individual das obras
+
+```{r}
+#| label: q16
+# Resíduo = custo observado menos custo previsto pela reta global área-custo.
+dados <- dados |> mutate(residuo_area = as.numeric(residuals(modelo_area)))
+dados_hover <- dados |> mutate(texto = paste0(
+  "Obra: ", id_obra, "<br>Tipo: ", tipo_obra, "<br>Região: ", regiao,
+  "<br>Área: ", num(area_construida,1), " m²<br>Custo: R$ ", num(custo_total),
+  "<br>Custo/área: R$ ", num(custo_m2), "/m²",
+  "<br>Desvio da reta global: R$ ", num(residuo_area)))
+p_hover <- ggplot(dados_hover, aes(area_construida, custo_milhoes, colour = tipo_obra, text = texto)) +
+  geom_point(alpha = .7, size = 2) + scale_colour_manual(values = paleta) +
+  labs(title = "Explore os custos obra a obra", x = "Área construída (m²)",
+       y = "Custo total (R$ milhões)", colour = "Tipo")
+w16 <- ggplotly(p_hover, tooltip = "text", height = 560) |>
+  layout(margin = list(l = 85, r = 35, b = 115, t = 65),
+         legend = list(orientation = "h", x = 0, y = -.22)) |>
+  config(displaylogo = FALSE, responsive = TRUE)
+w16
+extremos <- dados |> filter(residuo_area == min(residuo_area) | residuo_area == max(residuo_area)) |>
+  arrange(desc(residuo_area)) |>
+  select(id_obra, tipo_obra, regiao, area_construida, custo_total, residuo_area)
+tabela(extremos, digits = 2)
+```
+
+**Interpretação.** A obra **201 (Infraestrutura, Nordeste)** apresenta o maior desvio positivo em relação à reta global: aproximadamente **R$ 2,76 milhões**. A obra **92 (Industrial, Sul)** tem o maior desvio negativo: aproximadamente **−R$ 1,79 milhão**. A obra **8 (Infraestrutura, Sudeste)** tem o maior custo total (R$ 6,53 milhões), mas não o maior desvio relativo à reta. São três critérios diferentes de destaque.
+
+::: {.callout-note title="Destaque visual é triagem, não diagnóstico"}
+A reta global desconsidera o tipo de obra. Assim, esses desvios podem refletir escopos diferentes. O próximo passo profissional seria comparar projetos equivalentes, orçamento-base, quantitativos e características contratuais; não atribuir irregularidade com base apenas no gráfico.
+:::
+
+**Escolha visual.** O tooltip mantém ID, tipo, região, área, custo e desvio disponíveis sem sobrecarregar o gráfico com 300 rótulos. A conversão com `ggplotly()` reaproveita a composição estática [@plotlydocs].
+
+#### Questão 17 — Comparação direta com plot_ly()
+
+```{r}
+#| label: q17
+serie_regiao <- resumo_regiao |> arrange(desc(custo)) |>
+ mutate(regiao = as.character(regiao), rotulo = num(custo/1e6, 2),
+        detalhe = paste0(regiao, "<br>Custo médio: R$ ", num(custo), "<br>Obras: ", n))
+w17 <- plot_ly(serie_regiao, x = ~regiao, y = ~custo/1e6,
+ type = "bar", height = 530, marker = list(color = azul),
+ text = ~rotulo, textposition = "outside", cliponaxis = FALSE,
+ customdata = ~detalhe, hovertemplate = "%{customdata}<extra></extra>") |>
+ layout(title = list(text = "Custo médio por região", x = 0),
+  xaxis = list(title = "", categoryorder = "array", categoryarray = serie_regiao$regiao,
+               tickangle = 0, automargin = TRUE),
+  yaxis = list(title = "Custo médio (R$ milhões)", range = c(0, max(serie_regiao$custo)/1e6*1.22),
+               automargin = TRUE),
+  margin = list(l = 90, r = 35, b = 70, t = 70), bargap = .3,
+  showlegend = FALSE, separators = ",.", paper_bgcolor = "white", plot_bgcolor = "white") |>
+ config(displaylogo = FALSE, responsive = TRUE)
+w17
+```
+
+**Interpretação.** Sudeste tem o maior custo médio (**R$ `r num(serie_regiao$custo[1])`**), seguido de Centro-Oeste, Nordeste, Norte e Sul. A diferença entre a maior e a menor média é de **R$ `r num(max(serie_regiao$custo)-min(serie_regiao$custo))`**, aproximadamente **`r num((max(serie_regiao$custo)/min(serie_regiao$custo)-1)*100,1)`%** da menor média. As barras têm alturas próximas; a diferença regional de custo médio é modesta nesta carteira e não demonstra efeito causal da região.
+
+```{r}
+#| label: tabela-q17
+tabela(serie_regiao[,c("regiao","n","custo")], caption = "Ranking do custo médio, do maior para o menor.")
+```
+
+**Escolha visual.** Barras verticais, ordenação decrescente, eixo partindo de zero e rótulos externos facilitam a leitura. `plot_ly()` direto oferece controle de traces, rótulos, hover e menus sem depender da conversão de um objeto ggplot. `ggplotly()` é mais conveniente quando já existe um gráfico estático bem estruturado.
+
+::: {.callout-note collapse="true" title="Complemento da questão 17: lines+markers solicitado pelo professor"}
+O roteiro exige explicitamente `type = "scatter"` e `mode = "lines+markers"`. Abaixo está essa versão adicional; as barras acima são a visualização principal.
+
+```{r}
+#| label: q17-linhas
+w17_linhas <- plot_ly(serie_regiao, x = ~regiao, y = ~custo/1e6,
+ type = "scatter", mode = "lines+markers", height = 450,
+ line = list(color = azul, width = 2), marker = list(size = 9, color = azul),
+ customdata = ~detalhe, hovertemplate = "%{customdata}<extra></extra>") |>
+ layout(title = list(text = "Versão requerida: linha com marcadores"),
+  xaxis = list(title = "", categoryorder = "array", categoryarray = serie_regiao$regiao, automargin = TRUE),
+  yaxis = list(title = "Custo médio (R$ milhões)", rangemode = "tozero", automargin = TRUE),
+  margin = list(l = 90, r = 35, b = 65, t = 70), showlegend = FALSE) |>
+ config(displaylogo = FALSE, responsive = TRUE)
+w17_linhas
+```
+
+**Interpretação e decisão visual.** O ranking é idêntico ao das barras. A linha descendente resulta da ordenação por custo médio; **não representa queda ao longo do tempo nem deslocamento geográfico**. Os marcadores representam as médias e os segmentos cumprem a exigência didática.
+:::
+
+### Etapa 5 — Gráficos com highcharter
+
+Os gráficos a seguir utilizam a interface `hchart()` e a configuração por funções `hc_*()` documentadas pelo pacote [@highcharterdocs].
+
+#### Questão 18 — Custo médio por tipo
+
+```{r}
+#| label: q18
+hc_tipo <- resumo_tipo |> arrange(desc(media)) |>
+ mutate(tipo_obra = as.character(tipo_obra), media_mi = media/1e6,
+        pos = row_number()-1, cor = unname(paleta[tipo_obra]))
+w18 <- hchart(hc_tipo, "column", hcaes(x = pos, y = media_mi, color = cor), name = "Custo médio") |>
+ hc_size(height = 480) |> hc_title(text = "Custo médio por tipo de obra") |>
+ hc_xAxis(categories = hc_tipo$tipo_obra, title = list(text = NULL),
+          labels = list(style = list(fontSize = "12px"))) |>
+ hc_yAxis(min = 0, max = max(hc_tipo$media_mi)*1.2, title = list(text = "Custo médio (R$ milhões)")) |>
+ hc_legend(enabled = FALSE) |>
+ hc_plotOptions(column = list(borderWidth = 0, pointPadding = .15,
+  dataLabels = list(enabled = TRUE, format = "{point.y:.2f}", style = list(textOutline = "none")))) |>
+ hc_tooltip(pointFormat = "Custo médio: <b>R$ {point.y:.2f} milhões</b>")
+w18
+```
+
+**Interpretação.** O ranking das médias coincide com o das medianas: **Infraestrutura → Comercial → Residencial → Industrial**. Infraestrutura tem média de **R$ `r num(resumo_tipo$media[resumo_tipo$tipo_obra == "Infraestrutura"])`**. Concordância de ranking não significa distribuições separadas: há sobreposição dos grupos nos boxplots.
+
+**Escolha visual.** Colunas partindo de zero destacam diferenças entre médias; os boxplots anteriores complementam a dispersão que uma média isolada oculta.
+
+#### Questão 19 — Prazo médio por região
+
+```{r}
+#| label: q19
+serie_prazo <- resumo_regiao |> arrange(desc(prazo)) |>
+ mutate(regiao = as.character(regiao), pos = row_number()-1)
+w19 <- hchart(serie_prazo, "line", hcaes(x = pos, y = prazo), color = verde, name = "Prazo médio") |>
+ hc_size(height = 460) |> hc_title(text = "Prazo médio por região") |>
+ hc_xAxis(categories = serie_prazo$regiao, title = list(text = "Regiões ordenadas pelo prazo médio")) |>
+ hc_yAxis(min = 0, max = max(serie_prazo$prazo)*1.2, title = list(text = "Prazo médio (meses)")) |>
+ hc_legend(enabled = FALSE) |>
+ hc_plotOptions(line = list(marker = list(enabled = TRUE, radius = 5),
+  dataLabels = list(enabled = TRUE, format = "{point.y:.1f}", y = -10, style = list(textOutline = "none")))) |>
+ hc_tooltip(pointFormat = "Prazo médio: <b>{point.y:.2f} meses</b>")
+w19
+```
+
+**Interpretação.** Norte tem a maior média (**22,17 meses**) e Centro-Oeste a menor (**19,35 meses**). A diferença é de aproximadamente 2,81 meses. A amostra não demonstra que prazos sejam sistematicamente maiores por efeitos regionais: faltam cronogramas planejados, escopos, logística e dados climáticos para testar essas explicações.
+
+**Escolha visual.** Marcadores e tooltip indicam valores de categorias. A conexão é apenas didática; o declínio decorre da ordenação do maior prazo para o menor, não de uma série temporal. O eixo começando em zero evita exagerar diferenças moderadas. A média não descreve toda a variação dos prazos.
+
+```{r}
+#| label: tabela-q19
+tabela(serie_prazo[,c("regiao","n","prazo")])
+```
+
+#### Questão 20 — Participação por tipo
+
+```{r}
+#| label: q20
+participacao <- dados |> count(tipo_obra, sort = TRUE) |> mutate(tipo_obra = as.character(tipo_obra))
+w20 <- hchart(participacao, "pie", hcaes(name = tipo_obra, y = n)) |>
+  hc_colors(unname(paleta[participacao$tipo_obra])) |>
+  hc_size(height = 500) |>
+  hc_title(text = "Participação dos tipos na carteira") |>
+  hc_tooltip(pointFormat = "<b>{point.y} obras</b> ({point.percentage:.1f}%)") |>
+  hc_plotOptions(pie = list(dataLabels = list(enabled = TRUE, format = "{point.name}: {point.percentage:.1f}%")))
+w20
+```
+
+**Interpretação.** Residencial representa 42,0%, Comercial 26,7%, Industrial 17,3% e Infraestrutura 14,0% da carteira.
+
+**Escolha visual.** A pizza comunica composição de um total com poucas categorias. Barras ordenadas seriam superiores para comparar com precisão parcelas próximas, especialmente Industrial e Infraestrutura. A pizza foi mantida para cumprir o exercício, com rótulos explícitos e sem efeitos tridimensionais.
+
+#### Questão 21 — Personalização executiva
+
+```{r}
+#| label: q21
+w21 <- w18 |>
+  hc_title(text = "Custos médios: leitura executiva") |>
+  hc_subtitle(text = "Arraste no eixo horizontal para ampliar; passe o cursor para consultar valores") |>
+  hc_chart(zoomType = "x") |>
+  hc_tooltip(headerFormat = "<b>{point.key}</b><br>",
+             pointFormat = "Média observada: <b>R$ {point.y:.2f} milhões</b><br>Comparação descritiva da amostra")
+w21
+```
+
+**Interpretação e escolha visual.** O ranking não muda. Foram configurados título, tooltip e zoom, superando o mínimo de dois recursos. O tooltip é o recurso mais útil aqui, pois entrega precisão sob demanda sem ocupar a área do gráfico. O zoom é pouco necessário para quatro categorias, mas demonstra o recurso. Mantém-se o fundo claro para preservar a unidade visual do relatório; tema escuro não é obrigatório.
+
+### Etapa 6 — Mapas com leaflet
+
+::: {.callout-important title="Leitura geográfica correta"}
+Cada marcador representa o **total de uma região**, associado a uma capital de referência. As regiões não possuem capital oficial; foram escolhidas cidades para posicionar os resumos. As coordenadas não são endereços de obras. Os três mapas abaixo são widgets Leaflet [@leafletdocs; @leafletshapes], com altura definida, navegação e botões de zoom.
+:::
+
+#### Questão 22 — Mapa base
+
+```{r}
+#| label: q22
+# Este chunk termina com o mapa, para que o Quarto o imprima como htmlwidget.
+w22 <- leaflet(width = "100%", height = 560,
+ options = leafletOptions(scrollWheelZoom = FALSE)) |>
+ addTiles(urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", group = "OpenStreetMap") |>
+ addProviderTiles(providers$Esri.WorldTopoMap, group = "Topográfico") |>
+ addLayersControl(baseGroups = c("Topográfico", "OpenStreetMap"),
+                  options = layersControlOptions(collapsed = TRUE)) |>
+ hideGroup("OpenStreetMap") |> showGroup("Topográfico") |>
+ setView(lng = -52, lat = -15, zoom = 4) |>
+ addControl(html = "<div class='mapa-titulo'>Brasil · mapa de referência</div>", position = "topright") |>
+ ajustar_mapa()
+w22
+```
+
+**Interpretação.** O mapa mostra o contexto espacial brasileiro, ainda sem contagens. Não há inferência sobre concentração de obras nesta primeira etapa, pois nenhuma localização foi associada aos registros.
+
+**Escolha visual.** O fundo principal é `Esri.WorldTopoMap`, escolhido por mostrar relevo, cidades e vias com boa contextualização geográfica. `addTiles()` mantém OpenStreetMap como alternativa, cumprindo também a função indicada no roteiro. O controle no canto do mapa permite selecionar o provedor disponível na sua rede. A altura de 560 pixels evita comprimir o mapa; a rolagem da página não altera o zoom involuntariamente.
+
+#### Questão 23 — Marcadores, contagens e popups
+
+```{r}
+#| label: preparar-q23
+capitais <- data.frame(
+ regiao = c("Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"),
+ capital = c("Manaus", "Salvador", "Brasília", "São Paulo", "Porto Alegre"),
+ lat = c(-3.12, -12.97, -15.79, -23.55, -30.03),
+ lon = c(-60.02, -38.50, -47.88, -46.63, -51.23))
+contagens <- as.data.frame(table(dados$regiao), stringsAsFactors = FALSE)
+names(contagens) <- c("regiao", "n")
+mapa_dados <- capitais |> left_join(contagens, by = "regiao") |>
+ arrange(desc(n)) |> mutate(participacao = n/sum(n)*100,
+ popup = paste0("<b>", regiao, "</b><br>Obras: ", n,
+  "<br>Participação: ", num(participacao,1), "%<br>Referência: ", capital,
+  "<br><small>Posição ilustrativa do total regional.</small>"))
+stopifnot(sum(mapa_dados$n) == nrow(dados))
+tabela(mapa_dados |> select(regiao, capital, n, participacao), digits = 1,
+ caption = "Distribuição regional em ordem decrescente; participação em porcentagem.")
+# Ícone local incorporado em data URI: não depende de servidor de ícones.
+svg_marcador <- paste0('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="38" viewBox="0 0 28 38">',
+ '<path d="M14 1C6 1 1 7 1 14c0 9 13 23 13 23s13-14 13-23C27 7 22 1 14 1Z" fill="#2675A5" stroke="white" stroke-width="2"/>',
+ '<circle cx="14" cy="14" r="5" fill="white"/></svg>')
+icone <- icons(iconUrl = paste0("data:image/svg+xml;charset=UTF-8,", URLencode(svg_marcador, reserved = TRUE)),
+ iconWidth = 28, iconHeight = 38, iconAnchorX = 14, iconAnchorY = 38,
+ popupAnchorX = 0, popupAnchorY = -36)
+```
+
+```{r}
+#| label: q23
+w23 <- leaflet(mapa_dados, width = "100%", height = 560,
+ options = leafletOptions(scrollWheelZoom = FALSE)) |>
+ addTiles(urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", group = "OpenStreetMap") |>
+ addProviderTiles(providers$Esri.WorldTopoMap, group = "Topográfico") |>
+ addLayersControl(baseGroups = c("Topográfico", "OpenStreetMap"),
+                  options = layersControlOptions(collapsed = TRUE)) |>
+ hideGroup("OpenStreetMap") |> showGroup("Topográfico") |>
+ fitBounds(lng1 = -65, lat1 = -34, lng2 = -32, lat2 = 3) |>
+ addMarkers(lng = ~lon, lat = ~lat, icon = icone, popup = ~popup,
+            label = ~paste0(regiao, ": ", n, " obras")) |>
+ addControl(html = "<div class='mapa-titulo'>Carteira por região · clique nos marcadores</div>", position = "topright") |>
+ ajustar_mapa()
+w23
+```
+
+**Interpretação.** Sudeste concentra 101 obras (33,7%), Nordeste 78 (26,0%), Sul 69 (23,0%), Centro-Oeste 34 (11,3%) e Norte 18 (6,0%). O total é 300. Esses números coincidem com o barplot da Questão 9 porque ambos usam a mesma contagem; a coincidência verifica consistência entre visualizações, sem validar a representatividade da base.
+
+**Escolha visual.** Os marcadores utilizam o mesmo símbolo; o cursor informa a contagem e o clique abre o popup com detalhes. Evitou-se escrever todos os textos permanentemente sobre o mapa, o que geraria sobreposição. A tabela oferece o ranking que a posição geográfica não representa.
+
+#### Questão 24 — Destaque da região mais frequente
+
+```{r}
+#| label: q24
+maior_regiao <- mapa_dados |> filter(n == max(n))
+w24 <- w23 |>
+ addCircles(data = maior_regiao, lng = ~lon, lat = ~lat, radius = 150000,
+  color = ouro, weight = 2, fillColor = ouro, fillOpacity = .2,
+  popup = ~paste0("<b>", regiao, "</b><br>", n,
+                  " obras.<br>Raio de 150 km apenas para destaque visual.")) |>
+ addLegend(position = "bottomright", colors = ouro,
+  labels = paste0(maior_regiao$regiao, ": ", maior_regiao$n, " obras"),
+  title = "Maior contagem") |>
+ ajustar_mapa()
+w24
+```
+
+**Interpretação.** O círculo destaca a referência do Sudeste, onde está o maior total regional. Ele não mostra a área ocupada pelas obras, nem a fronteira do Sudeste. Com coordenadas reais, seria possível representar custos, prazos, resistência, falhas e sustentabilidade por empreendimento, além de investigar agrupamentos espaciais.
+
+**Escolha visual.** `radius` é expresso em metros. Os 150.000 m são uma escolha de apresentação, sem relação proporcional com número de obras. A cor âmbar e a transparência destacam sem ocultar o fundo; a legenda esclarece o significado.
+
+::: {.callout-tip title="Como visualizar os mapas"}
+Use **Render → HTML** e abra o arquivo gerado em Chrome, Edge ou Firefox. Visualizações em PDF ou prévias que bloqueiam JavaScript não preservam a interatividade. Se aparecer um fundo cinza com marcadores, verifique a conexão ou alterne o provedor no controle de camadas. O script do desafio também salva um mapa HTML separado para abertura direta no navegador.
+:::
+
+### Etapa 7 — Aplicações profissionais
+
+#### Questão 25 — Infraestrutura tem custo médio superior?
+
+```{r}
+#| label: fig-q25
+#| fig-cap: "Comparação descritiva das médias de custo total."
+comparacao <- resumo_tipo |> arrange(desc(media))
+ggplot(comparacao, aes(reorder(tipo_obra, media), media/1e6, fill = tipo_obra)) +
+  geom_col(width = .65) +
+  geom_text(aes(label = num(media/1e6)), hjust = -.15, size = 3.5) +
+  coord_flip() + scale_fill_manual(values = paleta) +
+  scale_y_continuous(expand = expansion(mult = c(0,.18))) +
+  labs(title = "A afirmação é sustentada descritivamente na amostra",
+       x = NULL, y = "Custo médio (R$ milhões)") + theme(legend.position = "none")
+```
+
+**Resposta.** Sim: Infraestrutura apresenta a maior média, aproximadamente R$ 3,73 milhões, acima de Comercial (R$ 2,95 milhões), Residencial (R$ 2,45 milhões) e Industrial (R$ 2,03 milhões). Essa é uma constatação descritiva, sem teste de hipótese e sem generalização à população. Custo total superior não significa menor eficiência; área, complexidade e escopo precisam ser considerados.
+
+```{r}
+#| label: tabela-q25
+tabela(comparacao, digits = 2)
+```
+
+**Escolha visual.** Barras horizontais acomodam nomes longos e rótulos mostram os valores; eixo monetário parte de zero.
+
+#### Questão 26 — Sustentabilidade e custo
+
+```{r}
+#| label: fig-q26-base
+#| fig-cap: "Base R: distribuição de custo total segundo práticas sustentáveis."
+base_estilo()
+boxplot(custo_milhoes ~ sustentavel, data = dados, col = unname(pal_sust),
+        main = "Há ampla sobreposição dos custos entre os grupos",
+        xlab = "Práticas sustentáveis", ylab = "Custo total (R$ milhões)")
+```
+
+**Interpretação do primeiro gráfico.** A média é R$ 2,75 milhões para “Sim” e R$ 2,65 milhões para “Não”; as medianas são R$ 2,55 e R$ 2,51 milhões, respectivamente. A diferença entre médias é aproximadamente 4,1%, mas os boxplots têm ampla sobreposição. Não se identifica separação clara que permita atribuir custo sistematicamente maior à sustentabilidade.
+
+```{r}
+#| label: tabela-fig-q26-base
+resumo_sust <- dados |> group_by(sustentavel) |>
+  summarise(n = n(), media = mean(custo_total), mediana = median(custo_total),
+            mediana_m2 = median(custo_m2), .groups = "drop")
+tabela(resumo_sust |> arrange(desc(mediana)), digits = 2)
+```
+
+
+```{r}
+#| label: fig-q26-total
+#| fig-cap: "Segundo sistema: distribuição de custo total por sustentabilidade, dentro de cada tipologia."
+ggplot(dados, aes(sustentavel, custo_milhoes, fill = sustentavel)) +
+ geom_boxplot(width = .55, alpha = .85) + facet_wrap(~tipo_obra, ncol = 2) +
+ scale_fill_manual(values = pal_sust) +
+ labs(title = "Custo total: comparar grupos dentro de cada tipo",
+      x = "Práticas sustentáveis", y = "Custo total (R$ milhões)") +
+ theme(legend.position = "none")
+```
+
+**Interpretação do segundo gráfico.** Os custos de obras “Sim” e “Não” se sobrepõem dentro das tipologias. A separação por tipo torna a comparação mais coerente, mas diferenças de área e escopo continuam presentes. A figura não permite atribuir a sustentabilidade, isoladamente, a uma variação de custo.
+
+Para reduzir parte do efeito do porte, acrescenta-se uma comparação exploratória do custo por área:
+
+$$
+C_{m^2,i}=\frac{C_i}{A_i},\qquad A_i>0.
+$$
+
+```{r}
+#| label: fig-q26-ggplot
+#| fig-height: 6
+#| fig-cap: "ggplot2: custo por área dentro de cada tipologia, segundo sustentabilidade."
+ggplot(dados, aes(sustentavel, custo_m2, fill = sustentavel)) +
+  geom_boxplot(width = .55, alpha = .8) +
+  facet_wrap(~tipo_obra, ncol = 2) +
+  scale_fill_manual(values = pal_sust) + scale_y_continuous(labels = rotulo) +
+  labs(title = "A comparação deve considerar porte e tipologia",
+       x = "Práticas sustentáveis", y = "Custo por área (R$/m²)") +
+  theme(legend.position = "none")
+```
+
+**Interpretação do gráfico complementar.** As medianas globais do custo por área são próximas: **R$ `r num(resumo_sust$mediana_m2[resumo_sust$sustentavel == "Sim"])`/m²** para “Sim” e **R$ `r num(resumo_sust$mediana_m2[resumo_sust$sustentavel == "Não"])`/m²** para “Não”. A separação em facetas permite examinar a sobreposição dentro dos tipos, reduzindo mistura de escopos. Custo por área ainda não ajusta toda a complexidade e pode ser insuficiente para infraestrutura; não é indicador isolado de eficiência.
+
+**Escolha visual.** Os dois primeiros gráficos comparam custo total em Base R e ggplot2. O terceiro acrescenta normalização por área e separação por tipo. Esta comparação é observacional e não estima o efeito causal da sustentabilidade, nem avalia custos ao longo do ciclo de vida.
+
+#### Questão 27 — Falhas e satisfação
+
+```{r}
+#| label: fig-q27
+#| fig-cap: "Falhas e satisfação: pequeno deslocamento horizontal expõe sobreposição sem alterar escores."
+r_falhas <- cor(dados$indice_falhas, dados$satisfacao)
+ggplot(dados, aes(indice_falhas, satisfacao)) +
+  geom_point(position = position_jitter(width = .13, height = 0, seed = 2026),
+             alpha = .45, colour = azul) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = ouro) +
+  scale_x_continuous(breaks = 0:max(dados$indice_falhas)) +
+  scale_y_continuous(breaks = seq(0,10,2)) + coord_cartesian(ylim = c(0,10)) +
+  labs(title = "Falhas não explicam linearmente a satisfação nesta base",
+       subtitle = paste0("Correlação de Pearson: ", num(r_falhas,3)),
+       x = "Número de falhas registradas", y = "Satisfação (0–10)")
+```
+
+**Interpretação.** A correlação é **`r num(r_falhas,3)`**, muito próxima de zero. A reta quase horizontal e a dispersão vertical não indicam associação linear expressiva. Isso não prova ausência de qualquer relação: gravidade das falhas, atendimento e expectativas não foram registrados.
+
+**Escolha visual.** A contagem de falhas é discreta; jitter somente no eixo horizontal revela pontos sobrepostos. A satisfação não é deslocada, preservando a escala observada; a semente fixa torna o posicionamento reproduzível.
+
+#### Questão 28 — Painel para o engenheiro
+
+O painel segue a sequência **perfil → recursos → desempenho do concreto**. São quatro gráficos, pois custo e prazo possuem unidades diferentes e suas distribuições merecem leitura separada. Os eixos não são combinados em escala dupla.
+
+```{r}
+#| label: painel-objetos
+#| include: false
+p_perfil <- dados |>
+  mutate(tipo_obra = factor(tipo_obra, levels = rev(ordem_frequencia))) |>
+  count(regiao, tipo_obra) |>
+  ggplot(aes(regiao, tipo_obra, fill = n)) +
+  geom_tile(colour = "white", linewidth = 1) +
+  geom_text(aes(label = n), colour = "#142F3D", size = 3.5) +
+  scale_fill_gradient(low = "#F1F7FA", high = "#76ADC7") +
+  labs(title = "1 · Perfil da carteira", x = NULL, y = NULL, fill = "Obras") +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1), legend.position = "none")
+p_custo <- p_box + labs(title = "2 · Distribuição de custo") +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
+p_prazo <- ggplot(dados |> mutate(tipo_obra = factor(tipo_obra, levels = ordem_prazo)),
+ aes(tipo_obra, prazo_meses, fill = tipo_obra)) +
+  geom_boxplot(width = .6, alpha = .8) + scale_fill_manual(values = paleta) +
+  labs(title = "3 · Distribuição de prazo", x = NULL, y = "Prazo (meses)") +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 25, hjust = 1))
+p_concreto <- ggplot(dados, aes(consumo_cimento, resistencia_mpa)) +
+  geom_point(colour = azul, alpha = .5, size = 1.4) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = ouro) +
+  labs(title = "4 · Consumo e resistência", x = "Cimento (kg/m³)", y = "Resistência (MPa)")
+```
+
+```{r}
+#| label: fig-painel
+#| fig-width: 12
+#| fig-height: 9
+#| fig-cap: "Painel integrado: composição da carteira, distribuições de custo e prazo e associação cimento–resistência."
+# grid faz parte da distribuição padrão do R; dispensa um pacote de composição.
+grid::grid.newpage()
+grid::pushViewport(grid::viewport(layout = grid::grid.layout(2, 2)))
+print(p_perfil, vp = grid::viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(p_custo, vp = grid::viewport(layout.pos.row = 1, layout.pos.col = 2))
+print(p_prazo, vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(p_concreto, vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 2))
+grid::popViewport()
+```
+
+**Leitura dos quatro gráficos.** O mapa de calor identifica a composição cruzada por região e tipo; a célula mais intensa representa maior contagem, não melhor desempenho. O boxplot de custo evidencia maior patamar e dispersão central em Infraestrutura. O boxplot de prazo mostra mediana de 22 meses em Residencial, 20,5 em Infraestrutura, 20 em Comercial e 18,5 em Industrial, com ampla sobreposição; duração não equivale a atraso. A dispersão final evidencia que consumo de cimento isolado não apresenta associação linear forte com resistência.
+
+**Justificativa da ordem.** Primeiro identifica-se quais obras estão sendo comparadas; depois, quanto custam e quanto duram; por fim, examina-se o indicador do concreto. A escala sequencial do mapa de calor representa quantidade; nos boxplots, as cores representam categorias. Não se usa cor de “alarme” sem um limite técnico definido.
+
+### Desafio final — Script independente e reproduzível
+
+O script abaixo importa e inspeciona o CSV, produz gráficos nos cinco sistemas, constrói uma visualização autoral com camadas e facetas, cria um mapa com marcadores e popups e grava interpretações técnicas. **Ele é independente dos objetos das questões anteriores.** A pasta `saidas_desafio/` recebe as figuras, os HTMLs interativos, os resumos e o texto de interpretação.
+
+```{r}
+#| label: desafio-final
+# DESAFIO FINAL — SCRIPT R INDEPENDENTE
+# Execute na pasta do CSV. A função não usa objetos criados nas questões anteriores.
+analisar_obras <- function(arquivo = "dados_engenharia_civil.csv",
+                           pasta_saida = "saidas_desafio") {
+  pacotes <- c("dplyr", "ggplot2", "plotly", "highcharter", "leaflet", "htmlwidgets", "scales")
+  faltam <- pacotes[!vapply(pacotes, requireNamespace, logical(1), quietly = TRUE)]
+  if (length(faltam)) stop("Instale os pacotes: ", paste(faltam, collapse = ", "))
+  # Funções utilizadas explicitamente; qualquer RStudio pode executar este script.
+  suppressPackageStartupMessages({
+    library(dplyr); library(ggplot2); library(plotly)
+    library(highcharter); library(leaflet)
+  })
+  fmt <- function(x, d = 2) formatC(x, format = "f", digits = d, decimal.mark = ",", big.mark = ".")
+  pal <- c("Residencial" = "#2675A5", "Comercial" = "#CA863B",
+           "Industrial" = "#6D65A8", "Infraestrutura" = "#298879")
+  dir.create(pasta_saida, recursive = TRUE, showWarnings = FALSE)
+
+  # 1. INSPEÇÃO: a importação é verificada antes dos gráficos.
+  base <- read.csv(arquivo, fileEncoding = "UTF-8", stringsAsFactors = FALSE)
+  colunas <- c("id_obra", "tipo_obra", "regiao", "area_construida", "custo_total",
+               "prazo_meses", "resistencia_mpa", "consumo_cimento", "indice_falhas", "satisfacao", "sustentavel")
+  if (!all(colunas %in% names(base))) stop("O CSV não contém todas as colunas necessárias.")
+  if (anyNA(base)) stop("Há ausências: investigue antes de interpretar os gráficos.")
+  if (any(base$area_construida <= 0)) stop("A área deve ser positiva.")
+  inspeção <- capture.output({
+    print(head(base)); print(tail(base)); print(dim(base))
+    str(base); dplyr::glimpse(base); print(summary(base))
+    print(colSums(is.na(base)))
+  })
+  writeLines(inspeção, file.path(pasta_saida, "01_inspecao.txt"), useBytes = TRUE)
+  resumo <- base |> group_by(tipo_obra) |>
+    summarise(obras = n(), media = mean(custo_total), mediana = median(custo_total),
+              aiq = IQR(custo_total), .groups = "drop") |> arrange(desc(media))
+  write.csv2(resumo, file.path(pasta_saida, "02_resumo_tipo.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+  base <- base |> mutate(tipo_obra = factor(tipo_obra, levels = resumo$tipo_obra),
+                         custo_mi = custo_total/1e6)
+
+  # 2. BASE R: distribuição de resistência. Classes iguais e média destacada.
+  png(file.path(pasta_saida, "03_base_R.png"), width = 1440, height = 850, res = 150)
+  par(mar = c(5, 5, 4, 1), las = 1, bty = "l")
+  hist(base$resistencia_mpa, breaks = seq(floor(min(base$resistencia_mpa)/2.5)*2.5,
+    ceiling(max(base$resistencia_mpa)/2.5)*2.5, by = 2.5),
+    col = "#AACCDC", border = "white", main = "Distribuição da resistência",
+    xlab = "Resistência (MPa)", ylab = "Número de obras")
+  abline(v = mean(base$resistencia_mpa), col = "#298879", lwd = 2)
+  legend("topright", "Média", col = "#298879", lwd = 2, bty = "n")
+  dev.off()
+
+  # 3. GGPLOT2 AUTORAL: pontos + retas, facetas e escala manual de cor.
+  # Facetas em ordem de custo médio; escalas fixas permitem comparação direta.
+  grafico_autoral <- ggplot(base, aes(area_construida, custo_mi, colour = tipo_obra)) +
+    geom_point(alpha = .55, size = 1.8) +
+    geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = .8) +
+    facet_wrap(~tipo_obra, ncol = 2) + scale_colour_manual(values = pal) +
+    scale_x_continuous(labels = scales::label_number(big.mark = ".", decimal.mark = ",")) +
+    labs(title = "Área e custo: tendências por tipologia", x = "Área (m²)", y = "Custo (R$ milhões)") +
+    theme_minimal(base_size = 12) +
+    theme(legend.position = "none", panel.grid.minor = element_blank(),
+          strip.text = element_text(face = "bold"), plot.margin = margin(12,18,12,12))
+  ggsave(file.path(pasta_saida, "04_ggplot_autoral.png"), grafico_autoral,
+         width = 10, height = 7, dpi = 150, bg = "white")
+
+  # 4. PLOTLY: identificação individual sem multiplicar rótulos sobre os pontos.
+  b_hover <- base |> mutate(detalhe = paste0("Obra: ", id_obra, "<br>Tipo: ", tipo_obra,
+    "<br>Região: ", regiao, "<br>Custo: R$ ", fmt(custo_total), "<br>Área: ", fmt(area_construida), " m²"))
+  p <- ggplot(b_hover, aes(area_construida, custo_mi, colour = tipo_obra, text = detalhe)) +
+    geom_point(alpha = .65) + scale_colour_manual(values = pal) +
+    labs(x = "Área (m²)", y = "Custo (R$ milhões)", colour = "Tipo") +
+    theme_minimal() + theme(legend.position = "bottom")
+  interativo <- ggplotly(p, tooltip = "text", height = 550) |>
+    layout(margin = list(l = 85, r = 25, b = 110, t = 40),
+           legend = list(orientation = "h", x = 0, y = -.22)) |>
+    config(displaylogo = FALSE, responsive = TRUE)
+  htmlwidgets::saveWidget(interativo, file.path(pasta_saida, "05_plotly.html"), selfcontained = TRUE)
+
+  # 5. HIGHCHARTER: maior custo médio primeiro; barras partem de zero.
+  dados_hc <- resumo |> mutate(pos = row_number()-1, media_mi = media/1e6)
+  executivo <- hchart(dados_hc, "column", hcaes(x = pos, y = media_mi), color = "#2675A5") |>
+    hc_title(text = "Custo médio por tipo") |> hc_size(height = 480) |>
+    hc_xAxis(categories = dados_hc$tipo_obra, title = list(text = NULL)) |>
+    hc_yAxis(min = 0, title = list(text = "R$ milhões")) |>
+    hc_legend(enabled = FALSE) |>
+    hc_plotOptions(column = list(dataLabels = list(enabled = TRUE, format = "{point.y:.2f}"))) |>
+    hc_tooltip(pointFormat = "Média: R$ {point.y:.2f} milhões")
+  htmlwidgets::saveWidget(executivo, file.path(pasta_saida, "06_highcharter.html"), selfcontained = TRUE)
+
+  # 6. LEAFLET: agregação regional, marcadores, popups e destaque explícito.
+  capitais <- data.frame(regiao = c("Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"),
+    lat = c(-3.12,-12.97,-15.79,-23.55,-30.03), lon = c(-60.02,-38.50,-47.88,-46.63,-51.23))
+  cont <- as.data.frame(table(base$regiao), stringsAsFactors = FALSE)
+  names(cont) <- c("regiao", "n")
+  geo <- left_join(capitais, cont, by = "regiao") |> arrange(desc(n))
+  destaque <- geo |> filter(n == max(n))
+  mapa <- leaflet(geo, width = "100%", height = 560,
+                   options = leafletOptions(scrollWheelZoom = FALSE)) |>
+    addProviderTiles(providers$Esri.WorldTopoMap) |>
+    setView(lng = -52, lat = -15, zoom = 4) |>
+    addMarkers(lng = ~lon, lat = ~lat,
+      popup = ~paste0("<b>", regiao, "</b><br>", n, " obras<br>Referência regional ilustrativa.")) |>
+    addCircles(data = destaque, lng = ~lon, lat = ~lat, radius = 150000,
+      color = "#CA863B", fillOpacity = .2) |>
+    addLegend(position = "bottomright", colors = "#CA863B",
+      labels = paste0(destaque$regiao, ": ", destaque$n, " obras"), title = "Maior contagem")
+  htmlwidgets::saveWidget(mapa, file.path(pasta_saida, "07_leaflet.html"), selfcontained = TRUE)
+
+  # 7. INTERPRETAÇÕES E JUSTIFICATIVAS: sempre vinculadas aos gráficos exportados.
+  leitura <- c(
+    "DESAFIO FINAL — INTERPRETAÇÃO DOS GRÁFICOS",
+    paste0("Base analisada: ", nrow(base), " obras e ", ncol(base)-1, " variáveis originais."),
+    paste0("03 — Base R: resistência média ", fmt(mean(base$resistencia_mpa)),
+      " MPa; mediana ", fmt(median(base$resistencia_mpa)), ". Histograma mostra concentração central; não é teste de normalidade nem de conformidade. Classes iguais evitam distorção e a linha destaca a média."),
+    paste0("04 — ggplot2: correlação global área-custo = ", fmt(cor(base$area_construida, base$custo_total),3),
+      ". A associação positiva permanece dentro das tipologias. Facetas com escalas fixas separam grupos; pontos e retas usam a mesma cor. Tipologia e escopo precisam acompanhar a interpretação de custo."),
+    "05 — plotly: permite consultar obra, tipo, região, área e custo sem cobrir a nuvem de pontos. Obras com custos próximos podem ter áreas diferentes; hover apoia triagem, não diagnóstico de irregularidade.",
+    paste0("06 — highcharter: ", resumo$tipo_obra[1], " tem o maior custo médio (R$ ", fmt(resumo$media[1]),
+      "). A ordenação decrescente facilita o ranking; eixo iniciado em zero mantém a comparação proporcional. A média não substitui análise da dispersão."),
+    paste0("07 — leaflet: ", geo$regiao[1], " reúne ", geo$n[1], " obras; ", tail(geo$regiao,1),
+      " reúne ", tail(geo$n,1), ". Marcadores representam totais em referências regionais. Popups detalham contagens; o círculo apenas destaca a maior região, sem delimitar área das obras."),
+    "Limites: amostra didática; associação não comprova causalidade. Não há coordenadas reais nem dados suficientes para aprovar concreto, inferir atraso ou estimar efeito da sustentabilidade."
+  )
+  writeLines(leitura, file.path(pasta_saida, "08_interpretacoes.txt"), useBytes = TRUE)
+  writeLines(capture.output(sessionInfo()), file.path(pasta_saida, "09_ambiente.txt"))
+  invisible(list(resumo = resumo, regioes = geo, interpretacoes = leitura,
+                 arquivos = list.files(pasta_saida, full.names = TRUE)))
+}
+
+resultado_desafio <- analisar_obras()
+
+```
+
+```{r}
+#| label: exportar-desafio
+# O próprio Quarto disponibiliza a versão R para entrega ao professor.
+writeLines(knitr::knit_code$get("desafio-final"), "desafio_rel04.R", useBytes = TRUE)
+tabela(data.frame(Saída = basename(resultado_desafio$arquivos)),
+       caption = "Arquivos produzidos pelo script do desafio.")
+```
+
+**Interpretação dos produtos.** O histograma resume a resistência; as facetas evidenciam a relação área–custo por tipo; o plotly identifica obras; o highcharter compara médias; o Leaflet situa as contagens regionais. As interpretações específicas e as justificativas visuais de cada saída também são registradas em `08_interpretacoes.txt`, calculadas com os dados lidos pelo script.
+
+A versão R pode ser executada no console com `source("desafio_rel04.R", encoding = "UTF-8")`. O comando `writeLines()` acima exporta exatamente o código exibido neste relatório, evitando manter duas versões divergentes.
 
 ## 🧠 Considerações finais
 
-Apresente uma síntese dos principais pontos observados no experimento.
+A aplicação conjunta dos cinco sistemas permitiu organizar a inspeção e comunicar diferentes dimensões da base. Os resultados mostram associação positiva entre área e custo, maior custo médio e mediano em Infraestrutura e concentração da carteira no Sudeste. Por outro lado, as correlações de cimento com resistência e de falhas com satisfação são próximas de zero, impedindo conclusões lineares fortes para essas relações. As distribuições de custo de obras sustentáveis e não sustentáveis se sobrepõem amplamente.
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+### Base R e ggplot2: qual é a principal diferença?
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+No Base R, a construção costuma começar com uma função específica e ser complementada por comandos que atuam no dispositivo gráfico, como `abline()` e `legend()`. No ggplot2, um objeto combina dados, mapeamentos, geometrias, escalas, facetas e tema. Essa organização facilita reuso e comparações em painéis. **Ambos permitem controle detalhado e reprodução**; a diferença principal é a organização da construção, não uma superioridade automática de rigor.
 
-## Aprenda Quarto
+### Por que a escolha do sistema e da geometria é técnica?
 
-Acesse [Quarto](https://quarto.org/).
+A escolha determina quais informações ficam visíveis: barras comparam magnitudes; boxplots expõem dispersão; pontos mostram associações; mapas acrescentam contexto espacial. Uma média sem distribuição pode esconder heterogeneidade, e uma linha entre regiões pode sugerir continuidade inexistente. A ferramenta deve atender à pergunta, ao público e ao nível de exploração necessário.
+
+### Qual gráfico foi mais informativo?
+
+A dispersão interativa de **área e custo por tipo de obra**, elaborada com ggplot2 e convertida com plotly, foi a mais informativa para triagem gerencial. Ela preserva a associação geral, mostra diferenças entre tipologias e identifica obras por ID e região. Permite distinguir maior custo absoluto de maior desvio em relação à área, evitando confundir critérios diferentes de destaque. Seu resultado orienta investigações posteriores, sem substituir orçamento analítico ou comprovar irregularidades.
 
 ## 📖 Referências

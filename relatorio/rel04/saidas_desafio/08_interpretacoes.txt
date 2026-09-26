@@ -1,0 +1,8 @@
+DESAFIO FINAL — INTERPRETAÇÃO DOS GRÁFICOS
+Base analisada: 300 obras e 11 variáveis originais.
+03 — Base R: resistência média 32,18 MPa; mediana 31,94. Histograma mostra concentração central; não é teste de normalidade nem de conformidade. Classes iguais evitam distorção e a linha destaca a média.
+04 — ggplot2: correlação global área-custo = 0,806. A associação positiva permanece dentro das tipologias. Facetas com escalas fixas separam grupos; pontos e retas usam a mesma cor. Tipologia e escopo precisam acompanhar a interpretação de custo.
+05 — plotly: permite consultar obra, tipo, região, área e custo sem cobrir a nuvem de pontos. Obras com custos próximos podem ter áreas diferentes; hover apoia triagem, não diagnóstico de irregularidade.
+06 — highcharter: Infraestrutura tem o maior custo médio (R$ 3.727.873,31). A ordenação decrescente facilita o ranking; eixo iniciado em zero mantém a comparação proporcional. A média não substitui análise da dispersão.
+07 — leaflet: Sudeste reúne 101 obras; Norte reúne 18. Marcadores representam totais em referências regionais. Popups detalham contagens; o círculo apenas destaca a maior região, sem delimitar área das obras.
+Limites: amostra didática; associação não comprova causalidade. Não há coordenadas reais nem dados suficientes para aprovar concreto, inferir atraso ou estimar efeito da sustentabilidade.

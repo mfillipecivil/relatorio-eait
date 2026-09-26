@@ -1,0 +1,81 @@
+  id_obra   tipo_obra       regiao area_construida custo_total prazo_meses
+1       1  Industrial     Nordeste           802,5     1608826          36
+2       2   Comercial     Nordeste           791,5     2870992          20
+3       3 Residencial          Sul           575,4     1683606          13
+4       4 Residencial      Sudeste          1156,6     3469884          23
+5       5   Comercial Centro-Oeste           581,5     2176259          28
+6       6 Residencial      Sudeste           606,9     1350551          27
+  resistencia_mpa consumo_cimento indice_falhas satisfacao sustentavel
+1           26,80           393,1             1        6,2         Sim
+2           28,05           394,1             2        7,8         Sim
+3           33,12           387,0             4        3,8         Não
+4           31,06           368,7             1        3,8         Sim
+5           28,29           389,4             2        6,7         Sim
+6           32,94           329,8             4        1,0         Sim
+    id_obra   tipo_obra   regiao area_construida custo_total prazo_meses
+295     295  Industrial Nordeste           586,3     1420749          11
+296     296   Comercial  Sudeste           800,2     2983588          18
+297     297   Comercial Nordeste           360,5     1229413          32
+298     298   Comercial    Norte           785,3     2676964           7
+299     299 Residencial Nordeste           430,3     1533911          20
+300     300   Comercial    Norte           405,2     1415176          35
+    resistencia_mpa consumo_cimento indice_falhas satisfacao sustentavel
+295           33,60           390,4             4        2,5         Não
+296           29,15           351,1             3        4,3         Sim
+297           28,97           364,4             2        7,8         Sim
+298           30,53           295,0             2        3,8         Sim
+299           31,88           308,2             3        5,0         Não
+300           28,53           378,9             2        8,7         Não
+[1] 300  11
+'data.frame':	300 obs. of  11 variables:
+ $ id_obra        : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ tipo_obra      : chr  "Industrial" "Comercial" "Residencial" "Residencial" ...
+ $ regiao         : chr  "Nordeste" "Nordeste" "Sul" "Sudeste" ...
+ $ area_construida: num  802 792 575 1157 582 ...
+ $ custo_total    : num  1608826 2870992 1683606 3469884 2176259 ...
+ $ prazo_meses    : int  36 20 13 23 28 27 20 15 35 15 ...
+ $ resistencia_mpa: num  26,8 28,1 33,1 31,1 28,3 ...
+ $ consumo_cimento: num  393 394 387 369 389 ...
+ $ indice_falhas  : int  1 2 4 1 2 4 1 2 0 1 ...
+ $ satisfacao     : num  6,2 7,8 3,8 3,8 6,7 1 9,7 8,8 7,6 5,1 ...
+ $ sustentavel    : chr  "Sim" "Sim" "Não" "Sim" ...
+Rows: 300
+Columns: 11
+$ id_obra         <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
+$ tipo_obra       <chr> "Industrial", "Comercial", "Residencial", "Residencial…
+$ regiao          <chr> "Nordeste", "Nordeste", "Sul", "Sudeste", "Centro-Oest…
+$ area_construida <dbl> 802,5, 791,5, 575,4, 1156,6, 581,5, 606,9, 572,7, 1380…
+$ custo_total     <dbl> 1608825,8, 2870991,8, 1683605,5, 3469884,2, 2176258,5,…
+$ prazo_meses     <int> 36, 20, 13, 23, 28, 27, 20, 15, 35, 15, 36, 23, 32, 12…
+$ resistencia_mpa <dbl> 26,80, 28,05, 33,12, 31,06, 28,29, 32,94, 35,05, 42,62…
+$ consumo_cimento <dbl> 393,1, 394,1, 387,0, 368,7, 389,4, 329,8, 422,6, 347,3…
+$ indice_falhas   <int> 1, 2, 4, 1, 2, 4, 1, 2, 0, 1, 0, 1, 2, 1, 1, 3, 1, 1, …
+$ satisfacao      <dbl> 6,2, 7,8, 3,8, 3,8, 6,7, 1,0, 9,7, 8,8, 7,6, 5,1, 2,6,…
+$ sustentavel     <chr> "Sim", "Sim", "Não", "Sim", "Sim", "Sim", "Não", "Não"…
+    id_obra           tipo_obra         regiao    area_construida 
+ Min.   :  1,00   Length   :300   Length   :300   Min.   :  45,9  
+ 1st Qu.: 75,75   N.unique :  4   N.unique :  5   1st Qu.: 629,4  
+ Median :150,50   N.blank  :  0   N.blank  :  0   Median : 909,1  
+ Mean   :150,50   Min.nchar:  9   Min.nchar:  3   Mean   : 873,0  
+ 3rd Qu.:225,25   Max.nchar: 14   Max.nchar: 12   3rd Qu.:1087,5  
+ Max.   :300,00                                   Max.   :1855,9  
+  custo_total       prazo_meses    resistencia_mpa consumo_cimento
+ Min.   : 112443   Min.   : 6,00   Min.   :17,82   Min.   :188,4  
+ 1st Qu.:1754793   1st Qu.:14,00   1st Qu.:28,97   1st Qu.:312,0  
+ Median :2548002   Median :20,00   Median :31,94   Median :344,4  
+ Mean   :2689385   Mean   :20,98   Mean   :32,18   Mean   :341,3  
+ 3rd Qu.:3475290   3rd Qu.:29,00   3rd Qu.:35,51   3rd Qu.:373,4  
+ Max.   :6526477   Max.   :36,00   Max.   :44,43   Max.   :467,6  
+ indice_falhas     satisfacao       sustentavel 
+ Min.   :0,000   Min.   : 1,00   Length   :300  
+ 1st Qu.:1,000   1st Qu.: 3,50   N.unique :  2  
+ Median :2,000   Median : 5,70   N.blank  :  0  
+ Mean   :2,203   Mean   : 5,74   Min.nchar:  3  
+ 3rd Qu.:3,000   3rd Qu.: 8,10   Max.nchar:  3  
+ Max.   :7,000   Max.   :10,00                  
+        id_obra       tipo_obra          regiao area_construida     custo_total 
+              0               0               0               0               0 
+    prazo_meses resistencia_mpa consumo_cimento   indice_falhas      satisfacao 
+              0               0               0               0               0 
+    sustentavel 
+              0 
