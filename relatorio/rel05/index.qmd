@@ -8,7 +8,8 @@ link-citations: true
 csl: associacao-brasileira-de-normas-tecnicas-ipea.csl
 subtitle: "<a href='https://bendeivide.github.io/courses/epaec/' target='_blank'>Estatística e Probabilidade</a> </br> <a href='https://bendeivide.github.io' target='_blank'>Prof. Ben Dêivide (DEFIM/CAP/UFSJ)</a>"
 include-before-body: header.html
-date: today
+date: now
+date-format: "DD/MM/YYYY, HH:mm"
 lang: pt-BR
 format:
   html:
@@ -31,9 +32,9 @@ A execução de uma Pequena Central Hidrelétrica (PCH) envolve diferentes etapa
 
 A resistência à compressão do concreto, por exemplo, pode apresentar variações mesmo quando são mantidos procedimentos semelhantes de produção e controle. De forma semelhante, a ocorrência de estacas defeituosas, fissuras em túneis, falhas de equipamentos, capacidade de suporte do solo e precipitação são fenômenos que apresentam comportamento aleatório.
 
-Nesse contexto, a Estatística e a Probabilidade fornecem ferramentas capazes de representar matematicamente essas incertezas. Segundo Bussab e Morettin, as distribuições de probabilidade permitem descrever o comportamento de variáveis aleatórias e determinar a probabilidade associada a diferentes eventos. Para Montgomery e Runger, tais ferramentas possuem ampla aplicação na engenharia, principalmente em problemas relacionados ao controle de qualidade, confiabilidade e avaliação de riscos.
+Nesse contexto, a Estatística e a Probabilidade fornecem ferramentas capazes de representar matematicamente essas incertezas. Segundo @bussab_morettin, as distribuições de probabilidade permitem descrever o comportamento de variáveis aleatórias e determinar a probabilidade associada a diferentes eventos. Para @montgomery_runger, tais ferramentas possuem ampla aplicação na engenharia, principalmente em problemas relacionados ao controle de qualidade, confiabilidade e avaliação de riscos.
 
-Além da abordagem analítica, recursos computacionais permitem realizar cálculos e simulações de maneira eficiente. Neste trabalho será utilizada a linguagem R, que disponibiliza funções específicas para cálculo de probabilidades, quantis, densidades e geração de números pseudoaleatórios para diferentes distribuições.
+Além da abordagem analítica, recursos computacionais permitem realizar cálculos e simulações de maneira eficiente. Neste trabalho será utilizada a linguagem R [@rcore], que disponibiliza funções específicas para cálculo de probabilidades, quantis, densidades e geração de números pseudoaleatórios para diferentes distribuições.
 
 O presente estudo aplica as distribuições Normal, Binomial, Poisson, Exponencial, Weibull e Gama a situações relacionadas à construção de uma PCH. Também é utilizada a simulação de Monte Carlo, permitindo comparar resultados obtidos teoricamente com resultados provenientes de simulações computacionais.
 
@@ -232,7 +233,7 @@ As principais funções disponíveis no R são dgamma(), pgamma(), qgamma() e rg
 
 A simulação de Monte Carlo consiste na geração repetida de valores pseudoaleatórios de acordo com determinado modelo probabilístico. A partir de um número elevado de simulações, podem ser estimadas probabilidades e outras características do fenômeno estudado.
 
-Montgomery e Runger destacam a importância das ferramentas probabilísticas e computacionais na resolução de problemas de engenharia envolvendo incerteza.
+@montgomery_runger destacam a importância das ferramentas probabilísticas e computacionais na resolução de problemas de engenharia envolvendo incerteza.
 
 Na Engenharia Civil, a simulação pode ser empregada em estudos de confiabilidade, análise de riscos, variabilidade de materiais, carregamentos e avaliação de diferentes cenários de projeto.
 
@@ -245,7 +246,6 @@ O trabalho foi desenvolvido utilizando a linguagem de programação R, com aplic
 Inicialmente, cada problema foi classificado de acordo com a natureza da variável aleatória e com a distribuição de probabilidade indicada. Posteriormente, foram definidos os parâmetros correspondentes a cada modelo.
 
 Foram consideradas as seguintes distribuições:
- Tabela com as distribuições utilizadas no estudo
 ```{r}
 tabela_distribuicoes <- data.frame(
   Aplicacao = c(
@@ -287,9 +287,33 @@ Os cálculos foram realizados utilizando funções como pnorm(), qnorm(), dbinom
 
 Para as etapas de simulação foram utilizadas as funções rnorm(), rbinom(), rexp() e rgamma(). A função set.seed() foi utilizada para possibilitar a reprodução dos valores pseudoaleatórios.
 
-Os resultados foram organizados em tabelas por meio da função knitr::kable() e representados graficamente quando necessário. Por fim, foi realizada uma simulação de Monte Carlo com 10.000 observações, comparando-se a probabilidade simulada com o resultado analítico da distribuição Normal.
+Os resultados foram organizados em tabelas por meio da função knitr::kable() e representados graficamente quando necessário. Os parâmetros do enunciado foram assumidos; não houve ajuste a medições da PCH. Por fim, foi realizada uma simulação de Monte Carlo com 10.000 observações, comparando-se a probabilidade simulada com o resultado analítico da distribuição Normal.
 
 ---
+
+```{r}
+#| label: estilo-graficos
+#| include: false
+# Instale uma vez se necessário: install.packages("ggplot2")
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  stop("Instale o pacote ggplot2 com install.packages('ggplot2') e renderize novamente.")
+}
+library(ggplot2)
+cor_pch <- c(modelo = "#205A75", amostra = "#3B9B97",
+             alerta = "#D17C50", fundo = "#D8E9E7")
+tema_pch <- theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", size = 14, colour = "#1D3B49"),
+        plot.subtitle = element_text(size = 10, colour = "#496675"),
+        axis.title = element_text(colour = "#263F4B"),
+        axis.text = element_text(colour = "#3C5360"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        legend.position = "bottom", legend.title = element_blank(),
+        plot.margin = margin(12, 20, 12, 12))
+theme_set(tema_pch)
+rotulo_pct <- function(x) paste0(formatC(100*x, format = "f", digits = 1,
+                                      decimal.mark = ","), "%")
+```
 
 ## 🔍 Resultados e Discussão
 
@@ -372,32 +396,29 @@ Consequentemente, a probabilidade de a média das dez amostras ser inferior a 33
 Simulação da resistência
 ```{r}
 #| label: normal-simulacao
+#| fig-cap: "Mil resistências simuladas, densidade Normal teórica e limite de 30 MPa."
+#| fig-width: 8.8
+#| fig-height: 4.7
 #| echo: true
-
 set.seed(321)
-
-resistencia_sim <- rnorm(
-  n = 1000,
-  mean = mu,
-  sd = sigma
-)
-
-hist(
-  resistencia_sim,
-  breaks = 20,
-  probability = TRUE,
-  main = "Distribuição simulada da resistência do concreto",
-  xlab = "Resistência (MPa)",
-  ylab = "Densidade"
-)
-
-curve(
-  dnorm(x, mean = mu, sd = sigma),
-  add = TRUE,
-  lwd = 2
-)
+resistencia_sim <- rnorm(n = 1000, mean = mu, sd = sigma)
+curva_normal <- data.frame(x = seq(19, 51, length.out = 400))
+curva_normal$densidade <- dnorm(curva_normal$x, mean = mu, sd = sigma)
+ggplot(data.frame(x = resistencia_sim), aes(x)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 24,
+                 fill = cor_pch["amostra"], alpha = 0.65, colour = "white") +
+  geom_line(data = curva_normal, aes(x, densidade), inherit.aes = FALSE,
+            colour = cor_pch["modelo"], linewidth = 1.1) +
+  geom_vline(xintercept = 30, linetype = "dashed",
+             colour = cor_pch["alerta"], linewidth = 0.9) +
+  annotate("text", x = 30.3, y = 0.095, label = "30 MPa", hjust = 0,
+           colour = cor_pch["alerta"], size = 3.6) +
+  scale_x_continuous(breaks = seq(20, 50, 5), limits = c(19, 51)) +
+  labs(title = "Resistência à compressão do concreto",
+       subtitle = "Barras: simulação | Curva: Normal teórica | Tracejado: 30 MPa",
+       x = "Resistência (MPa)", y = "Densidade")
 ```
-O histograma apresenta concentração dos valores nas proximidades de 35 MPa e redução gradual da frequência à medida que os valores se afastam da média. A curva teórica sobreposta ao histograma permite verificar visualmente a aproximação entre os dados simulados e o comportamento esperado para uma distribuição Normal.
+O histograma apresenta concentração dos valores nas proximidades de 35 MPa e redução gradual da frequência à medida que os valores se afastam da média. A curva teórica sobreposta ao histograma permite verificar visualmente a aproximação entre os dados simulados e o comportamento esperado para uma distribuição Normal. A linha tracejada destaca o evento da questão (a); a proporção simulada abaixo dela é `r rotulo_pct(mean(resistencia_sim < 30))`, comparada a `r rotulo_pct(prob_menor_30)` teoricamente.
 
 No contexto da PCH, essa análise pode auxiliar na compreensão da variabilidade da resistência do concreto. Entretanto, a utilização desses resultados para aceitação ou rejeição do material deve considerar os critérios técnicos e normativos aplicáveis ao controle tecnológico.
 
@@ -489,23 +510,46 @@ Portanto, considerando grande quantidade de lotes com as mesmas características
 Simulação de 500 lotes
 ```{r}
 #| label: binomial-simulacao
+#| fig-cap: "Probabilidades teóricas e frequências relativas em 500 lotes; 6+ reúne a cauda."
+#| fig-width: 8.8
+#| fig-height: 4.8
 #| echo: true
-
 set.seed(321)
-
-lotes_simulados <- rbinom(
-  n = 500,
-  size = total_estacas,
-  prob = prob_defeito
+lotes_simulados <- rbinom(n = 500, size = total_estacas, prob = prob_defeito)
+# Frequências completas de 0 a 15, com zeros para categorias não observadas.
+qtd_defeitos <- 0:total_estacas
+freq_simulada <- as.numeric(table(factor(lotes_simulados,
+                                         levels = qtd_defeitos))) / 500
+prob_teoricas_bin <- dbinom(qtd_defeitos, size = total_estacas,
+                            prob = prob_defeito)
+comparacao_bin <- data.frame(
+  `Defeitos no lote` = qtd_defeitos,
+  `Probabilidade teórica` = round(prob_teoricas_bin, 4),
+  `Frequência simulada` = round(freq_simulada, 4),
+  check.names = FALSE
 )
-
-freq_simulada <- prop.table(
-  table(lotes_simulados)
+knitr::kable(comparacao_bin,
+             caption = "Comparação binomial completa, de 0 a 15 defeitos",
+             align = c("r", "r", "r"))
+# Agrupamento somente visual: a tabela conserva todas as categorias.
+classes <- c(as.character(0:5), "6+")
+plot_bin <- data.frame(
+  defeitos = rep(factor(classes, levels = classes), 2),
+  fonte = rep(c("Teórica", "Simulada"), each = 7),
+  proporcao = c(prob_teoricas_bin[1:6], sum(prob_teoricas_bin[7:16]),
+                freq_simulada[1:6], sum(freq_simulada[7:16]))
 )
-
-freq_simulada
+ggplot(plot_bin, aes(defeitos, proporcao, fill = fonte)) +
+  geom_col(width = 0.72, position = position_dodge(width = 0.78)) +
+  scale_fill_manual(values = c("Teórica" = unname(cor_pch["modelo"]),
+                               "Simulada" = unname(cor_pch["amostra"]))) +
+  scale_y_continuous(labels = rotulo_pct,
+                     expand = expansion(mult = c(0, 0.12))) +
+  labs(title = "Estacas defeituosas por lote de 15 unidades",
+       subtitle = "Barras lado a lado: modelo e 500 lotes simulados",
+       x = "Número de estacas defeituosas", y = "Probabilidade / frequência relativa")
 ```
-A simulação apresenta pequenas diferenças em relação aos valores teóricos, comportamento esperado devido à variabilidade aleatória. Com o aumento do número de simulações, as frequências relativas tendem a se aproximar das probabilidades fornecidas pela distribuição Binomial.
+A comparação gráfica concentra as barras em 0, 1 e 2 defeitos; as alturas simuladas acompanham as probabilidades teóricas, com diferenças pequenas nas categorias raras. A simulação apresenta pequenas diferenças em relação aos valores teóricos, comportamento esperado devido à variabilidade aleatória. Com o aumento do número de simulações, as frequências relativas tendem a se aproximar das probabilidades fornecidas pela distribuição Binomial.
 
 ### Fissuras em túnel – Distribuição Poisson
 
@@ -602,6 +646,31 @@ portanto, para um quilômetro, tanto a esperança quanto a variância são iguai
 
 No contexto da obra, o modelo pode auxiliar na previsão da frequência de ocorrências e no planejamento de inspeções. Entretanto, concentrações de fissuras em determinadas regiões devem ser avaliadas tecnicamente, pois podem estar relacionadas a características geológicas, concentração de tensões ou aspectos executivos.
 
+```{r}
+#| label: grafico-poisson
+#| fig-cap: "Distribuição teórica de fissuras em 1 km; 8+ reúne a cauda superior."
+#| fig-width: 8.6
+#| fig-height: 4.6
+#| echo: true
+classes_pois <- c(as.character(0:7), "8+")
+prob_pois <- c(dpois(0:7, lambda), ppois(7, lambda, lower.tail = FALSE))
+dados_pois <- data.frame(fissuras = factor(classes_pois, levels = classes_pois),
+                         probabilidade = prob_pois,
+                         destaque = ifelse(0:8 >= 3, "3 ou mais", "Até 2"))
+ggplot(dados_pois, aes(fissuras, probabilidade, fill = destaque)) +
+  geom_col(width = 0.66) +
+  scale_fill_manual(values = c("Até 2" = unname(cor_pch["modelo"]),
+                               "3 ou mais" = unname(cor_pch["alerta"]))) +
+  scale_y_continuous(labels = rotulo_pct,
+                     expand = expansion(mult = c(0, 0.12))) +
+  labs(title = "Fissuras esperadas por quilômetro de túnel",
+       subtitle = "O destaque marca as contagens usadas na questão (b)",
+       x = "Número de fissuras em 1 km", y = "Probabilidade")
+```
+
+**Interpretação do gráfico.** As contagens de duas e três fissuras estão entre as mais prováveis. As barras destacadas reúnem os casos com três ou mais ocorrências, cuja probabilidade conjunta é `r rotulo_pct(p_3_mais)`. O gráfico representa o modelo assumido; concentrações espaciais de fissuras exigem inspeção do túnel.
+
+
 ### Confiabilidade de equipamentos – Distribuição Exponencial
 
 O tempo até a falha de uma betoneira foi considerado como uma variável Exponencial com tempo médio de funcionamento igual a 200 horas.
@@ -683,31 +752,27 @@ Essa hipótese deve ser interpretada com cautela na engenharia, pois equipamento
 Simulação dos tempos de falha
 ```{r}
 #| label: exponencial-simulacao
+#| fig-cap: "Tempos simulados de falha da betoneira e curva exponencial teórica."
+#| fig-width: 8.8
+#| fig-height: 4.7
 #| echo: true
-
 set.seed(321)
-
-falhas_sim <- rexp(
-  n = 1000,
-  rate = taxa
-)
-
-hist(
-  falhas_sim,
-  probability = TRUE,
-  breaks = 25,
-  main = "Simulação do tempo até a falha",
-  xlab = "Tempo de funcionamento (horas)",
-  ylab = "Densidade"
-)
-
-curve(
-  dexp(x, rate = taxa),
-  add = TRUE,
-  lwd = 2
-)
+falhas_sim <- rexp(n = 1000, rate = taxa)
+limite_t <- max(falhas_sim) * 1.02
+curva_exp <- data.frame(t = seq(0, limite_t, length.out = 400))
+curva_exp$densidade <- dexp(curva_exp$t, rate = taxa)
+ggplot(data.frame(t = falhas_sim), aes(t)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 27,
+                 fill = cor_pch["amostra"], alpha = 0.65, colour = "white") +
+  geom_line(data = curva_exp, aes(t, densidade), inherit.aes = FALSE,
+            colour = cor_pch["modelo"], linewidth = 1.1) +
+  geom_vline(xintercept = 100, linetype = "dashed",
+             colour = cor_pch["alerta"], linewidth = 0.9) +
+  labs(title = "Tempo até a falha da betoneira",
+       subtitle = "Tracejado: 100 horas | Barras: simulação | Curva: teoria",
+       x = "Tempo de funcionamento (h)", y = "Densidade")
 ```
-O gráfico apresenta maior concentração de observações para tempos menores e uma cauda prolongada à direita, comportamento característico da distribuição Exponencial.
+O gráfico apresenta maior concentração de observações para tempos menores e uma cauda prolongada à direita, comportamento característico da distribuição Exponencial. À esquerda da linha de 100 h, a fração simulada foi `r rotulo_pct(mean(falhas_sim < 100))`, diante de `r rotulo_pct(p_antes_100)` previstos teoricamente.
 
 ### Capacidade de suporte do solo – Distribuição Weibull
 
@@ -789,30 +854,25 @@ A média teórica obtida é aproximadamente 132,93 kPa, enquanto o desvio padrã
 Função de risco
 ```{r}
 #| label: weibull-hazard
+#| fig-cap: "Função de risco matemática h(c) da Weibull em função do limiar de capacidade c."
+#| fig-width: 8.8
+#| fig-height: 4.5
 #| echo: true
-
-capacidade <- seq(
-  from = 0.1,
-  to = 300,
-  by = 1
-)
-
-risco <- (k / escala) *
-  (capacidade / escala)^(k - 1)
-
-plot(
-  capacidade,
-  risco,
-  type = "l",
-  lwd = 2,
-  main = "Função de risco – Distribuição Weibull",
-  xlab = "Capacidade de suporte (kPa)",
-  ylab = "h(x)"
-)
-
-grid()
+capacidade <- seq(from = 0.1, to = 300, by = 1)
+risco <- (k / escala) * (capacidade / escala)^(k - 1)
+dados_risco <- data.frame(capacidade = capacidade, risco = risco)
+ggplot(dados_risco, aes(capacidade, risco)) +
+  geom_area(fill = cor_pch["fundo"], alpha = 0.65) +
+  geom_line(colour = cor_pch["modelo"], linewidth = 1.2) +
+  geom_vline(xintercept = 100, colour = cor_pch["alerta"],
+             linetype = "dashed", linewidth = 0.9) +
+  scale_y_continuous(labels = function(x) formatC(x, format = "f", digits = 3,
+                                                  decimal.mark = ",")) +
+  labs(title = "Weibull: risco ao cruzar um limiar de capacidade",
+       subtitle = "Linha tracejada: 100 kPa; h(c) = f(c) / P(C > c)",
+       x = "Limiar de capacidade c (kPa)", y = "h(c) (1/kPa)")
 ```
-Como o parâmetro de forma é $k=2$, portanto maior que 1, a função apresenta comportamento crescente.
+Como o parâmetro de forma é $k=2$, portanto maior que 1, a função apresenta comportamento crescente. No gráfico, a inclinação é constante e a marca de 100 kPa situa o limiar analisado na questão (a).
 
 É importante observar que, neste exercício, a variável estudada é a capacidade de suporte e não o tempo até a falha. Dessa forma, a função de risco deve ser interpretada como uma propriedade matemática do modelo adotado, evitando associá-la diretamente a um processo de desgaste do solo.
 
@@ -912,38 +972,29 @@ Portanto, a precipitação média prevista pelo modelo é de 6 mm.
 Simulação de 365 dias
 ```{r}
 #| label: gama-simulacao
+#| fig-cap: "Precipitações simuladas em 365 dias, densidade Gama e percentil teórico de 95%."
+#| fig-width: 8.8
+#| fig-height: 4.8
 #| echo: true
-
 set.seed(321)
-
-chuva_sim <- rgamma(
-  n = 365,
-  shape = alpha,
-  rate = beta
-)
-
-hist(
-  chuva_sim,
-  probability = TRUE,
-  breaks = 20,
-  main = "Precipitação diária simulada",
-  xlab = "Precipitação (mm)",
-  ylab = "Densidade"
-)
-
-curve(
-  dgamma(
-    x,
-    shape = alpha,
-    rate = beta
-  ),
-  add = TRUE,
-  lwd = 2
-)
+chuva_sim <- rgamma(n = 365, shape = alpha, rate = beta)
+limite_chuva <- max(20, chuva_sim) * 1.05
+curva_gama <- data.frame(chuva = seq(0, limite_chuva, length.out = 400))
+curva_gama$densidade <- dgamma(curva_gama$chuva, shape = alpha, rate = beta)
+ggplot(data.frame(chuva = chuva_sim), aes(chuva)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 20,
+                 fill = cor_pch["amostra"], alpha = 0.65, colour = "white") +
+  geom_line(data = curva_gama, aes(chuva, densidade), inherit.aes = FALSE,
+            colour = cor_pch["modelo"], linewidth = 1.1) +
+  geom_vline(xintercept = chuva_p95, colour = cor_pch["alerta"],
+             linetype = "dashed", linewidth = 0.9) +
+  labs(title = "Precipitação diária na estação chuvosa",
+       subtitle = "Tracejado: percentil 95 | Barras: simulação | Curva: teoria",
+       x = "Precipitação diária (mm)", y = "Densidade")
 ```
-O histograma apresenta assimetria à direita, característica esperada para a distribuição Gama. Valores menores de precipitação apresentam maior frequência, enquanto eventos de maior magnitude tornam-se progressivamente menos frequentes.
+O histograma apresenta assimetria à direita, característica esperada para a distribuição Gama. Valores menores de precipitação apresentam maior frequência, enquanto eventos de maior magnitude tornam-se progressivamente menos frequentes. A linha tracejada assinala `r formatC(chuva_p95, digits = 2, format = "f", decimal.mark = ",")` mm; `r rotulo_pct(mean(chuva_sim > chuva_p95))` dos dias simulados superaram esse quantil, em comparação com 5% teoricamente.
 
-No contexto da construção de uma PCH, informações probabilísticas sobre precipitação podem contribuir para o planejamento de atividades, drenagem provisória e avaliação das condições de execução. Para aplicações hidrológicas de projeto, entretanto, são necessários dados históricos e análises mais específicas.
+No contexto da construção de uma PCH, informações probabilísticas sobre precipitação podem contribuir para o planejamento de atividades, drenagem provisória e avaliação das condições de execução. Para aplicações hidrológicas de projeto, entretanto, são necessários dados históricos e análises mais específicas. Como a Gama contínua usada aqui atribui probabilidade zero a dias com precipitação exatamente nula, o modelo não representa dias secos.
 
 
 ### Análise Integrada – Simulação de Monte Carlo
@@ -1007,27 +1058,28 @@ knitr::kable(
   caption = "Comparação entre Monte Carlo e resultado teórico"
 )
 ```
-Também pode ser realizada uma comparação gráfica:
+A evolução da frequência estimada com o aumento do número de simulações é apresentada abaixo:
 ```{r}
 #| label: grafico-monte-carlo
+#| fig-cap: "Estimativa acumulada de P(X < 30 MPa) em 10.000 simulações e referência teórica."
+#| fig-width: 8.8
+#| fig-height: 4.7
 #| echo: true
-
-valores <- c(
-  Simulado = prob_mc,
-  Teorico = prob_teorica
-)
-
-barplot(
-  valores,
-  ylim = c(0, max(valores) * 1.20),
-  ylab = "Probabilidade",
-  main = "Probabilidade de resistência inferior a 30 MPa"
-)
-
-abline(
-  h = prob_teorica,
-  lty = 2
-)
+passos <- seq(100, numero_sim, by = 100)
+serie_mc <- data.frame(n = passos,
+                       proporcao = cumsum(mc_concreto < 30)[passos] / passos)
+ggplot(serie_mc, aes(n, proporcao)) +
+  geom_hline(yintercept = prob_teorica, linetype = "dashed",
+             colour = cor_pch["alerta"], linewidth = 1) +
+  geom_line(colour = cor_pch["modelo"], linewidth = 1) +
+  annotate("point", x = numero_sim, y = prob_mc,
+           colour = cor_pch["modelo"], size = 2.7) +
+  scale_x_continuous(labels = function(x) format(x, big.mark = ".",
+                                               scientific = FALSE)) +
+  scale_y_continuous(labels = rotulo_pct) +
+  labs(title = "A frequência estimada se estabiliza com mais simulações",
+       subtitle = "Linha tracejada: probabilidade Normal teórica",
+       x = "Número acumulado de simulações", y = "Proporção abaixo de 30 MPa")
 ```
 O valor teórico para a probabilidade de resistência inferior a 30 MPa é aproximadamente:
 
@@ -1037,9 +1089,9 @@ $$
 
 ou 10,56%.
 
-A proporção obtida pelas 10.000 simulações deverá apresentar valor bastante próximo desse resultado. Entretanto, não se espera igualdade absoluta, uma vez que a simulação está sujeita à variabilidade decorrente da geração de uma quantidade finita de valores pseudoaleatórios.
+A proporção obtida pelas 10.000 simulações foi `r rotulo_pct(prob_mc)`, diante de `r rotulo_pct(prob_teorica)` teoricamente. Entretanto, não se espera igualdade absoluta, uma vez que a simulação está sujeita à variabilidade decorrente da geração de uma quantidade finita de valores pseudoaleatórios.
 
-À medida que o número de simulações aumenta, existe tendência de aproximação entre a frequência relativa observada e a probabilidade prevista teoricamente.
+No gráfico, a oscilação inicial diminui com o aumento das simulações e a curva se aproxima da referência teórica. À medida que o número de simulações aumenta, existe tendência de aproximação entre a frequência relativa observada e a probabilidade prevista teoricamente.
 
 A simulação de Monte Carlo apresenta grande importância em problemas de engenharia nos quais diversas variáveis aleatórias atuam simultaneamente ou quando a solução analítica se torna complexa. Por meio desse procedimento, diferentes cenários podem ser reproduzidos computacionalmente, permitindo avaliar probabilidades de falha, confiabilidade e influência da variabilidade dos parâmetros.
 
@@ -1106,7 +1158,7 @@ Essa diversidade demonstra que a seleção da distribuição deve considerar pri
 
 O desenvolvimento deste trabalho permitiu aplicar conceitos de probabilidade e distribuições especiais a diferentes situações relacionadas à construção e operação de uma Pequena Central Hidrelétrica. A utilização da linguagem R possibilitou realizar os cálculos probabilísticos, determinar medidas estatísticas, produzir representações gráficas e gerar valores pseudoaleatórios para comparação com os resultados teóricos.
 
-A distribuição Normal permitiu analisar a variabilidade da resistência à compressão do concreto, enquanto a distribuição Binomial foi utilizada para avaliar a ocorrência de estacas defeituosas em lotes de tamanho definido. A distribuição de Poisson mostrou-se adequada para representar a quantidade de fissuras observadas em determinado comprimento de túnel.
+A distribuição Normal permitiu analisar a variabilidade da resistência à compressão do concreto, enquanto a distribuição Binomial foi utilizada para avaliar a ocorrência de estacas defeituosas em lotes de tamanho definido. A distribuição de Poisson foi utilizada para representar a quantidade de fissuras em determinado comprimento de túnel, sob a hipótese de taxa homogênea.
 
 A distribuição Exponencial possibilitou analisar probabilisticamente o tempo até a falha da betoneira, considerando uma taxa constante. A Weibull foi aplicada à capacidade de suporte do solo e permitiu analisar probabilidades, quantis e o comportamento da função de risco. A distribuição Gama, por sua vez, foi utilizada para representar a precipitação diária, caracterizada por valores positivos e comportamento assimétrico.
 
@@ -1114,17 +1166,7 @@ A simulação de Monte Carlo permitiu ainda comparar uma probabilidade estimada 
 
 Dessa forma, verifica-se que a utilização conjunta da Estatística, Probabilidade e linguagem R constitui importante ferramenta para a Engenharia Civil. Esses recursos permitem transformar a variabilidade dos fenômenos em informações quantitativas capazes de auxiliar o controle de qualidade, o planejamento, a avaliação de riscos e a tomada de decisão.
 
-Entretanto, os modelos probabilísticos não devem ser utilizados isoladamente como critérios de projeto ou aceitação. Sua aplicação prática depende da qualidade dos dados, da adequação das hipóteses adotadas, das condições reais da obra e dos critérios técnicos e normativos correspondentes.
+Entretanto, os modelos probabilísticos não devem ser utilizados isoladamente como critérios de projeto ou aceitação. Sua aplicação prática depende da qualidade dos dados, da adequação das hipóteses adotadas, das condições reais da obra e dos critérios técnicos e normativos correspondentes. Não é possível afirmar qual distribuição se ajusta melhor aos dados reais sem uma base observada e testes de ajuste.
 
-
-## Aprenda Quarto
-
-Acesse [Quarto](https://quarto.org/).
 
 ## 📖 Referências
-BUSSAB, W. O.; MORETTIN, P. A. Estatística Básica. São Paulo: Saraiva.
-
-MONTGOMERY, D. C.; RUNGER, G. C. Estatística Aplicada e Probabilidade para Engenheiros. Rio de Janeiro: LTC.
-
-R CORE TEAM. R: A Language and Environment for Statistical Computing. Vienna: R Foundation for Statistical Computing.
-

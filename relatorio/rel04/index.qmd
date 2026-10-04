@@ -12,7 +12,7 @@ date: now
 date-format: "DD/MM/YYYY, HH:mm"
 lang: pt-BR
 format:
-  html:
+  pdf:
     toc: true
     number-sections: true
     theme: bootstrap
